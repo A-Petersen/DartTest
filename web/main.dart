@@ -1,11 +1,50 @@
 import 'dart:html';
+import 'dart:async';
+import 'dart:math';
+
+class Field {
+  TableRowElement row;
+  TableCellElement cell;
+  int rowValue;
+  int cellValue;
+
+  Field(TableRowElement row, TableCellElement cell, int rowValue, cellValue) {
+    this.row = row;
+    this.cell = cell;
+    this.rowValue = rowValue;
+    this.cellValue = cellValue;
+  }
+
+  TableCellElement get getCell => cell;
+
+
+}
+
+List tableFields = new List();
 
 void main() {
 
-  String str = "O";
+  TableElement table = document.getElementById("table");
+  tableFields = new List();
 
-  querySelector('#output').text = 'Your Dart app is running.';
+  for (int i = 0 ; i < 8 ; i++) {
+    TableRowElement row = table.addRow();
+    for (int j = 0 ; j < 8 ; j++) {
+      TableCellElement cell = row.addCell();
+      cell.text = (j).toString();
+      tableFields.add(new Field(row, cell, i, j));
+    }
+  }
 
-  querySelector('#test').text = str;
+  const oneSec = const Duration(milliseconds: 1);
+  new Timer.periodic(oneSec, (Timer t) => doSomething());
 
+}
+
+void doSomething() {
+  for (int i = 0 ; i < tableFields.length ; i++) {
+    var rng = new Random();
+    Field field = tableFields[i];
+    field.getCell.text = rng.nextInt(10).toString();
+  }
 }
