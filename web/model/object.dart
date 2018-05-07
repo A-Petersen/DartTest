@@ -1,4 +1,4 @@
-class Figure {
+class Object {
   /**
    * X Position
    */
@@ -10,12 +10,12 @@ class Figure {
   double y;
 
   /**
-   * Breite des Figuren-Feldes
+   * Breite des Objekt-Feldes
    */
   double a;
 
   /**
-   * Höhe des Figuren-Feldes
+   * Höhe des Objekt-Feldes
    */
   double b;
 
@@ -32,25 +32,25 @@ class Figure {
   /**
    * Konstruktor - unfertig...
    */
-  Figure(this.x, this.y, this.a, this.b);
+  Object(this.x, this.y, this.a, this.b);
 
   /**
-   * Mitte der Figur auf Y-Achse vom Himmel
+   * Mitte des Objekts auf Y-Achse vom Himmel
    */
   int get heaven => (this.y - (this.b / 2)).floor();
 
   /**
-   * Mitte der Figur auf Y-Achse vom Boden
+   * Mittes des Objekts auf Y-Achse vom Boden
    */
   int get ground => (this.y + (this.b / 2)).floor();
 
   /**
-   * Mitte der Figur auf X-Achse von Rechts
+   * Mitte des Objekts auf X-Achse von Rechts
    */
   int get left   => (this.x - (this.a / 2)).floor();
 
   /**
-   * Mitte der Figur auf X-Achse von Links
+   * Mitte des Objekts auf X-Achse von Links
    */
   int get right  => (this.x + (this.a / 2)).floor();
 
