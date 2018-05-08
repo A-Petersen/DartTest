@@ -5,7 +5,7 @@ import 'dart:async';
 import 'dart:math';
 
 final field = new Field();
-Fruit fruit = new Fruit(field.center_X, field.center_y, field.size / 4, field);
+Fruit fruit = new Fruit(field.center_x, field.center_y, field.size / 4, field);
 
 void main() {
 
