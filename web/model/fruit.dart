@@ -1,4 +1,7 @@
-class Object {
+import 'field.dart';
+
+
+class Fruit {
   /**
    * X Position
    */
@@ -8,6 +11,8 @@ class Object {
    * Y Position
    */
   double y;
+
+  double radius;
 
   /**
    * Breite des Objekt-Feldes
@@ -29,10 +34,12 @@ class Object {
    */
   double destY;
 
+  Field field;
+
   /**
    * Konstruktor - unfertig...
    */
-  Object(this.x, this.y, this.a, this.b);
+  Fruit(this.x, this.y, this.radius, this.field);
 
   /**
    * Mitte des Objekts auf Y-Achse vom Himmel
@@ -72,11 +79,22 @@ class Object {
     this.destY = destY;
   }
 
+  void position(double posX, double posY) {
+    this.x = posX;
+    this.y = posY;
+  }
+
   /**
    * Update - Kontrolle für bewegungen außerhalb des Spiuelbereich fehlen noch !!!
    */
   void update() {
     this.x += destX;
     this.y += destY;
+
+    if (this.heaven < 0) this.y = this.radius;
+    if (this.ground > this.field.height - 1) this.y = this.field.height - 1 - this.radius;
+
+    if (this.left < 0) this.x = this.radius;
+    if (this.right > this.field.width - 1) this.x = this.field.width - 1 - this.radius;
   }
 }
