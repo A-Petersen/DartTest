@@ -85,7 +85,7 @@ class Fruit {
   }
 
   /**
-   * Update - Kontrolle für bewegungen außerhalb des Spiuelbereich fehlen noch !!!
+   * Update
    */
   void update() {
     this.x += destX;

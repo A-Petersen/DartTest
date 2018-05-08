@@ -30,7 +30,7 @@ class Field {
     this.fruit.style.width="${a.width}px";
     this.fruit.style.height="${a.width}px";
     this.fruit.style.borderRadius=round;
-    this.fruit.style.top="${a..heaven}px";
+    this.fruit.style.top="${a.heaven}px";
     this.fruit.style.left="${a.left}px";
   }
 }
