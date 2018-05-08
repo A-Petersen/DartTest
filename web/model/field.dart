@@ -14,7 +14,7 @@ class Field {
    */
   int get height => window.innerHeight;
 
-  double get center_X => this.width / 2;
+  double get center_x => this.width / 2;
 
   double get center_y => this.height / 2;
 

@@ -1,10 +1,11 @@
+import 'model/Fruit.dart';
+import 'model/Field.dart';
 import 'dart:html';
 import 'dart:async';
-import 'model/field.dart';
-import 'model/fruit.dart';
+import 'dart:math';
 
 final field = new Field();
-Fruit fruit = new Fruit(field.center_X, field.center_y, field.size / 4, field);
+Fruit fruit = new Fruit(field.center_x, field.center_y, field.size / 4, field);
 
 void main() {
 
@@ -14,6 +15,9 @@ void main() {
 }
 
 void moveBall() {
-  fruit.move(0.5, 0.5);
-  field.update(fruit);
+  double x = fruit.x;
+  x+= x+1;
+  double y = (-x^2) + 0.5;
+  fruit.move(x, y);
+  container.update(fruit);
 }
