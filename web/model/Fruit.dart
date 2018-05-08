@@ -44,37 +44,37 @@ class Fruit {
   /**
    * Mitte des Objekts auf Y-Achse vom Himmel
    */
-  int get heaven => (this.y - (this.b / 2)).floor();
+  int get heaven => (this.y - this.radius).floor();
 
   /**
    * Mittes des Objekts auf Y-Achse vom Boden
    */
-  int get ground => (this.y + (this.b / 2)).floor();
+  int get ground => (this.y + this.radius).floor();
 
   /**
    * Mitte des Objekts auf X-Achse von Rechts
    */
-  int get left   => (this.x - (this.a / 2)).floor();
+  int get left   => (this.x - this.radius).floor();
 
   /**
    * Mitte des Objekts auf X-Achse von Links
    */
-  int get right  => (this.x + (this.a / 2)).floor();
+  int get right  => (this.x + this.radius).floor();
 
   /**
    * Breite
    */
-  int get width => this.a.floor();
+  int get width => (2 * this.radius).floor();
 
   /**
    * Höhe
    */
-  int get hight => this.b.floor();
+  int get height => (2 * this.radius).floor();
 
   /**
    * Methode zum setzen des Ziels der kommenden Bewegung
    */
-  void move(double destX, [double destY = 0.0]) {
+  void move(double destX, double destY) {
     this.destX = destX;
     this.destY = destY;
   }
