@@ -18,7 +18,7 @@ class Field {
 
   double get center_y => this.height / 2;
 
-  int get size => min(this.width, this.height);
+  int get size => min(this.width, this.height)
 
 
   void update(Fruit a) {

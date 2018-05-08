@@ -5,7 +5,7 @@ import 'dart:async';
 import 'dart:math';
 
 final field = new Field();
-Fruit fruit = new Fruit(field.center_x, field.center_y, field.size / 4, field);
+Fruit fruit = new Fruit(field.center_X, field.center_y, field.size / 4, field);
 
 void main() {
 
@@ -17,7 +17,7 @@ void main() {
 void moveBall() {
   double x = fruit.x;
   x+= x+1;
-  double y = (-x^2) + 0.5;
+  double y = (-(x*x)) + 0.5;
   fruit.move(x, y);
-  container.update(fruit);
+  field.update(fruit);
 }
