@@ -1,3 +1,5 @@
+import 'Field.dart';
+
 class Figure {
   /**
    * X Position
@@ -29,10 +31,12 @@ class Figure {
    */
   double destY;
 
+  Field field;
+
   /**
    * Konstruktor - unfertig...
    */
-  Figure(this.x, this.y, this.a, this.b);
+  Figure(this.x, this.y, this.field);
 
   /**
    * Mitte der Figur auf Y-Achse vom Himmel
@@ -47,7 +51,8 @@ class Figure {
   /**
    * Mitte der Figur auf X-Achse von Rechts
    */
-  int get left   => (this.x - (this.a / 2)).floor();
+  //int get left   => (this.x - (this.a / 2)).floor();
+  int get left   => this.x.floor();
 
   /**
    * Mitte der Figur auf X-Achse von Links
@@ -73,10 +78,9 @@ class Figure {
   }
 
   /**
-   * Update - Kontrolle für bewegungen außerhalb des Spiuelbereich fehlen noch !!!
+   * TODO Update - Kontrolle für bewegungen außerhalb des Spiuelbereich fehlen noch !!!
    */
   void update() {
     this.x += destX;
-    this.y += destY;
   }
 }

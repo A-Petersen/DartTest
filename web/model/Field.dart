@@ -1,9 +1,11 @@
 import 'dart:html';
 import 'dart:math';
 import 'Fruit.dart';
+import 'Figure.dart';
 
 class Field {
   final fruit = querySelector("#fruit");
+  final frank = querySelector("#frank");
   /**
    * Breite der gesamt View
    */
@@ -20,7 +22,6 @@ class Field {
 
   double get center_y => this.height / 2;
 
-
   void update(Fruit a) {
 
     a.update();
@@ -33,4 +34,9 @@ class Field {
     this.fruit.style.top="${a.heaven}px";
     this.fruit.style.left="${a.left}px";
   }
+
+  void updateFigure(Figure f) {
+    this.frank.style.left="${f.left}px";
+  }
+
 }
