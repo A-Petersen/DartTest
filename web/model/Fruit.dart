@@ -1,7 +1,12 @@
 import 'Field.dart';
+import 'dart:async';
+import 'dart:html';
 
 
 class Fruit {
+
+  Timer timer;
+
   /**
    * X Position
    */
@@ -33,6 +38,10 @@ class Fruit {
    * Zielkoordinate Y der folgenden Bewegung
    */
   double destY;
+
+  double rangeX = 0.0;
+
+  double rangeY = 0.0;
 
   Field field;
 
@@ -79,9 +88,49 @@ class Fruit {
     this.destY = destY;
   }
 
+  /**
+   * Position des Objektes setzten.
+   */
   void position(double posX, double posY) {
     this.x = posX;
     this.y = posY;
+  }
+
+  /**
+   * Das Objekt bekommt eine Bewegung mitgegeben.
+   * dx = wie weit soll sich die Fruit sich bewegen.
+   * dy = wie hoch soll die Fruit sich bewegen.
+   */
+  void setMovement(double dx, double dy) {
+    //Zuerst wird das Verhältnis von dx und dy berechnet, so dass die Fruit sich in einer Art Bogen bewegen kann.
+    double x = dx;
+    double y = dy;
+    x = dx/dy;
+    y = 1.0;
+
+    //Dann wird geprüft, ob die Fruit sich nach oben oder nach unten bewegen muss.
+    if (this.rangeX < dx/2) {
+      this.move(x, y);
+      this.rangeX+= x;
+      this.rangeY+= y;
+    } else {
+      this.move(x, -y);
+      this.rangeX+= x;
+      this.rangeY+= y;
+    }
+
+    //Wurde die Bewegung abgeschlossen, soll sie von vorne beginnen.
+    if (dx <= this.rangeX) {
+      this.rangeX = 0.0;
+      this.rangeY = 0.0;
+      timer.cancel();
+    }
+    field.update(this);
+    if (this.x == window.screen.width) timer.cancel();
+  }
+
+  void start(int time, double movementX, double movementY) {
+    timer = new Timer.periodic(new Duration(milliseconds: time), (Timer t) => setMovement(movementX, movementY));
   }
 
   /**
