@@ -105,18 +105,18 @@ class Fruit {
     //Zuerst wird das Verhältnis von dx und dy berechnet, so dass die Fruit sich in einer Art Bogen bewegen kann.
     double x = dx;
     double y = dy;
-    x = dx/dy;
-    y = 1.0;
+    x = dx/absoluteValue(dy);
+    y = dy < 0.0 ? -1.0 : 1.0;
 
     //Dann wird geprüft, ob die Fruit sich nach oben oder nach unten bewegen muss.
     if (this.rangeX < dx/2) {
       this.move(x, y);
-      this.rangeX+= x;
-      this.rangeY+= y;
+      this.rangeX = dx < 0 ? rangeX - x : rangeX + x;
+      this.rangeY= dy < 0 ? rangeY - y : rangeY + y;
     } else {
       this.move(x, -y);
-      this.rangeX+= x;
-      this.rangeY+= y;
+      this.rangeX = dx < 0 ? rangeX - x : rangeX + x;
+      this.rangeY= dy < 0 ? rangeY - y : rangeY + y;
     }
 
     //Wurde die Bewegung abgeschlossen, soll sie von vorne beginnen.
@@ -131,6 +131,10 @@ class Fruit {
 
   void start(int time, double movementX, double movementY) {
     timer = new Timer.periodic(new Duration(milliseconds: time), (Timer t) => setMovement(movementX, movementY));
+  }
+
+  double absoluteValue(double d) {
+    return d > 0 ? d : -d;
   }
 
   /**
