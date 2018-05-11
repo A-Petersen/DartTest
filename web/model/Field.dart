@@ -22,7 +22,8 @@ class Field {
 
   double get center_y => this.height / 2;
 
-  void update(Fruit a) {
+
+  void updateFruit(Fruit a) {
 
     a.update();
 
@@ -33,9 +34,11 @@ class Field {
     this.fruit.style.borderRadius=round;
     this.fruit.style.top="${a.heaven}px";
     this.fruit.style.left="${a.left}px";
+
   }
 
   void updateFigure(Figure f) {
+    f.update();
     this.frank.style.left="${f.left}px";
   }
 

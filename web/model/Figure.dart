@@ -1,4 +1,5 @@
 import 'Field.dart';
+import 'Fruit.dart';
 
 class Figure {
   /**
@@ -36,7 +37,7 @@ class Figure {
   /**
    * Konstruktor - unfertig...
    */
-  Figure(this.x, this.y, this.field);
+  Figure(this.x, this.y, this.a, this.b, this.field,);
 
   /**
    * Mitte der Figur auf Y-Achse vom Himmel
@@ -51,8 +52,7 @@ class Figure {
   /**
    * Mitte der Figur auf X-Achse von Rechts
    */
-  //int get left   => (this.x - (this.a / 2)).floor();
-  int get left   => this.x.floor();
+  int get left   => (this.x - (this.a / 2)).floor();
 
   /**
    * Mitte der Figur auf X-Achse von Links
@@ -68,6 +68,11 @@ class Figure {
    * Höhe
    */
   int get hight => this.b.floor();
+
+  bool onDrum(Fruit f) {
+    if (f.left > this.left + 28 && f.left < this.left + 42) return true;
+    return false;
+  }
 
   /**
    * Methode zum setzen des Ziels der kommenden Bewegung
