@@ -5,6 +5,8 @@ import 'dart:html';
 import 'dart:async';
 
 final field = new Field();
+final fieldQuery = querySelector('#field');
+
 Figure frank = new Figure(0.0, 300.0, 50.0, 53.0, field);
 
 class Controller {
@@ -19,9 +21,8 @@ class Controller {
 
   void movement(Fruit f, double richtung, Function curve) {
     double hoeheProzent = ( f.y <= 1 ? 0.95 : (f.y / 320) ); // 0.x
-
     double y = curve(hoeheProzent);
-    querySelector("#output").text =  'x: ' + f.x.toString() + ' --- onDrum: ' + frank.onDrum(f).toString() + ' --- goingUp: ' + f.goingUp.toString() + ' --- yREAL:' + f.y.toString() + ' --- y: ' + y.toString();
+//    querySelector("#output").text =  'x: ' + f.x.toString() + ' --- onDrum: ' + frank.onDrum(f).toString() + ' --- goingUp: ' + f.goingUp.toString() + ' --- yREAL:' + f.y.toString() + ' --- y: ' + y.toString();
     f.move(richtung, y);
     field.updateFruit(f);
   }
@@ -30,16 +31,16 @@ class Controller {
    * Die Fruit wird gestartet, bzw. geworfen.
    */
   void start() {
+    querySelector("#output").text =  fruits[0].idFruit + '----------';
     for (int i = 0 ; i < fruits.length ; i++) {
       if (fruits[i].moving) {
 //        querySelector("#output").text = (1/(((fruits[i].x-80)*(fruits[i].x-80))*(1/5000))).toString() + ' ----- ' + fruits[i].x.toString();
-//        movement(fruits[i], 1.0, ((x) => (1/(((x-100)*(x-100))*(1/100000)))));
-        double upOrDown = fruits[i].goingUp ? -10.0 : 10.0;
+        double upOrDown = fruits[i].goingUp ? (-1)*fruits[i].gravity : fruits[i].gravity;
         movement(fruits[i], 1.0, (x) => upOrDown * x);
-        if ((fruits[i].y == 305.0 && !frank.onDrum(fruits[i]))) {
+        if ((fruits[i].y == 305.0 && frank.onDrum(fruits[i]))) {
           fruits[i].moving = false;
         }
-        if (fruits[i].y > 300.0 && frank.onDrum(fruits[i])) {
+        if (fruits[i].y > 300.0 && !frank.onDrum(fruits[i])) {
           fruits[i].goingUp = true;
         }
 
@@ -60,8 +61,11 @@ class Controller {
   /**
    * Eine neue Fruit erstellen
    */
-  Fruit newFruit(double x, double y, double radius) {
-    fruits.add(new Fruit(x, y, radius, field));
+  Fruit newFruit(double x, double y, double radius, [double gravity = 10.0]) {
+    fruits.add(new Fruit(x, y, radius, field, gravity));
+    var fruitDiv = new DivElement();
+    fruitDiv.id = 'fruit' + Fruit.id.toString();
+    fieldQuery.children.add(fruitDiv);
     return (fruits[fruits.length-1]);
   }
 

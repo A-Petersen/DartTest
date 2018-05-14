@@ -4,7 +4,7 @@ import 'Fruit.dart';
 import 'Figure.dart';
 
 class Field {
-  final fruit = querySelector("#fruit");
+//  final fruit = querySelector("#fruit");
   final frank = querySelector("#frank");
   List fruits;
   /**
@@ -28,13 +28,14 @@ class Field {
 
     a.update();
 
+    var fruit = querySelector(a.idFruit);
     final round = "${this.size}px";
 
-    this.fruit.style.width="${a.width}px";
-    this.fruit.style.height="${a.width}px";
-    this.fruit.style.borderRadius=round;
-    this.fruit.style.top="${a.heaven}px";
-    this.fruit.style.left="${a.left}px";
+    fruit.style.width="${a.width}px";
+    fruit.style.height="${a.width}px";
+    fruit.style.borderRadius=round;
+    fruit.style.top="${a.heaven}px";
+    fruit.style.left="${a.left}px";
 
   }
 

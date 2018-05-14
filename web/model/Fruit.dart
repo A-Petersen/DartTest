@@ -5,6 +5,10 @@ import 'dart:html';
 
 class Fruit {
 
+  static int id = 0;
+
+  String idFruit;
+
   /**
    * X Position
    */
@@ -45,13 +49,27 @@ class Fruit {
 
   bool goingUp = false;
 
+  double gravity;
+
   Field field;
 
   /**
    * Konstruktor - unfertig...
    */
-  Fruit(this.x, this.y, this.radius, this.field);
+//  Fruit(this.x, this.y, this.radius, this.field, [this.gravity = 10.0]) {
+//    id += 1;
+//    this.idFruit = '#fruit' + id.toString();
+//  }
+  Fruit(x, y, radius, field, [gravity = 10.0]) {
+    this.x = x;
+    this.y = y;
+    this.field = field;
+    this.radius = radius;
+    this.gravity = gravity;
 
+    id += 1;
+    this.idFruit = '#fruit' + id.toString();
+  }
   /**
    * Mitte des Objekts auf Y-Achse vom Himmel
    */

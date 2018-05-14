@@ -13,12 +13,26 @@ html, body {
   text-align: center;
 }
 
-#fruit {
+#fruit1 {
     width: 50px;
     height: 50px;
     position: absolute;
-    background: url("fritz.png");
+    background: white;
   }
+
+#fruit2 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background: crimson;
+}
+
+#fruit3 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background: green;
+}
 
 #frank {
   width: 50px;
