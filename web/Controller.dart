@@ -13,11 +13,11 @@ class Controller {
 
   Controller() {
     figureControll();
-    fruitTimer = new Timer.periodic(new Duration(milliseconds: 10), (Timer t) => start());
+    fruitTimer = new Timer.periodic(new Duration(milliseconds: 100), (Timer t) => start());
   }
 
   void movement(Fruit f, double richtung, Function curve) {
-    double y = curve(richtung);
+    double y = curve(f.x + richtung);
     f.move(richtung, y);
     field.updateFruit(f);
   }
@@ -29,7 +29,7 @@ class Controller {
     int i = 0;
     for (int i = 0 ; i < fruits.length ; i++) {
       if (fruits[i].moving) {
-        movement(fruits[i], 1.0, ((x) => (x^2)/2));
+        movement(fruits[i], 1.0, ((x) => (x^2)/200));
       } else {
         fruits.removeAt(i--);
       }
