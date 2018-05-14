@@ -16,10 +16,8 @@ class Controller {
     fruitTimer = new Timer.periodic(new Duration(milliseconds: 10), (Timer t) => start());
   }
 
-  void movement(Fruit f, double x, y, Function curve) {
-    x += 1.0;
-    y = curve(x);
-    y = (x*x)/15;
+  void movement(Fruit f, double richtung, Function curve) {
+    double y = curve(x);
     f.move(x, y);
     field.updateFruit(f);
   }
@@ -31,7 +29,7 @@ class Controller {
     int i = 0;
     for (int i = 0 ; i < fruits.length ; i++) {
       if (fruits[i].moving) {
-        movement(fruits[i], 0.0, 0.0, new Function());
+        movement(fruits[i], 1.0, ((x) => x*x/15));
       } else {
         fruits.removeAt(i--);
       }
@@ -55,9 +53,9 @@ class Controller {
     fruits.remove(f);
   }
 
-  double absoluteValue(double d) {
+  /*double absoluteValue(double d) {
     return d > 0 ? d : -d;
-  }
+  }*/
 
   /**
    * Bewegungen für die Spielfigur Frank einstellen
