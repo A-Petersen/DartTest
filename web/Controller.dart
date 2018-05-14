@@ -14,15 +14,13 @@ class Controller {
 
   Controller() {
     figureControll();
-    fruitTimer = new Timer.periodic(new Duration(milliseconds: 100), (Timer t) => start());
+    fruitTimer = new Timer.periodic(new Duration(milliseconds: 10), (Timer t) => start());
   }
 
   void movement(Fruit f, double richtung, Function curve) {
     double y = curve(f.x + richtung);
-    if (frank.onDrum(f)) {
-      y = -y;
-    }
-    f.move(richtung, y);
+    querySelector("#output").text =  y.toString() + ' --- ' + f.x.toString() + ' --- ' + f.goingUp.toString() + ' --- ' + frank.onDrum(f).toString();
+    f.move(richtung, y - f.y);
     field.updateFruit(f);
   }
 
@@ -30,15 +28,31 @@ class Controller {
    * Die Fruit wird gestartet, bzw. geworfen.
    */
   void start() {
-    int i = 0;
     for (int i = 0 ; i < fruits.length ; i++) {
       if (fruits[i].moving) {
-        movement(fruits[i], 1.0, ((x) => (x^2)/200));
+//        querySelector("#output").text = (1/(((fruits[i].x-80)*(fruits[i].x-80))*(1/5000))).toString() + ' ----- ' + fruits[i].x.toString();
+//        movement(fruits[i], 1.0, ((x) => (1/(((x-100)*(x-100))*(1/100000)))));
+        double upOrDown = fruits[i].goingUp ? -1.0 : 1.0;
+        movement(fruits[i], 0.0, (x) => fruits[i].y + upOrDown);
+        if ((fruits[i].y == 305.0 && !frank.onDrum(fruits[i]))) {
+          fruits[i].moving = false;
+        }
+        if (fruits[i].y > 300.0 && frank.onDrum(fruits[i])) {
+          fruits[i].goingUp = true;
+        }
+
       } else {
         fruits.removeAt(i--);
       }
     }
+  }
 
+  double kurveFallend (double x) {
+    return (1.0/(((x-100.0)*(x-100.0))*(1.0/100000.0)));
+  }
+
+  double kurveSteigend (double x) {
+    return (1.0/(((x-100.0)*(x-100.0))*(1.0/100000.0)));
   }
 
   /**
@@ -46,7 +60,6 @@ class Controller {
    */
   Fruit newFruit(double x, double y, double radius) {
     fruits.add(new Fruit(x, y, radius, field));
-    querySelector("#output").text = fruits.length.toString();
     return (fruits[fruits.length-1]);
   }
 
