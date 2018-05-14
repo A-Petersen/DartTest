@@ -6,6 +6,7 @@ import 'Figure.dart';
 class Field {
   final fruit = querySelector("#fruit");
   final frank = querySelector("#frank");
+  List fruits;
   /**
    * Breite der gesamt View
    */

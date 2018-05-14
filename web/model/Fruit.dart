@@ -5,8 +5,6 @@ import 'dart:html';
 
 class Fruit {
 
-  Timer timer;
-
   /**
    * X Position
    */
@@ -42,6 +40,8 @@ class Fruit {
   double rangeX = 0.0;
 
   double rangeY = 0.0;
+
+  bool moving = true;
 
   Field field;
 
