@@ -3,7 +3,6 @@ import 'model/Field.dart';
 import 'model/Figure.dart';
 import 'dart:html';
 import 'dart:async';
-
 final field = new Field();
 
 class Controller {
@@ -14,44 +13,15 @@ class Controller {
 
   Controller() {
     figureControll();
-    fruitTimer = new Timer.periodic(new Duration(milliseconds: 30), (Timer t) => start());
+    fruitTimer = new Timer.periodic(new Duration(milliseconds: 10), (Timer t) => start());
   }
 
-  /**
-   * Das Objekt bekommt eine Bewegung mitgegeben.
-   * dx = wie weit soll sich die Fruit sich bewegen.
-   * dy = wie hoch soll die Fruit sich bewegen.
-   */
-  void setMovement(Fruit f, double dx, double dy) {
-    //Zuerst wird das Verhältnis von dx und dy berechnet, so dass die Fruit sich in einer Art Bogen bewegen kann.
-    double x = dx;
-    double y = dy;
-    x = dx/absoluteValue(dy);
-    y = dy < 0.0 ? -1.0 : 1.0;
-
-    //Dann wird geprüft, ob die Fruit sich nach oben oder nach unten bewegen muss.
-    if (f.rangeX < dx/2) {
-      f.move(x, y);
-      f.rangeX = dx < 0 ? f.rangeX - x : f.rangeX + x;
-      f.rangeY= dy < 0 ? f.rangeY - y : f.rangeY + y;
-    } else {
-      f.move(x, -y);
-      f.rangeX = dx < 0 ? f.rangeX - x : f.rangeX + x;
-      f.rangeY= dy < 0 ? f.rangeY - y : f.rangeY + y;
-    }
-
-    //Wurde die Bewegung abgeschlossen, soll sie von vorne beginnen.
-    if (dx <= f.rangeX) {
-      f.rangeX = 0.0;
-      f.rangeY = 0.0;
-      if (!frank.onDrum(f)) {
-        f.moving = false;
-      }
-    }
+  void movement(Fruit f, double x, y, Function curve) {
+    x += 1.0;
+    y = curve(x);
+    y = (x*x)/15;
+    f.move(x, y);
     field.updateFruit(f);
-    if (f.x == window.screen.width) {
-      f.moving = false;
-    }
   }
 
   /**
@@ -61,7 +31,7 @@ class Controller {
     int i = 0;
     for (int i = 0 ; i < fruits.length ; i++) {
       if (fruits[i].moving) {
-        setMovement(fruits[i], 100.0, -200.0);
+        movement(fruits[i], 0.0, 0.0, new Function());
       } else {
         fruits.removeAt(i--);
       }

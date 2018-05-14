@@ -109,4 +109,5 @@ class Fruit {
     if (this.left < 0) this.x = this.radius;
     if (this.right > this.field.width - 1) this.x = this.field.width - 1 - this.radius;
   }
+
 }
