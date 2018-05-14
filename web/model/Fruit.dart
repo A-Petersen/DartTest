@@ -105,7 +105,7 @@ class Fruit {
     this.x += destX;
     this.y += destY;
 
-    if (this.goingUp && (this.y - this.radius == 0) ) this.goingUp = false;
+    if (this.goingUp && (this.y - this.radius <= 11) ) this.goingUp = false;
 
     if (this.heaven < 0) this.y = this.radius;
     if (this.ground > this.field.height - 1) this.y = this.field.height - 1 - this.radius;

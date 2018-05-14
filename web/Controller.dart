@@ -14,13 +14,15 @@ class Controller {
 
   Controller() {
     figureControll();
-    fruitTimer = new Timer.periodic(new Duration(milliseconds: 10), (Timer t) => start());
+    fruitTimer = new Timer.periodic(new Duration(milliseconds: 50), (Timer t) => start());
   }
 
   void movement(Fruit f, double richtung, Function curve) {
-    double y = curve(f.x + richtung);
-    querySelector("#output").text =  y.toString() + ' --- ' + f.x.toString() + ' --- ' + f.goingUp.toString() + ' --- ' + frank.onDrum(f).toString();
-    f.move(richtung, y - f.y);
+    double hoeheProzent = ( f.y <= 1 ? 0.95 : (f.y / 320) ); // 0.x
+
+    double y = curve(hoeheProzent);
+    querySelector("#output").text =  'x: ' + f.x.toString() + ' --- onDrum: ' + frank.onDrum(f).toString() + ' --- goingUp: ' + f.goingUp.toString() + ' --- yREAL:' + f.y.toString() + ' --- y: ' + y.toString();
+    f.move(richtung, y);
     field.updateFruit(f);
   }
 
@@ -32,8 +34,8 @@ class Controller {
       if (fruits[i].moving) {
 //        querySelector("#output").text = (1/(((fruits[i].x-80)*(fruits[i].x-80))*(1/5000))).toString() + ' ----- ' + fruits[i].x.toString();
 //        movement(fruits[i], 1.0, ((x) => (1/(((x-100)*(x-100))*(1/100000)))));
-        double upOrDown = fruits[i].goingUp ? -1.0 : 1.0;
-        movement(fruits[i], 0.0, (x) => fruits[i].y + upOrDown);
+        double upOrDown = fruits[i].goingUp ? -10.0 : 10.0;
+        movement(fruits[i], 1.0, (x) => upOrDown * x);
         if ((fruits[i].y == 305.0 && !frank.onDrum(fruits[i]))) {
           fruits[i].moving = false;
         }
@@ -47,13 +49,13 @@ class Controller {
     }
   }
 
-  double kurveFallend (double x) {
-    return (1.0/(((x-100.0)*(x-100.0))*(1.0/100000.0)));
-  }
-
-  double kurveSteigend (double x) {
-    return (1.0/(((x-100.0)*(x-100.0))*(1.0/100000.0)));
-  }
+//  double kurveFallend (double x) {
+//    return (1.0/(((x-100.0)*(x-100.0))*(1.0/100000.0)));
+//  }
+//
+//  double kurveSteigend (double x) {
+//    return (1.0/(((x-100.0)*(x-100.0))*(1.0/100000.0)));
+//  }
 
   /**
    * Eine neue Fruit erstellen
