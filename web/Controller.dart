@@ -31,12 +31,11 @@ class Controller {
    * Die Fruit wird gestartet, bzw. geworfen.
    */
   void start() {
-    querySelector("#output").text =  fruits[0].idFruit + '----------';
     for (int i = 0 ; i < fruits.length ; i++) {
       if (fruits[i].moving) {
 //        querySelector("#output").text = (1/(((fruits[i].x-80)*(fruits[i].x-80))*(1/5000))).toString() + ' ----- ' + fruits[i].x.toString();
         double upOrDown = fruits[i].goingUp ? (-1)*fruits[i].gravity : fruits[i].gravity;
-        movement(fruits[i], 1.0, (x) => upOrDown * x);
+        movement(fruits[i], fruits[i].speed, (x) => upOrDown * x);
         if ((fruits[i].y == 305.0 && frank.onDrum(fruits[i]))) {
           fruits[i].moving = false;
         }
@@ -61,8 +60,8 @@ class Controller {
   /**
    * Eine neue Fruit erstellen
    */
-  Fruit newFruit(double x, double y, double radius, [double gravity = 10.0]) {
-    fruits.add(new Fruit(x, y, radius, field, gravity));
+  Fruit newFruit(double x, double y, double radius, [double gravity = 10.0, double speed = 1.0]) {
+    fruits.add(new Fruit(x, y, radius, field, gravity, speed));
     var fruitDiv = new DivElement();
     fruitDiv.id = 'fruit' + Fruit.id.toString();
     fieldQuery.children.add(fruitDiv);

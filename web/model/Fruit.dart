@@ -51,6 +51,8 @@ class Fruit {
 
   double gravity;
 
+  double speed;
+
   Field field;
 
   /**
@@ -60,12 +62,13 @@ class Fruit {
 //    id += 1;
 //    this.idFruit = '#fruit' + id.toString();
 //  }
-  Fruit(x, y, radius, field, [gravity = 10.0]) {
+  Fruit(x, y, radius, field, [gravity = 10.0, speed = 1.0]) {
     this.x = x;
     this.y = y;
     this.field = field;
     this.radius = radius;
     this.gravity = gravity;
+    this.speed = speed;
 
     id += 1;
     this.idFruit = '#fruit' + id.toString();
