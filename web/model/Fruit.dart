@@ -96,12 +96,12 @@ class Fruit {
   /**
    * Breite
    */
-  int get width => (2 * this.radius).floor();
+  int get width => (4 * this.radius).floor();
 
   /**
    * Höhe
    */
-  int get height => (2 * this.radius).floor();
+  int get height => (4 * this.radius).floor();
 
   /**
    * Methode zum setzen des Ziels der kommenden Bewegung

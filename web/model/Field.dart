@@ -36,6 +36,9 @@ class Field {
     fruit.style.borderRadius=round;
     fruit.style.top="${a.heaven}px";
     fruit.style.left="${a.left}px";
+    fruit.style.backgroundSize="${a.width}px";
+
+    fruit.style.transform = "rotate(${(a.x*2 + a.y)%360}deg)";
 
   }
 

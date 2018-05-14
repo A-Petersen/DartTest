@@ -14,33 +14,28 @@ html, body {
 }
 
 #fruit1 {
-    width: 50px;
-    height: 50px;
     position: absolute;
-    background: white;
+    background-image: url("bananen.png");
   }
 
 #fruit2 {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  background: crimson;
+    position: absolute;
+    background-image: url("birne.png");
+    transform: rotate(10deg);
 }
 
 #fruit3 {
-  width: 50px;
-  height: 50px;
   position: absolute;
-  background: green;
+  background-image: url("apfel.png");
 }
 
 #frank {
   width: 50px;
   height: 53px;
   position: absolute;
-  background: url("fritz.png");
+  background: url("frank.png");
   background-size: contain;
-  top: 290px;
+  top: 270px;
 }
 
 #field {
