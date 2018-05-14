@@ -17,8 +17,8 @@ class Controller {
   }
 
   void movement(Fruit f, double richtung, Function curve) {
-    double y = curve(x);
-    f.move(x, y);
+    double y = curve(richtung);
+    f.move(richtung, y);
     field.updateFruit(f);
   }
 
