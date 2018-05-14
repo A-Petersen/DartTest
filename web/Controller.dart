@@ -29,7 +29,7 @@ class Controller {
     int i = 0;
     for (int i = 0 ; i < fruits.length ; i++) {
       if (fruits[i].moving) {
-        movement(fruits[i], 1.0, ((x) => x*x/15));
+        movement(fruits[i], 1.0, ((x) => (x^2)/2));
       } else {
         fruits.removeAt(i--);
       }
