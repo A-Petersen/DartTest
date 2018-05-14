@@ -3,12 +3,13 @@ import 'model/Field.dart';
 import 'model/Figure.dart';
 import 'dart:html';
 import 'dart:async';
+
 final field = new Field();
+Figure frank = new Figure(0.0, 300.0, 50.0, 53.0, field);
 
 class Controller {
 
   List<Fruit> fruits = new List<Fruit>();
-  Figure frank = new Figure(0.0, 300.0, 50.0, 53.0, field);
   Timer fruitTimer;
 
   Controller() {
@@ -18,6 +19,9 @@ class Controller {
 
   void movement(Fruit f, double richtung, Function curve) {
     double y = curve(f.x + richtung);
+    if (frank.onDrum(f)) {
+      y = -y;
+    }
     f.move(richtung, y);
     field.updateFruit(f);
   }

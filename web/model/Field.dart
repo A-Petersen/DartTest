@@ -10,12 +10,12 @@ class Field {
   /**
    * Breite der gesamt View
    */
-  int get width => window.innerWidth;
+  int get width => 560;
 
   /**
    * Höhe der gesamt View
    */
-  int get height => window.innerHeight;
+  int get height => 315;
 
   int get size => min(this.width, this.height);
 
