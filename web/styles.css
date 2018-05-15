@@ -16,17 +16,19 @@ html, body {
 #fruit1 {
     position: absolute;
     background-image: url("bananen.png");
+    z-index: 1;
   }
 
 #fruit2 {
     position: absolute;
     background-image: url("birne.png");
-    transform: rotate(10deg);
+    z-index: 1;
 }
 
 #fruit3 {
   position: absolute;
   background-image: url("apfel.png");
+    z-index: 1;
 }
 
 #korb {
@@ -37,6 +39,7 @@ html, body {
     top: 240px;
     left: 480px;
     position: absolute;
+    z-index: -1;
 }
 
 #baum {
@@ -47,6 +50,7 @@ html, body {
     top: 0px;
     left: -25px;
     position: absolute;
+    z-index: -1;
 }
 
 #frank {
@@ -54,6 +58,7 @@ html, body {
     height: 100px;
     position: absolute;
     background: url("frank.png");
+    z-index: 0;
 }
 
 #field {
@@ -61,4 +66,5 @@ html, body {
   height: 315px;
   position: relative;
   background: skyblue;
+    z-index: -2;
 }
