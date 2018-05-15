@@ -63,8 +63,9 @@ html, body {
 
 #field {
   width: 560px;
-  height: 315px;
+  height: 330px;
   position: relative;
-  background: skyblue;
+  background: url("back.png");
+    background-size: 560px 330px;
     z-index: -2;
 }
