@@ -45,6 +45,8 @@ class Field {
   void updateFigure(Figure f) {
     f.update();
     this.frank.style.left="${f.left}px";
+    this.frank.style.top="${f.field.height - f.b}px";
+    this.frank.style.backgroundSize="${f.a}px ${f.b}px";
   }
 
 }

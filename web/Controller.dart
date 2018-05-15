@@ -7,7 +7,7 @@ import 'dart:async';
 final field = new Field();
 final fieldQuery = querySelector('#field');
 
-Figure frank = new Figure(0.0, 300.0, 50.0, 53.0, field);
+Figure frank = new Figure(0.0, 280.0, 100.0, 100.0, field);
 
 class Controller {
 
@@ -39,7 +39,7 @@ class Controller {
         if ((fruits[i].y == 305.0 && !frank.onDrum(fruits[i]))) {
           fruits[i].moving = false;
         }
-        if (fruits[i].y > 300.0 && frank.onDrum(fruits[i])) {
+        if (fruits[i].y > field.height - (frank.b * 0.75) && frank.onDrum(fruits[i])) {
           fruits[i].goingUp = true;
         }
 
