@@ -15,26 +15,26 @@ html, body {
 
 #fruit1 {
     position: absolute;
-    background-image: url("bananen.png");
+    background-image: url("resources/bananen.png");
     z-index: 1;
   }
 
 #fruit2 {
     position: absolute;
-    background-image: url("birne.png");
+    background-image: url("resources/birne.png");
     z-index: 1;
 }
 
 #fruit3 {
   position: absolute;
-  background-image: url("apfel.png");
+  background-image: url("resources/apfel.png");
     z-index: 1;
 }
 
 #korb {
     width: 80px;
     height: 80px;
-    background: url("korb.png");
+    background: url("resources/korb.png");
     background-size: 80px 80px;
     top: 240px;
     left: 480px;
@@ -45,7 +45,7 @@ html, body {
 #baum {
     width: 200px;
     height: 330px;
-    background: url("baum.png");
+    background: url("resources/baum.png");
     background-size: 200px 330px;
     top: 0px;
     left: -25px;
@@ -57,7 +57,7 @@ html, body {
     width: 100px;
     height: 100px;
     position: absolute;
-    background: url("frank.png");
+    background: url("resources/frank.png");
     z-index: 0;
 }
 
@@ -65,7 +65,7 @@ html, body {
   width: 560px;
   height: 330px;
   position: relative;
-  background: url("back.png");
+  background: url("resources/back.png");
     background-size: 560px 330px;
     z-index: -2;
 }
