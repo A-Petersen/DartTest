@@ -22,7 +22,7 @@ class Controller {
   void movement(Fruit f, double richtung, Function curve) {
     double hoeheProzent = ( f.y <= 1 ? 0.95 : (f.y / 320) ); // 0.x
     double y = curve(hoeheProzent);
-//    querySelector("#output").text =  'x: ' + f.x.toString() + ' --- onDrum: ' + frank.onDrum(f).toString() + ' --- goingUp: ' + f.goingUp.toString() + ' --- yREAL:' + f.y.toString() + ' --- y: ' + y.toString();
+    querySelector("#output").text =  'x: ' + f.x.toString() + ' --- onDrum: ' + frank.onDrum(f).toString() + ' --- goingUp: ' + f.goingUp.toString() + ' --- yREAL:' + f.y.toString() + ' --- y: ' + y.toString() + ' --- Fmove:' + frank.moving.toString();
     f.move(richtung, y);
     field.updateFruit(f);
   }
@@ -36,10 +36,10 @@ class Controller {
 //        querySelector("#output").text = (1/(((fruits[i].x-80)*(fruits[i].x-80))*(1/5000))).toString() + ' ----- ' + fruits[i].x.toString();
         double upOrDown = fruits[i].goingUp ? (-1)*fruits[i].gravity : fruits[i].gravity;
         movement(fruits[i], fruits[i].speed, (x) => upOrDown * x);
-        if ((fruits[i].y == 305.0 && frank.onDrum(fruits[i]))) {
+        if ((fruits[i].y == 305.0 && !frank.onDrum(fruits[i]))) {
           fruits[i].moving = false;
         }
-        if (fruits[i].y > 300.0 && !frank.onDrum(fruits[i])) {
+        if (fruits[i].y > 300.0 && frank.onDrum(fruits[i])) {
           fruits[i].goingUp = true;
         }
 
@@ -47,6 +47,19 @@ class Controller {
         fruits.removeAt(i--);
       }
     }
+    switch (frank.moving) {
+      case (1):
+        frank.move(frank.speed);
+        break;
+      case (2):
+        frank.move((-1) * frank.speed);
+        break;
+      case (0):
+        frank.move(0.0);
+        break;
+    }
+    field.updateFigure(frank);
+
   }
 
 //  double kurveFallend (double x) {
@@ -85,10 +98,26 @@ class Controller {
   void figureControll() {
     window.onKeyDown.listen((KeyboardEvent ev) {
       switch (ev.keyCode) {
-        case KeyCode.LEFT : frank.move(-1.0); break;
-        case KeyCode.RIGHT : frank.move(1.0); break;
+        case KeyCode.LEFT :
+          frank.moving = 2;
+          break;
+        case KeyCode.RIGHT :
+          frank.moving = 1;
+          break;
       }
-      field.updateFigure(frank);
+//      if (frank.moveRight) frank.move(frank.speed);
+//      if (!frank.moveRight) frank.move((-1)*frank.speed);
+//      field.updateFigure(frank);
+    });
+    window.onKeyUp.listen((KeyboardEvent ev) {
+      switch (ev.keyCode) {
+        case KeyCode.LEFT :
+          if (frank.moving != 1) frank.moving = 0;
+          break;
+        case KeyCode.RIGHT :
+          if (frank.moving != 2) frank.moving = 0;
+          break;
+      }
     });
   }
 
