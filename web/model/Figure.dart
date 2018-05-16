@@ -25,19 +25,23 @@ class Figure {
   /**
    * Zielkoordinate X der folgenden Bewegung
    */
-  double destX;
+  double destX = 0.0;
 
   /**
    * Zielkoordinate Y der folgenden Bewegung
    */
   double destY;
 
+  double speed;
+
+  int moving = 0;
+
   Field field;
 
   /**
    * Konstruktor - unfertig...
    */
-  Figure(this.x, this.y, this.a, this.b, this.field,);
+  Figure(this.x, this.y, this.a, this.b, this.field, [this.speed = 4.0]);
 
   /**
    * Mitte der Figur auf Y-Achse vom Himmel
@@ -70,7 +74,7 @@ class Figure {
   int get hight => this.b.floor();
 
   bool onDrum(Fruit f) {
-    if (f.left > this.left + 28 && f.left < this.left + 42) return true;
+    if (f.right > this.left + 20 && f.left < this.right) return true;
     return false;
   }
 

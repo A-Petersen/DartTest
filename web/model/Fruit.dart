@@ -5,6 +5,10 @@ import 'dart:html';
 
 class Fruit {
 
+  static int id = 0;
+
+  String idFruit;
+
   /**
    * X Position
    */
@@ -43,13 +47,32 @@ class Fruit {
 
   bool moving = true;
 
+  bool goingUp = false;
+
+  double gravity;
+
+  double speed;
+
   Field field;
 
   /**
    * Konstruktor - unfertig...
    */
-  Fruit(this.x, this.y, this.radius, this.field);
+//  Fruit(this.x, this.y, this.radius, this.field, [this.gravity = 10.0]) {
+//    id += 1;
+//    this.idFruit = '#fruit' + id.toString();
+//  }
+  Fruit(x, y, radius, field, [gravity = 10.0, speed = 1.0]) {
+    this.x = x;
+    this.y = y;
+    this.field = field;
+    this.radius = radius;
+    this.gravity = gravity;
+    this.speed = speed;
 
+    id += 1;
+    this.idFruit = '#fruit' + id.toString();
+  }
   /**
    * Mitte des Objekts auf Y-Achse vom Himmel
    */
@@ -73,12 +96,12 @@ class Fruit {
   /**
    * Breite
    */
-  int get width => (2 * this.radius).floor();
+  int get width => (4 * this.radius).floor();
 
   /**
    * Höhe
    */
-  int get height => (2 * this.radius).floor();
+  int get height => (4 * this.radius).floor();
 
   /**
    * Methode zum setzen des Ziels der kommenden Bewegung
@@ -102,6 +125,8 @@ class Fruit {
   void update() {
     this.x += destX;
     this.y += destY;
+
+    if (this.goingUp && (this.y - this.radius <= 11) ) this.goingUp = false;
 
     if (this.heaven < 0) this.y = this.radius;
     if (this.ground > this.field.height - 1) this.y = this.field.height - 1 - this.radius;

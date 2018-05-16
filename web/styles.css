@@ -13,25 +13,59 @@ html, body {
   text-align: center;
 }
 
-#fruit {
-    width: 50px;
-    height: 50px;
+#fruit1 {
     position: absolute;
-    background: url("fritz.png");
+    background-image: url("resources/bananen.png");
+    z-index: 1;
   }
 
-#frank {
-  width: 50px;
-  height: 53px;
+#fruit2 {
+    position: absolute;
+    background-image: url("resources/birne.png");
+    z-index: 1;
+}
+
+#fruit3 {
   position: absolute;
-  background: url("fritz.png");
-  background-size: contain;
-  top: 290px;
+  background-image: url("resources/apfel.png");
+    z-index: 1;
+}
+
+#korb {
+    width: 80px;
+    height: 80px;
+    background: url("resources/korb.png");
+    background-size: 80px 80px;
+    top: 240px;
+    left: 480px;
+    position: absolute;
+    z-index: -1;
+}
+
+#baum {
+    width: 200px;
+    height: 330px;
+    background: url("resources/baum.png");
+    background-size: 200px 330px;
+    top: 0px;
+    left: -25px;
+    position: absolute;
+    z-index: -1;
+}
+
+#frank {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background: url("resources/frank.png");
+    z-index: 0;
 }
 
 #field {
   width: 560px;
-  height: 315px;
+  height: 330px;
   position: relative;
-  background: black;
+  background: url("resources/back.png");
+    background-size: 560px 330px;
+    z-index: -2;
 }
