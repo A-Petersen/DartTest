@@ -9,6 +9,8 @@ class Fruit {
 
   String idFruit;
 
+  DivElement div;
+
   /**
    * X Position
    */
@@ -41,10 +43,6 @@ class Fruit {
    */
   double destY;
 
-  double rangeX = 0.0;
-
-  double rangeY = 0.0;
-
   bool moving = true;
 
   bool goingUp = false;
@@ -69,7 +67,6 @@ class Fruit {
     this.radius = radius;
     this.gravity = gravity;
     this.speed = speed;
-
     id += 1;
     this.idFruit = '#fruit' + id.toString();
   }

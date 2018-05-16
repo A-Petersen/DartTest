@@ -6,8 +6,9 @@ import 'dart:async';
 
 final field = new Field();
 final fieldQuery = querySelector('#field');
-
+var highscore = querySelector("#highscore");
 Figure frank = new Figure(0.0, 280.0, 100.0, 100.0, field);
+int score = 0;
 
 class Controller {
 
@@ -22,7 +23,6 @@ class Controller {
   void movement(Fruit f, double richtung, Function curve) {
     double hoeheProzent = ( f.y <= 1 ? 0.95 : (f.y / 320) ); // 0.x
     double y = curve(hoeheProzent);
-    querySelector("#output").text =  'x: ' + f.x.toString() + ' --- onDrum: ' + frank.onDrum(f).toString() + ' --- goingUp: ' + f.goingUp.toString() + ' --- yREAL:' + f.y.toString() + ' --- y: ' + y.toString() + ' --- Fmove:' + frank.moving.toString();
     f.move(richtung, y);
     field.updateFruit(f);
   }
@@ -33,18 +33,23 @@ class Controller {
   void start() {
     for (int i = 0 ; i < fruits.length ; i++) {
       if (fruits[i].moving) {
-//        querySelector("#output").text = (1/(((fruits[i].x-80)*(fruits[i].x-80))*(1/5000))).toString() + ' ----- ' + fruits[i].x.toString();
         double upOrDown = fruits[i].goingUp ? (-1)*fruits[i].gravity : fruits[i].gravity;
         movement(fruits[i], fruits[i].speed, (x) => upOrDown * x);
-        if ((fruits[i].y == 305.0 && !frank.onDrum(fruits[i]))) {
+        querySelector("#output").text = fruits.length.toString();
+        if ((fruits[i].y >= 260.0 && !frank.onDrum(fruits[i]))) {
           fruits[i].moving = false;
         }
         if (fruits[i].y > field.height - (frank.b * 0.75) && frank.onDrum(fruits[i])) {
           fruits[i].goingUp = true;
         }
 
+        if (fruits[i].left >= 480 && fruits[i].heaven >= 240) {
+          fruits[i].moving = false;
+          highscore.text = (++score).toString();
+        }
+
       } else {
-        fruits.removeAt(i--);
+        removeFruit(fruits[i--]);
       }
     }
     switch (frank.moving) {
@@ -62,14 +67,6 @@ class Controller {
 
   }
 
-//  double kurveFallend (double x) {
-//    return (1.0/(((x-100.0)*(x-100.0))*(1.0/100000.0)));
-//  }
-//
-//  double kurveSteigend (double x) {
-//    return (1.0/(((x-100.0)*(x-100.0))*(1.0/100000.0)));
-//  }
-
   /**
    * Eine neue Fruit erstellen
    */
@@ -78,6 +75,7 @@ class Controller {
     var fruitDiv = new DivElement();
     fruitDiv.id = 'fruit' + Fruit.id.toString();
     fieldQuery.children.add(fruitDiv);
+    fruits[fruits.length-1].div = fruitDiv;
     return (fruits[fruits.length-1]);
   }
 
@@ -86,11 +84,8 @@ class Controller {
    */
   void removeFruit(Fruit f) {
     fruits.remove(f);
+    f.div.remove();
   }
-
-  /*double absoluteValue(double d) {
-    return d > 0 ? d : -d;
-  }*/
 
   /**
    * Bewegungen für die Spielfigur Frank einstellen
@@ -105,9 +100,7 @@ class Controller {
           frank.moving = 1;
           break;
       }
-//      if (frank.moveRight) frank.move(frank.speed);
-//      if (!frank.moveRight) frank.move((-1)*frank.speed);
-//      field.updateFigure(frank);
+
     });
     window.onKeyUp.listen((KeyboardEvent ev) {
       switch (ev.keyCode) {
