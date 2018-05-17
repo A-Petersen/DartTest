@@ -69,3 +69,8 @@ html, body {
     background-size: 560px 330px;
     z-index: -2;
 }
+
+#score {
+    padding: 20px;
+    text-align: right;
+}
