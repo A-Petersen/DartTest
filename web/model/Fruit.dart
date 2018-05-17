@@ -1,5 +1,4 @@
-import 'Field.dart';
-import 'dart:async';
+import '../view/Field.dart';
 import 'dart:html';
 
 
@@ -54,12 +53,8 @@ class Fruit {
   Field field;
 
   /**
-   * Konstruktor - unfertig...
+   * Konstruktor
    */
-//  Fruit(this.x, this.y, this.radius, this.field, [this.gravity = 10.0]) {
-//    id += 1;
-//    this.idFruit = '#fruit' + id.toString();
-//  }
   Fruit(x, y, radius, field, [gravity = 10.0, speed = 1.0]) {
     this.x = x;
     this.y = y;

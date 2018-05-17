@@ -1,12 +1,13 @@
 import 'dart:html';
 import 'dart:math';
-import 'Fruit.dart';
-import 'Figure.dart';
+import '../model/Fruit.dart';
+import '../model/Figure.dart';
 
 class Field {
-//  final fruit = querySelector("#fruit");
+
   final frank = querySelector("#frank");
-  List fruits;
+  final score = querySelector("#score");
+
   /**
    * Breite der gesamt View
    */
@@ -23,22 +24,21 @@ class Field {
 
   double get center_y => this.height / 2;
 
+  void updateFruit(Fruit f) {
 
-  void updateFruit(Fruit a) {
+    f.update();
 
-    a.update();
-
-    var fruit = querySelector(a.idFruit);
+    var fruit = querySelector(f.idFruit);
     final round = "${this.size}px";
 
-    fruit.style.width="${a.width}px";
-    fruit.style.height="${a.width}px";
+    fruit.style.width="${f.width}px";
+    fruit.style.height="${f.width}px";
     fruit.style.borderRadius=round;
-    fruit.style.top="${a.heaven}px";
-    fruit.style.left="${a.left}px";
-    fruit.style.backgroundSize="${a.width}px";
+    fruit.style.top="${f.heaven}px";
+    fruit.style.left="${f.left}px";
+    fruit.style.backgroundSize="${f.width}px";
 
-    fruit.style.transform = "rotate(${(a.x*2 + a.y)%360}deg)";
+    fruit.style.transform = "rotate(${(f.x*2 + f.y)%360}deg)";
 
   }
 
@@ -48,5 +48,10 @@ class Field {
     this.frank.style.top="${f.field.height - f.b}px";
     this.frank.style.backgroundSize="${f.a}px ${f.b}px";
   }
+
+  void setScore(int s) {
+    score.text = s.toString();
+  }
+
 
 }

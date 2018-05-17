@@ -1,4 +1,4 @@
-import 'Field.dart';
+import '../view/Field.dart';
 import 'Fruit.dart';
 
 class Figure {

@@ -1,23 +1,24 @@
-import 'model/Fruit.dart';
-import 'model/Field.dart';
-import 'model/Figure.dart';
+import '../model/Fruit.dart';
+import '../view/Field.dart';
+import '../model/Figure.dart';
 import 'dart:html';
 import 'dart:async';
 
-final field = new Field();
-final fieldQuery = querySelector('#field');
-var highscore = querySelector("#highscore");
-Figure frank = new Figure(0.0, 280.0, 100.0, 100.0, field);
-int score = 0;
+
 
 class Controller {
 
   List<Fruit> fruits = new List<Fruit>();
-  Timer fruitTimer;
+  Timer timer;
+  final field = new Field();
+  final fieldQuery = querySelector('#field');
+  Figure frank;
+  int score = 0;
 
   Controller() {
     figureControll();
-    fruitTimer = new Timer.periodic(new Duration(milliseconds: 50), (Timer t) => start());
+    timer = new Timer.periodic(new Duration(milliseconds: 50), (Timer t) => start());
+    frank = new Figure(0.0, 280.0, 100.0, 100.0, field);
   }
 
   void movement(Fruit f, double richtung, Function curve) {
@@ -45,7 +46,7 @@ class Controller {
 
         if (fruits[i].left >= 480 && fruits[i].heaven >= 240) {
           fruits[i].moving = false;
-          highscore.text = (++score).toString();
+          field.setScore(++score);
         }
 
       } else {
