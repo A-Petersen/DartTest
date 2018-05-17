@@ -10,10 +10,11 @@ class Controller {
 
   List<Fruit> fruits = new List<Fruit>();
   Timer timer;
-  final field = new Field();
+  final Field field = new Field();
   final fieldQuery = querySelector('#field');
   Figure frank;
   int score = 0;
+  int attempts = 3;
 
   Controller() {
     figureControll();
@@ -39,6 +40,11 @@ class Controller {
         querySelector("#output").text = fruits.length.toString();
         if ((fruits[i].y >= 260.0 && !frank.onDrum(fruits[i]))) {
           fruits[i].moving = false;
+          removeFruit(fruits[i--]);
+          if (--attempts <= 0) {
+            gameover();
+            return;
+          }
         }
         if (fruits[i].y > field.height - (frank.b * 0.75) && frank.onDrum(fruits[i])) {
           fruits[i].goingUp = true;
@@ -114,6 +120,12 @@ class Controller {
       }
     });
   }
+
+  void gameover() {
+    timer.cancel();
+  }
+
+
 
 }
 

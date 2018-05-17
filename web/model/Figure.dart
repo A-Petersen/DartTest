@@ -90,6 +90,8 @@ class Figure {
    * TODO Update - Kontrolle für bewegungen außerhalb des Spiuelbereich fehlen noch !!!
    */
   void update() {
+    if (destX < 0 && x == 0) destX = 0.0;
+    if (destX > 0 && x == field.width) destX = 0.0;
     this.x += destX;
   }
 }
