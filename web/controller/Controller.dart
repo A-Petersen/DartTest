@@ -78,12 +78,13 @@ class Controller {
    * Eine neue Fruit erstellen
    */
   Fruit newFruit(double x, double y, double radius, [double gravity = 10.0, double speed = 1.0]) {
-    fruits.add(new Fruit(x, y, radius, field, gravity, speed));
+    Fruit f = new Fruit(x, y, radius, field, gravity, speed);
+    fruits.add(f);
     var fruitDiv = new DivElement();
     fruitDiv.id = 'fruit' + Fruit.id.toString();
     fieldQuery.children.add(fruitDiv);
-    fruits[fruits.length-1].div = fruitDiv;
-    return (fruits[fruits.length-1]);
+    field.fruits.putIfAbsent(fruit, fruitDiv);
+    return (f);
   }
 
   /**
@@ -91,7 +92,7 @@ class Controller {
    */
   void removeFruit(Fruit f) {
     fruits.remove(f);
-    f.div.remove();
+    field.fruits.remove(f);
   }
 
   /**

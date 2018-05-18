@@ -7,6 +7,7 @@ class Field {
 
   final frank = querySelector("#frank");
   final score = querySelector("#score");
+  Map<Fruit, DivElement> fruits = new Map();
 
   /**
    * Breite der gesamt View

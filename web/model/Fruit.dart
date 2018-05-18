@@ -8,8 +8,6 @@ class Fruit {
 
   String idFruit;
 
-  DivElement div;
-
   /**
    * X Position
    */
