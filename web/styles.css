@@ -17,7 +17,7 @@ html, body {
     position: absolute;
     background-image: url("resources/bananen.png");
     z-index: 1;
-  }
+}
 
 .fruit2 {
     position: absolute;
