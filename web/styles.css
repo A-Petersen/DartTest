@@ -13,19 +13,19 @@ html, body {
   text-align: center;
 }
 
-#fruit1 {
+.fruit1 {
     position: absolute;
     background-image: url("resources/bananen.png");
     z-index: 1;
   }
 
-#fruit2 {
+.fruit2 {
     position: absolute;
     background-image: url("resources/birne.png");
     z-index: 1;
 }
 
-#fruit3 {
+.fruit3 {
   position: absolute;
   background-image: url("resources/apfel.png");
     z-index: 1;

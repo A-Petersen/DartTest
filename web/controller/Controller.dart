@@ -1,4 +1,5 @@
 import '../model/Fruit.dart';
+import '../model/Game.dart';
 import '../view/Field.dart';
 import '../model/Figure.dart';
 import 'dart:html';
@@ -8,13 +9,14 @@ import 'dart:async';
 
 class Controller {
 
+  final Field field = new Field();
+
+
   List<Fruit> fruits = new List<Fruit>();
   Timer timer;
-  final Field field = new Field();
-  final fieldQuery = querySelector('#field');
   Figure frank;
-  int score = 0;
-  int attempts = 3;
+  Game game = new Game();
+
 
   Controller() {
     figureControll();
@@ -41,7 +43,7 @@ class Controller {
         if ((fruits[i].y >= 260.0 && !frank.onDrum(fruits[i]))) {
           fruits[i].moving = false;
           removeFruit(fruits[i--]);
-          if (--attempts <= 0) {
+          if (--game.attempts <= 0) {
             gameover();
             return;
           }
@@ -52,7 +54,7 @@ class Controller {
 
         if (fruits[i].left >= 480 && fruits[i].heaven >= 240) {
           fruits[i].moving = false;
-          field.setScore(++score);
+          field.setScore(++game.score);
         }
 
       } else {
@@ -77,13 +79,10 @@ class Controller {
   /**
    * Eine neue Fruit erstellen
    */
-  Fruit newFruit(double x, double y, double radius, [double gravity = 10.0, double speed = 1.0]) {
-    Fruit f = new Fruit(x, y, radius, field, gravity, speed);
+  Fruit newFruit(double x, double y, double radius, int type, [double gravity = 10.0, double speed = 1.0]) {
+    Fruit f = new Fruit(x, y, radius, field, type, gravity, speed);
     fruits.add(f);
-    var fruitDiv = new DivElement();
-    fruitDiv.id = 'fruit' + Fruit.id.toString();
-    fieldQuery.children.add(fruitDiv);
-    field.fruits.putIfAbsent(fruit, fruitDiv);
+    field.createNewFruit(f);
     return (f);
   }
 
@@ -92,7 +91,7 @@ class Controller {
    */
   void removeFruit(Fruit f) {
     fruits.remove(f);
-    field.fruits.remove(f);
+    field.removeFruit(f);
   }
 
   /**

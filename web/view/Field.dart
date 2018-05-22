@@ -7,6 +7,7 @@ class Field {
 
   final frank = querySelector("#frank");
   final score = querySelector("#score");
+  final fieldQuery = querySelector('#field');
   Map<Fruit, DivElement> fruits = new Map();
 
   /**
@@ -29,7 +30,7 @@ class Field {
 
     f.update();
 
-    var fruit = querySelector(f.idFruit);
+    var fruit = querySelector("#" + fruits[f].id);
     final round = "${this.size}px";
 
     fruit.style.width="${f.width}px";
@@ -48,6 +49,40 @@ class Field {
     this.frank.style.left="${f.left}px";
     this.frank.style.top="${f.field.height - f.b}px";
     this.frank.style.backgroundSize="${f.a}px ${f.b}px";
+  }
+
+  void createNewFruit(Fruit f) {
+    var fruitDiv = new DivElement();
+    fruitDiv.id = 'fruit' + Fruit.id.toString();
+    print(f.type.toString);
+    switch (f.type) {
+      case 1 :  {
+        fruitDiv.style.position = 'absolute';
+        fruitDiv.style.backgroundImage = 'url("resources/bananen.png")';
+        fruitDiv.style.zIndex = '1';
+        break;
+      }
+      case 2 :  {
+        fruitDiv.style.position = 'absolute';
+        fruitDiv.style.backgroundImage = 'url("resources/birne.png")';
+        fruitDiv.style.zIndex = '1';;
+        break;
+      }
+      case 3 :  {
+        fruitDiv.style.position = 'absolute';
+        fruitDiv.style.backgroundImage = 'url("resources/apfel.png")';
+        fruitDiv.style.zIndex = '1';;
+        break;
+      }
+
+    }
+    fieldQuery.children.add(fruitDiv);
+    fruits[f] = fruitDiv;
+  }
+
+  void removeFruit(Fruit f) {
+    fruits[f].remove();
+    fruits.remove(f);
   }
 
   void setScore(int s) {

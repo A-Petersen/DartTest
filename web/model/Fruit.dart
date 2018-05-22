@@ -6,7 +6,7 @@ class Fruit {
 
   static int id = 0;
 
-  String idFruit;
+  int type;
 
   /**
    * X Position
@@ -53,7 +53,7 @@ class Fruit {
   /**
    * Konstruktor
    */
-  Fruit(x, y, radius, field, [gravity = 10.0, speed = 1.0]) {
+  Fruit(x, y, radius, field, type, [gravity = 10.0, speed = 1.0]) {
     this.x = x;
     this.y = y;
     this.field = field;
@@ -61,7 +61,7 @@ class Fruit {
     this.gravity = gravity;
     this.speed = speed;
     id += 1;
-    this.idFruit = '#fruit' + id.toString();
+    this.type = type;
   }
   /**
    * Mitte des Objekts auf Y-Achse vom Himmel
