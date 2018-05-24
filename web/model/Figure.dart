@@ -41,7 +41,7 @@ class Figure {
   /**
    * Konstruktor - unfertig...
    */
-  Figure(this.x, this.y, this.a, this.b, this.field, [this.speed = 4.0]);
+  Figure(this.x, this.y, this.a, this.b, this.field, [this.speed = 10.0]);
 
   /**
    * Mitte der Figur auf Y-Achse vom Himmel

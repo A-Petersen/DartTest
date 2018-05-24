@@ -1,9 +1,12 @@
 import '../model/Fruit.dart';
+import '../model/FruitFactory.dart';
 import '../model/Game.dart';
 import '../view/Field.dart';
 import '../model/Figure.dart';
+import '../model/Level.dart';
 import 'dart:html';
 import 'dart:async';
+import 'dart:math';
 
 
 
@@ -13,14 +16,18 @@ class Controller {
 
 
   List<Fruit> fruits = new List<Fruit>();
-  Timer timer;
+  Timer timerStart;
+  Timer timerNewFruit;
   Figure frank;
   Game game = new Game();
+  Level level = new Level();
+  FruitFactory fruitFactory = new FruitFactory();
 
 
   Controller() {
     figureControll();
-    timer = new Timer.periodic(new Duration(milliseconds: 50), (Timer t) => start());
+    timerStart = new Timer.periodic(new Duration(milliseconds: 50), (Timer t) => start());
+    timerNewFruit = new Timer.periodic(new Duration(milliseconds: 2000), (Timer t) => checkFruits());
     frank = new Figure(0.0, 280.0, 100.0, 100.0, field);
   }
 
@@ -31,10 +38,32 @@ class Controller {
     field.updateFruit(f);
   }
 
+  void checkFruits() {
+
+    if (game.fruits < level.maxFruits) {
+      int type = level.possibleFruits == 1 ? 1 :  new Random().nextInt(level.possibleFruits)+1;
+      print(type);
+      newFruit(fruitFactory.newFruit(type, field));
+    }
+
+    if (game.score > 3 && game.score < 6) {
+      level.level = 2;
+      level.maxFruits = 4;
+      level.possibleFruits = 2;
+    }
+
+    if (game.score > 10 && game.score < 30) {
+      level.level = 3;
+      level.maxFruits = 5;
+      level.possibleFruits = 3;
+    }
+  }
+
   /**
    * Die Fruit wird gestartet, bzw. geworfen.
    */
   void start() {
+
     for (int i = 0 ; i < fruits.length ; i++) {
       if (fruits[i].moving) {
         double upOrDown = fruits[i].goingUp ? (-1)*fruits[i].gravity : fruits[i].gravity;
@@ -43,7 +72,7 @@ class Controller {
         if ((fruits[i].y >= 260.0 && !frank.onDrum(fruits[i]))) {
           fruits[i].moving = false;
           removeFruit(fruits[i--]);
-          if (--game.attempts <= 0) {
+          if (--game.attempts <= -100) {
             gameover();
             return;
           }
@@ -79,10 +108,10 @@ class Controller {
   /**
    * Eine neue Fruit erstellen
    */
-  Fruit newFruit(double x, double y, double radius, int type, [double gravity = 10.0, double speed = 1.0]) {
-    Fruit f = new Fruit(x, y, radius, field, type, gravity, speed);
+  Fruit newFruit(Fruit f) {
     fruits.add(f);
     field.createNewFruit(f);
+    game.fruits++;
     return (f);
   }
 
@@ -92,6 +121,7 @@ class Controller {
   void removeFruit(Fruit f) {
     fruits.remove(f);
     field.removeFruit(f);
+    game.fruits--;
   }
 
   /**
@@ -122,7 +152,7 @@ class Controller {
   }
 
   void gameover() {
-    timer.cancel();
+    timerStart.cancel();
   }
 
 
