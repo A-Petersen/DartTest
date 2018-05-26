@@ -31,10 +31,8 @@ class Controller {
     frank = new Figure(0.0, 280.0, 100.0, 100.0, field);
   }
 
-  void movement(Fruit f, double richtung, Function curve) {
-    double hoeheProzent = ( f.y <= 1 ? 0.95 : (f.y / 320) ); // 0.x
-    double y = curve(hoeheProzent);
-    f.move(richtung, y);
+  void movement(Fruit f) {
+    f.move();
     field.updateFruit(f);
   }
 
@@ -66,8 +64,7 @@ class Controller {
 
     for (int i = 0 ; i < fruits.length ; i++) {
       if (fruits[i].moving) {
-        double upOrDown = fruits[i].goingUp ? (-1)*fruits[i].gravity : fruits[i].gravity;
-        movement(fruits[i], fruits[i].speed, (x) => upOrDown * x);
+        movement(fruits[i]);
         querySelector("#output").text = fruits.length.toString();
         if ((fruits[i].y >= 260.0 && !frank.onDrum(fruits[i]))) {
           fruits[i].moving = false;

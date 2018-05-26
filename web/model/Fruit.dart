@@ -1,4 +1,5 @@
 import '../view/Field.dart';
+import 'AbstractFruit.dart';
 import 'dart:html';
 
 
@@ -63,6 +64,7 @@ class Fruit {
     id += 1;
     this.type = type;
   }
+
   /**
    * Mitte des Objekts auf Y-Achse vom Himmel
    */
@@ -96,9 +98,11 @@ class Fruit {
   /**
    * Methode zum setzen des Ziels der kommenden Bewegung
    */
-  void move(double destX, double destY) {
-    this.destX = destX;
-    this.destY = destY;
+  void move() {
+    double hoeheInProzent = ( y <= 1 ? 0.95 : (y / 320) ); // 0.x
+    double yMerk = hoeheInProzent * (goingUp ? (-1)*gravity : gravity);
+    this.destX = speed;
+    this.destY = yMerk;
   }
 
   /**
