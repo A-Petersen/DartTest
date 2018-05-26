@@ -17,7 +17,7 @@ class MovementZigZag extends MovementType {
 //    vector.setVector(fruit.speed, yMerk);
 
     if (!goLeft) {
-      fruit.destX = (fruit.destX + 3.0);
+      fruit.destX = (fruit.destX + (3.0 - fruit.speed));
       counter++;
     }
     if (goLeft) {
