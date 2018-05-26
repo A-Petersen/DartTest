@@ -40,7 +40,7 @@ class Controller {
 
     if (game.fruits < level.maxFruits) {
       int type = level.possibleFruits == 1 ? 1 :  new Random().nextInt(level.possibleFruits)+1;
-      print(type);
+      print('FruchtTyp: ' + type.toString());
       newFruit(fruitFactory.newFruit(type, field));
     }
 

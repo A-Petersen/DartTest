@@ -1,5 +1,7 @@
 import '../view/Field.dart';
 import 'AbstractFruit.dart';
+import 'FruitDecorator/MovementFactory.dart';
+import 'FruitDecorator/MovementType.dart';
 import 'dart:html';
 
 
@@ -51,10 +53,14 @@ class Fruit {
 
   Field field;
 
+  MovementType movementType = null;
+
+  MovementFactory movementFactory = new MovementFactory();
+
   /**
    * Konstruktor
    */
-  Fruit(x, y, radius, field, type, [gravity = 10.0, speed = 1.0]) {
+  Fruit(x, y, radius, field, type, [movementType = null, gravity = 10.0, speed = 1.0]) {
     this.x = x;
     this.y = y;
     this.field = field;
@@ -63,6 +69,7 @@ class Fruit {
     this.speed = speed;
     id += 1;
     this.type = type;
+    if (movementType != null) this.movementType = movementFactory.newMevement(movementType, this);
   }
 
   /**
@@ -99,10 +106,16 @@ class Fruit {
    * Methode zum setzen des Ziels der kommenden Bewegung
    */
   void move() {
-    double hoeheInProzent = ( y <= 1 ? 0.95 : (y / 320) ); // 0.x
-    double yMerk = hoeheInProzent * (goingUp ? (-1)*gravity : gravity);
-    this.destX = speed;
-    this.destY = yMerk;
+    if (movementType == null) {
+      double hoeheInProzent = (y <= 1 ? 0.95 : (y / 320)); // 0.x
+      double yMerk = hoeheInProzent * (goingUp ? (-1) * gravity : gravity);
+      this.destX = speed;
+      this.destY = yMerk;
+      print('MovementType: ' + movementType.toString());
+    } else {
+      movementType.move();
+      print('MovementType: ' + movementType.toString());
+    }
   }
 
   /**

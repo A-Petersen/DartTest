@@ -12,16 +12,16 @@ class FruitZigZagMovement extends FruitDecorator {
 
     fruit.move();
 
-//    if (counter >= 0 && !goLeft) {
-//      fruit.destX = (fruit.destX + 1.0);
-//      counter++;
-//    }
-//      if (counter < 0 && goLeft) {
-//        fruit.destX = (fruit.destX - 1.0);
-//      counter--;
-//    }
-//      if (goLeft && counter > -10) goLeft = false;
-//      if (!goLeft && counter > 9) goLeft = true;
+    if (counter >= 0 && !goLeft) {
+      fruit.destX = (fruit.destX + 1.0);
+      counter++;
+    }
+      if (counter < 0 && goLeft) {
+        fruit.destX = (fruit.destX - 1.0);
+      counter--;
+    }
+      if (goLeft && counter > -10) goLeft = false;
+      if (!goLeft && counter > 9) goLeft = true;
 
 
   }

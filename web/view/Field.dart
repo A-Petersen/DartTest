@@ -54,7 +54,7 @@ class Field {
   void createNewFruit(Fruit f) {
     var fruitDiv = new DivElement();
     fruitDiv.id = 'fruit' + Fruit.id.toString();
-    print(f.type.toString);
+//    print(f.type.toString);
     switch (f.type) {
       case 1 :  {
         fruitDiv.style.position = 'absolute';
