@@ -26,7 +26,7 @@ class MovementCircle extends MovementType {
     fruit.x = (xDummy + radius * sin(angle));
     fruit.y = (yDummy + radius * cos(angle));
 
-    angle = (angle + 0.5) % 360;
+    angle = (angle + 0.3) % 360;
 
   }
 
