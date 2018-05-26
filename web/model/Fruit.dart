@@ -36,12 +36,12 @@ class Fruit {
   /**
    * Zielkoordinate X der folgenden Bewegung
    */
-  double destX;
+  double destX = 0.0;
 
   /**
    * Zielkoordinate Y der folgenden Bewegung
    */
-  double destY;
+  double destY = 0.0;
 
   bool moving = true;
 
