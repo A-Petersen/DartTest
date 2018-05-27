@@ -1,6 +1,7 @@
 import '../view/Field.dart';
 import 'FruitMovement/MovementFactory.dart';
 import 'FruitMovement/MovementType.dart';
+import 'Vector.dart';
 
 
 class Fruit {
@@ -41,6 +42,8 @@ class Fruit {
    */
   double destY = 0.0;
 
+  Vector vector;
+
   bool moving = true;
 
   bool goingUp = false;
@@ -67,7 +70,7 @@ class Fruit {
     this.speed = speed;
     id += 1;
     this.type = type;
-    this.movementType = movementFactory.newMevement(movementType, this);
+    this.movementType = movementFactory.newMovement(movementType, this);
   }
 
   /**
@@ -105,15 +108,22 @@ class Fruit {
    */
   void move() {
     if (movementType == null) {
-      double hoeheInProzent = (y <= 1 ? 0.95 : (y / 320)); // 0.x
-      double yMerk = hoeheInProzent * (goingUp ? (-1) * gravity : gravity);
       this.destX = speed;
-      this.destY = yMerk;
+      moveGravity();
       print('MovementType: ' + movementType.toString());
     } else {
-      movementType.move();
+      vector = movementType.move(this.speed);
+      this.destX = vector.x;
+      this.destY = vector.y;
+      moveGravity();
       print('MovementType: ' + movementType.toString());
     }
+  }
+
+  void moveGravity() {
+    double hoeheInProzent = (y <= 1 ? 0.95 : (y / 320)); // 0.x
+    double yMerk = hoeheInProzent * (goingUp ? (-1) * gravity : gravity);
+    this.destY = this.destY + yMerk;
   }
 
   /**

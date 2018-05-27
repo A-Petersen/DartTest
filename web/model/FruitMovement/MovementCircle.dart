@@ -1,33 +1,24 @@
-import '../Fruit.dart';
+import '../Vector.dart';
 import 'MovementType.dart';
 import 'dart:math';
 
 class MovementCircle extends MovementType {
 
   double angle = 0.0;
-  double radius = 30.0;
-  int speedCircle = 0;
+  double radius = 5.0;
 
-  double xDummy = 50.0;
-  double yDummy = 50.0;
+  MovementCircle();
 
-  MovementCircle(Fruit fruit) : super(fruit);
+  Vector move(double speed) {
 
-  void move() {
-    double hoeheInProzent = ( yDummy <= 1 ? 0.95 : (yDummy / 320) ); // 0.x
-    double yMerk = hoeheInProzent * (fruit.goingUp ? (-1)*fruit.gravity : fruit.gravity);
-    xDummy += fruit.speed;
-    yDummy += yMerk;
+    vector.x = (radius * sin(angle));
+    vector.y = (radius * cos(angle));
 
-//    fruit.x = xDummy;
-//    fruit.y = yDummy;
+    angle = (angle + 0.2) % 360;
 
-    //Kreisbewegung
-    fruit.x = (xDummy + radius * sin(angle));
-    fruit.y = (yDummy + radius * cos(angle));
+    vector.x += speed;
 
-    angle = (angle + 0.3) % 360;
-
+    return vector;
   }
 
   String toString() {

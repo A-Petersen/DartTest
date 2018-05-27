@@ -1,16 +1,13 @@
-import '../Fruit.dart';
 import '../Vector.dart';
 
 abstract class MovementType {
   Vector vector;
-  Fruit fruit;
 
-  MovementType(Fruit fruit) {
+  MovementType() {
     this.vector = new Vector();
-    this.fruit = fruit;
   }
 
-  void move();
+  Vector move(double speed);
 
   String toString();
 }
