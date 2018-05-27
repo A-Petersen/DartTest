@@ -28,9 +28,9 @@ class Controller {
     frank = new Figure(0.0, 280.0, 100.0, 100.0, field);
   }
 
-  void movement(Fruit f) {
-    f.move();
-    field.updateFruit(f);
+  void movement(Fruit fruit) {
+    fruit.move();
+    field.updateFruit(fruit);
   }
 
   void checkFruits() {
