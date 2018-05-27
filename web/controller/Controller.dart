@@ -13,19 +13,16 @@ import 'dart:math';
 class Controller {
 
   final Field field = new Field();
-
-
-  List<Fruit> fruits = new List<Fruit>();
   Timer timerStart;
   Timer timerNewFruit;
   Figure frank;
-  Game game = new Game();
-  Level level = new Level();
-  FruitFactory fruitFactory = new FruitFactory();
+  Game game;
+
 
 
   Controller() {
     figureControll();
+    game = new Game(field, this);
     timerStart = new Timer.periodic(new Duration(milliseconds: 50), (Timer t) => start());
     timerNewFruit = new Timer.periodic(new Duration(milliseconds: 2000), (Timer t) => checkFruits());
     frank = new Figure(0.0, 280.0, 100.0, 100.0, field);
@@ -37,56 +34,38 @@ class Controller {
   }
 
   void checkFruits() {
-
-    if (game.fruits < level.maxFruits) {
-      int type = level.possibleFruits == 1 ? 1 :  new Random().nextInt(level.possibleFruits)+1;
-      int movement = level.possibleMovments == 0 ?  0 : new Random().nextInt(level.possibleFruits);
-      print('FruchtTyp: ' + type.toString());
-      newFruit(fruitFactory.newFruit(type, movement, field));
-    }
-
-    if (game.score > 3 && game.score < 6) {
-      level.level = 2;
-      level.maxFruits = 4;
-      level.possibleFruits = 2;
-      level.possibleMovments = 1;
-    }
-
-    if (game.score > 10 && game.score < 30) {
-      level.level = 3;
-      level.maxFruits = 5;
-      level.possibleFruits = 3;
-      level.possibleMovments = 2;
-    }
+    game.checkFruits();
+    game.checkLevel();
   }
+
 
   /**
    * Die Fruit wird gestartet, bzw. geworfen.
    */
   void start() {
 
-    for (int i = 0 ; i < fruits.length ; i++) {
-      if (fruits[i].moving) {
-        movement(fruits[i]);
-        if ((fruits[i].y >= 260.0 && !frank.onDrum(fruits[i]))) {
-          fruits[i].moving = false;
-          removeFruit(fruits[i--]);
+    for (int i = 0 ; i < game.fruits ; i++) {
+      if (game.fruitsList[i].moving) {
+        movement(game.fruitsList[i]);
+        if ((game.fruitsList[i].y >= 260.0 && !frank.onDrum(game.fruitsList[i]))) {
+          game.fruitsList[i].moving = false;
+          removeFruit(game.fruitsList[i--]);
           if (--game.attempts <= -100) {
             gameover();
             return;
           }
         }
-        if (fruits[i].y > field.height - (frank.b * 0.75) && frank.onDrum(fruits[i])) {
-          fruits[i].goingUp = true;
+        if (game.fruitsList[i].y > field.height - (frank.b * 0.75) && frank.onDrum(game.fruitsList[i])) {
+          game.fruitsList[i].goingUp = true;
         }
 
-        if (fruits[i].left >= 480 && fruits[i].heaven >= 240) {
-          fruits[i].moving = false;
+        if (game.fruitsList[i].left >= 480 && game.fruitsList[i].heaven >= 240) {
+          game.fruitsList[i].moving = false;
           field.setScore(++game.score);
         }
 
       } else {
-        removeFruit(fruits[i--]);
+        game.removeFruit(game.fruitsList[i--]);
       }
     }
     switch (frank.moving) {
@@ -108,19 +87,14 @@ class Controller {
    * Eine neue Fruit erstellen
    */
   Fruit newFruit(Fruit f) {
-    fruits.add(f);
     field.createNewFruit(f);
-    game.fruits++;
-    return (f);
   }
 
   /**
    * Eine Fruit entfernen
    */
   void removeFruit(Fruit f) {
-    fruits.remove(f);
     field.removeFruit(f);
-    game.fruits--;
   }
 
   /**
