@@ -1,13 +1,13 @@
-import 'Field.dart';
-import 'dart:async';
-import 'dart:html';
+import '../view/Field.dart';
+import 'FruitDecorator/MovementFactory.dart';
+import 'FruitDecorator/MovementType.dart';
 
 
 class Fruit {
 
   static int id = 0;
 
-  String idFruit;
+  int type;
 
   /**
    * X Position
@@ -34,16 +34,12 @@ class Fruit {
   /**
    * Zielkoordinate X der folgenden Bewegung
    */
-  double destX;
+  double destX = 0.0;
 
   /**
    * Zielkoordinate Y der folgenden Bewegung
    */
-  double destY;
-
-  double rangeX = 0.0;
-
-  double rangeY = 0.0;
+  double destY = 0.0;
 
   bool moving = true;
 
@@ -55,24 +51,25 @@ class Fruit {
 
   Field field;
 
+  MovementType movementType = null;
+
+  MovementFactory movementFactory = new MovementFactory();
+
   /**
-   * Konstruktor - unfertig...
+   * Konstruktor
    */
-//  Fruit(this.x, this.y, this.radius, this.field, [this.gravity = 10.0]) {
-//    id += 1;
-//    this.idFruit = '#fruit' + id.toString();
-//  }
-  Fruit(x, y, radius, field, [gravity = 10.0, speed = 1.0]) {
+  Fruit(x, y, radius, field, type, [movementType = null, gravity = 10.0, speed = 1.0]) {
     this.x = x;
     this.y = y;
     this.field = field;
     this.radius = radius;
     this.gravity = gravity;
     this.speed = speed;
-
     id += 1;
-    this.idFruit = '#fruit' + id.toString();
+    this.type = type;
+    this.movementType = movementFactory.newMevement(movementType, this);
   }
+
   /**
    * Mitte des Objekts auf Y-Achse vom Himmel
    */
@@ -106,9 +103,17 @@ class Fruit {
   /**
    * Methode zum setzen des Ziels der kommenden Bewegung
    */
-  void move(double destX, double destY) {
-    this.destX = destX;
-    this.destY = destY;
+  void move() {
+    if (movementType == null) {
+      double hoeheInProzent = (y <= 1 ? 0.95 : (y / 320)); // 0.x
+      double yMerk = hoeheInProzent * (goingUp ? (-1) * gravity : gravity);
+      this.destX = speed;
+      this.destY = yMerk;
+      print('MovementType: ' + movementType.toString());
+    } else {
+      movementType.move();
+      print('MovementType: ' + movementType.toString());
+    }
   }
 
   /**

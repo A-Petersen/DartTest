@@ -1,4 +1,4 @@
-import 'Field.dart';
+import '../view/Field.dart';
 import 'Fruit.dart';
 
 class Figure {
@@ -41,7 +41,7 @@ class Figure {
   /**
    * Konstruktor - unfertig...
    */
-  Figure(this.x, this.y, this.a, this.b, this.field, [this.speed = 4.0]);
+  Figure(this.x, this.y, this.a, this.b, this.field, [this.speed = 10.0]);
 
   /**
    * Mitte der Figur auf Y-Achse vom Himmel
@@ -74,7 +74,7 @@ class Figure {
   int get hight => this.b.floor();
 
   bool onDrum(Fruit f) {
-    if (f.right > this.left + 20 && f.left < this.right) return true;
+    if (f.ground >= this.heaven && f.right > this.left + 20 && f.left < this.right) return true;
     return false;
   }
 
@@ -90,6 +90,8 @@ class Figure {
    * TODO Update - Kontrolle für bewegungen außerhalb des Spiuelbereich fehlen noch !!!
    */
   void update() {
+    if (destX < 0 && x == 0) destX = 0.0;
+    if (destX > 0 && x == field.width) destX = 0.0;
     this.x += destX;
   }
 }

@@ -8,24 +8,19 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
-#output {
-  padding: 20px;
-  text-align: center;
-}
-
-#fruit1 {
+.fruit1 {
     position: absolute;
     background-image: url("resources/bananen.png");
     z-index: 1;
   }
 
-#fruit2 {
+.fruit2 {
     position: absolute;
     background-image: url("resources/birne.png");
     z-index: 1;
 }
 
-#fruit3 {
+.fruit3 {
   position: absolute;
   background-image: url("resources/apfel.png");
     z-index: 1;
@@ -37,20 +32,32 @@ html, body {
     background: url("resources/korb.png");
     background-size: 80px 80px;
     top: 240px;
-    left: 480px;
+    left: 88%;
     position: absolute;
     z-index: -1;
 }
 
-#baum {
+#baumLeft {
     width: 200px;
     height: 330px;
     background: url("resources/baum.png");
     background-size: 200px 330px;
     top: 0px;
-    left: -25px;
+    left: -15%;
     position: absolute;
     z-index: -1;
+}
+
+#baumRight {
+    width: 200px;
+    height: 330px;
+    background: url("resources/baum.png");
+    background-size: 200px 330px;
+    top: 0px;
+    left: 82%;
+    position: absolute;
+    z-index: -1;
+    transform: scaleX(-1);
 }
 
 #frank {
@@ -68,4 +75,9 @@ html, body {
   background: url("resources/back.png");
     background-size: 560px 330px;
     z-index: -2;
+}
+
+#score {
+    padding: 20px;
+    text-align: right;
 }
