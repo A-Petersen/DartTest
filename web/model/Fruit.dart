@@ -1,6 +1,6 @@
 import '../view/Field.dart';
-import 'FruitDecorator/MovementFactory.dart';
-import 'FruitDecorator/MovementType.dart';
+import 'FruitMovement/MovementFactory.dart';
+import 'FruitMovement/MovementType.dart';
 
 
 class Fruit {
