@@ -42,7 +42,7 @@ class Controller {
       int type = level.possibleFruits == 1 ? 1 :  new Random().nextInt(level.possibleFruits)+1;
       int movement = level.possibleMovments == 0 ?  0 : new Random().nextInt(level.possibleFruits);
       print('FruchtTyp: ' + type.toString());
-      newFruit(fruitFactory.newFruit(type, 2, field));
+      newFruit(fruitFactory.newFruit(type, movement, field));
     }
 
     if (game.score > 3 && game.score < 6) {

@@ -121,9 +121,9 @@ class Fruit {
   }
 
   void moveGravity() {
-    double hoeheInProzent = (y <= 1 ? 0.95 : (y / 320)); // 0.x
-    double yMerk = hoeheInProzent * (goingUp ? (-1) * gravity : gravity);
-    this.destY = this.destY + yMerk;
+    double gravFactor = (y <= 1 ? 0.95 : (y / 320)); // 0.x
+    double newY = gravFactor * (goingUp ? (-1) * gravity : gravity);
+    this.destY = this.destY + newY;
   }
 
   /**
