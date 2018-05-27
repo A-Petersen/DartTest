@@ -19,7 +19,6 @@ class Game {
   Game(this.field, this.controller);
 
   void checkFruits() {
-
     if (fruits < level.maxFruits) {
       int type = level.possibleFruits == 1 ? 1 :  new Random().nextInt(level.possibleFruits)+1;
       int movement = level.possibleMovments == 0 ?  0 : new Random().nextInt(level.possibleFruits);
