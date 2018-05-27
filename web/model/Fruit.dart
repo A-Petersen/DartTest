@@ -1,8 +1,6 @@
 import '../view/Field.dart';
-import 'AbstractFruit.dart';
 import 'FruitDecorator/MovementFactory.dart';
 import 'FruitDecorator/MovementType.dart';
-import 'dart:html';
 
 
 class Fruit {
