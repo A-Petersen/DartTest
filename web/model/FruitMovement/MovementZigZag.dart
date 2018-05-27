@@ -4,24 +4,26 @@ import 'MovementType.dart';
 class MovementZigZag extends MovementType {
 
   int counter = 0;
+  int zigzagWidth;
+  double zigzagSpeed;
   bool goLeft = false;
 
-  MovementZigZag();
+  MovementZigZag(this.zigzagWidth, this.zigzagSpeed);
 
   Vector move(double speed) {
 
     vector.x = speed;
 
     if (!goLeft) {
-      vector.x = (vector.x + (3.0 - speed));
+      vector.x = (vector.x + (zigzagSpeed - speed));
       counter++;
     }
     if (goLeft) {
-      vector.x = (vector.x - 3.0);
+      vector.x = (vector.x - zigzagSpeed);
       counter--;
     }
-    if (goLeft && counter < -20) goLeft = false;
-    if (!goLeft && counter > 20) goLeft = true;
+    if (goLeft && counter < -zigzagWidth) goLeft = false;
+    if (!goLeft && counter > zigzagWidth) goLeft = true;
 
     return vector;
   }
