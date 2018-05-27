@@ -109,10 +109,8 @@ class Fruit {
       double yMerk = hoeheInProzent * (goingUp ? (-1) * gravity : gravity);
       this.destX = speed;
       this.destY = yMerk;
-      print('MovementType: ' + movementType.toString());
     } else {
       movementType.move();
-      print('MovementType: ' + movementType.toString());
     }
   }
 
