@@ -69,7 +69,7 @@ class Fruit {
     this.speed = speed;
     id += 1;
     this.type = type;
-    if (movementType != null) this.movementType = movementFactory.newMevement(movementType, this);
+    this.movementType = movementFactory.newMevement(movementType, this);
   }
 
   /**

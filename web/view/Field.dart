@@ -7,6 +7,7 @@ class Field {
 
   final frank = querySelector("#frank");
   final score = querySelector("#score");
+  final korb = querySelector("#korb");
   final fieldQuery = querySelector('#field');
   Map<Fruit, DivElement> fruits = new Map();
 
@@ -49,6 +50,7 @@ class Field {
     this.frank.style.left="${f.left}px";
     this.frank.style.top="${f.field.height - f.b}px";
     this.frank.style.backgroundSize="${f.a}px ${f.b}px";
+    print(korb.style.top);
   }
 
   void createNewFruit(Fruit f) {
@@ -87,6 +89,11 @@ class Field {
 
   void setScore(int s) {
     score.text = s.toString();
+  }
+  
+  bool inKorb(Fruit f) {
+    //if (f.ground >= int.parse(korb.style.top.replaceAll("px", "")) )
+      return false;
   }
 
 

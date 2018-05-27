@@ -40,20 +40,23 @@ class Controller {
 
     if (game.fruits < level.maxFruits) {
       int type = level.possibleFruits == 1 ? 1 :  new Random().nextInt(level.possibleFruits)+1;
+      int movement = level.possibleMovments == 0 ?  0 : new Random().nextInt(level.possibleFruits);
       print('FruchtTyp: ' + type.toString());
-      newFruit(fruitFactory.newFruit(type, field));
+      newFruit(fruitFactory.newFruit(type, movement, field));
     }
 
     if (game.score > 3 && game.score < 6) {
       level.level = 2;
       level.maxFruits = 4;
       level.possibleFruits = 2;
+      level.possibleMovments = 1;
     }
 
     if (game.score > 10 && game.score < 30) {
       level.level = 3;
       level.maxFruits = 5;
       level.possibleFruits = 3;
+      level.possibleMovments = 2;
     }
   }
 
@@ -65,7 +68,6 @@ class Controller {
     for (int i = 0 ; i < fruits.length ; i++) {
       if (fruits[i].moving) {
         movement(fruits[i]);
-        querySelector("#output").text = fruits.length.toString();
         if ((fruits[i].y >= 260.0 && !frank.onDrum(fruits[i]))) {
           fruits[i].moving = false;
           removeFruit(fruits[i--]);

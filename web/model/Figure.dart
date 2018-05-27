@@ -74,7 +74,7 @@ class Figure {
   int get hight => this.b.floor();
 
   bool onDrum(Fruit f) {
-    if (f.right > this.left + 20 && f.left < this.right) return true;
+    if (f.ground >= this.heaven && f.right > this.left + 20 && f.left < this.right) return true;
     return false;
   }
 
