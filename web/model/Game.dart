@@ -45,13 +45,13 @@ class Game {
   void newFruit(Fruit f) {
     fruitsList.add(f);
     fruits++;
-    controller.newFruit(f);
+    controller.newFruitView(f);
   }
 
   void removeFruit(Fruit f) {
     fruitsList.remove(f);
     fruits--;
-    controller.removeFruit(f);
+    controller.removeFruitView(f);
   }
 
 

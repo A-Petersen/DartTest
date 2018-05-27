@@ -49,7 +49,7 @@ class Controller {
         movement(game.fruitsList[i]);
         if ((game.fruitsList[i].y >= 260.0 && !frank.onDrum(game.fruitsList[i]))) {
           game.fruitsList[i].moving = false;
-          removeFruit(game.fruitsList[i--]);
+          removeFruitView(game.fruitsList[i--]);
           if (--game.attempts <= -100) {
             gameover();
             return;
@@ -86,15 +86,15 @@ class Controller {
   /**
    * Eine neue Fruit erstellen
    */
-  Fruit newFruit(Fruit f) {
-    field.createNewFruit(f);
+  void newFruitView(Fruit fruit) {
+    field.createNewFruit(fruit);
   }
 
   /**
    * Eine Fruit entfernen
    */
-  void removeFruit(Fruit f) {
-    field.removeFruit(f);
+  void removeFruitView(Fruit fruit) {
+    field.removeFruit(fruit);
   }
 
   /**
