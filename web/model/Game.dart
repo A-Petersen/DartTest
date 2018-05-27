@@ -1,5 +1,6 @@
 import '../controller/Controller.dart';
 import '../view/Field.dart';
+import 'Figure.dart';
 import 'Fruit.dart';
 import 'FruitFactory.dart';
 import 'Level.dart';
@@ -12,11 +13,46 @@ class Game {
   FruitFactory fruitFactory = new FruitFactory();
   final Field field;
   Controller controller;
+  Figure figure;
   int score = 0;
   int attempts = 3;
   int fruits = 0;
 
-  Game(this.field, this.controller);
+  Game(this.field, this.controller) {
+    this.figure = new Figure(0.0, 280.0, 100.0, 100.0, field);
+  }
+
+  void movement(Fruit fruit) {
+    fruit.move();
+    field.updateFruit(fruit);
+  }
+
+  void checkFruitState() {
+    for (int i = 0 ; i < fruits ; i++) {
+      if (fruitsList[i].moving) {
+        movement(fruitsList[i]);
+        if ((fruitsList[i].y >= 260.0 && !figure.onDrum(fruitsList[i]))) {
+          fruitsList[i].moving = false;
+          controller.removeFruitView(fruitsList[i--]);
+          if (--attempts <= -100) {
+            controller.gameover();
+            return;
+          }
+        }
+        if (fruitsList[i].y > field.height - (figure.b * 0.75) && figure.onDrum(fruitsList[i])) {
+          fruitsList[i].goingUp = true;
+        }
+
+        if (fruitsList[i].left >= 480 && fruitsList[i].heaven >= 240) {
+          fruitsList[i].moving = false;
+          field.setScore(++score);
+        }
+
+      } else {
+        removeFruit(fruitsList[i--]);
+      }
+    }
+  }
 
   void checkFruits() {
     if (fruits < level.maxFruits) {

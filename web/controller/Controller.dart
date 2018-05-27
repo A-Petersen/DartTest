@@ -15,7 +15,7 @@ class Controller {
   final Field field = new Field();
   Timer timerStart;
   Timer timerNewFruit;
-  Figure frank;
+//  Figure frank;
   Game game;
 
 
@@ -25,13 +25,13 @@ class Controller {
     game = new Game(field, this);
     timerStart = new Timer.periodic(new Duration(milliseconds: 50), (Timer t) => start());
     timerNewFruit = new Timer.periodic(new Duration(milliseconds: 2000), (Timer t) => checkFruits());
-    frank = new Figure(0.0, 280.0, 100.0, 100.0, field);
+//    frank = new Figure(0.0, 280.0, 100.0, 100.0, field);
   }
 
-  void movement(Fruit fruit) {
-    fruit.move();
-    field.updateFruit(fruit);
-  }
+//  void movement(Fruit fruit) {
+//    fruit.move();
+//    field.updateFruit(fruit);
+//  }
 
   void checkFruits() {
     game.checkFruits();
@@ -44,42 +44,34 @@ class Controller {
    */
   void start() {
 
-    for (int i = 0 ; i < game.fruits ; i++) {
-      if (game.fruitsList[i].moving) {
-        movement(game.fruitsList[i]);
-        if ((game.fruitsList[i].y >= 260.0 && !frank.onDrum(game.fruitsList[i]))) {
-          game.fruitsList[i].moving = false;
-          removeFruitView(game.fruitsList[i--]);
-          if (--game.attempts <= -100) {
-            gameover();
-            return;
-          }
-        }
-        if (game.fruitsList[i].y > field.height - (frank.b * 0.75) && frank.onDrum(game.fruitsList[i])) {
-          game.fruitsList[i].goingUp = true;
-        }
+//    for (int i = 0 ; i < game.fruits ; i++) {
+//      if (game.fruitsList[i].moving) {
+//        movement(game.fruitsList[i]);
+//        if ((game.fruitsList[i].y >= 260.0 && !frank.onDrum(game.fruitsList[i]))) {
+//          game.fruitsList[i].moving = false;
+//          removeFruitView(game.fruitsList[i--]);
+//          if (--game.attempts <= -100) {
+//            gameover();
+//            return;
+//          }
+//        }
+//        if (game.fruitsList[i].y > field.height - (frank.b * 0.75) && frank.onDrum(game.fruitsList[i])) {
+//          game.fruitsList[i].goingUp = true;
+//        }
+//
+//        if (game.fruitsList[i].left >= 480 && game.fruitsList[i].heaven >= 240) {
+//          game.fruitsList[i].moving = false;
+//          field.setScore(++game.score);
+//        }
+//
+//      } else {
+//        game.removeFruit(game.fruitsList[i--]);
+//      }
+//    }
 
-        if (game.fruitsList[i].left >= 480 && game.fruitsList[i].heaven >= 240) {
-          game.fruitsList[i].moving = false;
-          field.setScore(++game.score);
-        }
-
-      } else {
-        game.removeFruit(game.fruitsList[i--]);
-      }
-    }
-    switch (frank.moving) {
-      case (1):
-        frank.move(frank.speed);
-        break;
-      case (2):
-        frank.move((-1) * frank.speed);
-        break;
-      case (0):
-        frank.move(0.0);
-        break;
-    }
-    field.updateFigure(frank);
+    game.checkFruitState();
+    game.figure.move();
+    field.updateFigure(game.figure);
 
   }
 
@@ -104,10 +96,10 @@ class Controller {
     window.onKeyDown.listen((KeyboardEvent ev) {
       switch (ev.keyCode) {
         case KeyCode.LEFT :
-          frank.moving = 2;
+          game.figure.moving = 2;
           break;
         case KeyCode.RIGHT :
-          frank.moving = 1;
+          game.figure.moving = 1;
           break;
       }
 
@@ -115,10 +107,10 @@ class Controller {
     window.onKeyUp.listen((KeyboardEvent ev) {
       switch (ev.keyCode) {
         case KeyCode.LEFT :
-          if (frank.moving != 1) frank.moving = 0;
+          if (game.figure.moving != 1) game.figure.moving = 0;
           break;
         case KeyCode.RIGHT :
-          if (frank.moving != 2) frank.moving = 0;
+          if (game.figure.moving != 2) game.figure.moving = 0;
           break;
       }
     });

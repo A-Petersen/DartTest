@@ -81,9 +81,18 @@ class Figure {
   /**
    * Methode zum setzen des Ziels der kommenden Bewegung
    */
-  void move(double destX, [double destY = 0.0]) {
-    this.destX = destX;
-    this.destY = destY;
+  void move() {
+    switch (moving) {
+      case (1):
+        this.destX = speed;
+        break;
+      case (2):
+        this.destX = (-1) * speed;
+        break;
+      case (0):
+        this.destX = 0.0;
+        break;
+    }
   }
 
   /**
