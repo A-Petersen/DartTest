@@ -108,22 +108,22 @@ class Fruit {
    */
   void move() {
     if (movementType == null) {
-      this.destX = speed;
       moveGravity();
+      this.destX = speed;
       print('MovementType: ' + movementType.toString());
     } else {
+      moveGravity();
       vector = movementType.move(this.speed);
       this.destX = vector.x;
-      this.destY = vector.y;
-      moveGravity();
+      this.destY += vector.y;
       print('MovementType: ' + movementType.toString());
     }
   }
 
   void moveGravity() {
-    double hoeheInProzent = (y <= 1 ? 0.95 : (y / 320)); // 0.x
-    double yMerk = hoeheInProzent * (goingUp ? (-1) * gravity : gravity);
-    this.destY = this.destY + yMerk;
+    double gravityFactor = (y <= 1 ? 0.95 : (y / 320)); // 0.x
+    double newY = gravityFactor * (goingUp ? (-1) * gravity : gravity);
+    this.destY = newY;
   }
 
   /**

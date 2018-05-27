@@ -8,7 +8,7 @@ class MovementFactory {
     switch (type) {
       case 0 : return null;
       case 1 : return new MovementZigZag();
-      case 2 : return new MovementCircle();
+      case 2 : return new MovementCircle(0.2, 5.0);
       default : return null;
     }
   }
