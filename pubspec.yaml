@@ -9,6 +9,7 @@ environment:
 
 dependencies:
   xml: "^3.0.0"
+  pwa: ">=0.1.0 <0.2.0"
 
 dev_dependencies:
   browser: ^0.10.0
