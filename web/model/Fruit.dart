@@ -113,13 +113,11 @@ class Fruit {
     if (movementType == null) {
       moveGravity();
       this.destX = speed;
-      print('MovementType: ' + movementType.toString());
     } else {
       moveGravity();
       vector = movementType.move(this.speed);
       this.destX = vector.x;
       this.destY += vector.y;
-      print('MovementType: ' + movementType.toString());
     }
   }
 

@@ -36,7 +36,6 @@ class Game {
         movement(fruitsList[i]);
         if ((fruitsList[i].y >= 260.0 && !figure.onDrum(fruitsList[i]))) {
           fruitsList[i].moving = false;
-          controller.removeFruitView(fruitsList[i--]);
           if (--attempts <= -100) {
             controller.gameover();
             return;
