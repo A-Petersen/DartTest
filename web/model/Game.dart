@@ -10,7 +10,6 @@ class Game {
 
   Level level = new Level();
   List<Fruit> fruitsList = new List<Fruit>();
-
   int fieldWidth;
   int fieldHeight;
   FruitFactory fruitFactory;

@@ -13,9 +13,9 @@ import 'dart:math';
 class Controller {
 
   final Field field = new Field();
+  Game game;
   Timer timerStart;
   Timer timerNewFruit;
-  Game game;
   Duration timeIntevall = new Duration(milliseconds: 50);
   Duration throwIntevall = new Duration(milliseconds: 5000);
 
