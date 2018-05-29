@@ -21,7 +21,7 @@ class Controller {
 
   Controller() {
     figureControll();
-    game = new Game(field, this);
+    game = new Game(this, field.width, field.height);
     timerStart = new Timer.periodic(timeIntevall, (Timer t) => start());
     timerNewFruit = new Timer.periodic(throwIntevall, (Timer t) => checkFruits());
   }

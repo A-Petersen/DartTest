@@ -36,12 +36,13 @@ class Figure {
 
   int moving = 0;
 
-  Field field;
+  int fieldWidth;
+  int fieldHeight;
 
   /**
    * Konstruktor - unfertig...
    */
-  Figure(this.x, this.y, this.a, this.b, this.field, [this.speed = 20.0]);
+  Figure(this.x, this.y, this.a, this.b, this.fieldWidth, this.fieldHeight, [this.speed = 20.0]);
 
   /**
    * Mitte der Figur auf Y-Achse vom Himmel
@@ -100,7 +101,7 @@ class Figure {
    */
   void update() {
     if (destX < 0 && x == 0) destX = 0.0;
-    if (destX > 0 && x == field.width) destX = 0.0;
+    if (destX > 0 && x == fieldWidth) destX = 0.0;
     this.x += destX;
   }
 }

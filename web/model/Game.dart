@@ -10,21 +10,24 @@ class Game {
 
   Level level = new Level();
   List<Fruit> fruitsList = new List<Fruit>();
-  FruitFactory fruitFactory = new FruitFactory();
-  final Field field;
+
+  int fieldWidth;
+  int fieldHeight;
+  FruitFactory fruitFactory;
   Controller controller;
   Figure figure;
   int score = 0;
   int attempts = 3;
   int fruits = 0;
 
-  Game(this.field, this.controller) {
-    this.figure = new Figure(0.0, 280.0, 100.0, 100.0, field);
+  Game(this.controller, this.fieldWidth, this.fieldHeight) {
+    this.figure = new Figure(0.0, 280.0, 100.0, 100.0, fieldWidth, fieldHeight);
+    fruitFactory = new FruitFactory(fieldWidth, fieldHeight);
   }
 
   void movement(Fruit fruit) {
     fruit.move();
-    field.updateFruit(fruit);
+    controller.field.updateFruit(fruit);
   }
 
   void checkFruitState() {
@@ -39,13 +42,13 @@ class Game {
             return;
           }
         }
-        if (fruitsList[i].y > field.height - (figure.b * 0.75) && figure.onDrum(fruitsList[i])) {
+        if (fruitsList[i].y > fieldHeight - (figure.b * 0.75) && figure.onDrum(fruitsList[i])) {
           fruitsList[i].goingUp = true;
         }
 
         if (fruitsList[i].left >= 480 && fruitsList[i].heaven >= 240) {
           fruitsList[i].moving = false;
-          field.setScore(++score);
+          controller.field.setScore(++score);
         }
 
       } else {
@@ -58,7 +61,7 @@ class Game {
     if (fruits < level.maxFruits) {
       int type = level.possibleFruits == 1 ? 1 :  new Random().nextInt(level.possibleFruits)+1;
       int movement = level.possibleMovments == 0 ?  0 : new Random().nextInt(level.possibleFruits);
-      newFruit(fruitFactory.newFruit(type, movement, field));
+      newFruit(fruitFactory.newFruit(type, movement));
     }
   }
 

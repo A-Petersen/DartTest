@@ -48,7 +48,7 @@ class Field {
   void updateFigure(Figure f) {
     f.update();
     this.frank.style.left="${f.left}px";
-    this.frank.style.top="${f.field.height - f.b}px";
+    this.frank.style.top="${height - f.b}px";
     this.frank.style.backgroundSize="${f.a}px ${f.b}px";
     print(korb.style.top);
   }
@@ -56,7 +56,6 @@ class Field {
   void createNewFruit(Fruit f) {
     var fruitDiv = new DivElement();
     fruitDiv.id = 'fruit' + Fruit.id.toString();
-//    print(f.type.toString);
     switch (f.type) {
       case 1 :  {
         fruitDiv.style.position = 'absolute';

@@ -52,7 +52,9 @@ class Fruit {
 
   double speed;
 
-  Field field;
+  int fieldWidth;
+
+  int fieldHeight;
 
   MovementType movementType = null;
 
@@ -61,10 +63,11 @@ class Fruit {
   /**
    * Konstruktor
    */
-  Fruit(x, y, radius, field, type, [movementType = null, gravity = 10.0, speed = 1.0]) {
+  Fruit(x, y, radius, type, fieldWidth, fieldHeight, [movementType = null, gravity = 10.0, speed = 1.0]) {
     this.x = x;
     this.y = y;
-    this.field = field;
+    this.fieldWidth = fieldWidth;
+    this.fieldHeight = fieldHeight;
     this.radius = radius;
     this.gravity = gravity;
     this.speed = speed;
@@ -144,10 +147,10 @@ class Fruit {
     if (this.goingUp && (this.y - this.radius <= 11) ) this.goingUp = false;
 
     if (this.heaven < 0) this.y = this.radius;
-    if (this.ground > this.field.height - 1) this.y = this.field.height - 1 - this.radius;
+    if (this.ground > this.fieldHeight - 1) this.y = this.fieldHeight - 1 - this.radius;
 
     if (this.left < 0) this.x = this.radius;
-    if (this.right > this.field.width - 1) this.x = this.field.width - 1 - this.radius;
+    if (this.right > this.fieldWidth - 1) this.x = this.fieldWidth - 1 - this.radius;
   }
 
 }
