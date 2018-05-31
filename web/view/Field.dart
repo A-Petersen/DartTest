@@ -1,9 +1,12 @@
+import '../controller/Controller.dart';
 import 'dart:html';
 import 'dart:math';
 import '../model/Fruit.dart';
 import '../model/Figure.dart';
 
 class Field {
+
+  Controller controller;
 
   final frank = querySelector("#frank");
   final score = querySelector("#score");
@@ -37,13 +40,13 @@ class Field {
 
   double get center_y => this.height / 2;
 
-  Field(){
-    leftSite.style.width = "${this.width/2}px";
+  Field(this.controller){
+    /*leftSite.style.width = "${this.width/2}px";
     leftSite.style.height = "${this.height}px";
     leftSite.style.left = "${0}px";
     rightSite.style.width = "${this.width/2}px";
     rightSite.style.height = "${this.height}px";
-    rightSite.style.left = "${this.width/2}px";
+    rightSite.style.left = "${this.width/2}px";*/
   }
 
   void updateFruit(Fruit f) {
@@ -113,19 +116,19 @@ class Field {
       return false;
   }
 
-  //TODO HIGHSCORE
   void gameover() {
     gameoverScreen.style.visibility = "visible";
-    gameoverScreen.style.zIndex = "20";
+    gameoverScreen.style.zIndex = "2";
     fruits.forEach((f, d) => d.remove());
     endscore.text = "Score: " + score.text;
+    highscore.text = "Highscore: " + controller.getHighscore().toString();
   }
 
   void reset() {
-    print("hey");
     fruits = new Map();
-    gameoverScreen.style.zIndex = "-20";
+    gameoverScreen.style.zIndex = "-2";
     gameoverScreen.style.visibility = "hidden";
+    score.text = "0";
   }
 
 

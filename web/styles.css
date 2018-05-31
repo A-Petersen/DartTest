@@ -28,11 +28,17 @@ html, body {
 }
 
 #leftSite {
+    width: 50%;
+    height: 100%;
+    left: 0%;
     background: transparent;
     position: absolute;
 }
 
 #rightSite {
+    width: 50%;
+    height: 100%;
+    left: 50%;
     background: transparent;
     position: absolute;
 }
@@ -105,15 +111,17 @@ html, body {
 #endscore{
     padding: 20px;
     text-align: center;
+    position: center;
 }
 
-#higscore {
+#highscore {
     padding: 20px;
     text-align: center;
+    position: center;
 }
 
 #resetButton{
-    position: absolute;
+    position: relative;
     bottom: 0%;
     left: 50%;
     z-index: 5000;

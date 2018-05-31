@@ -4,7 +4,8 @@ import 'package:pwa/client.dart' as pwa;
 
 void main() {
   //new pwa.Client();
-  Controller controller = new Controller();
+  int highscore = window.localStorage.containsKey("score") ? int.parse(window.localStorage["score"]) : 0;
+  Controller controller = new Controller(highscore);
 
 
 }
