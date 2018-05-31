@@ -43,10 +43,6 @@ class Controller {
    * Die Fruit wird gestartet, bzw. geworfen.
    */
   void start() {
-
-    print(window.screen.height);
-    print(window.screen.available.height);
-    print(game.figure.y);
     game.checkFruitState();
     game.figure.move();
     field.updateFigure(game.figure);
@@ -92,6 +88,33 @@ class Controller {
           break;
       }
     });
+
+    field.leftSite.onTouchStart.listen((TouchEvent ev) {
+        game.figure.moving = 2;
+    });
+
+    field.leftSite.onTouchEnd.listen((TouchEvent ev) {
+        if (game.figure.moving != 1) game.figure.moving = 0;
+    });
+
+    field.rightSite.onTouchStart.listen((TouchEvent ev) {
+      game.figure.moving = 1;
+    });
+
+    field.rightSite.onTouchEnd.listen((TouchEvent ev) {
+      if (game.figure.moving != 2) game.figure.moving = 0;
+    });
+
+    /*window.onMouseUp.listen((MouseEvent ev) {
+      switch (ev.screen.x < field.width / 2 ) {
+        case true :
+          if (game.figure.moving != 1) game.figure.moving = 0;
+          break;
+        case false :
+          if (game.figure.moving != 2) game.figure.moving = 0;
+          break;
+      }
+    });*/
   }
   
   void resetButton(){

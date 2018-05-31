@@ -9,6 +9,9 @@ class Field {
   final score = querySelector("#score");
   final korb = querySelector("#korb");
 
+  final leftSite = querySelector("#leftSite");
+  final rightSite = querySelector("#rightSite");
+
   final gameoverScreen = querySelector("#gameoverScreen");
   final endscore = querySelector("#endscore");
   final highscore = querySelector("#highscore");
@@ -33,6 +36,15 @@ class Field {
   double get center_x => this.width / 2;
 
   double get center_y => this.height / 2;
+
+  Field(){
+    leftSite.style.width = "${this.width/2}px";
+    leftSite.style.height = "${this.height}px";
+    leftSite.style.left = "${0}px";
+    rightSite.style.width = "${this.width/2}px";
+    rightSite.style.height = "${this.height}px";
+    rightSite.style.left = "${this.width/2}px";
+  }
 
   void updateFruit(Fruit f) {
 

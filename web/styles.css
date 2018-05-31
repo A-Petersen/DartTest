@@ -27,6 +27,16 @@ html, body {
     z-index: 1;
 }
 
+#leftSite {
+    background: transparent;
+    position: absolute;
+}
+
+#rightSite {
+    background: transparent;
+    position: absolute;
+}
+
 #korb {
     width: 80px;
     height: 80px;
