@@ -36,7 +36,7 @@ class Game {
         movement(fruitsList[i]);
         if ((fruitsList[i].y >= figure.heaven+70 && !figure.onDrum(fruitsList[i]))) {
           fruitsList[i].moving = false;
-          if (--attempts <= -100) {
+          if (--attempts <= 2) {
             controller.gameover();
             return;
           }

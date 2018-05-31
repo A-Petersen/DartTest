@@ -91,6 +91,7 @@ class Controller {
 
     field.leftSite.onTouchStart.listen((TouchEvent ev) {
         game.figure.moving = 2;
+        print("hey");
     });
 
     field.leftSite.onTouchEnd.listen((TouchEvent ev) {

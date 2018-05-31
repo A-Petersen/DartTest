@@ -116,12 +116,15 @@ class Field {
   //TODO HIGHSCORE
   void gameover() {
     gameoverScreen.style.visibility = "visible";
+    gameoverScreen.style.zIndex = "20";
     fruits.forEach((f, d) => d.remove());
     endscore.text = "Score: " + score.text;
   }
 
   void reset() {
+    print("hey");
     fruits = new Map();
+    gameoverScreen.style.zIndex = "-20";
     gameoverScreen.style.visibility = "hidden";
   }
 

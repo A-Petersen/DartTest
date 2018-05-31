@@ -98,7 +98,7 @@ html, body {
     height: 100%;
     position: absolute;
     top: 0px;
-    background-color: black;
+    background-color: transparent;
     visibility: hidden;
 }
 
