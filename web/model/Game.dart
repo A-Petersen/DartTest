@@ -89,28 +89,24 @@ class Game {
       level.level = 4;
       level.maxFruits = 3;
       level.possibleFruits = 3;
-      level.possibleMovments = 1;
     }
 
     if (score > 12 && score < 15) {
       level.level = 5;
       level.maxFruits = 3;
       level.possibleFruits = 3;
-      level.possibleMovments = 2;
     }
 
     if (score > 15 && score < 18) {
       level.level = 6;
       level.maxFruits = 4;
       level.possibleFruits = 3;
-      level.possibleMovments = 2;
     }
 
     if (score > 18 && score < 21) {
       level.level = 7;
       level.maxFruits = 5;
       level.possibleFruits = 3;
-      level.possibleMovments = 2;
     }
 
     if (score > 15 && score % 10 == 0) {
