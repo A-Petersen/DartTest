@@ -35,27 +35,25 @@ class Game {
     for (int i = 0 ; i < fruits ; i++) {
       if (fruitsList[i].moving) {
         movement(fruitsList[i]);
-        if ((fruitsList[i].y >= figure.heaven && !figure.onDrum(fruitsList[i]))) {
+        if ((fruitsList[i].ground >= fieldHeight-5)) { //-5 weil der Ground der Frucht nicht == der Grund des Feldes.
           fruitsList[i].moving = false;
-          if (--attempts <= 2) {
+          if (--attempts <= 0) {
             if (score > highscore) {
               highscore = score;
               controller.setHighscore(highscore);
             }
               controller.gameover();
               return;
-
           }
         }
         if (fruitsList[i].y > fieldHeight - (figure.b * 0.75) && figure.onDrum(fruitsList[i])) {
           fruitsList[i].goingUp = true;
         }
 
-        if (fruitsList[i].x >= (fieldWidth-(fieldWidth*0.13)) && fruitsList[i].y >= (fieldWidth-(fieldWidth*0.13))) {
+        if (fruitsList[i].x >= (fieldWidth-(fieldWidth*0.13)) && fruitsList[i].y >= (fieldHeight-(fieldHeight*0.13))) {
           fruitsList[i].moving = false;
           controller.field.setScore(++score);
         }
-
       } else {
         removeFruit(fruitsList[i--]);
       }
@@ -119,8 +117,6 @@ class Game {
     }
 
   }
-
-
 
   void newFruit(Fruit f) {
     fruitsList.add(f);

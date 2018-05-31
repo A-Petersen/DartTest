@@ -106,7 +106,7 @@ class Field {
   }
   
   bool inKorb(Fruit f) {
-    //if (f.ground >= int.parse(korb.style.top.replaceAll("px", "")) )
+    //if (f.x > korb)
       return false;
   }
 

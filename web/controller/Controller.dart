@@ -103,16 +103,6 @@ class Controller {
       if (game.figure.moving != 2) game.figure.moving = 0;
     });
 
-    /*window.onMouseUp.listen((MouseEvent ev) {
-      switch (ev.screen.x < field.width / 2 ) {
-        case true :
-          if (game.figure.moving != 1) game.figure.moving = 0;
-          break;
-        case false :
-          if (game.figure.moving != 2) game.figure.moving = 0;
-          break;
-      }
-    });*/
   }
   
   void resetButton(){
