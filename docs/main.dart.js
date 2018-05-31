@@ -3339,86 +3339,86 @@ y=new N.aq(3,0,0,this.c,null,null,0,0,null,!0,!1,20,2,this.a,this.b,null,z)
 $.N=$.N+1
 y.dx=z.ay(b,y)
 return y}}}}],["","",,G,{"^":"",dR:{"^":"a;a,b,c,d,e,f,r,x,y,z,Q",
-cA:function(){var z,y,x,w,v,u,t,s,r,q,p,o
-for(z=this.f,y=this.c-85,x=this.d,w=x-85,v=0;v<this.Q;++v){u=this.b
-if(v<0||v>=u.length)return H.h(u,v)
-t=u[v]
-if(t.z){if(t.dx==null){t.bq()
-u=t.cx
-t.r=u}else{t.bq()
-u=t.dx.bp(t.cx)
-t.y=u
-s=u.a
-t.r=s
-t.x=t.x+u.b
-u=s}s=z.a
-s.toString
-t.b+=u
-u=t.c+t.x
-t.c=u
-if(t.Q&&u-t.d<=11)t.Q=!1
-if(C.a.u(u-t.d)<0)t.c=t.d
-u=C.a.u(t.c+t.d)
-r=t.db
-if(typeof r!=="number")return r.bV();--r
-if(u>r)t.c=r-t.d
-if(C.a.u(t.b-t.d)<0)t.b=t.d
-u=C.a.u(t.b+t.d)
-r=t.cy
-if(typeof r!=="number")return r.bV();--r
-if(u>r)t.b=r-t.d
-u=C.f.w("#",J.de(s.ch.h(0,t)))
-q=document.querySelector(u)
-u=window.screen
-s=u.availWidth
-u=u.availHeight
+cA:function(){var z,y,x,w,v,u,t,s,r,q,p
+for(z=this.f,y=this.c,y-=y*0.13,x=this.d,w=0;w<this.Q;++w){v=this.b
+if(w<0||w>=v.length)return H.h(v,w)
+u=v[w]
+if(u.z){if(u.dx==null){u.bq()
+v=u.cx
+u.r=v}else{u.bq()
+v=u.dx.bp(u.cx)
+u.y=v
+t=v.a
+u.r=t
+u.x=u.x+v.b
+v=t}t=z.a
+t.toString
+u.b+=v
+v=u.c+u.x
+u.c=v
+if(u.Q&&v-u.d<=11)u.Q=!1
+if(C.a.u(v-u.d)<0)u.c=u.d
+v=C.a.u(u.c+u.d)
+s=u.db
+if(typeof s!=="number")return s.bV();--s
+if(v>s)u.c=s-u.d
+if(C.a.u(u.b-u.d)<0)u.b=u.d
+v=C.a.u(u.b+u.d)
+s=u.cy
+if(typeof s!=="number")return s.bV();--s
+if(v>s)u.b=s-u.d
+v=C.f.w("#",J.de(t.ch.h(0,u)))
+r=document.querySelector(v)
+v=window.screen
+t=v.availWidth
+v=v.availHeight
+if(typeof t!=="number")return t.D()
+if(t<0)t=-t*0
+if(typeof v!=="number")return v.D()
+if(v<0)v=-v*0
+v=window.screen
+s=v.availWidth
+v=v.availHeight
 if(typeof s!=="number")return s.D()
 if(s<0)s=-s*0
-if(typeof u!=="number")return u.D()
-if(u<0)u=-u*0
-u=window.screen
-r=u.availWidth
-u=u.availHeight
-if(typeof r!=="number")return r.D()
-if(r<0)r=-r*0
-if(typeof u!=="number")return u.D()
-if(u<0)u=-u*0
-p=H.b(Math.min(s,u))+"px"
-u=q.style
-s=""+C.a.u(4*t.d)+"px"
-u.width=s
-u=q.style
-s=""+C.a.u(4*t.d)+"px"
-u.height=s
-u=q.style
-s=(u&&C.e).a2(u,"border-radius")
-u.setProperty(s,p,"")
-u=q.style
-s=""+C.a.u(t.c-t.d)+"px"
-u.top=s
-u=q.style
-s=""+C.a.u(t.b-t.d)+"px"
-u.left=s
-u=q.style
-o=""+C.a.u(4*t.d)+"px"
-s=(u&&C.e).a2(u,"background-size")
-u.setProperty(s,o,"")
-u=q.style
-o="rotate("+H.b(C.a.aa(t.b*2+t.c,360))+"deg)"
-t=(u&&C.e).a2(u,"transform")
-u.setProperty(t,o,"")
+if(typeof v!=="number")return v.D()
+if(v<0)v=-v*0
+q=H.b(Math.min(t,v))+"px"
+v=r.style
+t=""+C.a.u(4*u.d)+"px"
+v.width=t
+v=r.style
+t=""+C.a.u(4*u.d)+"px"
+v.height=t
+v=r.style
+t=(v&&C.e).a2(v,"border-radius")
+v.setProperty(t,q,"")
+v=r.style
+t=""+C.a.u(u.c-u.d)+"px"
+v.top=t
+v=r.style
+t=""+C.a.u(u.b-u.d)+"px"
+v.left=t
+v=r.style
+p=""+C.a.u(4*u.d)+"px"
+t=(v&&C.e).a2(v,"background-size")
+v.setProperty(t,p,"")
+v=r.style
+p="rotate("+H.b(C.a.aa(u.b*2+u.c,360))+"deg)"
+u=(v&&C.e).a2(v,"transform")
+v.setProperty(u,p,"")
+v=this.b
+if(w>=v.length)return H.h(v,w)
+v=v[w].c
+u=this.r
+if(v>=C.a.u(u.b-u.d/2)){v=this.r
 u=this.b
-if(v>=u.length)return H.h(u,v)
-u=u[v].c
-t=this.r
-if(u>=C.a.u(t.b-t.d/2)+70){u=this.r
-t=this.b
-if(v>=t.length)return H.h(t,v)
-t=!u.bu(t[v])
-u=t}else u=!1
-if(u){u=this.b
-if(v>=u.length)return H.h(u,v)
-u[v].z=!1
+if(w>=u.length)return H.h(u,w)
+u=!v.bu(u[w])
+v=u}else v=!1
+if(v){v=this.b
+if(w>=v.length)return H.h(v,w)
+v[w].z=!1
 if(--this.z<=2){y=this.x
 x=this.y
 if(typeof x!=="number")return H.a3(x)
@@ -3426,24 +3426,24 @@ if(y>x){this.y=y
 window.localStorage.setItem("score",C.c.i(y))}z.c.S()
 z.d.S()
 z.a.bL()
-return}}u=this.b
-if(v>=u.length)return H.h(u,v)
-u=u[v]
-t=u.c
-s=this.r
-if(t>x-s.d*0.75&&s.bu(u)){u=this.b
-if(v>=u.length)return H.h(u,v)
-u[v].Q=!0}u=this.b
-if(v>=u.length)return H.h(u,v)
-u=u[v]
-if(u.b>=y&&u.c>=w){u.z=!1
-u=z.a
-t=++this.x
-u.c.textContent=C.c.i(t)}}else{--v
-C.d.H(u,t);--this.Q
-u=z.a
-J.bK(u.ch.h(0,t))
-u.ch.H(0,t)}}},
+return}}v=this.b
+if(w>=v.length)return H.h(v,w)
+v=v[w]
+u=v.c
+t=this.r
+if(u>x-t.d*0.75&&t.bu(v)){v=this.b
+if(w>=v.length)return H.h(v,w)
+v[w].Q=!0}v=this.b
+if(w>=v.length)return H.h(v,w)
+v=v[w]
+if(v.b>=y&&v.c>=y){v.z=!1
+v=z.a
+u=++this.x
+v.c.textContent=C.c.i(u)}}else{--w
+C.d.H(v,u);--this.Q
+v=z.a
+J.bK(v.ch.h(0,u))
+v.ch.H(0,u)}}},
 bb:function(){var z,y,x,w,v,u
 z=this.Q
 y=this.a
@@ -3495,20 +3495,20 @@ y.d=0}if(z>9&&z<12){y=this.a
 y.a=4
 y.b=3
 y.c=3
-y.d=1}if(z>12&&z<15){y=this.a
+y.d=0}if(z>12&&z<15){y=this.a
 y.a=5
 y.b=3
 y.c=3
-y.d=2}y=z>15
+y.d=0}y=z>15
 if(y&&z<18){x=this.a
 x.a=6
 x.b=4
 x.c=3
-x.d=2}if(z>18&&z<21){x=this.a
+x.d=0}if(z>18&&z<21){x=this.a
 x.a=7
 x.b=5
 x.c=3
-x.d=2}if(y&&C.c.aa(z,10)===0){z=this.a;++z.a;++z.b}},
+x.d=0}if(y&&C.c.aa(z,10)===0){z=this.a;++z.a;++z.b}},
 c0:function(a,b,c,d){var z,y,x
 z=this.d
 y=this.c

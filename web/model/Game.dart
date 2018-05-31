@@ -35,7 +35,7 @@ class Game {
     for (int i = 0 ; i < fruits ; i++) {
       if (fruitsList[i].moving) {
         movement(fruitsList[i]);
-        if ((fruitsList[i].y >= figure.heaven+70 && !figure.onDrum(fruitsList[i]))) {
+        if ((fruitsList[i].y >= figure.heaven && !figure.onDrum(fruitsList[i]))) {
           fruitsList[i].moving = false;
           if (--attempts <= 2) {
             if (score > highscore) {
@@ -51,7 +51,7 @@ class Game {
           fruitsList[i].goingUp = true;
         }
 
-        if (fruitsList[i].x >= fieldWidth-85 && fruitsList[i].y >= fieldHeight-85) {
+        if (fruitsList[i].x >= (fieldWidth-(fieldWidth*0.13)) && fruitsList[i].y >= (fieldWidth-(fieldWidth*0.13))) {
           fruitsList[i].moving = false;
           controller.field.setScore(++score);
         }
