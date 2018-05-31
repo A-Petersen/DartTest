@@ -27,12 +27,12 @@ class Field {
   /**
    * Breite der gesamt View
    */
-  int get width => window.screen.available.width;
+  int get width => window.innerWidth;
 
   /**
    * Höhe der gesamt View
    */
-  int get height => window.screen.available.height;
+  int get height => window.innerHeight;
 
   int get size => min(this.width, this.height);
 
@@ -41,12 +41,6 @@ class Field {
   double get center_y => this.height / 2;
 
   Field(this.controller){
-    /*leftSite.style.width = "${this.width/2}px";
-    leftSite.style.height = "${this.height}px";
-    leftSite.style.left = "${0}px";
-    rightSite.style.width = "${this.width/2}px";
-    rightSite.style.height = "${this.height}px";
-    rightSite.style.left = "${this.width/2}px";*/
   }
 
   void updateFruit(Fruit f) {
