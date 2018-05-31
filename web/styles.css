@@ -10,8 +10,6 @@ html, body {
 }
 
 .fruit1 {
-    width: 15.6%;
-    height: 27.8%;
     position: absolute;
     background-image: url("resources/bananen.png");
     z-index: 1;
@@ -27,6 +25,23 @@ html, body {
   position: absolute;
   background-image: url("resources/apfel.png");
     z-index: 1;
+}
+
+
+#leftSite {
+    width: 50%;
+    height: 100%;
+    left: 0%;
+    background: transparent;
+    position: absolute;
+}
+
+#rightSite {
+    width: 50%;
+    height: 100%;
+    left: 50%;
+    background: transparent;
+    position: absolute;
 }
 
 #basket {
@@ -94,22 +109,24 @@ html, body {
     height: 100%;
     position: absolute;
     top: 0px;
-    background-color: black;
+    background-color: transparent;
     visibility: hidden;
 }
 
 #endscore{
     padding: 5%;
     text-align: center;
+    position: center;
 }
 
 #higscore {
     padding: 5%;
     text-align: center;
+    position: center;
 }
 
 #resetButton{
-    position: absolute;
+    position: relative;
     bottom: 0%;
     left: 50%;
     z-index: 5000;

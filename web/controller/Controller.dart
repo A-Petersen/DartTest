@@ -1,28 +1,25 @@
 import '../model/Fruit.dart';
-import '../model/FruitFactory.dart';
 import '../model/Game.dart';
 import '../view/Field.dart';
-import '../model/Figure.dart';
-import '../model/Level.dart';
 import 'dart:html';
 import 'dart:async';
-import 'dart:math';
 
 
 
 class Controller {
 
-  final Field field = new Field();
+  Field field;
   Game game;
   Timer timerStart;
   Timer timerNewFruit;
   Duration timeIntevall = new Duration(milliseconds: 50);
   Duration throwIntevall = new Duration(milliseconds: 5000);
 
-  Controller() {
+  Controller(int highscore) {
+    field = new Field(this);
+    game = new Game(this, field.width, field.height, highscore);
     figureControll();
     resetButton();
-    game = new Game(this, field.width, field.height);
     newGame();
   }
 
@@ -44,10 +41,6 @@ class Controller {
    * Die Fruit wird gestartet, bzw. geworfen.
    */
   void start() {
-
-    print(window.screen.height);
-    print(window.screen.available.height);
-    print(game.figure.y);
     game.checkFruitState();
     game.figure.move();
     field.updateFigure(game.figure);
@@ -93,6 +86,33 @@ class Controller {
           break;
       }
     });
+
+    field.leftSite.onTouchStart.listen((TouchEvent ev) {
+        game.figure.moving = 2;
+    });
+
+    field.leftSite.onTouchEnd.listen((TouchEvent ev) {
+        if (game.figure.moving != 1) game.figure.moving = 0;
+    });
+
+    field.rightSite.onTouchStart.listen((TouchEvent ev) {
+      game.figure.moving = 1;
+    });
+
+    field.rightSite.onTouchEnd.listen((TouchEvent ev) {
+      if (game.figure.moving != 2) game.figure.moving = 0;
+    });
+
+    /*window.onMouseUp.listen((MouseEvent ev) {
+      switch (ev.screen.x < field.width / 2 ) {
+        case true :
+          if (game.figure.moving != 1) game.figure.moving = 0;
+          break;
+        case false :
+          if (game.figure.moving != 2) game.figure.moving = 0;
+          break;
+      }
+    });*/
   }
   
   void resetButton(){
@@ -109,6 +129,12 @@ class Controller {
     timerNewFruit.cancel();
     field.gameover();
   }
+
+  void setHighscore(int score) {
+    window.localStorage["score"] = score.toString();
+  }
+
+  int getHighscore() { return game.highscore; }
 
 
 

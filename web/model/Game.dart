@@ -17,10 +17,11 @@ class Game {
   Controller controller;
   Figure figure;
   int score = 0;
+  int highscore;
   int attempts = 3;
   int fruits = 0;
 
-  Game(this.controller, this.fieldWidth, this.fieldHeight) {
+  Game(this.controller, this.fieldWidth, this.fieldHeight, this.highscore) {
     this.figure = new Figure(0.0, fieldHeight.toDouble(), fieldWidth * 0.156, fieldHeight * 0.278, fieldWidth, fieldHeight);
     fruitFactory = new FruitFactory(fieldWidth, fieldHeight);
   }
@@ -36,16 +37,21 @@ class Game {
         movement(fruitsList[i]);
         if ((fruitsList[i].y >= figure.heaven+70 && !figure.onDrum(fruitsList[i]))) {
           fruitsList[i].moving = false;
-          if (--attempts <= -100) {
-            controller.gameover();
-            return;
+          if (--attempts <= 2) {
+            if (score > highscore) {
+              highscore = score;
+              controller.setHighscore(highscore);
+            }
+              controller.gameover();
+              return;
+
           }
         }
         if (fruitsList[i].y > fieldHeight - (figure.b * 0.75) && figure.onDrum(fruitsList[i])) {
           fruitsList[i].goingUp = true;
         }
 
-        if (fruitsList[i].left >= fieldWidth-80 && fruitsList[i].heaven >= fieldHeight-80) {
+        if (fruitsList[i].x >= fieldWidth-85 && fruitsList[i].y >= fieldHeight-85) {
           fruitsList[i].moving = false;
           controller.field.setScore(++score);
         }
