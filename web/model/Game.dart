@@ -67,18 +67,54 @@ class Game {
   void checkLevel() {
     if (score > 3 && score < 6) {
       level.level = 2;
-      level.maxFruits = 4;
+      level.maxFruits = 3;
       level.possibleFruits = 2;
+      level.possibleMovments = 0;
+    }
+
+    if (score > 6 && score < 9) {
+      level.level = 3;
+      level.maxFruits = 3;
+      level.possibleFruits = 3;
+      level.possibleMovments = 0;
+    }
+
+    if (score > 9 && score < 12) {
+      level.level = 4;
+      level.maxFruits = 3;
+      level.possibleFruits = 3;
       level.possibleMovments = 1;
     }
 
-    if (score > 10 && score < 30) {
-      level.level = 3;
+    if (score > 12 && score < 15) {
+      level.level = 5;
+      level.maxFruits = 3;
+      level.possibleFruits = 3;
+      level.possibleMovments = 2;
+    }
+
+    if (score > 15 && score < 18) {
+      level.level = 6;
+      level.maxFruits = 4;
+      level.possibleFruits = 3;
+      level.possibleMovments = 2;
+    }
+
+    if (score > 18 && score < 21) {
+      level.level = 7;
       level.maxFruits = 5;
       level.possibleFruits = 3;
       level.possibleMovments = 2;
     }
+
+    if (score > 15 && score % 10 == 0) {
+      level.level++;
+      level.maxFruits++;
+    }
+
   }
+
+
 
   void newFruit(Fruit f) {
     fruitsList.add(f);
@@ -90,6 +126,15 @@ class Game {
     fruitsList.remove(f);
     fruits--;
     controller.removeFruitView(f);
+  }
+
+  void reset() {
+    level.reset();
+    fruits = 0;
+    score = 0;
+    attempts = 3;
+    figure.x = 0.0;
+    fruitsList = new List<Fruit>();
   }
 
 
