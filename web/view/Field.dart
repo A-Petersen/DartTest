@@ -15,6 +15,8 @@ class Field {
   final leftSite = querySelector("#leftSite");
   final rightSite = querySelector("#rightSite");
 
+  final orientationInfo = querySelector("#orientationInfo");
+
   final gameoverScreen = querySelector("#gameoverScreen");
   final endscore = querySelector("#endscore");
   final highscore = querySelector("#highscore");
@@ -123,6 +125,15 @@ class Field {
     gameoverScreen.style.zIndex = "-2";
     gameoverScreen.style.visibility = "hidden";
     score.text = "0";
+  }
+
+  void showOrientationInfo() {
+    orientationInfo.text = "Please use Landscape and refresh";
+    orientationInfo.style.visibility = "visible";
+  }
+
+  void hideOrientationInfo() {
+    orientationInfo.remove();
   }
 
 

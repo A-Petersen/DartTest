@@ -17,10 +17,13 @@ class Controller {
 
   Controller(int highscore) {
     field = new Field(this);
-    game = new Game(this, field.width, field.height, highscore);
-    figureControll();
-    resetButton();
-    newGame();
+    if (checkForOrientation()) {
+      field.orientationInfo.remove();
+      game = new Game(this, field.width, field.height, highscore);
+      figureControll();
+      resetButton();
+      newGame();
+    }
   }
 
   void newGame() {
@@ -125,6 +128,14 @@ class Controller {
   }
 
   int getHighscore() { return game.highscore; }
+
+  bool checkForOrientation() {
+    if(window.innerHeight > window.innerWidth){
+      field.showOrientationInfo();
+      return false;
+    }
+    return true;
+  }
 
 
 
