@@ -71,7 +71,7 @@ class Field {
       case 3 :  {
         fruitDiv.style.position = 'absolute';
         fruitDiv.style.backgroundImage = 'url("resources/apfel.png")';
-        fruitDiv.style.zIndex = '1';;
+        fruitDiv.style.zIndex = '1';
         break;
       }
 
