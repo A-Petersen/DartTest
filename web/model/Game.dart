@@ -5,6 +5,7 @@ import 'Fruit.dart';
 import 'FruitFactory.dart';
 import 'Level.dart';
 import 'dart:math';
+import 'dart:html';
 
 class Game {
 
@@ -20,7 +21,7 @@ class Game {
   int fruits = 0;
 
   Game(this.controller, this.fieldWidth, this.fieldHeight) {
-    this.figure = new Figure(0.0, 280.0, 100.0, 100.0, fieldWidth, fieldHeight);
+    this.figure = new Figure(0.0, fieldHeight.toDouble()-100 , 100.0, 100.0, fieldWidth, fieldHeight);
     fruitFactory = new FruitFactory(fieldWidth, fieldHeight);
   }
 
@@ -33,7 +34,7 @@ class Game {
     for (int i = 0 ; i < fruits ; i++) {
       if (fruitsList[i].moving) {
         movement(fruitsList[i]);
-        if ((fruitsList[i].y >= 260.0 && !figure.onDrum(fruitsList[i]))) {
+        if ((fruitsList[i].y >= figure.heaven+70 && !figure.onDrum(fruitsList[i]))) {
           fruitsList[i].moving = false;
           if (--attempts <= -100) {
             controller.gameover();
@@ -44,7 +45,7 @@ class Game {
           fruitsList[i].goingUp = true;
         }
 
-        if (fruitsList[i].left >= 480 && fruitsList[i].heaven >= 240) {
+        if (fruitsList[i].left >= fieldWidth-80 && fruitsList[i].heaven >= fieldHeight-80) {
           fruitsList[i].moving = false;
           controller.field.setScore(++score);
         }
