@@ -40,6 +40,8 @@ class Field {
 
   double get center_y => this.height / 2;
 
+  int state = 0;
+
   Field(this.controller){
   }
 
@@ -66,6 +68,31 @@ class Field {
     this.figure.style.left="${f.left}px";
     this.figure.style.top="${height - f.b}px";
     this.figure.style.backgroundSize="${f.a}px ${f.b}px";
+
+    if (controller.game.figure.moving == 2) { this.figure.style.transform="scaleX(-1)"; }
+    else {
+      this.figure.style.transform="scaleX(1)";
+    }
+    if (controller.game.figure.moving != 0) {
+      switch (state) {
+        case 10:
+          this.figure.style.backgroundImage="url('resources/frank_mid.png')";
+          break;
+        case 20:
+          this.figure.style.backgroundImage="url('resources/frank_late.png')";
+          break;
+        case 30:
+          this.figure.style.backgroundImage="url('resources/frank_mid.png')";
+          break;
+        case 40:
+          this.figure.style.backgroundImage="url('resources/frank.png')";
+          state = -1;
+          break;
+      }
+      state++;
+    } else {
+      this.figure.style.backgroundImage="url('resources/frank.png')";
+    }
   }
 
   void createNewFruit(Fruit f) {
@@ -104,7 +131,7 @@ class Field {
   void setScore(int s) {
     score.text = s.toString();
   }
-  
+
   bool inKorb(Fruit f) {
     //if (f.x > korb)
       return false;

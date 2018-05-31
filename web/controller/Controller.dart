@@ -12,7 +12,7 @@ class Controller {
   Game game;
   Timer timerStart;
   Timer timerNewFruit;
-  Duration timeIntevall = new Duration(milliseconds: 50);
+  Duration timeIntevall = new Duration(milliseconds: 30);
   Duration throwIntevall = new Duration(milliseconds: 5000);
 
   Controller(int highscore) {

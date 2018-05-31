@@ -11,5 +11,4 @@ class Level {
     possibleFruits = 1;
     possibleMovments = 0;
   }
-
 }

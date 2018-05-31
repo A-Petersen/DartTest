@@ -22,7 +22,7 @@ class Game {
   int fruits = 0;
 
   Game(this.controller, this.fieldWidth, this.fieldHeight, this.highscore) {
-    this.figure = new Figure(0.0, fieldHeight.toDouble(), fieldWidth * 0.156, fieldHeight * 0.278, fieldWidth, fieldHeight);
+    this.figure = new Figure(0.0, fieldHeight.toDouble(), fieldWidth * 0.156, fieldHeight * 0.278, fieldWidth, fieldHeight, 10.0);
     fruitFactory = new FruitFactory(fieldWidth, fieldHeight);
   }
 
