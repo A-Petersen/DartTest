@@ -29,6 +29,7 @@ class Controller {
   void newGame() {
     timerStart = new Timer.periodic(timeIntevall, (Timer t) => start());
     timerNewFruit = new Timer.periodic(throwIntevall, (Timer t) => checkFruits());
+//    field.createTreesAndBasket();
     checkFruits();
   }
 

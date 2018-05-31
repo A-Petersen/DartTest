@@ -27,7 +27,7 @@ html, body {
     z-index: 1;
 }
 
-#korb {
+#basket {
     width: 80px;
     height: 80px;
     background: url("resources/korb.png");
@@ -38,7 +38,7 @@ html, body {
     z-index: -1;
 }
 
-#baumLeft {
+#treeLeft {
     width: 200px;
     height: 330px;
     background: url("resources/baum.png");
@@ -49,7 +49,7 @@ html, body {
     z-index: -1;
 }
 
-#baumRight {
+#treeRight {
     width: 200px;
     height: 330px;
     background: url("resources/baum.png");

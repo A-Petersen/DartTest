@@ -5,9 +5,11 @@ import '../model/Figure.dart';
 
 class Field {
 
-  final frank = querySelector("#frank");
+  final figure = querySelector("#frank");
   final score = querySelector("#score");
-  final korb = querySelector("#korb");
+  final basket = querySelector("#basket");
+  final treeRight = querySelector("#treeRight");
+  final treeLeft = querySelector("#treeLeft");
 
   final gameoverScreen = querySelector("#gameoverScreen");
   final endscore = querySelector("#endscore");
@@ -54,9 +56,9 @@ class Field {
 
   void updateFigure(Figure f) {
     f.update();
-    this.frank.style.left="${f.left}px";
-    this.frank.style.top="${height - f.b}px";
-    this.frank.style.backgroundSize="${f.a}px ${f.b}px";
+    this.figure.style.left="${f.left}px";
+    this.figure.style.top="${height - f.b}px";
+    this.figure.style.backgroundSize="${f.a}px ${f.b}px";
   }
 
   void createNewFruit(Fruit f) {
@@ -113,5 +115,11 @@ class Field {
     gameoverScreen.style.visibility = "hidden";
   }
 
-
+  void createTreesAndBasketAndFigure() {
+    print("hello there");
+//    basket.style.width="${(width * 0.125)}px";
+//    basket.style.height="${(height * 0.22)}px";
+//    basket.style.backgroundSize="${(height * 0.22)}px ${(width * 0.125)}px";
+//    basket.style.bottom="${0}px";
+  }
 }
