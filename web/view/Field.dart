@@ -21,12 +21,12 @@ class Field {
   /**
    * Breite der gesamt View
    */
-  int get width => 560;
+  int get width => window.screen.available.width;
 
   /**
    * Höhe der gesamt View
    */
-  int get height => 315;
+  int get height => window.screen.available.height;
 
   int get size => min(this.width, this.height);
 
@@ -57,7 +57,6 @@ class Field {
     this.frank.style.left="${f.left}px";
     this.frank.style.top="${height - f.b}px";
     this.frank.style.backgroundSize="${f.a}px ${f.b}px";
-    print(korb.style.top);
   }
 
   void createNewFruit(Fruit f) {
@@ -79,7 +78,7 @@ class Field {
       case 3 :  {
         fruitDiv.style.position = 'absolute';
         fruitDiv.style.backgroundImage = 'url("resources/apfel.png")';
-        fruitDiv.style.zIndex = '1';;
+        fruitDiv.style.zIndex = '1';
         break;
       }
 

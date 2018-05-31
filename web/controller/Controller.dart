@@ -44,7 +44,9 @@ class Controller {
    */
   void start() {
 
-
+    print(window.screen.height);
+    print(window.screen.available.height);
+    print(game.figure.y);
     game.checkFruitState();
     game.figure.move();
     field.updateFigure(game.figure);

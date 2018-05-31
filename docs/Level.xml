@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="LevelShema.xsd">
+	<Level>
+		<Number>1</Number>
+		<FruitsAmount>3</FruitsAmount>
+		<FruitRange>1</FruitRange>
+	</Level>
+	<Level>
+		<Number>2</Number>
+		<FruitsAmount>4</FruitsAmount>
+		<FruitRange>2</FruitRange>
+	</Level>
+	<Level>
+		<Number>3</Number>
+		<FruitsAmount>5</FruitsAmount>
+		<FruitRange>3</FruitRange>
+	</Level>
+</Game>

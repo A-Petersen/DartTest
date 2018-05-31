@@ -63,16 +63,8 @@ class Fruit {
   /**
    * Konstruktor
    */
-  Fruit(x, y, radius, type, fieldWidth, fieldHeight, [movementType = null, gravity = 10.0, speed = 1.0]) {
-    this.x = x;
-    this.y = y;
-    this.fieldWidth = fieldWidth;
-    this.fieldHeight = fieldHeight;
-    this.radius = radius;
-    this.gravity = gravity;
-    this.speed = speed;
+  Fruit(this.x, this.y, this.radius, this.type, this.fieldWidth, this.fieldHeight, [movementType = null, this.gravity = 10.0, this.speed = 1.0]) {
     id += 1;
-    this.type = type;
     this.movementType = movementFactory.newMovement(movementType, this);
   }
 
