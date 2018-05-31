@@ -27,6 +27,7 @@ html, body {
     z-index: 1;
 }
 
+
 #leftSite {
     width: 50%;
     height: 100%;
@@ -44,10 +45,10 @@ html, body {
 }
 
 #basket {
-    width: 80px;
-    height: 80px;
+    width: 12.5%;
+    height: 22%;
     background: url("resources/korb.png");
-    background-size: 80px 80px;
+    background-size: 100% 100%;
     bottom: 0px;
     left: 88%;
     position: absolute;
@@ -55,31 +56,32 @@ html, body {
 }
 
 #treeLeft {
-    width: 200px;
-    height: 330px;
+    width: 31%;
+    height: 100%;
     background: url("resources/baum.png");
-    background-size: 200px 330px;
+    background-size: 100% 100%;
     bottom: 0px;
     left: -5%;
     position: absolute;
-    z-index: -1;
+    z-index: -2;
 }
 
 #treeRight {
-    width: 200px;
-    height: 330px;
+    width: 31%;
+    height: 100%;
     background: url("resources/baum.png");
-    background-size: 200px 330px;
+    background-size: 100% 100%;
     bottom: 0px;
     left: 82%;
     position: absolute;
-    z-index: -1;
+    z-index: -2;
     transform: scaleX(-1);
 }
 
 #frank {
-    width: 100px;
-    height: 100px;
+    width: 15.6%;
+    height: 27.8%;
+    /*background-size: 100% 100%;*/
     position: absolute;
     background: url("resources/frank.png");
     z-index: 0;
@@ -95,8 +97,11 @@ html, body {
 }
 
 #score {
-    padding: 20px;
-    text-align: right;
+    padding: 5%;
+    text-align: center;
+    color: goldenrod;
+    font-size: 200%;
+    font-weight: bolder;
 }
 
 #gameoverScreen{
@@ -109,13 +114,13 @@ html, body {
 }
 
 #endscore{
-    padding: 20px;
+    padding: 5%;
     text-align: center;
     position: center;
 }
 
-#highscore {
-    padding: 20px;
+#higscore {
+    padding: 5%;
     text-align: center;
     position: center;
 }
