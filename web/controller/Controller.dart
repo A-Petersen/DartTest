@@ -21,9 +21,15 @@ class Controller {
 
   Controller() {
     figureControll();
+    resetButton();
     game = new Game(this, field.width, field.height);
+    newGame();
+  }
+
+  void newGame() {
     timerStart = new Timer.periodic(timeIntevall, (Timer t) => start());
     timerNewFruit = new Timer.periodic(throwIntevall, (Timer t) => checkFruits());
+    checkFruits();
   }
 
 
@@ -85,9 +91,20 @@ class Controller {
       }
     });
   }
+  
+  void resetButton(){
+    field.resetButton.onClick.listen((MouseEvent ev) {
+      game.reset();
+      field.reset();
+      field.updateFigure(game.figure);
+      newGame();
+    });
+  }
 
   void gameover() {
     timerStart.cancel();
+    timerNewFruit.cancel();
+    field.gameover();
   }
 
 

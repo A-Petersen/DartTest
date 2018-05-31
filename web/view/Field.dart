@@ -8,7 +8,14 @@ class Field {
   final frank = querySelector("#frank");
   final score = querySelector("#score");
   final korb = querySelector("#korb");
+
+  final gameoverScreen = querySelector("#gameoverScreen");
+  final endscore = querySelector("#endscore");
+  final highscore = querySelector("#highscore");
+  var resetButton = querySelector("#resetButton");
+
   final fieldQuery = querySelector('#field');
+
   Map<Fruit, DivElement> fruits = new Map();
 
   /**
@@ -93,6 +100,18 @@ class Field {
   bool inKorb(Fruit f) {
     //if (f.ground >= int.parse(korb.style.top.replaceAll("px", "")) )
       return false;
+  }
+
+  //TODO HIGHSCORE
+  void gameover() {
+    gameoverScreen.style.visibility = "visible";
+    fruits.forEach((f, d) => d.remove());
+    endscore.text = "Score: " + score.text;
+  }
+
+  void reset() {
+    fruits = new Map();
+    gameoverScreen.style.visibility = "hidden";
   }
 
 
