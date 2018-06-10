@@ -1,19 +1,23 @@
 import '../model/Fruit.dart';
 import '../model/Game.dart';
+import '../model/Level.dart';
 import '../view/Field.dart';
+import 'dart:convert';
 import 'dart:html';
 import 'dart:async';
 
-
+const levelconcept = 'Levelkonzept.json';
+var test;
 
 class Controller {
-
+  
   Field field;
   Game game;
   Timer timerStart;
   Timer timerNewFruit;
   Duration timeIntevall = new Duration(milliseconds: 50);
   Duration throwIntevall = new Duration(milliseconds: 5000);
+
 
   Controller(int highscore) {
     field = new Field(this);
@@ -22,6 +26,7 @@ class Controller {
       game = new Game(this, field.width, field.height, highscore);
       figureControll();
       resetButton();
+      setLevel();
       newGame();
     }
   }
@@ -137,7 +142,35 @@ class Controller {
     return true;
   }
 
+  void setLevel() {
+      List<Level> levels = new List();
+      var request;
+      try {
+          request = HttpRequest.getString(levelconcept).then((json) {
+          final parameter = JSON.decode(json);
+          test = "fdsfs";
+          int levelAmount = int.parse(parameter["LevelAmount"]);
+          for (int i = 1; i <= levelAmount; i++) {
+            String level = "Level" + i.toString();
+            levels.add(new Level(
+                int.parse(parameter[level]['Number']),
+                int.parse(parameter[level]['RequiredScore']),
+                int.parse(parameter[level]['FruitsAmount']),
+                int.parse(parameter[level]['FruitRange']),
+                int.parse(parameter[level]['FruitMovement'])));
+          }
+        });
+      } catch (error, stacktrace) {
+        print ("SnakeGameController() caused following error: '$error'");
+        print ("$stacktrace");
+      }
+      print(request.toString());
+      game.setLevel(levels);
+  }
 
 
 }
+
+
+
 

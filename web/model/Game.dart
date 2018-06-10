@@ -9,7 +9,7 @@ import 'dart:html';
 
 class Game {
 
-  Level level = new Level();
+  List<Level> allLevels = new List();
   List<Fruit> fruitsList = new List<Fruit>();
   int fieldWidth;
   int fieldHeight;
@@ -17,6 +17,7 @@ class Game {
   Controller controller;
   Figure figure;
   int score = 0;
+  Level actualLevel;
   int highscore;
   int attempts = 3;
   int fruits = 0;
@@ -61,59 +62,19 @@ class Game {
   }
 
   void checkFruits() {
-    if (fruits < level.maxFruits) {
-      int type = level.possibleFruits == 1 ? 1 :  new Random().nextInt(level.possibleFruits)+1;
-      int movement = level.possibleMovments == 0 ?  0 : new Random().nextInt(level.possibleFruits);
+    if (fruits < actualLevel.maxFruits) {
+      int type = actualLevel.possibleFruits == 1 ? 1 :  new Random().nextInt(actualLevel.possibleFruits)+1;
+      int movement = actualLevel.possibleMovments == 0 ?  0 : new Random().nextInt(actualLevel.possibleFruits);
       newFruit(fruitFactory.newFruit(type, movement));
     }
   }
 
   void checkLevel() {
-    if (score > 3 && score < 6) {
-      level.level = 2;
-      level.maxFruits = 3;
-      level.possibleFruits = 2;
-      level.possibleMovments = 0;
-    }
-
-    if (score > 6 && score < 9) {
-      level.level = 3;
-      level.maxFruits = 3;
-      level.possibleFruits = 3;
-      level.possibleMovments = 0;
-    }
-
-    if (score > 9 && score < 12) {
-      level.level = 4;
-      level.maxFruits = 3;
-      level.possibleFruits = 3;
-      level.possibleMovments = 0;
-    }
-
-    if (score > 12 && score < 15) {
-      level.level = 5;
-      level.maxFruits = 3;
-      level.possibleFruits = 3;
-      level.possibleMovments = 0;
-    }
-
-    if (score > 15 && score < 18) {
-      level.level = 6;
-      level.maxFruits = 4;
-      level.possibleFruits = 3;
-      level.possibleMovments = 0;
-    }
-
-    if (score > 18 && score < 21) {
-      level.level = 7;
-      level.maxFruits = 5;
-      level.possibleFruits = 3;
-      level.possibleMovments = 0;
-    }
-
-    if (score > 15 && score % 10 == 0) {
-      level.level++;
-      level.maxFruits++;
+    for (int i = 0 ; i < allLevels.length ; i++) {
+      if (allLevels[i].requiredScore >= score) {
+        actualLevel = allLevels[i];
+        break;
+      }
     }
 
   }
@@ -131,12 +92,16 @@ class Game {
   }
 
   void reset() {
-    level.reset();
+    actualLevel.reset();
     fruits = 0;
     score = 0;
     attempts = 3;
     figure.x = 0.0;
     fruitsList = new List<Fruit>();
+  }
+
+  void setLevel(List<Level> levels) {
+    this.allLevels = levels;
   }
 
 

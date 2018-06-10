@@ -1,21 +1,22 @@
 {
+  "LevelAmount": "3",
   "Level1": {
     "Number": "1",
-    "requiredScore": "0",
+    "RequiredScore": "0",
     "FruitsAmount": "3",
     "FruitRange": "1",
     "FruitMovement": "0"
   },
   "Level2": {
     "Number": "2",
-    "requiredScore": "4",
+    "RequiredScore": "4",
     "FruitsAmount": "3",
     "FruitRange": "2",
     "FruitMovement": "0"
   },
   "Level3": {
     "Number": "3",
-    "requiredScore": "11",
+    "RequiredScore": "11",
     "FruitsAmount": "4",
     "FruitRange": "3",
     "FruitMovement": "0"
