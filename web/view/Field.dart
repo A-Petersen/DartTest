@@ -17,6 +17,10 @@ class Field {
   final leftSite = querySelector("#leftSite");
   final rightSite = querySelector("#rightSite");
 
+  final startScreen = querySelector("#startScreen");
+  final startButtonStartScreen = querySelector("#startButtonStartScreen");
+  final highscoreStartScreen = querySelector("#highscoreStartScreen");
+
   final orientationInfo = querySelector("#orientationInfo");
   final startButton = querySelector("#startButton");
 
@@ -158,7 +162,7 @@ class Field {
 
   void showOrientationInfo() {
     orientationInfo.style.visibility = "visible";
-    orientationInfo.style.zIndex = "1000";
+    orientationInfo.style.zIndex = "2";
   }
 
   void hideOrientationInfo() {
@@ -166,9 +170,18 @@ class Field {
     orientationInfo.style.zIndex = "-2";
   }
 
-  void init() {
+  void initField() {
     startButton.text = "Fortfahren";
   }
+
+  void initStartScreen() {
+    highscoreStartScreen.text = "Highscore: " + controller.highscore.toString();
+  }
+
+  void removeStartScreen() {
+    startScreen.remove();
+  }
+
 
 
 }

@@ -38,38 +38,60 @@ class Game {
 
       switch(ufo.getClassName()) {
         case ('Fruit'):
-          print("I'm a Fruit!!!");
+          if (ufo.moving) {
+            ufo.move();
+            controller.field.updateUFOs(ufo);
+            if (ufo.ground >= fieldHeight-5) { //-5 weil der Ground der Frucht nicht == der Grund des Feldes.
+              ufo.moving = false;
+              if (--attempts <= 0) {
+                if (score > highscore) {
+                  highscore = score;
+                }
+                gameover = true;
+                return;
+              }
+            }
+            if (ufo.y > fieldHeight - (figure.b * 0.75) && figure.onDrum(ufo)) {
+              ufo.goingUp = true;
+            }
+
+            if (ufo.x >= (fieldWidth-(fieldWidth*0.13)) && ufo.y >= (fieldHeight-(fieldHeight*0.13))) {
+              ufo.moving = false;
+              score++;
+            }
+          } else {
+            removeUFO(ufoList[i--]);
+          }
           break;
         case ('Bomb'):
-          print("I'm a Bomb!!!");
+          if (ufo.moving) {
+            ufo.move();
+            controller.field.updateUFOs(ufo);
+            if (ufo.ground >= fieldHeight-5) { //-5 weil der Ground der Frucht nicht == der Grund des Feldes.
+              ufo.moving = false;
+              if (--attempts <= 0) {
+                if (score > highscore) {
+                  highscore = score;
+                }
+                gameover = true;
+                return;
+              }
+            }
+            if (ufo.y > fieldHeight - (figure.b * 0.75) && figure.onDrum(ufo)) {
+              ufo.goingUp = true;
+            }
+
+            if (ufo.x >= (fieldWidth-(fieldWidth*0.13)) && ufo.y >= (fieldHeight-(fieldHeight*0.13))) {
+              ufo.moving = false;
+              score++;
+            }
+          } else {
+            removeUFO(ufoList[i--]);
+          }
           break;
       }
 
-      if (ufo.moving) {
-        ufo.move();
-        controller.field.updateUFOs(ufo);
-        if (ufo.ground >= fieldHeight-5) { //-5 weil der Ground der Frucht nicht == der Grund des Feldes.
-          ufo.moving = false;
-          print(attempts);
-          if (--attempts <= 0) {
-            if (score > highscore) {
-              highscore = score;
-            }
-            gameover = true;
-            return;
-          }
-        }
-        if (ufo.y > fieldHeight - (figure.b * 0.75) && figure.onDrum(ufo)) {
-          ufo.goingUp = true;
-        }
 
-        if (ufo.x >= (fieldWidth-(fieldWidth*0.13)) && ufo.y >= (fieldHeight-(fieldHeight*0.13))) {
-          ufo.moving = false;
-          score++;
-        }
-      } else {
-        removeUFO(ufoList[i--]);
-      }
     }
   }
 
@@ -113,6 +135,7 @@ class Game {
 
   void reset() {
     actualLevel.reset();
+    gameover = false;
     fruits = 0;
     bombs = 0;
     ufos = fruits + bombs;

@@ -24,15 +24,16 @@ class Controller {
   int highscore;
 
   Controller(this.highscore) {
-    init();
+    field = new Field(this);
+    startScreenButton();
+    field.initStartScreen();
   }
 
   void init() {
-    field = new Field(this);
     startButton();
     if (checkForOrientation()) {
       initSucces = true;
-      field.init();
+      field.initField();
       game = new Game(this, field.width, field.height, highscore);
       figureControll();
       resetButton();
@@ -59,8 +60,6 @@ class Controller {
    * Die Fruit wird gestartet, bzw. geworfen.
    */
   void start() {
-    print(game.score);
-    print(game.fruits);
     checkForOrientation();
     if (running) {
     game.checkUFOState();
@@ -172,7 +171,6 @@ class Controller {
       try {
           request = HttpRequest.getString(levelconcept).then((json) {
           final parameter = JSON.decode(json);
-          test = "fdsfs";
           int levelAmount = int.parse(parameter["LevelAmount"]);
           for (int i = 1; i <= levelAmount; i++) {
             String level = "Level" + i.toString();
@@ -190,7 +188,6 @@ class Controller {
         print ("SnakeGameController() caused following error: '$error'");
         print ("$stacktrace");
       }
-      print(levels);
 //      game.setLevel(levels);
   }
 
@@ -201,6 +198,13 @@ class Controller {
       if (!initSucces) {
         init();
       }
+    });
+  }
+
+  void startScreenButton() {
+    field.startButtonStartScreen.onClick.listen((MouseEvent ev) {
+      field.removeStartScreen();
+      init();
     });
   }
 
