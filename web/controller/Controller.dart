@@ -44,10 +44,16 @@ class Controller {
    * Die Fruit wird gestartet, bzw. geworfen.
    */
   void start() {
+
     game.checkFruitState();
     game.figure.move();
     field.updateFigure(game.figure);
 
+    if (game.gameover) {
+      gameover();
+      setHighscore(game.highscore);
+    }
+    field.setScore(game.score);
   }
 
   /**
