@@ -21,8 +21,10 @@ class Game {
   int attempts = 3;
   int fruits = 0;
 
+  bool gameover = false;
+
   Game(this.controller, this.fieldWidth, this.fieldHeight, this.highscore) {
-    this.figure = new Figure(0.0, fieldHeight.toDouble(), fieldWidth * 0.156, fieldHeight * 0.278, fieldWidth, fieldHeight);
+    this.figure = new Figure(0.0, fieldHeight.toDouble(), fieldWidth * 0.156, fieldHeight * 0.278, fieldWidth, fieldHeight, 10.0);
     fruitFactory = new FruitFactory(fieldWidth, fieldHeight);
   }
 
@@ -40,9 +42,10 @@ class Game {
           if (--attempts <= 0) {
             if (score > highscore) {
               highscore = score;
-              controller.setHighscore(highscore);
+//              controller.setHighscore(highscore);
             }
-              controller.gameover();
+//              controller.gameover();
+              gameover = true;
               return;
           }
         }
@@ -52,7 +55,8 @@ class Game {
 
         if (fruitsList[i].x >= (fieldWidth-(fieldWidth*0.13)) && fruitsList[i].y >= (fieldHeight-(fieldHeight*0.13))) {
           fruitsList[i].moving = false;
-          controller.field.setScore(++score);
+//          controller.field.setScore(++score);
+          score++;
         }
       } else {
         removeFruit(fruitsList[i--]);
