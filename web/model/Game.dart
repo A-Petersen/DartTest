@@ -8,9 +8,6 @@ import 'Level.dart';
 import 'dart:math';
 
 class Game {
-
-
-=======
   
 //  List<Fruit> fruitsList = new List<Fruit>();
 //  List<Bomb> bombList = new List<Bomb>();
@@ -157,16 +154,16 @@ class Game {
 
   void checkUFOs() {
     // TODO if schleife für bomben etc implementieren ?
-    if (Level == null) return;
-    if (fruits < level.maxFruits) {
-      int type = level.possibleFruits == 1 ? 1 :  new Random().nextInt(level.possibleFruits)+1;
-      int movement = level.possibleMovments == 0 ?  0 : new Random().nextInt(level.possibleFruits);
+    if (actualLevel == null) return;
+    if (fruits < actualLevel.maxFruits) {
+      int type = actualLevel.possibleFruits == 1 ? 1 :  new Random().nextInt(actualLevel.possibleFruits)+1;
+      int movement = actualLevel.possibleMovments == 0 ?  0 : new Random().nextInt(actualLevel.possibleFruits);
       newUFO(ufoFactory.newFruit(type, movement));
     }
 
-    if (bombs < level.maxBombs) {
-      int type = level.possibleBombs == 1 ? 1 :  new Random().nextInt(level.possibleBombs)+1;
-      int movement = level.possibleMovments == 0 ?  0 : new Random().nextInt(level.possibleBombs);
+    if (bombs < actualLevel.maxBombs) {
+      int type = actualLevel.possibleBombs == 1 ? 1 :  new Random().nextInt(actualLevel.possibleBombs)+1;
+      int movement = actualLevel.possibleMovments == 0 ?  0 : new Random().nextInt(actualLevel.possibleBombs);
       newUFO(ufoFactory.newBomb(type, movement));
     }
   }

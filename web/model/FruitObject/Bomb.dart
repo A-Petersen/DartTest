@@ -51,6 +51,7 @@ class Bomb extends AbstractUFO {
     if (this.left < 0) this.x = this.radius;
     if (this.right > this.fieldWidth - 1) this.x = this.fieldWidth - 1 - this.radius;
   }
+
   @override
   String getClassName() {
     return 'Bomb';
