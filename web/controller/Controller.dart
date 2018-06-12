@@ -43,7 +43,6 @@ class Controller {
     checkUFOs();
   }
 
-
   void checkUFOs() {
     checkForOrientation();
     if (running) {
@@ -51,7 +50,6 @@ class Controller {
       game.checkLevel();
     }
   }
-
 
   /**
    * Die Fruit wird gestartet, bzw. geworfen.

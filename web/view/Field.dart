@@ -120,7 +120,6 @@ class Field {
         ufoDiv.style.zIndex = '1';
         break;
       }
-
     }
     fieldQuery.children.add(ufoDiv);
     ufos[ufo] = ufoDiv;
