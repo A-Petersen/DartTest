@@ -62,7 +62,9 @@ class Game {
   }
 
   void checkFruits() {
-    if (fruits < actualLevel.maxFruits) {
+    if (actualLevel == null) return;
+    if (fruits <
+        actualLevel.maxFruits) {
       int type = actualLevel.possibleFruits == 1 ? 1 :  new Random().nextInt(actualLevel.possibleFruits)+1;
       int movement = actualLevel.possibleMovments == 0 ?  0 : new Random().nextInt(actualLevel.possibleFruits);
       newFruit(fruitFactory.newFruit(type, movement));

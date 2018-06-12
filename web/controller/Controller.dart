@@ -34,14 +34,13 @@ class Controller {
   void newGame() {
     timerStart = new Timer.periodic(timeIntevall, (Timer t) => start());
     timerNewFruit = new Timer.periodic(throwIntevall, (Timer t) => checkFruits());
-//    field.createTreesAndBasket();
     checkFruits();
   }
 
 
   void checkFruits() {
-    game.checkFruits();
     game.checkLevel();
+    game.checkFruits();
   }
 
 
@@ -159,13 +158,15 @@ class Controller {
                 int.parse(parameter[level]['FruitRange']),
                 int.parse(parameter[level]['FruitMovement'])));
           }
+          print(levels);
+          game.setLevel(levels);
         });
       } catch (error, stacktrace) {
         print ("SnakeGameController() caused following error: '$error'");
         print ("$stacktrace");
       }
-      print(request.toString());
-      game.setLevel(levels);
+      print(levels);
+//      game.setLevel(levels);
   }
 
 
