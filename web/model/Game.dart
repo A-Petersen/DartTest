@@ -107,6 +107,17 @@ class Game {
     AbstractUFO ufo;
     for (int i = 0 ; i < ufos ; i++) {
       ufo = ufoList[i];
+
+//      print(ufo.getClassName());
+      switch(ufo.getClassName()) {
+        case ('Fruit'):
+          print("I'm a Fruit!!!");
+          break;
+        case ('Bomb'):
+          print("I'm a Bomb!!!");
+          break;
+      }
+
       if (ufo.moving) {
         ufo.move();
         controller.field.updateUFOs(ufo);
@@ -150,11 +161,11 @@ class Game {
       newUFO(ufoFactory.newFruit(type, movement));
     }
 
-//    if (bombs < level.maxBombs) {
-//      int type = level.possibleBombs == 1 ? 1 :  new Random().nextInt(level.possibleBombs)+1;
-//      int movement = level.possibleMovments == 0 ?  0 : new Random().nextInt(level.possibleBombs);
-//      newBomb(ufoFactory.newBomb(type, movement));
-//    }
+    if (bombs < level.maxBombs) {
+      int type = level.possibleBombs == 1 ? 1 :  new Random().nextInt(level.possibleBombs)+1;
+      int movement = level.possibleMovments == 0 ?  0 : new Random().nextInt(level.possibleBombs);
+      newUFO(ufoFactory.newBomb(type, movement));
+    }
   }
 
   void checkLevel() {
@@ -246,6 +257,7 @@ class Game {
   void reset() {
     level.reset();
     fruits = 0;
+    bombs = 0;
     ufos = fruits + bombs;
     score = 0;
     attempts = 3;

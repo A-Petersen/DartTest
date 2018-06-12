@@ -15,6 +15,8 @@ abstract class AbstractUFO {
     id++;
   }
 
+  String getClassName ();
+
   int type;
 
   /**

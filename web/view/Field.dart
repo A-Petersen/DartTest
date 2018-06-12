@@ -120,6 +120,12 @@ class Field {
         ufoDiv.style.zIndex = '1';
         break;
       }
+      case 4 :  {
+        ufoDiv.style.position = 'absolute';
+        ufoDiv.style.backgroundImage = 'url("resources/bomb.png")';
+        ufoDiv.style.zIndex = '1';
+        break;
+      }
     }
     fieldQuery.children.add(ufoDiv);
     ufos[ufo] = ufoDiv;

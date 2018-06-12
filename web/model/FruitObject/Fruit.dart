@@ -67,4 +67,9 @@ class Fruit extends AbstractUFO{
     if (this.right > this.fieldWidth - 1) this.x = this.fieldWidth - 1 - this.radius;
   }
 
+  @override
+  String getClassName() {
+    return 'Fruit';
+  }
+
 }
