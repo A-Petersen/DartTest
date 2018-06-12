@@ -1,3 +1,4 @@
+import '../Figure.dart';
 import '../FruitMovement/MovementFactory.dart';
 import '../FruitMovement/MovementType.dart';
 import '../Vector.dart';
@@ -109,5 +110,17 @@ abstract class AbstractUFO {
    * Update
    */
   void update();
+
+  bool hitGround() {
+    return ground >= fieldHeight-5; //-5 weil der Ground der Frucht nicht == der Grund des Feldes.
+  }
+
+  bool onDrum(Figure f) {
+    return y > fieldHeight - (f.b * 0.75) && f.onDrum(this);
+  }
+
+  bool landedInBasket() {
+    return x >= (fieldWidth-(fieldWidth*0.13)) && y >= (fieldHeight-(fieldHeight*0.13));
+  }
 
 }

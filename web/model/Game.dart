@@ -41,21 +41,18 @@ class Game {
           if (ufo.moving) {
             ufo.move();
             controller.field.updateUFOs(ufo);
-            if (ufo.ground >= fieldHeight-5) { //-5 weil der Ground der Frucht nicht == der Grund des Feldes.
+            if (ufo.hitGround()) { //Ufo auf dem Boden gefallen?
               ufo.moving = false;
               if (--attempts <= 0) {
-                if (score > highscore) {
-                  highscore = score;
-                }
+                checkHighscore();
                 gameover = true;
                 return;
               }
             }
-            if (ufo.y > fieldHeight - (figure.b * 0.75) && figure.onDrum(ufo)) {
+            if (ufo.onDrum(figure)) { //Ufo auf der Trommel?
               ufo.goingUp = true;
             }
-
-            if (ufo.x >= (fieldWidth-(fieldWidth*0.13)) && ufo.y >= (fieldHeight-(fieldHeight*0.13))) {
+            if (ufo.landedInBasket()) { //Ufo im Korb?
               ufo.moving = false;
               score++;
             }
@@ -67,23 +64,16 @@ class Game {
           if (ufo.moving) {
             ufo.move();
             controller.field.updateUFOs(ufo);
-            if (ufo.ground >= fieldHeight-5) { //-5 weil der Ground der Frucht nicht == der Grund des Feldes.
+            if (ufo.hitGround()) { //Ufo auf dem Boden gefallen?
+              ufo.moving = false;
+            }
+            if (ufo.onDrum(figure)) { //Ufo auf der Trommel?
               ufo.moving = false;
               if (--attempts <= 0) {
-                if (score > highscore) {
-                  highscore = score;
-                }
+                checkHighscore();
                 gameover = true;
                 return;
               }
-            }
-            if (ufo.y > fieldHeight - (figure.b * 0.75) && figure.onDrum(ufo)) {
-              ufo.goingUp = true;
-            }
-
-            if (ufo.x >= (fieldWidth-(fieldWidth*0.13)) && ufo.y >= (fieldHeight-(fieldHeight*0.13))) {
-              ufo.moving = false;
-              score++;
             }
           } else {
             removeUFO(ufoList[i--]);
@@ -147,6 +137,12 @@ class Game {
 
   void setLevel(List<Level> levels) {
     this.allLevels = levels;
+  }
+
+  void checkHighscore() {
+    if (score > highscore) {
+      highscore = score;
+    }
   }
 
 }
