@@ -9,23 +9,29 @@ html, body {
     overflow: hidden;
 }
 
-.fruit1 {
-    position: absolute;
-    background-image: url("resources/bananen.png");
-    z-index: 1;
-  }
+/*.fruit1 {*/
+    /*position: absolute;*/
+    /*background-image: url("resources/bananen.png");*/
+    /*z-index: 1;*/
+  /*}*/
 
-.fruit2 {
-    position: absolute;
-    background-image: url("resources/birne.png");
-    z-index: 1;
-}
+/*.fruit2 {*/
+    /*position: absolute;*/
+    /*background-image: url("resources/birne.png");*/
+    /*z-index: 1;*/
+/*}*/
 
-.fruit3 {
-  position: absolute;
-  background-image: url("resources/apfel.png");
-    z-index: 1;
-}
+/*.fruit3 {*/
+  /*position: absolute;*/
+  /*background-image: url("resources/apfel.png");*/
+    /*z-index: 1;*/
+/*}*/
+
+/*.bomb1 {*/
+    /*position: absolute;*/
+    /*background-image: url("resources/bomb.png");*/
+    /*z-index: 1;*/
+/*}*/
 
 
 #leftSite {
@@ -44,12 +50,20 @@ html, body {
     position: absolute;
 }
 
+#startButton {
+    position: relative;
+}
+
 #orientationInfo {
+    position: absolute;
     width: 100%;
     height: 100%;
-    background: transparent;
+    background-color: white;
     text-align: center;
+    visibility: hidden;
 }
+
+
 
 #basket {
     width: 12.5%;

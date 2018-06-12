@@ -1,7 +1,9 @@
 import '../controller/Controller.dart';
+import '../model/FruitObject/AbstractUFO.dart';
+import '../model/FruitObject/Bomb.dart';
 import 'dart:html';
 import 'dart:math';
-import '../model/Fruit.dart';
+import '../model/FruitObject/Fruit.dart';
 import '../model/Figure.dart';
 
 class Field {
@@ -16,6 +18,7 @@ class Field {
   final rightSite = querySelector("#rightSite");
 
   final orientationInfo = querySelector("#orientationInfo");
+  final startButton = querySelector("#startButton");
 
   final gameoverScreen = querySelector("#gameoverScreen");
   final endscore = querySelector("#endscore");
@@ -24,7 +27,7 @@ class Field {
 
   final fieldQuery = querySelector('#field');
 
-  Map<Fruit, DivElement> fruits = new Map();
+  Map<AbstractUFO, DivElement> ufos = new Map();
 
   /**
    * Breite der gesamt View
@@ -42,25 +45,25 @@ class Field {
 
   double get center_y => this.height / 2;
 
+  int state = 0;
+
   Field(this.controller){
   }
 
-  void updateFruit(Fruit f) {
+  void updateUFOs(AbstractUFO ufo) {
+    ufo.update();
 
-    f.update();
-
-    var fruit = querySelector("#" + fruits[f].id);
+    var ufoStyle = querySelector("#" + ufos[ufo].id);
     final round = "${this.size}px";
 
-    fruit.style.width="${f.width}px";
-    fruit.style.height="${f.width}px";
-    fruit.style.borderRadius=round;
-    fruit.style.top="${f.heaven}px";
-    fruit.style.left="${f.left}px";
-    fruit.style.backgroundSize="${f.width}px";
+    ufoStyle.style.width="${ufo.width}px";
+    ufoStyle.style.height="${ufo.width}px";
+    ufoStyle.style.borderRadius=round;
+    ufoStyle.style.top="${ufo.heaven}px";
+    ufoStyle.style.left="${ufo.left}px";
+    ufoStyle.style.backgroundSize="${ufo.width}px";
 
-    fruit.style.transform = "rotate(${(f.x*2 + f.y)%360}deg)";
-
+    ufoStyle.style.transform = "rotate(${(ufo.x*2 + ufo.y)%360}deg)";
   }
 
   void updateFigure(Figure f) {
@@ -68,72 +71,103 @@ class Field {
     this.figure.style.left="${f.left}px";
     this.figure.style.top="${height - f.b}px";
     this.figure.style.backgroundSize="${f.a}px ${f.b}px";
+
+    if (controller.game.figure.moving == 2) { this.figure.style.transform="scaleX(-1)"; }
+    else {
+      this.figure.style.transform="scaleX(1)";
+    }
+    if (controller.game.figure.moving != 0) {
+      switch (state) {
+        case 10:
+          this.figure.style.backgroundImage="url('resources/frank_mid.png')";
+          break;
+        case 20:
+          this.figure.style.backgroundImage="url('resources/frank_late.png')";
+          break;
+        case 30:
+          this.figure.style.backgroundImage="url('resources/frank_mid.png')";
+          break;
+        case 40:
+          this.figure.style.backgroundImage="url('resources/frank.png')";
+          state = -1;
+          break;
+      }
+      state++;
+    } else {
+      this.figure.style.backgroundImage="url('resources/frank.png')";
+    }
   }
 
-  void createNewFruit(Fruit f) {
-    var fruitDiv = new DivElement();
-    fruitDiv.id = 'fruit' + Fruit.id.toString();
-    switch (f.type) {
+  void createNewUFO(AbstractUFO ufo) {
+    var ufoDiv = new DivElement();
+    ufoDiv.id = 'ufo' + AbstractUFO.getID().toString();
+    switch (ufo.type) {
       case 1 :  {
-        fruitDiv.style.position = 'absolute';
-        fruitDiv.style.backgroundImage = 'url("resources/bananen.png")';
-        fruitDiv.style.zIndex = '1';
+        ufoDiv.style.position = 'absolute';
+        ufoDiv.style.backgroundImage = 'url("resources/bananen.png")';
+        ufoDiv.style.zIndex = '1';
         break;
       }
       case 2 :  {
-        fruitDiv.style.position = 'absolute';
-        fruitDiv.style.backgroundImage = 'url("resources/birne.png")';
-        fruitDiv.style.zIndex = '1';;
+        ufoDiv.style.position = 'absolute';
+        ufoDiv.style.backgroundImage = 'url("resources/birne.png")';
+        ufoDiv.style.zIndex = '1';;
         break;
       }
       case 3 :  {
-        fruitDiv.style.position = 'absolute';
-        fruitDiv.style.backgroundImage = 'url("resources/apfel.png")';
-        fruitDiv.style.zIndex = '1';
+        ufoDiv.style.position = 'absolute';
+        ufoDiv.style.backgroundImage = 'url("resources/apfel.png")';
+        ufoDiv.style.zIndex = '1';
         break;
       }
-
+      case 4 :  {
+        ufoDiv.style.position = 'absolute';
+        ufoDiv.style.backgroundImage = 'url("resources/bomb.png")';
+        ufoDiv.style.zIndex = '1';
+        break;
+      }
     }
-    fieldQuery.children.add(fruitDiv);
-    fruits[f] = fruitDiv;
+    fieldQuery.children.add(ufoDiv);
+    ufos[ufo] = ufoDiv;
   }
 
-  void removeFruit(Fruit f) {
-    fruits[f].remove();
-    fruits.remove(f);
+  void removeUFO(AbstractUFO ufo) {
+    ufos[ufo].remove();
+    ufos.remove(ufo);
   }
 
   void setScore(int s) {
     score.text = s.toString();
   }
-  
-  bool inKorb(Fruit f) {
-    //if (f.x > korb)
-      return false;
-  }
 
   void gameover() {
     gameoverScreen.style.visibility = "visible";
     gameoverScreen.style.zIndex = "2";
-    fruits.forEach((f, d) => d.remove());
+    ufos.forEach((u, d) => d.remove());
     endscore.text = "Score: " + score.text;
     highscore.text = "Highscore: " + controller.getHighscore().toString();
   }
 
   void reset() {
-    fruits = new Map();
+    startButton.text = "Start";
+    ufos = new Map();
     gameoverScreen.style.zIndex = "-2";
     gameoverScreen.style.visibility = "hidden";
     score.text = "0";
   }
 
   void showOrientationInfo() {
-    orientationInfo.text = "Please use Landscape and refresh";
     orientationInfo.style.visibility = "visible";
+    orientationInfo.style.zIndex = "1000";
   }
 
   void hideOrientationInfo() {
-    orientationInfo.remove();
+    orientationInfo.style.visibility = "hidden";
+    orientationInfo.style.zIndex = "-2";
+  }
+
+  void init() {
+    startButton.text = "Fortfahren";
   }
 
 

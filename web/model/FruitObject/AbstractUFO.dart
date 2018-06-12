@@ -1,12 +1,21 @@
-import '../view/Field.dart';
-import 'FruitMovement/MovementFactory.dart';
-import 'FruitMovement/MovementType.dart';
-import 'Vector.dart';
+import '../FruitMovement/MovementFactory.dart';
+import '../FruitMovement/MovementType.dart';
+import '../Vector.dart';
 
 
-class Fruit {
+abstract class AbstractUFO {
 
   static int id = 0;
+
+  static int getID() {
+    return id;
+  }
+
+  void incrementID() {
+    id++;
+  }
+
+  String getClassName ();
 
   int type;
 
@@ -19,8 +28,6 @@ class Fruit {
    * Y Position
    */
   double y;
-
-  double radius;
 
   /**
    * Breite des Objekt-Feldes
@@ -42,31 +49,16 @@ class Fruit {
    */
   double destY = 0.0;
 
+  double radius;
   Vector vector;
-
   bool moving = true;
-
   bool goingUp = false;
-
   double gravity;
-
   double speed;
-
   int fieldWidth;
-
   int fieldHeight;
-
   MovementType movementType = null;
-
   MovementFactory movementFactory = new MovementFactory();
-
-  /**
-   * Konstruktor
-   */
-  Fruit(this.x, this.y, this.radius, this.type, this.fieldWidth, this.fieldHeight, [movementType = null, this.gravity = 10.0, this.speed = 1.0]) {
-    id += 1;
-    this.movementType = movementFactory.newMovement(movementType, this);
-  }
 
   /**
    * Mitte des Objekts auf Y-Achse vom Himmel
@@ -101,23 +93,9 @@ class Fruit {
   /**
    * Methode zum setzen des Ziels der kommenden Bewegung
    */
-  void move() {
-    if (movementType == null) {
-      moveGravity();
-      this.destX = speed;
-    } else {
-      moveGravity();
-      vector = movementType.move(this.speed);
-      this.destX = vector.x;
-      this.destY += vector.y;
-    }
-  }
+  void move();
 
-  void moveGravity() {
-    double gravityFactor = (y <= 1 ? 0.95 : (y / 320)); // 0.x
-    double newY = gravityFactor * (goingUp ? (-1) * gravity : gravity);
-    this.destY = newY;
-  }
+  void moveGravity();
 
   /**
    * Position des Objektes setzten.
@@ -130,17 +108,6 @@ class Fruit {
   /**
    * Update
    */
-  void update() {
-    this.x += destX;
-    this.y += destY;
-
-    if (this.goingUp && (this.y - this.radius <= 11) ) this.goingUp = false;
-
-    if (this.heaven < 0) this.y = this.radius;
-    if (this.ground > this.fieldHeight - 1) this.y = this.fieldHeight - 1 - this.radius;
-
-    if (this.left < 0) this.x = this.radius;
-    if (this.right > this.fieldWidth - 1) this.x = this.fieldWidth - 1 - this.radius;
-  }
+  void update();
 
 }
