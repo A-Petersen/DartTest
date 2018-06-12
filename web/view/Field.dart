@@ -16,6 +16,7 @@ class Field {
   final rightSite = querySelector("#rightSite");
 
   final orientationInfo = querySelector("#orientationInfo");
+  final startButton = querySelector("#startButton");
 
   final gameoverScreen = querySelector("#gameoverScreen");
   final endscore = querySelector("#endscore");
@@ -121,6 +122,7 @@ class Field {
   }
 
   void reset() {
+    startButton.text = "Start";
     fruits = new Map();
     gameoverScreen.style.zIndex = "-2";
     gameoverScreen.style.visibility = "hidden";
@@ -128,12 +130,17 @@ class Field {
   }
 
   void showOrientationInfo() {
-    orientationInfo.text = "Please use Landscape and refresh";
     orientationInfo.style.visibility = "visible";
+    orientationInfo.style.zIndex = "1000";
   }
 
   void hideOrientationInfo() {
-    orientationInfo.remove();
+    orientationInfo.style.visibility = "hidden";
+    orientationInfo.style.zIndex = "-2";
+  }
+
+  void init() {
+    startButton.text = "Fortfahren";
   }
 
 

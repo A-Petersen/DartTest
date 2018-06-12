@@ -15,10 +15,20 @@ class Controller {
   Duration timeIntevall = new Duration(milliseconds: 50);
   Duration throwIntevall = new Duration(milliseconds: 5000);
 
-  Controller(int highscore) {
+  bool running = false; //Könnte man auch pause nennen
+  bool initSucces = false; //Ob das Spiel bereits initalsiert wurde (erfolgreich)
+  int highscore;
+
+  Controller(this.highscore) {
+    init();
+  }
+
+  void init() {
     field = new Field(this);
+    startButton();
     if (checkForOrientation()) {
-      field.orientationInfo.remove();
+      initSucces = true;
+      field.init();
       game = new Game(this, field.width, field.height, highscore);
       figureControll();
       resetButton();
@@ -29,14 +39,16 @@ class Controller {
   void newGame() {
     timerStart = new Timer.periodic(timeIntevall, (Timer t) => start());
     timerNewFruit = new Timer.periodic(throwIntevall, (Timer t) => checkFruits());
-//    field.createTreesAndBasket();
     checkFruits();
   }
 
 
   void checkFruits() {
-    game.checkFruits();
-    game.checkLevel();
+    checkForOrientation();
+    if (running) {
+      game.checkFruits();
+      game.checkLevel();
+    }
   }
 
 
@@ -44,10 +56,14 @@ class Controller {
    * Die Fruit wird gestartet, bzw. geworfen.
    */
   void start() {
-    game.checkFruitState();
-    game.figure.move();
-    field.updateFigure(game.figure);
-
+    print(game.score);
+    print(game.fruits);
+    checkForOrientation();
+    if (running) {
+      game.checkFruitState();
+      game.figure.move();
+      field.updateFigure(game.figure);
+    }
   }
 
   /**
@@ -110,6 +126,8 @@ class Controller {
   
   void resetButton(){
     field.resetButton.onClick.listen((MouseEvent ev) {
+      initSucces = false;
+      running = false;
       game.reset();
       field.reset();
       field.updateFigure(game.figure);
@@ -124,6 +142,7 @@ class Controller {
   }
 
   void setHighscore(int score) {
+    highscore = score;
     window.localStorage["score"] = score.toString();
   }
 
@@ -132,12 +151,23 @@ class Controller {
   bool checkForOrientation() {
     if(window.innerHeight > window.innerWidth){
       field.showOrientationInfo();
+      running = false;
       return false;
-    }
+      }
+      running = true;
     return true;
+
   }
 
-
+  void startButton() {
+    field.startButton.onClick.listen((MouseEvent ev) {
+      running  = true;
+      field.hideOrientationInfo();
+      if (!initSucces) {
+        init();
+      }
+    });
+  }
 
 }
 

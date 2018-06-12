@@ -44,12 +44,20 @@ html, body {
     position: absolute;
 }
 
+#startButton {
+    position: relative;
+}
+
 #orientationInfo {
+    position: absolute;
     width: 100%;
     height: 100%;
-    background: transparent;
+    background-color: white;
     text-align: center;
+    visibility: hidden;
 }
+
+
 
 #basket {
     width: 12.5%;
