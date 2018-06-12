@@ -16,10 +16,20 @@ class Controller {
   Duration timeIntevall = new Duration(milliseconds: 30);
   Duration throwIntevall = new Duration(milliseconds: 5000);
 
-  Controller(int highscore) {
+  bool running = false; //Könnte man auch pause nennen
+  bool initSucces = false; //Ob das Spiel bereits initalsiert wurde (erfolgreich)
+  int highscore;
+
+  Controller(this.highscore) {
+    init();
+  }
+
+  void init() {
     field = new Field(this);
+    startButton();
     if (checkForOrientation()) {
-      field.orientationInfo.remove();
+      initSucces = true;
+      field.init();
       game = new Game(this, field.width, field.height, highscore);
       figureControll();
       resetButton();
@@ -30,46 +40,32 @@ class Controller {
   void newGame() {
     timerStart = new Timer.periodic(timeIntevall, (Timer t) => start());
     timerNewUFO = new Timer.periodic(throwIntevall, (Timer t) => checkUFOs());
-//    timerNewUFO = new Timer.periodic(throwIntevall, (Timer t) => checkFruits());
-//    checkFruits();
-  checkUFOs();
+    checkUFOs();
   }
 
-
-//  void checkFruits() {
-//    game.checkUFOs();
-//    game.checkFruits();
-//    game.checkLevel();
-//  }
 
   void checkUFOs() {
-    game.checkUFOs();
-    game.checkLevel();
+    checkForOrientation();
+    if (running) {
+      game.checkUFOs();
+      game.checkLevel();
+    }
   }
+
 
   /**
    * Die Fruit wird gestartet, bzw. geworfen.
    */
   void start() {
-
-//    game.checkFruitState();
+    print(game.score);
+    print(game.fruits);
+    checkForOrientation();
+    if (running) {
     game.checkUFOState();
     game.figure.move();
     field.updateFigure(game.figure);
-
-    if (game.gameover) {
-      gameover();
-      setHighscore(game.highscore);
     }
-    field.setScore(game.score);
   }
-
-//  /**
-//   * Eine neue Fruit erstellen
-//   */
-//  void newFruitView(Fruit fruit) {
-//    field.createNewFruit(fruit);
-//  }
 
   /**
    * Eine neues UFO erstellen
@@ -77,13 +73,6 @@ class Controller {
   void newUFOView(AbstractUFO ufo) {
     field.createNewUFO(ufo);
   }
-
-//  /**
-//   * Eine Fruit entfernen
-//   */
-//  void removeFruitView(Fruit fruit) {
-//    field.removeFruit(fruit);
-//  }
 
   /**
    * Ein UFO entfernen
@@ -138,6 +127,8 @@ class Controller {
   
   void resetButton(){
     field.resetButton.onClick.listen((MouseEvent ev) {
+      initSucces = false;
+      running = false;
       game.reset();
       field.reset();
       field.updateFigure(game.figure);
@@ -152,6 +143,7 @@ class Controller {
   }
 
   void setHighscore(int score) {
+    highscore = score;
     window.localStorage["score"] = score.toString();
   }
 
@@ -160,12 +152,23 @@ class Controller {
   bool checkForOrientation() {
     if(window.innerHeight > window.innerWidth){
       field.showOrientationInfo();
+      running = false;
       return false;
     }
+    running = true;
     return true;
   }
 
 
+  void startButton() {
+    field.startButton.onClick.listen((MouseEvent ev) {
+      running  = true;
+      field.hideOrientationInfo();
+      if (!initSucces) {
+        init();
+      }
+    });
+  }
 
 }
 
