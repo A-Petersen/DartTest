@@ -3,9 +3,17 @@ import '../FruitMovement/MovementType.dart';
 import '../Vector.dart';
 
 
-abstract class AbstractFruit {
+abstract class AbstractUFO {
 
+  static int id = 0;
 
+  static int getID() {
+    return id;
+  }
+
+  void incrementID() {
+    id++;
+  }
 
   int type;
 

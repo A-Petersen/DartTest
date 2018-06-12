@@ -1,4 +1,5 @@
 import '../view/Field.dart';
+import 'FruitObject/AbstractUFO.dart';
 import 'FruitObject/Fruit.dart';
 
 class Figure {
@@ -74,7 +75,7 @@ class Figure {
    */
   int get hight => this.b.floor();
 
-  bool onDrum(Fruit f) {
+  bool onDrum(AbstractUFO f) {
     if (f.ground >= this.heaven && f.right > this.left + 20 && f.left < this.right) return true;
     return false;
   }

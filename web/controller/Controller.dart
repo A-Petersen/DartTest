@@ -1,3 +1,4 @@
+import '../model/FruitObject/AbstractUFO.dart';
 import '../model/FruitObject/Fruit.dart';
 import '../model/Game.dart';
 import '../view/Field.dart';
@@ -11,7 +12,7 @@ class Controller {
   Field field;
   Game game;
   Timer timerStart;
-  Timer timerNewFruit;
+  Timer timerNewUFO;
   Duration timeIntevall = new Duration(milliseconds: 30);
   Duration throwIntevall = new Duration(milliseconds: 5000);
 
@@ -28,24 +29,31 @@ class Controller {
 
   void newGame() {
     timerStart = new Timer.periodic(timeIntevall, (Timer t) => start());
-    timerNewFruit = new Timer.periodic(throwIntevall, (Timer t) => checkFruits());
-//    field.createTreesAndBasket();
-    checkFruits();
+    timerNewUFO = new Timer.periodic(throwIntevall, (Timer t) => checkUFOs());
+//    timerNewUFO = new Timer.periodic(throwIntevall, (Timer t) => checkFruits());
+//    checkFruits();
+  checkUFOs();
   }
 
 
-  void checkFruits() {
-    game.checkFruits();
+//  void checkFruits() {
+//    game.checkUFOs();
+//    game.checkFruits();
+//    game.checkLevel();
+//  }
+
+  void checkUFOs() {
+    game.checkUFOs();
     game.checkLevel();
   }
-
 
   /**
    * Die Fruit wird gestartet, bzw. geworfen.
    */
   void start() {
 
-    game.checkFruitState();
+//    game.checkFruitState();
+    game.checkUFOState();
     game.figure.move();
     field.updateFigure(game.figure);
 
@@ -56,18 +64,32 @@ class Controller {
     field.setScore(game.score);
   }
 
-  /**
-   * Eine neue Fruit erstellen
-   */
-  void newFruitView(Fruit fruit) {
-    field.createNewFruit(fruit);
-  }
+//  /**
+//   * Eine neue Fruit erstellen
+//   */
+//  void newFruitView(Fruit fruit) {
+//    field.createNewFruit(fruit);
+//  }
 
   /**
-   * Eine Fruit entfernen
+   * Eine neues UFO erstellen
    */
-  void removeFruitView(Fruit fruit) {
-    field.removeFruit(fruit);
+  void newUFOView(AbstractUFO ufo) {
+    field.createNewUFO(ufo);
+  }
+
+//  /**
+//   * Eine Fruit entfernen
+//   */
+//  void removeFruitView(Fruit fruit) {
+//    field.removeFruit(fruit);
+//  }
+
+  /**
+   * Ein UFO entfernen
+   */
+  void removeUFOView(AbstractUFO ufo) {
+    field.removeUFO(ufo);
   }
 
   /**
@@ -125,7 +147,7 @@ class Controller {
 
   void gameover() {
     timerStart.cancel();
-    timerNewFruit.cancel();
+    timerNewUFO.cancel();
     field.gameover();
   }
 

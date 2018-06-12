@@ -1,10 +1,10 @@
-import 'AbstractFruit.dart';
+import 'AbstractUFO.dart';
 
 
-class Fruit extends AbstractFruit{
+class Fruit extends AbstractUFO{
 
-  //TODO id sollte in abstract class stehen !?
-  static int id = 0;
+//  //TODO id sollte in abstract class stehen !?
+//  static int id;
 
   /**
    * Konstruktor
@@ -19,7 +19,7 @@ class Fruit extends AbstractFruit{
     this.gravity = gravity;
     this.speed = speed;
     this.movementType = movementFactory.newMovement(movementtype, this);
-    id++;
+    incrementID();
   }
 
   /**

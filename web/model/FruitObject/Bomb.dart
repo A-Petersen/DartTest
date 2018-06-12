@@ -1,9 +1,9 @@
-import 'AbstractFruit.dart';
+import 'AbstractUFO.dart';
 
-class Bomb extends AbstractFruit {
+class Bomb extends AbstractUFO {
 
-  //TODO id sollte in abstract class stehen !?
-  static int id = 0;
+//  //TODO id sollte in abstract class stehen !?
+//  static int id;
 
   Bomb(double x, double y, double radius, int type, int fieldWidth, int fieldHeight, [int movementtype = null, double gravity = 10.0, double speed = 1.0]) {
     this.x = x;
@@ -15,7 +15,7 @@ class Bomb extends AbstractFruit {
     this.gravity = gravity;
     this.speed = speed;
     this.movementType = movementFactory.newMovement(movementtype, this);
-    id++;
+    incrementID();
   }
 
   @override
