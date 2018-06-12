@@ -1,11 +1,9 @@
 import '../controller/Controller.dart';
-import '../view/Field.dart';
 import 'Figure.dart';
-import 'Fruit.dart';
-import 'FruitFactory.dart';
+import 'FruitObject/Fruit.dart';
+import 'FruitObject/FruitFactory.dart';
 import 'Level.dart';
 import 'dart:math';
-import 'dart:html';
 
 class Game {
 
@@ -42,9 +40,7 @@ class Game {
           if (--attempts <= 0) {
             if (score > highscore) {
               highscore = score;
-//              controller.setHighscore(highscore);
             }
-//              controller.gameover();
               gameover = true;
               return;
           }
@@ -55,7 +51,6 @@ class Game {
 
         if (fruitsList[i].x >= (fieldWidth-(fieldWidth*0.13)) && fruitsList[i].y >= (fieldHeight-(fieldHeight*0.13))) {
           fruitsList[i].moving = false;
-//          controller.field.setScore(++score);
           score++;
         }
       } else {

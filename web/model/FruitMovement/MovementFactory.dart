@@ -1,10 +1,10 @@
-import '../Fruit.dart';
+import '../FruitObject/AbstractFruit.dart';
 import 'MovementCircle.dart';
 import 'MovementType.dart';
 import 'MovementZigZag.dart';
 
 class MovementFactory {
-  MovementType newMovement(int type, Fruit fruit) {
+  MovementType newMovement(int type, AbstractFruit fruit) {
     switch (type) {
       case 0 : return null;
       case 1 : return new MovementZigZag(15, 3.0);

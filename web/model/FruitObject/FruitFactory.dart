@@ -1,6 +1,4 @@
-import '../view/Field.dart';
 import 'Fruit.dart';
-import 'dart:math';
 
 class FruitFactory {
 

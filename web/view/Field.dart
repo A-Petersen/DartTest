@@ -1,7 +1,7 @@
 import '../controller/Controller.dart';
 import 'dart:html';
 import 'dart:math';
-import '../model/Fruit.dart';
+import '../model/FruitObject/Fruit.dart';
 import '../model/Figure.dart';
 
 class Field {

@@ -1,4 +1,4 @@
-import '../model/Fruit.dart';
+import '../model/FruitObject/Fruit.dart';
 import '../model/Game.dart';
 import '../view/Field.dart';
 import 'dart:html';
