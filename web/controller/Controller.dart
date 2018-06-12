@@ -67,6 +67,11 @@ class Controller {
     game.figure.move();
     field.updateFigure(game.figure);
     }
+    if (game.gameover) {
+            gameover();
+            setHighscore(game.highscore);
+        }
+        field.setScore(game.score);
   }
 
   /**

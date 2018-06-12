@@ -8,9 +8,6 @@ import 'Level.dart';
 import 'dart:math';
 
 class Game {
-  
-//  List<Fruit> fruitsList = new List<Fruit>();
-//  List<Bomb> bombList = new List<Bomb>();
   List<AbstractUFO> ufoList = new List<AbstractUFO>();
   List<Level> allLevels = new List<Level>();
   int fieldWidth;
@@ -34,79 +31,11 @@ class Game {
     ufoFactory = new UFOFactory(fieldWidth, fieldHeight);
   }
 
-//  void movement(Fruit fruit) {
-//    fruit.move();
-//    controller.field.updateFruit(fruit);
-//  }
-
-//  void checkFruitState() {
-//    Fruit fruit;
-//    for (int i = 0 ; i < fruits ; i++) {
-//      fruit = fruitsList[i];
-//      if (fruit.moving) {
-//        fruit.move();
-//        controller.field.updateFruit(fruit);
-//        if (fruit.ground >= fieldHeight-5) { //-5 weil der Ground der Frucht nicht == der Grund des Feldes.
-//          fruit.moving = false;
-//          if (--attempts <= 0) {
-//            if (score > highscore) {
-//              highscore = score;
-//            }
-//              gameover = true;
-//              return;
-//          }
-//        }
-//        if (fruit.y > fieldHeight - (figure.b * 0.75) && figure.onDrum(fruit)) {
-//          fruit.goingUp = true;
-//        }
-//
-//        if (fruit.x >= (fieldWidth-(fieldWidth*0.13)) && fruit.y >= (fieldHeight-(fieldHeight*0.13))) {
-//          fruit.moving = false;
-//          score++;
-//        }
-//      } else {
-//        removeFruit(fruitsList[i--]);
-//      }
-//    }
-//  }
-
-//  void checkBombState() {
-//    Bomb bomb;
-//    for (int i = 0 ; i < fruits ; i++) {
-//      bomb = bombList[i];
-//      if (bomb.moving) {
-//        bomb.move();
-//        controller.field.updateBombs(bomb);
-//        if (bomb.ground >= fieldHeight-5) { //-5 weil der Ground der Frucht nicht == der Grund des Feldes.
-//          bomb.moving = false;
-//          if (--attempts <= 0) {
-//            if (score > highscore) {
-//              highscore = score;
-//            }
-//            gameover = true;
-//            return;
-//          }
-//        }
-//        if (bomb.y > fieldHeight - (figure.b * 0.75) && figure.onDrum(bomb)) {
-//          bomb.goingUp = true;
-//        }
-//
-//        if (bomb.x >= (fieldWidth-(fieldWidth*0.13)) && bomb.y >= (fieldHeight-(fieldHeight*0.13))) {
-//          bomb.moving = false;
-//          score++;
-//        }
-//      } else {
-//        removeBomb(bombList[i--]);
-//      }
-//    }
-//  }
-
   void checkUFOState() {
     AbstractUFO ufo;
     for (int i = 0 ; i < ufos ; i++) {
       ufo = ufoList[i];
 
-//      print(ufo.getClassName());
       switch(ufo.getClassName()) {
         case ('Fruit'):
           print("I'm a Fruit!!!");
@@ -121,6 +50,7 @@ class Game {
         controller.field.updateUFOs(ufo);
         if (ufo.ground >= fieldHeight-5) { //-5 weil der Ground der Frucht nicht == der Grund des Feldes.
           ufo.moving = false;
+          print(attempts);
           if (--attempts <= 0) {
             if (score > highscore) {
               highscore = score;
@@ -142,15 +72,6 @@ class Game {
       }
     }
   }
-
-
-//  void checkFruits() {
-//    if (fruits < level.maxFruits) {
-//      int type = level.possibleFruits == 1 ? 1 :  new Random().nextInt(level.possibleFruits)+1;
-//      int movement = level.possibleMovments == 0 ?  0 : new Random().nextInt(level.possibleFruits);
-//      newFruit(ufoFactory.newFruit(type, movement));
-//    }
-//  }
 
   void checkUFOs() {
     // TODO if schleife für bomben etc implementieren ?
@@ -178,35 +99,11 @@ class Game {
 
   }
 
-//  void newFruit(Fruit f) {
-//    fruitsList.add(f);
-//    fruits++;
-//    controller.newFruitView(f);
-//  }
-//
-//  void newBomb(Bomb b) {
-//    bombList.add(b);
-//    bombs++;
-////    controller.newBombView(b);
-//  }
-
   void newUFO(AbstractUFO ufo) {
     ufoList.add(ufo);
     ufos++;
     controller.newUFOView(ufo);
   }
-
-//  void removeFruit(Fruit f) {
-//    fruitsList.remove(f);
-//    fruits--;
-//    controller.removeFruitView(f);
-//  }
-//
-//  void removeBomb(Bomb b) {
-//    bombList.remove(b);
-//    bombs--;
-////    controller.removeBombView(b);
-//  }
 
   void removeUFO(AbstractUFO ufo) {
     ufoList.remove(ufo);
@@ -228,7 +125,5 @@ class Game {
   void setLevel(List<Level> levels) {
     this.allLevels = levels;
   }
-
-
 
 }
