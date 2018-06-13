@@ -109,8 +109,20 @@ html, body {
 }
 
 #score {
+    position: absolute;
     padding: 5%;
-    text-align: right;
+    top: 1%;
+    right: 1%;
+    color: goldenrod;
+    font-size: 200%;
+    font-weight: bolder;
+}
+
+#level {
+    position: absolute;
+    padding: 5%;
+    top: 1%;
+    left: 1%;
     color: goldenrod;
     font-size: 200%;
     font-weight: bolder;

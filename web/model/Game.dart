@@ -112,7 +112,6 @@ class Game {
 
   void checkUFOs(int time) {
     gametime+= time;
-    // TODO if schleife für bomben etc implementieren ?
     if (actualLevel == null) return;
     if (fruits < actualLevel.maxFruits) {
       int type = actualLevel.possibleFruits == 1 ? 1 :  new Random().nextInt(actualLevel.possibleFruits)+1;
@@ -121,24 +120,23 @@ class Game {
       fruits++;
     }
 
-    if (chance(10)) {
-      int type = actualLevel.possibleBombs == 1 ? 1 :  new Random().nextInt(actualLevel.possibleBombs)+1;
-      int movement = actualLevel.possibleMovments == 0 ?  0 : new Random().nextInt(actualLevel.possibleBombs);
-      newUFO(ufoFactory.newBomb(type, movement, figure.x));
+    if (chance(actualLevel.bombChance)) {
+      newUFO(ufoFactory.newBomb(1, 0, figure.x));
       bombs++;
     }
-    if (chance(100)) {
+    if (chance(actualLevel.smoothieChance)) {
       newUFO(ufoFactory.newSmoothie(1, 0));
     }
   }
 
-  void checkLevel() {
+  int checkLevel() {
     for (int i = 0 ; i < allLevels.length ; i++) {
       if (allLevels[i].requiredScore >= score) {
         actualLevel = allLevels[i];
         break;
       }
     }
+    return actualLevel.level;
 
   }
 

@@ -4,20 +4,26 @@
     "Number": "1",
     "RequiredScore": "0",
     "FruitsAmount": "3",
+    "BombChance": "5",
+    "SmoothieChance": "50",
     "FruitRange": "1",
     "FruitMovement": "0"
   },
   "Level2": {
     "Number": "2",
-    "RequiredScore": "4",
+    "RequiredScore": "10",
     "FruitsAmount": "3",
+    "BombChance": "10",
+    "SmoothieChance": "40",
     "FruitRange": "2",
     "FruitMovement": "0"
   },
   "Level3": {
     "Number": "3",
-    "RequiredScore": "11",
+    "RequiredScore": "20",
     "FruitsAmount": "4",
+    "BombChance": "40",
+    "SmoothieChance": "30",
     "FruitRange": "3",
     "FruitMovement": "0"
   }

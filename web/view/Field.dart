@@ -12,6 +12,7 @@ class Field {
 
   final figure = querySelector("#frank");
   final score = querySelector("#score");
+  final level = querySelector("#level");
   final korb = querySelector("#korb");
 
   final leftSite = querySelector("#leftSite");
@@ -160,6 +161,10 @@ class Field {
 
   void setScore(int s) {
     score.text = s.toString();
+  }
+
+  void setLevel(int l) {
+    level.text = "Level " + l.toString();
   }
 
   void gameover() {

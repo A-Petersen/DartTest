@@ -13,7 +13,7 @@ var test;
 class Controller {
 
   static int timeMillis = 30;
-  static int throwMillis = 6000;
+  static int throwMillis = 4000;
   
   Field field;
   Game game;
@@ -57,7 +57,7 @@ class Controller {
     checkForOrientation();
     if (running) {
       game.checkUFOs(timeMillis);
-      game.checkLevel();
+      field.setLevel(game.checkLevel());
     }
   }
 
@@ -183,6 +183,8 @@ class Controller {
                 int.parse(parameter[level]['Number']),
                 int.parse(parameter[level]['RequiredScore']),
                 int.parse(parameter[level]['FruitsAmount']),
+                int.parse(parameter[level]['BombChance']),
+                int.parse(parameter[level]['SmoothieChance']),
                 int.parse(parameter[level]['FruitRange']),
                 int.parse(parameter[level]['FruitMovement'])));
           }
