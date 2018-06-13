@@ -17,11 +17,13 @@ class Controller {
   Timer timerStart;
   Timer timerNewUFO;
   Duration timeIntevall = new Duration(milliseconds: 30);
-  Duration throwIntevall = new Duration(milliseconds: 5000);
+  Duration throwIntevall = new Duration(milliseconds: 3000);
 
   bool running = false; //Könnte man auch pause nennen
   bool initSucces = false; //Ob das Spiel bereits initalsiert wurde (erfolgreich)
   int highscore;
+
+  bool loading = false;
 
   Controller(this.highscore) {
     field = new Field(this);
@@ -37,7 +39,7 @@ class Controller {
       game = new Game(this, field.width, field.height, highscore);
       figureControll();
       resetButton();
-      setLevel();
+      if (!loading) setLevel();
       newGame();
     }
   }
@@ -45,7 +47,6 @@ class Controller {
   void newGame() {
     timerStart = new Timer.periodic(timeIntevall, (Timer t) => start());
     timerNewUFO = new Timer.periodic(throwIntevall, (Timer t) => checkUFOs());
-    checkUFOs();
   }
 
   void checkUFOs() {
@@ -181,8 +182,8 @@ class Controller {
                 int.parse(parameter[level]['FruitRange']),
                 int.parse(parameter[level]['FruitMovement'])));
           }
-          print(levels);
           game.setLevel(levels);
+          loading = true;
         });
       } catch (error, stacktrace) {
         print ("SnakeGameController() caused following error: '$error'");

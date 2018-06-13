@@ -92,12 +92,14 @@ class Game {
       int type = actualLevel.possibleFruits == 1 ? 1 :  new Random().nextInt(actualLevel.possibleFruits)+1;
       int movement = actualLevel.possibleMovments == 0 ?  0 : new Random().nextInt(actualLevel.possibleFruits);
       newUFO(ufoFactory.newFruit(type, movement));
+      fruits++;
     }
 
-    if (bombs < actualLevel.maxBombs) {
+    if (chanche(80)) {
       int type = actualLevel.possibleBombs == 1 ? 1 :  new Random().nextInt(actualLevel.possibleBombs)+1;
       int movement = actualLevel.possibleMovments == 0 ?  0 : new Random().nextInt(actualLevel.possibleBombs);
-      newUFO(ufoFactory.newBomb(type, movement));
+      newUFO(ufoFactory.newBomb(type, movement, figure.x));
+      bombs++;
     }
   }
 
@@ -120,6 +122,14 @@ class Game {
   void removeUFO(AbstractUFO ufo) {
     ufoList.remove(ufo);
     ufos--;
+    switch (ufo.getClassName()) {
+      case ("Fruit") :
+        fruits--;
+        break;
+      case ("Bomb") :
+        bombs--;
+        break;
+    }
     controller.removeUFOView(ufo);
   }
 
@@ -128,7 +138,7 @@ class Game {
     gameover = false;
     fruits = 0;
     bombs = 0;
-    ufos = fruits + bombs;
+    ufos = 0;
     score = 0;
     attempts = 3;
     figure.x = 0.0;
@@ -143,6 +153,10 @@ class Game {
     if (score > highscore) {
       highscore = score;
     }
+  }
+
+  bool chanche(int percent) {
+    return new Random().nextInt(101) < percent;
   }
 
 }
