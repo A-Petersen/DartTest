@@ -20,9 +20,9 @@ class UFOFactory {
     }
   }
 
-  AbstractUFO newBomb(int type, int movement) {
+  AbstractUFO newBomb(int type, int movement, double x) {
     switch (type) {
-      case 1 : return new Bomb(0.0, 0.0, radius, 4, fieldWidth, fieldHeight, movement, 20.0, 2.0);
+      case 1 : return new Bomb(x, 0.0, radius, 4, fieldWidth, fieldHeight, movement, 20.0, 0.0);
     }
   }
 
