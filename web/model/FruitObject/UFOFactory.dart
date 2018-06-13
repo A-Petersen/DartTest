@@ -1,6 +1,7 @@
 import 'AbstractUFO.dart';
 import 'Bomb.dart';
 import 'Fruit.dart';
+import 'Smoothie.dart';
 
 class UFOFactory {
 
@@ -22,6 +23,12 @@ class UFOFactory {
   AbstractUFO newBomb(int type, int movement, double x) {
     switch (type) {
       case 1 : return new Bomb(x, 0.0, radius, 4, fieldWidth, fieldHeight, movement, 20.0, 0.0);
+    }
+  }
+
+  AbstractUFO newSmoothie(int type, int movement) {
+    switch (type) {
+      case 1 : return new Smoothie(0.0, 0.0, radius, 4, fieldWidth, fieldHeight, movement, 10.0, 2.0);
     }
   }
 

@@ -3,6 +3,7 @@ import 'Figure.dart';
 import 'FruitObject/AbstractUFO.dart';
 import 'FruitObject/Bomb.dart';
 import 'FruitObject/Fruit.dart';
+import 'FruitObject/Smoothie.dart';
 import 'FruitObject/UFOFactory.dart';
 import 'Level.dart';
 import 'dart:math';
@@ -24,6 +25,8 @@ class Game {
   int bombs = 0;
   int ufos = 0;
 
+  int gametime = 0;
+
   bool gameover = false;
 
   Game(this.controller, this.fieldWidth, this.fieldHeight, this.highscore) {
@@ -31,7 +34,8 @@ class Game {
     ufoFactory = new UFOFactory(fieldWidth, fieldHeight);
   }
 
-  void checkUFOState() {
+  void checkUFOState(int time) {
+    gametime+= time;
     AbstractUFO ufo;
     for (int i = 0 ; i < ufos ; i++) {
       ufo = ufoList[i];
@@ -79,6 +83,27 @@ class Game {
             removeUFO(ufoList[i--]);
           }
           break;
+        case ('Smoothie') :
+          Smoothie cast = ufo;
+          if (ufo.moving) {
+            ufo.move();
+            controller.field.updateUFOs(ufo);
+            if (ufo.hitGround()) { //Ufo auf dem Boden gefallen?
+              removeUFO(ufoList[i--]);
+            }
+            if (ufo.onDrum(figure)) { //Ufo auf der Trommel?
+              ufo.moving = false;
+              controller.removeUFOView(ufo);
+              cast.drinkSmoothie(10000, time, figure);
+            }
+          } else {
+            if (cast.checkCounter(time, figure)) {
+              ufoList.remove(ufo);
+              ufos--;
+            }
+          }
+          break;
+
       }
 
 
@@ -95,11 +120,14 @@ class Game {
       fruits++;
     }
 
-    if (chanche(80)) {
+    if (chance(10)) {
       int type = actualLevel.possibleBombs == 1 ? 1 :  new Random().nextInt(actualLevel.possibleBombs)+1;
       int movement = actualLevel.possibleMovments == 0 ?  0 : new Random().nextInt(actualLevel.possibleBombs);
       newUFO(ufoFactory.newBomb(type, movement, figure.x));
       bombs++;
+    }
+    if (chance(30)) {
+      newUFO(ufoFactory.newSmoothie(1, 0));
     }
   }
 

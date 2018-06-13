@@ -11,13 +11,17 @@ const levelconcept = 'Levelkonzept.json';
 var test;
 
 class Controller {
+
+  static int timeMillis = 30;
+  static int throwMillis = 3000;
   
   Field field;
   Game game;
   Timer timerStart;
   Timer timerNewUFO;
-  Duration timeIntevall = new Duration(milliseconds: 30);
-  Duration throwIntevall = new Duration(milliseconds: 3000);
+  Duration timeIntevall = new Duration(milliseconds: timeMillis);
+  Duration throwIntevall = new Duration(milliseconds: throwMillis);
+
 
   bool running = false; //Könnte man auch pause nennen
   bool initSucces = false; //Ob das Spiel bereits initalsiert wurde (erfolgreich)
@@ -63,7 +67,7 @@ class Controller {
   void start() {
     checkForOrientation();
     if (running) {
-    game.checkUFOState();
+    game.checkUFOState(timeMillis);
     game.figure.move();
     field.updateFigure(game.figure);
     }
