@@ -41,7 +41,7 @@ class Controller {
     if (checkForOrientation()) {
       initSucces = true;
       field.initField();
-      game = new Game(this, field.width, field.height, highscore);
+      game = new Game(field.width, field.height, highscore, field.updateUFOs, field.removeUFO, field.createNewUFO);
       figureControll();
       resetButton();
       if (!loading) await setLevel();
@@ -80,20 +80,6 @@ class Controller {
             setHighscore(game.highscore);
         }
         field.setScore(game.score);
-  }
-
-  /**
-   * Eine neues UFO erstellen
-   */
-  void newUFOView(AbstractUFO ufo) {
-    field.createNewUFO(ufo);
-  }
-
-  /**
-   * Ein UFO entfernen
-   */
-  void removeUFOView(AbstractUFO ufo) {
-    field.removeUFO(ufo);
   }
 
   /**
@@ -195,7 +181,7 @@ class Controller {
           }
           game.setLevel(levels);
           loading = true;
-        }).whenComplete(() => print);
+        });
       } catch (error, stacktrace) {
         print ("SnakeGameController() caused following error: '$error'");
         print ("$stacktrace");

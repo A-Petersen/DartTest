@@ -1,4 +1,3 @@
-import '../controller/Controller.dart';
 import 'Figure.dart';
 import 'FruitObject/AbstractUFO.dart';
 import 'FruitObject/Bomb.dart';
@@ -14,7 +13,6 @@ class Game {
   int fieldWidth;
   int fieldHeight;
   UFOFactory ufoFactory;
-  Controller controller;
   Figure figure;
   int score = 0;
   Level actualLevel;
@@ -29,7 +27,11 @@ class Game {
 
   bool gameover = false;
 
-  Game(this.controller, this.fieldWidth, this.fieldHeight, this.highscore) {
+  Function updateUFOs;
+  Function removeUFOView;
+  Function newUFOView;
+
+  Game(this.fieldWidth, this.fieldHeight, this.highscore, this.updateUFOs, this.removeUFOView, this.newUFOView) {
     this.figure = new Figure(0.0, fieldHeight.toDouble(), fieldWidth * 0.156, fieldHeight * 0.278, fieldWidth, fieldHeight, 10.0);
     ufoFactory = new UFOFactory(fieldWidth, fieldHeight);
   }
@@ -44,7 +46,7 @@ class Game {
         case ('Fruit'):
           if (ufo.moving) {
             ufo.move();
-            controller.field.updateUFOs(ufo);
+            updateUFOs(ufo);
             if (ufo.hitGround()) { //Ufo auf dem Boden gefallen?
               ufo.moving = false;
               if (--attempts <= 0) {
@@ -67,7 +69,7 @@ class Game {
         case ('Bomb'):
           if (ufo.moving) {
             ufo.move();
-            controller.field.updateUFOs(ufo);
+            updateUFOs(ufo);
             if (ufo.hitGround()) { //Ufo auf dem Boden gefallen?
               ufo.moving = false;
             }
@@ -87,13 +89,13 @@ class Game {
           Smoothie cast = ufo;
           if (ufo.moving) {
             ufo.move();
-            controller.field.updateUFOs(ufo);
+            updateUFOs(ufo);
             if (ufo.hitGround()) { //Ufo auf dem Boden gefallen?
               removeUFO(ufoList[i--]);
             }
             if (ufo.onDrum(figure)) { //Ufo auf der Trommel?
               ufo.moving = false;
-              controller.removeUFOView(ufo);
+              removeUFOView(ufo);
               cast.drinkSmoothie(10000, gametime, figure);
             }
           } else {
@@ -143,7 +145,7 @@ class Game {
   void newUFO(AbstractUFO ufo) {
     ufoList.add(ufo);
     ufos++;
-    controller.newUFOView(ufo);
+    newUFOView(ufo);
   }
 
   void removeUFO(AbstractUFO ufo) {
@@ -157,7 +159,7 @@ class Game {
         bombs--;
         break;
     }
-    controller.removeUFOView(ufo);
+    removeUFOView(ufo);
   }
 
   void reset() {
