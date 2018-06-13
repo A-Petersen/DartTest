@@ -119,12 +119,12 @@ class Game {
       newUFO(ufoFactory.newFruit(type, movement));
     }
 
-    if (bombs < actualLevel.maxBombs) {
+    if (chance(10)) {
       int type = actualLevel.possibleBombs == 1 ? 1 :  new Random().nextInt(actualLevel.possibleBombs)+1;
       int movement = actualLevel.possibleMovments == 0 ?  0 : new Random().nextInt(actualLevel.possibleBombs);
       newUFO(ufoFactory.newBomb(type, movement));
     }
-    if (chance(90)) {
+    if (chance(30)) {
       newUFO(ufoFactory.newSmoothie(1, 0));
     }
   }

@@ -28,7 +28,7 @@ class UFOFactory {
 
   AbstractUFO newSmoothie(int type, int movement) {
     switch (type) {
-      case 1 : return new Smoothie(0.0, 0.0, radius, 4, fieldWidth, fieldHeight, movement, 20.0, 2.0);
+      case 1 : return new Smoothie(0.0, 0.0, radius, 4, fieldWidth, fieldHeight, movement, 10.0, 2.0);
     }
   }
 
