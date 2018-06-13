@@ -19,7 +19,7 @@ class Game {
   int score = 0;
   Level actualLevel;
   int highscore;
-  int attempts = 10000;
+  int attempts = 3;
 
   int fruits = 0;
   int bombs = 0;

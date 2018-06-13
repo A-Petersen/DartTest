@@ -29,13 +29,14 @@ class Controller {
 
   bool loading = false;
 
+
   Controller(this.highscore) {
     field = new Field(this);
     startScreenButton();
     field.initStartScreen();
   }
 
-  void init() {
+  Future init() async {
     startButton();
     if (checkForOrientation()) {
       initSucces = true;
@@ -43,7 +44,8 @@ class Controller {
       game = new Game(this, field.width, field.height, highscore);
       figureControll();
       resetButton();
-      if (!loading) setLevel();
+      if (!loading) await setLevel();
+      print(game.allLevels[0]);
       newGame();
     }
   }
@@ -51,6 +53,8 @@ class Controller {
   void newGame() {
     timerStart = new Timer.periodic(timeIntevall, (Timer t) => start());
     timerNewUFO = new Timer.periodic(throwIntevall, (Timer t) => checkUFOs());
+    checkUFOs();
+    start();
   }
 
   void checkUFOs() {
@@ -151,6 +155,7 @@ class Controller {
     timerStart.cancel();
     timerNewUFO.cancel();
     field.gameover();
+    print(test);
   }
 
   void setHighscore(int score) {
@@ -170,7 +175,7 @@ class Controller {
     return true;
   }
 
-  void setLevel() {
+  Future setLevel() {
       List<Level> levels = new List();
       var request;
       try {
@@ -190,12 +195,13 @@ class Controller {
           }
           game.setLevel(levels);
           loading = true;
-        });
+        }).whenComplete(() => print);
       } catch (error, stacktrace) {
         print ("SnakeGameController() caused following error: '$error'");
         print ("$stacktrace");
       }
-//      game.setLevel(levels);
+      return request;
+
   }
 
   void startButton() {
