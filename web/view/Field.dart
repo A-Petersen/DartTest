@@ -76,7 +76,9 @@ class Field {
     this.figure.style.top="${height - f.b}px";
     this.figure.style.backgroundSize="${f.a}px ${f.b}px";
 
-    if (controller.game.figure.moving == 2) { this.figure.style.transform="scaleX(-1)"; }
+    if (controller.game.figure.moving == 2) {
+      this.figure.style.transform="scaleX(-1)";
+    }
     else {
       this.figure.style.transform="scaleX(1)";
     }
@@ -105,28 +107,44 @@ class Field {
   void createNewUFO(AbstractUFO ufo) {
     var ufoDiv = new DivElement();
     ufoDiv.id = 'ufo' + AbstractUFO.getID().toString();
-    switch (ufo.type) {
-      case 1 :  {
-        ufoDiv.style.position = 'absolute';
-        ufoDiv.style.backgroundImage = 'url("resources/bananen.png")';
-        ufoDiv.style.zIndex = '1';
-        break;
-      }
-      case 2 :  {
-        ufoDiv.style.position = 'absolute';
-        ufoDiv.style.backgroundImage = 'url("resources/birne.png")';
-        ufoDiv.style.zIndex = '1';;
-        break;
-      }
-      case 3 :  {
-        ufoDiv.style.position = 'absolute';
-        ufoDiv.style.backgroundImage = 'url("resources/apfel.png")';
-        ufoDiv.style.zIndex = '1';
-        break;
-      }
-      case 4 :  {
+    switch (ufo.getClassName()) {
+      case 'Fruit' :
+        {
+          switch (ufo.type) {
+            case 1:
+              {
+                ufoDiv.style.position = 'absolute';
+                ufoDiv.style.backgroundImage = 'url("resources/bananen.png")';
+                ufoDiv.style.zIndex = '1';
+                break;
+              }
+            case 2 :
+              {
+                ufoDiv.style.position = 'absolute';
+                ufoDiv.style.backgroundImage = 'url("resources/birne.png")';
+                ufoDiv.style.zIndex = '1';
+                ;
+                break;
+              }
+            case 3 :
+              {
+                ufoDiv.style.position = 'absolute';
+                ufoDiv.style.backgroundImage = 'url("resources/apfel.png")';
+                ufoDiv.style.zIndex = '1';
+                break;
+              }
+          }
+          break;
+        }
+      case 'Bomb' :  {
         ufoDiv.style.position = 'absolute';
         ufoDiv.style.backgroundImage = 'url("resources/bomb.png")';
+        ufoDiv.style.zIndex = '1';
+        break;
+      }
+      case 'Smoothie' : {
+        ufoDiv.style.position = 'absolute';
+        ufoDiv.style.backgroundImage = 'url("resources/smoothie.png")';
         ufoDiv.style.zIndex = '1';
         break;
       }
