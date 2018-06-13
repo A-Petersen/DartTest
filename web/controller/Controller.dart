@@ -13,7 +13,7 @@ var test;
 class Controller {
 
   static int timeMillis = 30;
-  static int throwMillis = 3000;
+  static int throwMillis = 6000;
   
   Field field;
   Game game;
@@ -56,7 +56,7 @@ class Controller {
   void checkUFOs() {
     checkForOrientation();
     if (running) {
-      game.checkUFOs();
+      game.checkUFOs(timeMillis);
       game.checkLevel();
     }
   }

@@ -19,7 +19,7 @@ class Game {
   int score = 0;
   Level actualLevel;
   int highscore;
-  int attempts = 3;
+  int attempts = 10000;
 
   int fruits = 0;
   int bombs = 0;
@@ -94,10 +94,10 @@ class Game {
             if (ufo.onDrum(figure)) { //Ufo auf der Trommel?
               ufo.moving = false;
               controller.removeUFOView(ufo);
-              cast.drinkSmoothie(10000, time, figure);
+              cast.drinkSmoothie(10000, gametime, figure);
             }
           } else {
-            if (cast.checkCounter(time, figure)) {
+            if (cast.checkCounter(gametime, figure)) {
               ufoList.remove(ufo);
               ufos--;
             }
@@ -110,7 +110,8 @@ class Game {
     }
   }
 
-  void checkUFOs() {
+  void checkUFOs(int time) {
+    gametime+= time;
     // TODO if schleife für bomben etc implementieren ?
     if (actualLevel == null) return;
     if (fruits < actualLevel.maxFruits) {
@@ -126,7 +127,7 @@ class Game {
       newUFO(ufoFactory.newBomb(type, movement, figure.x));
       bombs++;
     }
-    if (chance(30)) {
+    if (chance(100)) {
       newUFO(ufoFactory.newSmoothie(1, 0));
     }
   }
@@ -183,7 +184,7 @@ class Game {
     }
   }
 
-  bool chanche(int percent) {
+  bool chance(int percent) {
     return new Random().nextInt(101) < percent;
   }
 

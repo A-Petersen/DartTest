@@ -63,8 +63,12 @@ class Smoothie extends AbstractUFO {
   bool checkCounter(int gametime, Figure f) {
     if (gametime >= timeEnd) {
       f.speed = f.speed/2;
+      print("true");
       return true;
     }
+    print("false");
+    print(gametime);
+    print(timeEnd);
     return false;
   }
 

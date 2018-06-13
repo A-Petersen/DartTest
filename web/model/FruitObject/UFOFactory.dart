@@ -2,6 +2,7 @@ import 'AbstractUFO.dart';
 import 'Bomb.dart';
 import 'Fruit.dart';
 import 'Smoothie.dart';
+import 'dart:math';
 
 class UFOFactory {
 
@@ -27,8 +28,9 @@ class UFOFactory {
   }
 
   AbstractUFO newSmoothie(int type, int movement) {
+    double x = new Random().nextInt(fieldWidth).toDouble();
     switch (type) {
-      case 1 : return new Smoothie(0.0, 0.0, radius, 4, fieldWidth, fieldHeight, movement, 10.0, 2.0);
+      case 1 : return new Smoothie(x, 0.0, radius, 4, fieldWidth, fieldHeight, movement, 10.0, 0.0);
     }
   }
 
