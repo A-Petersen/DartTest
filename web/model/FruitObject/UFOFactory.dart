@@ -1,7 +1,6 @@
 import 'AbstractUFO.dart';
 import 'Bomb.dart';
 import 'Fruit.dart';
-import 'dart:html'; //TODO wieder löschen xD
 
 class UFOFactory {
 
