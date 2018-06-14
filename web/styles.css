@@ -77,10 +77,10 @@ html, body {
 
 #treeLeft {
     width: 31%;
-    height: 100%;
+    height: 105%;
     background: url("resources/baum.png");
     background-size: 100% 100%;
-    bottom: 0px;
+    bottom: -5%;
     left: -5%;
     position: absolute;
     z-index: -2;
@@ -88,14 +88,58 @@ html, body {
 
 #treeRight {
     width: 31%;
-    height: 100%;
+    height: 105%;
     background: url("resources/baum.png");
     background-size: 100% 100%;
-    bottom: 0px;
+    bottom: -5%;
     left: 82%;
     position: absolute;
     z-index: -2;
     transform: scaleX(-1);
+}
+
+#grass {
+    width: 100%;
+    height: 20%;
+    background: url("resources/rasen.png");
+    background-size: 100% 100%;
+    bottom: -5%;
+    left: 0%;
+    position: absolute;
+    z-index: -6;
+}
+
+#sun {
+    width: 27%;
+    height: 31%;
+    background: url("resources/sun.png");
+    background-size: 100% 100%;
+    bottom: 75%;
+    left: 63%;
+    position: absolute;
+    z-index: -5;
+}
+
+#cloud1 {
+    width: 20%;
+    height: 15%;
+    background: url("resources/wolke1.png");
+    background-size: 100% 100%;
+    bottom: 85%;
+    left: 25%;
+    position: absolute;
+    z-index: -4;
+}
+
+#cloud2 {
+    width: 14%;
+    height: 12%;
+    background: url("resources/wolke2.png");
+    background-size: 100% 100%;
+    bottom: 90%;
+    left: 35%;
+    position: absolute;
+    z-index: -5;
 }
 
 #frank {
@@ -112,7 +156,7 @@ html, body {
   width: 100%;
   height: 100%;
   position: relative;
-  background: url("resources/back.png");
+  /*background: url("resources/back.png");*/
     background-size: 100% 100%;
     z-index: -2;
 }
