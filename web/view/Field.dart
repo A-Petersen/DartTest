@@ -13,6 +13,7 @@ class Field {
   final score = querySelector("#score");
   final level = querySelector("#level");
   final korb = querySelector("#korb");
+  final attemps = querySelector("#attemps");
 
   final leftSite = querySelector("#leftSite");
   final rightSite = querySelector("#rightSite");
@@ -174,7 +175,12 @@ class Field {
     level.text = "Level " + l.toString();
   }
 
+  void setAttempts(int a) {
+    attemps.text = "Versuche: " + a.toString();
+  }
+
   void gameover() {
+    attemps.style.visibility = "hidden";
     gameoverScreen.style.visibility = "visible";
     gameoverScreen.style.zIndex = "2";
     ufos.forEach((u, d) => d.remove());
@@ -188,6 +194,7 @@ class Field {
     gameoverScreen.style.zIndex = "-2";
     gameoverScreen.style.visibility = "hidden";
     score.text = "0";
+    attemps.style.visibility = "visible";
   }
 
   void showOrientationInfo() {

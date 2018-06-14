@@ -21,6 +21,8 @@ class Game {
 
   int fruits = 0;
   int bombs = 0;
+  int smoothies = 0;
+  int hearts = 0;
   int ufos = 0;
 
   int gametime = 0;
@@ -61,6 +63,7 @@ class Game {
             if (ufo.landedInBasket()) { //Ufo im Korb?
               ufo.moving = false;
               score++;
+              checkLevel();
             }
           } else {
             removeUFO(ufoList[i--]);
@@ -114,7 +117,7 @@ class Game {
             }
             if (ufo.onDrum(figure)) { //Ufo auf der Trommel?
               ufo.moving = false;
-              attempts++;
+              if (attempts < 5) attempts++;
             }
           } else {
             removeUFO(ufoList[i--]);
@@ -151,7 +154,7 @@ class Game {
 
   int checkLevel() {
     for (int i = 0 ; i < allLevels.length ; i++) {
-      if (allLevels[i].requiredScore <= score) {
+      if (allLevels[i].requiredScore == score) {
         actualLevel = allLevels[i];
         break;
       }

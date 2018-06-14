@@ -22,13 +22,11 @@ class Controller {
   Duration timeIntevall = new Duration(milliseconds: timeMillis);
   Duration throwIntevall = new Duration(milliseconds: throwMillis);
 
-
-  bool running = false; //Könnte man auch pause nennen
+  bool running = true; //Könnte man auch pause nennen
   bool initSucces = false; //Ob das Spiel bereits initalsiert wurde (erfolgreich)
   int highscore;
 
   bool loading = false;
-
 
   Controller(this.highscore) {
     field = new Field(this);
@@ -58,7 +56,6 @@ class Controller {
   }
 
   void checkUFOs() {
-    checkForOrientation();
     if (running) {
       game.checkUFOs(timeMillis);
       field.setLevel(game.checkLevel());
@@ -69,11 +66,11 @@ class Controller {
    * Die Fruit wird gestartet, bzw. geworfen.
    */
   void start() {
-    checkForOrientation();
-    if (running) {
+    if (checkForOrientation() && running) {
     game.checkUFOState(timeMillis);
     game.figure.move();
     field.updateFigure(game.figure);
+    field.setAttempts(game.attempts);
     }
     if (game.gameover) {
             gameover();
@@ -130,10 +127,11 @@ class Controller {
     field.resetButton.onClick.listen((MouseEvent ev) {
       initSucces = false;
       running = false;
+      loading = false;
       game.reset();
       field.reset();
       field.updateFigure(game.figure);
-      newGame();
+      init();
     });
   }
 
@@ -157,7 +155,6 @@ class Controller {
       running = false;
       return false;
     }
-    running = true;
     return true;
   }
 
