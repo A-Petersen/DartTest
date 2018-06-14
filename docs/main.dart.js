@@ -3759,7 +3759,7 @@ break
 case"Heart":y=z.style
 y.position="absolute"
 y=z.style
-y.backgroundImage='url("resources/hearts.png")'
+y.backgroundImage='url("resources/herts.png")'
 y=z.style
 y.zIndex="1"
 break}J.dz(this.fr).H(0,z)
