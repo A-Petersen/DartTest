@@ -160,7 +160,7 @@ class Field {
       }
       case 'Heart' : {
         ufoDiv.style.position = 'absolute';
-        ufoDiv.style.backgroundImage = 'url("resources/hearts.png")';
+        ufoDiv.style.backgroundImage = 'url("resources/herts.png")';
         ufoDiv.style.zIndex = '1';
         break;
       }
