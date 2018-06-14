@@ -136,6 +136,13 @@ class Field {
                 ufoDiv.style.zIndex = '1';
                 break;
               }
+            case 4 :
+              {
+                ufoDiv.style.position = 'absolute';
+                ufoDiv.style.backgroundImage = 'url("resources/blatt.png")';
+                ufoDiv.style.zIndex = '1';
+                break;
+              }
           }
           break;
         }
