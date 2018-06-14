@@ -17,7 +17,7 @@ class Game {
   int score = 0;
   Level actualLevel;
   int highscore;
-  int attempts = 3;
+  int attempts = 5;
 
   int fruits = 0;
   int bombs = 0;
@@ -34,7 +34,7 @@ class Game {
   Function newUFOView;
 
   Game(this.fieldWidth, this.fieldHeight, this.highscore, this.updateUFOs, this.removeUFOView, this.newUFOView) {
-    this.figure = new Figure(0.0, fieldHeight.toDouble(), fieldWidth * 0.156, fieldHeight * 0.278, fieldWidth, fieldHeight, 10.0);
+    this.figure = new Figure(0.0, fieldHeight.toDouble(), fieldWidth * 0.156, fieldHeight * 0.278, fieldWidth, fieldHeight, 15.0);
     ufoFactory = new UFOFactory(fieldWidth, fieldHeight);
   }
 
@@ -99,7 +99,12 @@ class Game {
             if (ufo.onDrum(figure)) { //Ufo auf der Trommel?
               ufo.moving = false;
               removeUFOView(ufo);
-              cast.drinkSmoothie(10000, gametime, figure);
+              if (!cast.getDope()) {
+                cast.drinkSmoothie(10000, gametime, figure);
+              } else {
+                ufoList.remove(ufo);
+                ufos--;
+              }
             }
           } else {
             if (cast.checkCounter(gametime, figure)) {
@@ -117,7 +122,7 @@ class Game {
             }
             if (ufo.onDrum(figure)) { //Ufo auf der Trommel?
               ufo.moving = false;
-              if (attempts < 5) attempts++;
+              if (attempts < 10) attempts++;
             }
           } else {
             removeUFO(ufoList[i--]);

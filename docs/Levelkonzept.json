@@ -6,7 +6,7 @@
     "FruitsAmount": "3",
     "BombChance": "0",
     "SmoothieChance": "0",
-    "HeartChance": "10",
+    "HeartChance": "20",
     "FruitRange": "1",
     "FruitMovement": "0"
   },
@@ -16,7 +16,7 @@
     "FruitsAmount": "4",
     "BombChance": "0",
     "SmoothieChance": "20",
-    "HeartChance": "10",
+    "HeartChance": "20",
     "FruitRange": "2",
     "FruitMovement": "0"
   },
@@ -26,7 +26,7 @@
     "FruitsAmount": "4",
     "BombChance": "0",
     "SmoothieChance": "20",
-    "HeartChance": "10",
+    "HeartChance": "20",
     "FruitRange": "3",
     "FruitMovement": "0"
   },
@@ -36,7 +36,7 @@
     "FruitsAmount": "4",
     "BombChance": "10",
     "SmoothieChance": "20",
-    "HeartChance": "10",
+    "HeartChance": "15",
     "FruitRange": "3",
     "FruitMovement": "0"
   },
@@ -46,7 +46,7 @@
     "FruitsAmount": "4",
     "BombChance": "20",
     "SmoothieChance": "10",
-    "HeartChance": "5",
+    "HeartChance": "15",
     "FruitRange": "3",
     "FruitMovement": "0"
   },
@@ -56,7 +56,7 @@
     "FruitsAmount": "5",
     "BombChance": "20",
     "SmoothieChance": "10",
-    "HeartChance": "5",
+    "HeartChance": "10",
     "FruitRange": "3",
     "FruitMovement": "0"
   }
