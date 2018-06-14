@@ -3,6 +3,8 @@ import 'AbstractUFO.dart';
 
 class Smoothie extends AbstractUFO {
 
+  static bool dope = false;
+
 //  //TODO id sollte in abstract class stehen !?
 //  static int id;
   int timeEnd = 0;
@@ -56,19 +58,23 @@ class Smoothie extends AbstractUFO {
 
   @override
   void drinkSmoothie(int duration, int gametime, Figure f) {
-    timeEnd+= (duration+gametime);
-    f.speed = f.speed*2;
+    if (!dope) {
+      timeEnd+= (duration+gametime);
+      f.speed = f.speed*2;
+      dope = true;
+    }
   }
 
   bool checkCounter(int gametime, Figure f) {
     if (gametime >= timeEnd) {
       f.speed = f.speed/2;
-      print("true");
+      dope = false;
+//      print("true");
       return true;
     }
-    print("false");
-    print(gametime);
-    print(timeEnd);
+//    print("doped");
+//    print(gametime);
+//    print(timeEnd);
     return false;
   }
 
@@ -76,5 +82,13 @@ class Smoothie extends AbstractUFO {
   @override
   String getClassName() {
     return 'Smoothie';
+  }
+
+  bool getDope() {
+    return dope;
+  }
+
+  void setDope(bool bool) {
+    dope = bool;
   }
 }
