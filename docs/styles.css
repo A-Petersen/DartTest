@@ -5,7 +5,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: myFirstFont;
     overflow: hidden;
 }
 
@@ -166,7 +166,6 @@ html, body {
     padding: 5%;
     top: 1%;
     right: 1%;
-    color: goldenrod;
     font-size: 150%;
     font-weight: bolder;
 }
@@ -176,7 +175,6 @@ html, body {
     padding: 5%;
     top: 1%;
     right: 1%;
-    color: goldenrod;
     font-size: 200%;
     font-weight: bolder;
 }
@@ -186,7 +184,6 @@ html, body {
     padding: 5%;
     top: 1%;
     left: 1%;
-    color: goldenrod;
     font-size: 200%;
     font-weight: bolder;
 }
@@ -219,4 +216,9 @@ html, body {
     position: center;
     font-size: 150%;
     z-index: 2;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(fonts/painting-with-chocolate.regular.ttf);
 }
