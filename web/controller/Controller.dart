@@ -37,6 +37,7 @@ class Controller {
   Future init() async {
     startButton();
     if (checkForOrientation()) {
+      print(init);
       initSucces = true;
       field.initField();
       game = new Game(field.width, field.height, highscore, field.updateUFOs, field.removeUFO, field.createNewUFO);
@@ -126,7 +127,7 @@ class Controller {
   void resetButton(){
     field.resetButton.onClick.listen((MouseEvent ev) {
       initSucces = false;
-      running = false;
+      running = true;
       loading = false;
       game.reset();
       field.reset();
@@ -139,7 +140,6 @@ class Controller {
     timerStart.cancel();
     timerNewUFO.cancel();
     field.gameover();
-    print(test);
   }
 
   void setHighscore(int score) {
