@@ -176,6 +176,7 @@ class Controller {
                 int.parse(parameter[level]['FruitsAmount']),
                 int.parse(parameter[level]['BombChance']),
                 int.parse(parameter[level]['SmoothieChance']),
+                int.parse(parameter[level]['HeartChance']),
                 int.parse(parameter[level]['FruitRange']),
                 int.parse(parameter[level]['FruitMovement'])));
           }

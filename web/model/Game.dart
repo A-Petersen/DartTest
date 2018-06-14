@@ -105,6 +105,21 @@ class Game {
             }
           }
           break;
+        case ('Heart'):
+          if (ufo.moving) {
+            ufo.move();
+            updateUFOs(ufo);
+            if (ufo.hitGround()) { //Ufo auf dem Boden gefallen?
+              ufo.moving = false;
+            }
+            if (ufo.onDrum(figure)) { //Ufo auf der Trommel?
+              ufo.moving = false;
+              attempts++;
+            }
+          } else {
+            removeUFO(ufoList[i--]);
+          }
+          break;
 
       }
 
@@ -129,11 +144,14 @@ class Game {
     if (chance(actualLevel.smoothieChance)) {
       newUFO(ufoFactory.newSmoothie(1, 0));
     }
+    if (chance(actualLevel.heartChance)) {
+      newUFO(ufoFactory.newHearth(1, 0));
+    }
   }
 
   int checkLevel() {
     for (int i = 0 ; i < allLevels.length ; i++) {
-      if (allLevels[i].requiredScore >= score) {
+      if (allLevels[i].requiredScore <= score) {
         actualLevel = allLevels[i];
         break;
       }

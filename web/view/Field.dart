@@ -7,7 +7,6 @@ import '../model/FruitObject/Fruit.dart';
 import '../model/Figure.dart';
 
 class Field {
-
   Controller controller;
 
   final figure = querySelector("#frank");
@@ -69,6 +68,8 @@ class Field {
     ufoStyle.style.backgroundSize="${ufo.width}px";
 
     ufoStyle.style.transform = "rotate(${(ufo.x*2 + ufo.y)%360}deg)";
+
+    //if(ufo.getClassName() == 'Heart') spin(ufoStyle);
   }
 
   void updateFigure(Figure f) {
@@ -149,6 +150,12 @@ class Field {
         ufoDiv.style.zIndex = '1';
         break;
       }
+      case 'Heart' : {
+        ufoDiv.style.position = 'absolute';
+        ufoDiv.style.backgroundImage = 'url("resources/heart.png")';
+        ufoDiv.style.zIndex = '1';
+        break;
+      }
     }
     fieldQuery.children.add(ufoDiv);
     ufos[ufo] = ufoDiv;
@@ -205,7 +212,14 @@ class Field {
     startScreen.remove();
   }
 
-
+  void spin(DivElement div) {
+    int spinV = 0;
+    print(div.style.getPropertyValue("transform-rotateY"));
+    print(div.style.getPropertyValue("transform").replaceAll("deg)", "").substring(7));
+    //int spinV = double.parse(div.getAttribute("rotateY").replaceAll("deg)", "").substring(7)).toInt();
+    //spinV = spinV == 360 ? 0 : spinV+5;
+    //div.style.transform = "rotateY("+ spinV.toString() + "deg)";
+  }
 
 
 }

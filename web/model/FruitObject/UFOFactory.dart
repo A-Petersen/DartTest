@@ -1,6 +1,7 @@
 import 'AbstractUFO.dart';
 import 'Bomb.dart';
 import 'Fruit.dart';
+import 'Heart.dart';
 import 'Smoothie.dart';
 import 'dart:math';
 
@@ -31,6 +32,13 @@ class UFOFactory {
     double x = new Random().nextInt(fieldWidth).toDouble();
     switch (type) {
       case 1 : return new Smoothie(x, 0.0, radius, 4, fieldWidth, fieldHeight, movement, 10.0, 0.0);
+    }
+  }
+
+  AbstractUFO newHearth(int type, int movement) {
+    double x = new Random().nextInt(fieldWidth).toDouble();
+    switch (type) {
+      case 1 : return new Heart(x, 0.0, radius, 4, fieldWidth, fieldHeight, movement, 5.0, 0.0);
     }
   }
 

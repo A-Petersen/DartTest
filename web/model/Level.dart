@@ -4,11 +4,12 @@ class Level {
   int maxFruits = 3;
   int bombChance = 0;
   int smoothieChance = 0;
+  int heartChance = 0;
   int possibleFruits = 1;
   int possibleBombs = 1;
   int possibleMovments = 0;
 
-  Level(this.level, this.requiredScore, this.maxFruits, this.bombChance, this.smoothieChance, this.possibleFruits, this.possibleMovments);
+  Level(this.level, this.requiredScore, this.maxFruits, this.bombChance, this.smoothieChance, this.heartChance, this.possibleFruits, this.possibleMovments);
 
   void reset() {
     level = 1;
@@ -16,6 +17,7 @@ class Level {
     maxFruits = 3;
     bombChance = 0;
     smoothieChance = 0;
+    heartChance = 0;
     possibleFruits = 1;
     possibleMovments = 0;
   }
