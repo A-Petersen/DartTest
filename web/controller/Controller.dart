@@ -164,18 +164,18 @@ class Controller {
       try {
           request = HttpRequest.getString(levelconcept).then((json) {
           final parameter = JSON.decode(json);
-          int levelAmount = int.parse(parameter["LevelAmount"]);
+          int levelAmount = parameter["LevelAmount"];
           for (int i = 1; i <= levelAmount; i++) {
             String level = "Level" + i.toString();
             levels.add(new Level(
-                int.parse(parameter[level]['Number']),
-                int.parse(parameter[level]['RequiredScore']),
-                int.parse(parameter[level]['FruitsAmount']),
-                int.parse(parameter[level]['BombChance']),
-                int.parse(parameter[level]['SmoothieChance']),
-                int.parse(parameter[level]['HeartChance']),
-                int.parse(parameter[level]['FruitRange']),
-                int.parse(parameter[level]['FruitMovement'])));
+                parameter[level]['Number'],
+                parameter[level]['RequiredScore'],
+                parameter[level]['FruitsAmount'],
+                parameter[level]['BombChance'],
+                parameter[level]['SmoothieChance'],
+                parameter[level]['HeartChance'],
+                parameter[level]['FruitRange'],
+                parameter[level]['FruitMovement']));
           }
           game.setLevel(levels);
           loading = true;

@@ -1,63 +1,63 @@
 {
-  "LevelAmount": "3",
+  "LevelAmount": 3,
   "Level1": {
-    "Number": "1",
-    "RequiredScore": "0",
-    "FruitsAmount": "3",
-    "BombChance": "0",
-    "SmoothieChance": "0",
-    "HeartChance": "10",
-    "FruitRange": "1",
-    "FruitMovement": "0"
+    "Number": 1,
+    "RequiredScore": 0,
+    "FruitsAmount": 3,
+    "BombChance": 0,
+    "SmoothieChance": 0,
+    "HeartChance": 10,
+    "FruitRange": 1,
+    "FruitMovement": 0
   },
   "Level2": {
-    "Number": "2",
-    "RequiredScore": "5",
-    "FruitsAmount": "4",
-    "BombChance": "0",
-    "SmoothieChance": "20",
-    "HeartChance": "10",
-    "FruitRange": "2",
-    "FruitMovement": "0"
+    "Number": 2,
+    "RequiredScore": 5,
+    "FruitsAmount": 4,
+    "BombChance": 0,
+    "SmoothieChance": 20,
+    "HeartChance": 10,
+    "FruitRange": 2,
+    "FruitMovement": 0
   },
   "Level3": {
-    "Number": "3",
-    "RequiredScore": "10",
-    "FruitsAmount": "4",
-    "BombChance": "0",
-    "SmoothieChance": "20",
-    "HeartChance": "10",
-    "FruitRange": "3",
-    "FruitMovement": "0"
+    "Number": 3,
+    "RequiredScore": 10,
+    "FruitsAmount": 4,
+    "BombChance": 0,
+    "SmoothieChance": 20,
+    "HeartChance": 10,
+    "FruitRange": 3,
+    "FruitMovement": 0
   },
   "Level4": {
-    "Number": "4",
-    "RequiredScore": "15",
-    "FruitsAmount": "4",
-    "BombChance": "10",
-    "SmoothieChance": "20",
-    "HeartChance": "10",
-    "FruitRange": "3",
-    "FruitMovement": "0"
+    "Number": 4,
+    "RequiredScore": 15,
+    "FruitsAmount": 4,
+    "BombChance": 10,
+    "SmoothieChance": 20,
+    "HeartChance": 10,
+    "FruitRange": 3,
+    "FruitMovement": 0
   },
   "Level5": {
-    "Number": "5",
-    "RequiredScore": "20",
-    "FruitsAmount": "4",
-    "BombChance": "20",
-    "SmoothieChance": "10",
-    "HeartChance": "5",
-    "FruitRange": "3",
-    "FruitMovement": "0"
+    "Number": 5,
+    "RequiredScore": 20,
+    "FruitsAmount": 4,
+    "BombChance": 20,
+    "SmoothieChance": 10,
+    "HeartChance": 5,
+    "FruitRange": 3,
+    "FruitMovement": 0
   },
   "Level6": {
-    "Number": "6",
-    "RequiredScore": "25",
-    "FruitsAmount": "5",
-    "BombChance": "20",
-    "SmoothieChance": "10",
-    "HeartChance": "5",
-    "FruitRange": "3",
-    "FruitMovement": "0"
+    "Number": 6,
+    "RequiredScore": 25,
+    "FruitsAmount": 5,
+    "BombChance": 20,
+    "SmoothieChance": 10,
+    "HeartChance": 5,
+    "FruitRange": 3,
+    "FruitMovement": 0
   }
 }
