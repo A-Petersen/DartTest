@@ -12,7 +12,7 @@ var test;
 
 class Controller {
 
-  static int timeMillis = 50;
+  static int timeMillis = 30;
   static int throwMillis = 4000;
   
   Field field;
