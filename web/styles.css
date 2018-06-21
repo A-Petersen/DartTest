@@ -34,10 +34,49 @@ html, body {
     position: absolute;
 }
 
-#startButtonStartScreen {
+#resetButton{
+    width: 20%;
+    height: 20%;
     position: relative;
-    font-size: 150%;
+    font-size: 80%;
     z-index: 2;
+    background: url("resources/button1.png");
+    background-size: 100% 100%;
+    border: none;
+    z-index: 2;
+    font-family: myFirstFont;
+
+
+    filter: drop-shadow(3px 3px 3px #222);
+}
+
+#startButtonStartScreen {
+    width: 20%;
+    height: 20%;
+    position: relative;
+    font-size: 80%;
+    z-index: 2;
+    background: url("resources/button1.png");
+    background-size: 100% 100%;
+    border: none;
+    font-family: myFirstFont;
+
+
+    filter: drop-shadow(3px 3px 3px #222);
+}
+
+#startButton {
+    width: 50%;
+    height: 20%;
+    position: relative;
+    font-size: 80%;
+    background: url("resources/button1.png");
+    background-size: 100% 100%;
+    border: none;
+    font-family: myFirstFont;
+
+
+    filter: drop-shadow(3px 3px 3px #222);
 }
 
 #highscoreStartScreen {
@@ -45,11 +84,6 @@ html, body {
     text-align: center;
     font-size: 150%;
     position: center;
-}
-
-#startButton {
-    position: relative;
-    font-size: 150%;
 }
 
 #orientationInfo {
@@ -65,14 +99,17 @@ html, body {
 
 
 #basket {
-    width: 12.5%;
-    height: 22%;
+    width: 16.5%;
+    height: 30%;
     background: url("resources/korb.png");
     background-size: 100% 100%;
-    bottom: 0px;
-    left: 88%;
+    bottom: -1%;
+    left: 85%;
     position: absolute;
     z-index: -1;
+
+
+    filter: drop-shadow(3px 3px 3px #222);
 }
 
 #treeLeft {
@@ -83,7 +120,10 @@ html, body {
     bottom: -5%;
     left: -5%;
     position: absolute;
-    z-index: -2;
+    z-index: -10;
+
+
+    filter: drop-shadow(3px 3px 3px #222);
 }
 
 #treeRight {
@@ -94,19 +134,39 @@ html, body {
     bottom: -5%;
     left: 82%;
     position: absolute;
-    z-index: -2;
+    z-index: -10;
     transform: scaleX(-1);
+
+
+    filter: drop-shadow(1px 3px 3px #222);
 }
 
-#grass {
+#grass1 {
+     width: 100%;
+     height: 20%;
+     background: url("resources/rasen.png");
+     background-size: 100% 100%;
+     bottom: -10%;
+     left: 0%;
+     position: absolute;
+     z-index: 10;
+     transform: scaleX(-1);
+
+     filter: drop-shadow(3px 3px 3px #222);
+ }
+
+#grass2 {
     width: 100%;
     height: 20%;
     background: url("resources/rasen.png");
     background-size: 100% 100%;
-    bottom: -5%;
+    bottom: -6%;
     left: 0%;
     position: absolute;
-    z-index: -6;
+    z-index: -7;
+
+
+    filter: drop-shadow(3px 3px 3px #222);
 }
 
 #sun {
@@ -118,6 +178,9 @@ html, body {
     left: 63%;
     position: absolute;
     z-index: -5;
+
+
+    filter: drop-shadow(3px 3px 3px #222);
 }
 
 #cloud1 {
@@ -129,6 +192,9 @@ html, body {
     left: 25%;
     position: absolute;
     z-index: -4;
+
+
+    filter: drop-shadow(3px 3px 3px #222);
 }
 
 #cloud2 {
@@ -140,6 +206,9 @@ html, body {
     left: 35%;
     position: absolute;
     z-index: -5;
+
+
+    filter: drop-shadow(3px 3px 3px #222);
 }
 
 #frank {
@@ -149,6 +218,9 @@ html, body {
     position: absolute;
     background: url("resources/frank.png");
     z-index: 0;
+
+
+    filter: drop-shadow(3px 3px 3px #222);
 }
 
 #field {
@@ -211,12 +283,6 @@ html, body {
     text-align: center;
     font-size: 150%;
     position: center;
-}
-
-#resetButton{
-    position: center;
-    font-size: 150%;
-    z-index: 2;
 }
 
 @font-face {
