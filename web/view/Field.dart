@@ -69,8 +69,7 @@ class Field {
     ufoStyle.style.backgroundSize="${ufo.width}px";
 
     ufoStyle.style.transform = "rotate(${(ufo.x*2 + ufo.y)%360}deg)";
-
-    //if(ufo.getClassName() == 'Heart') spin(ufoStyle);
+    ufoStyle.style.filter = 'drop-shadow(3px 3px 3px #222)';
   }
 
   void updateFigure(Figure f) {
@@ -126,7 +125,6 @@ class Field {
                 ufoDiv.style.position = 'absolute';
                 ufoDiv.style.backgroundImage = 'url("resources/birne.png")';
                 ufoDiv.style.zIndex = '1';
-                ;
                 break;
               }
             case 3 :
