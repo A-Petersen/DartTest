@@ -40,7 +40,7 @@ class Controller {
       print(init);
       initSucces = true;
       field.initField();
-      game = new Game(field.width, field.height, highscore, field.updateUFOs, field.removeUFO, field.createNewUFO);
+      game = new Game(highscore, field.updateUFOs, field.removeUFO, field.createNewUFO);
       figureControll();
       resetButton();
       if (!loading) await setLevel();
@@ -203,6 +203,14 @@ class Controller {
       field.removeStartScreen();
       init();
     });
+  }
+
+  int getGameSizeX() {
+    return game.fixedFieldWidth;
+  }
+
+  int getGameSizeY() {
+    return game.fixedFieldHeight;
   }
 
 }

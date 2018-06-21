@@ -120,7 +120,7 @@ abstract class AbstractUFO {
   }
 
   bool landedInBasket() {
-    return x >= (fieldWidth-(fieldWidth*0.13)) && y >= (fieldHeight-(fieldHeight*0.13));
+    return x >= (fieldWidth*0.87) && y >= (fieldHeight*0.9);
   }
 
 }

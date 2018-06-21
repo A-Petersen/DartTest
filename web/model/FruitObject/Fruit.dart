@@ -55,8 +55,8 @@ class Fruit extends AbstractUFO{
    * Update
    */
   void update() {
-    this.x += destX / 640 * fieldWidth;
-    this.y += destY / 360 * fieldHeight;
+    this.x += destX;
+    this.y += destY;
 
     if (this.goingUp && (this.y - this.radius <= 11) ) this.goingUp = false;
 
