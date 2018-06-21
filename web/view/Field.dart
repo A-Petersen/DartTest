@@ -69,10 +69,7 @@ class Field {
     ufoStyle.style.backgroundSize="${ufo.width}px";
 
     ufoStyle.style.transform = "rotate(${(ufo.x*2 + ufo.y)%360}deg)";
-
-
-
-    //if(ufo.getClassName() == 'Heart') spin(ufoStyle);
+    ufoStyle.style.filter = 'drop-shadow(3px 3px 3px #222)';
   }
 
   void updateFigure(Figure f) {
@@ -121,8 +118,6 @@ class Field {
                 ufoDiv.style.position = 'absolute';
                 ufoDiv.style.backgroundImage = 'url("resources/bananen.png")';
                 ufoDiv.style.zIndex = '1';
-
-                ufoDiv.style.filter = 'drop-shadow(3px 3px 3px #222)';
                 break;
               }
             case 2 :
@@ -130,8 +125,6 @@ class Field {
                 ufoDiv.style.position = 'absolute';
                 ufoDiv.style.backgroundImage = 'url("resources/birne.png")';
                 ufoDiv.style.zIndex = '1';
-
-                ufoDiv.style.filter = 'drop-shadow(3px 3px 3px #222)';
                 break;
               }
             case 3 :
@@ -139,8 +132,6 @@ class Field {
                 ufoDiv.style.position = 'absolute';
                 ufoDiv.style.backgroundImage = 'url("resources/apfel.png")';
                 ufoDiv.style.zIndex = '1';
-
-                ufoDiv.style.filter = 'drop-shadow(3px 3px 3px #222)';
                 break;
               }
             case 4 :
@@ -148,8 +139,6 @@ class Field {
                 ufoDiv.style.position = 'absolute';
                 ufoDiv.style.backgroundImage = 'url("resources/blatt.png")';
                 ufoDiv.style.zIndex = '1';
-
-                ufoDiv.style.filter = 'drop-shadow(3px 3px 3px #222)';
                 break;
               }
           }
@@ -159,24 +148,18 @@ class Field {
         ufoDiv.style.position = 'absolute';
         ufoDiv.style.backgroundImage = 'url("resources/bomb.png")';
         ufoDiv.style.zIndex = '1';
-
-        ufoDiv.style.filter = 'drop-shadow(3px 3px 3px #222)';
         break;
       }
       case 'Smoothie' : {
         ufoDiv.style.position = 'absolute';
         ufoDiv.style.backgroundImage = 'url("resources/smoothie.png")';
         ufoDiv.style.zIndex = '1';
-
-        ufoDiv.style.filter = 'drop-shadow(3px 3px 3px #222)';
         break;
       }
       case 'Heart' : {
         ufoDiv.style.position = 'absolute';
         ufoDiv.style.backgroundImage = 'url("resources/herts.png")';
         ufoDiv.style.zIndex = '1';
-
-        ufoDiv.style.filter = 'drop-shadow(3px 3px 3px #222)';
         break;
       }
     }

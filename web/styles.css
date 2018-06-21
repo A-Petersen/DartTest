@@ -38,13 +38,15 @@ html, body {
     width: 20%;
     height: 20%;
     position: relative;
-    font-size: 80%;
+    font-size: 150%;
     z-index: 2;
     background: url("resources/button1.png");
     background-size: 100% 100%;
     border: none;
     z-index: 2;
     font-family: myFirstFont;
+    padding-right: 2%;
+    padding-bottom: 1%;
 
 
     filter: drop-shadow(3px 3px 3px #222);
@@ -54,7 +56,7 @@ html, body {
     width: 20%;
     height: 20%;
     position: relative;
-    font-size: 80%;
+    font-size: 100%;
     z-index: 2;
     background: url("resources/button1.png");
     background-size: 100% 100%;
@@ -69,12 +71,13 @@ html, body {
     width: 50%;
     height: 20%;
     position: relative;
-    font-size: 80%;
+    font-size: 100%;
     background: url("resources/button1.png");
     background-size: 100% 100%;
     border: none;
     font-family: myFirstFont;
-
+    padding-right: 1%;
+    padding-bottom: 1%;
 
     filter: drop-shadow(3px 3px 3px #222);
 }
@@ -103,7 +106,7 @@ html, body {
     height: 30%;
     background: url("resources/korb.png");
     background-size: 100% 100%;
-    bottom: -1%;
+    bottom: -2%;
     left: 85%;
     position: absolute;
     z-index: -1;
@@ -120,7 +123,7 @@ html, body {
     bottom: -5%;
     left: -5%;
     position: absolute;
-    z-index: -10;
+    z-index: -6;
 
 
     filter: drop-shadow(3px 3px 3px #222);
@@ -134,7 +137,7 @@ html, body {
     bottom: -5%;
     left: 82%;
     position: absolute;
-    z-index: -10;
+    z-index: -6;
     transform: scaleX(-1);
 
 
@@ -142,12 +145,12 @@ html, body {
 }
 
 #grass1 {
-     width: 100%;
+     width: 110%;
      height: 20%;
      background: url("resources/rasen.png");
      background-size: 100% 100%;
      bottom: -10%;
-     left: 0%;
+     left: -5%;
      position: absolute;
      z-index: 10;
      transform: scaleX(-1);
@@ -177,7 +180,7 @@ html, body {
     bottom: 75%;
     left: 63%;
     position: absolute;
-    z-index: -5;
+    z-index: -11;
 
 
     filter: drop-shadow(3px 3px 3px #222);
