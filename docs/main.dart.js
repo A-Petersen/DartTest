@@ -3685,22 +3685,8 @@ z=y.style
 C.b.C(z,(z&&C.b).B(z,"background-size"),"100% 100%","")
 if(w.b.f.x===2){z=y.style
 C.b.C(z,(z&&C.b).B(z,"transform"),"scaleX(-1)","")}else{z=y.style
-C.b.C(z,(z&&C.b).B(z,"transform"),"scaleX(1)","")}if(w.b.f.x!==0){z=this.fy
-switch(z){case 10:y=y.style
-y.backgroundImage="url('resources/frank_mid.png')"
-break
-case 20:y=y.style
-y.backgroundImage="url('resources/frank_late.png')"
-break
-case 30:y=y.style
-y.backgroundImage="url('resources/frank_mid.png')"
-break
-case 40:z=y.style
-z.backgroundImage="url('resources/frank.png')"
-this.fy=-1
-z=-1
-break}this.fy=z+1}else{z=y.style
-z.backgroundImage="url('resources/frank.png')"}},
+C.b.C(z,(z&&C.b).B(z,"transform"),"scaleX(1)","")}z=y.style
+z.backgroundImage="url('resources/frank.png')"},
 dV:[function(a){var z,y
 z=document.createElement("div")
 z.id="ufo"+C.d.i($.O)

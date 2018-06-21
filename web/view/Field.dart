@@ -87,26 +87,27 @@ class Field {
     else {
       this.figure.style.transform="scaleX(1)";
     }
-    if (controller.game.figure.moving != 0) {
-      switch (state) {
-        case 10:
-          this.figure.style.backgroundImage="url('resources/frank_mid.png')";
-          break;
-        case 20:
-          this.figure.style.backgroundImage="url('resources/frank_late.png')";
-          break;
-        case 30:
-          this.figure.style.backgroundImage="url('resources/frank_mid.png')";
-          break;
-        case 40:
-          this.figure.style.backgroundImage="url('resources/frank.png')";
-          state = -1;
-          break;
-      }
-      state++;
-    } else {
-      this.figure.style.backgroundImage="url('resources/frank.png')";
-    }
+//    if (controller.game.figure.moving != 0) {
+//      switch (state) {
+//        case 10:
+//          this.figure.style.backgroundImage="url('resources/frank_mid.png')";
+//          break;
+//        case 20:
+//          this.figure.style.backgroundImage="url('resources/frank_late.png')";
+//          break;
+//        case 30:
+//          this.figure.style.backgroundImage="url('resources/frank_mid.png')";
+//          break;
+//        case 40:
+//          this.figure.style.backgroundImage="url('resources/frank.png')";
+//          state = -1;
+//          break;
+//      }
+//      state++;
+//    } else {
+//      this.figure.style.backgroundImage="url('resources/frank.png')";
+//    }
+    this.figure.style.backgroundImage="url('resources/frank.png')";
   }
 
   void createNewUFO(AbstractUFO ufo) {
