@@ -71,7 +71,7 @@ class Field {
 //    ufoStyle.style.backgroundSize="${getViewPos(true, ufo.width)}px";
 
     ufoStyle.style.transform = "rotate(${(getViewPos(true, ufo.x.floor())*2 + getViewPos(false, ufo.y.floor()))%360}deg)";
-    ufoStyle.style.filter = 'drop-shadow(3px 3px 3px #222)';
+//    ufoStyle.style.filter = 'drop-shadow(3px 3px 3px #222)';
   }
 
   void updateFigure(Figure f) {
