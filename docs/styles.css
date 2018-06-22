@@ -258,30 +258,26 @@ html, body {
 }
 
 #cloud1 {
-    width: 20%;
-    height: 15%;
-    background: url("resources/wolke1.png");
+    width: 30%;
+    height: 30%;
+    background: url(resources/wolke1.png);
     background-size: 100% 100%;
-    bottom: 85%;
-    left: 25%;
+    bottom: 70%;
+    left: 20%;
     position: absolute;
-    z-index: -4;
-
-
+    z-index: -12;
     filter: drop-shadow(3px 3px 3px #222);
 }
 
 #cloud2 {
-    width: 14%;
-    height: 12%;
-    background: url("resources/wolke2.png");
+    width: 30%;
+    height: 30%;
+    background: url(resources/wolke2.png);
     background-size: 100% 100%;
-    bottom: 90%;
+    bottom: 75%;
     left: 35%;
     position: absolute;
-    z-index: -5;
-
-
+    z-index: -13;
     filter: drop-shadow(3px 3px 3px #222);
 }
 
@@ -298,40 +294,38 @@ html, body {
 
 #field {
     text-align: center;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background: url("resources/back.png");
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url("resources/back.png");
     background-size: 100% 125%;
     z-index: -2;
     /*background-color: skyblue;*/
 }
 
 #attemps {
-    position: center;
-    padding: 5%;
-    top: 1%;
-    right: 1%;
-    font-size: 150%;
-    font-weight: bolder;
+    height: 5%;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    background: url("resources/herts.png");
+    z-index: 30;
 }
 
 #score {
     position: absolute;
     padding: 5%;
-    top: 1%;
-    right: 1%;
-    font-size: 200%;
-    font-weight: bolder;
+    top: 23%;
+    left: 40%;
+    font-size: 5vmax;
 }
 
 #level {
     position: absolute;
     padding: 5%;
-    top: 1%;
-    left: 1%;
-    font-size: 200%;
-    font-weight: bolder;
+    top: 20%;
+    left: 35%;
+    font-size: 3vmax;
 }
 
 #gameoverScreen{
@@ -345,17 +339,14 @@ html, body {
 }
 
 #endscore{
-    padding: 5%;
+    padding-top: 20%;
     text-align: center;
-    font-size: 150%;
-    position: center;
+    font-size: 4vmax;
 }
 
 #highscore {
-    padding: 5%;
     text-align: center;
-    font-size: 150%;
-    position: center;
+    font-size: 4vmax;
 }
 
 @font-face {

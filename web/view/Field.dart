@@ -192,7 +192,9 @@ class Field {
   }
 
   void setAttempts(int a) {
-    attemps.text = "Versuche: " + a.toString();
+    attemps.style.width = "${5 * a}%";
+    attemps.style.backgroundSize = "${100 / a}% 100%";
+//    attemps.text = "Versuche: " + a.toString();
   }
 
   void gameover() {
