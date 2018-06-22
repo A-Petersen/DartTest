@@ -223,7 +223,7 @@ html, body {
     z-index: 0;
 
 
-    filter: drop-shadow(3px 3px 3px #222);
+    /*filter: drop-shadow(3px 3px 3px #222);*/
 }
 
 #field {
