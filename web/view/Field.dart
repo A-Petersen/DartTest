@@ -65,7 +65,7 @@ class Field {
     ufo.update();
 
     var ufoStyle = querySelector("#" + ufos[ufo].id);
-    final round = "${this.size}px";
+//    final round = "${this.size}px";
 
 //    width > height ? getViewPos(true,
 
@@ -76,16 +76,16 @@ class Field {
     ufoStyle.style.left="${getViewPos(true, ufo.left)}px";
 //    ufoStyle.style.backgroundSize="${getViewPos(true, ufo.width)}px";
 
-    ufoStyle.style.transform = "rotate(${(getViewPos(true, ufo.x.floor())*2 + getViewPos(false, ufo.y.floor()))%360}deg)";
+//    ufoStyle.style.transform = "rotate(${(getViewPos(true, ufo.x.floor())*2 + getViewPos(false, ufo.y.floor()))%360}deg)";
 //    ufoStyle.style.filter = 'drop-shadow(3px 3px 3px #222)';
   }
 
   void updateFigure(Figure f) {
     f.update();
     this.figure.style.left="${getViewPos(true, f.left)}px";
-    this.figure.style.top="${height - getViewPos(false,f.b.floor())}px";
+//    this.figure.style.top="${height - getViewPos(false,f.b.floor())}px";
 //    this.figure.style.backgroundSize="${getViewPos(true, f.a.floor())}px ${getViewPos(false, f.b.floor())}px";
-    this.figure.style.backgroundSize = '100% 100%';
+//    this.figure.style.backgroundSize = '100% 100%';
 
     if (controller.game.figure.moving == 2) {
       this.figure.style.transform="scaleX(-1)";
@@ -113,7 +113,7 @@ class Field {
 //    } else {
 //      this.figure.style.backgroundImage="url('resources/frank.png')";
 //    }
-    this.figure.style.backgroundImage="url('resources/frank.png')";
+//    this.figure.style.backgroundImage="url('resources/frank.png')";
   }
 
   void createNewUFO(AbstractUFO ufo) {

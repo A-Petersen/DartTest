@@ -286,6 +286,8 @@ html, body {
     height: 27.8%;
     position: absolute;
     background: url("resources/frank.png");
+    background-size: 100% 100%;
+    bottom: 0%;
     z-index: 0;
 
 
