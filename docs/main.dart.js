@@ -3599,7 +3599,7 @@ y.zIndex="-2"
 if(!z.x)z.Z()}},dY:{"^":"d:5;a",
 $1:function(a){var z=this.a
 J.bj(z.a.y)
-z.Z()}}}],["","",,N,{"^":"",e9:{"^":"a;a,b,c,d,e,f,r,x,y,z,Q,ch,cx,cy,db,dx,dy,fr,fx,fy,go,id",
+z.Z()}}}],["","",,N,{"^":"",e9:{"^":"a;a,b,c,d,e,f,r,x,y,z,Q,ch,cx,cy,db,dx,dy,fr,fx,fy",
 dX:[function(a){var z,y,x,w,v,u
 a.ar()
 z=C.f.k("#",J.dy(this.fx.h(0,a)))
@@ -3612,7 +3612,7 @@ if(typeof w!=="number")return H.e(w)
 w=C.a.l(x-w)
 x=this.a
 v=x.b.d
-u=this.id
+u=window.innerHeight
 if(typeof u!=="number")return H.e(u)
 w=w/v*u
 w=H.c(w)+"px"
@@ -3624,7 +3624,7 @@ if(typeof w!=="number")return w.q()
 if(typeof v!=="number")return H.e(v)
 v=C.a.l(w-v)
 w=x.b.c
-u=this.go
+u=window.innerWidth
 if(typeof u!=="number")return H.e(u)
 w=v/w*u
 w=H.c(w)+"px"
@@ -3632,12 +3632,12 @@ z.left=w
 z=y.style
 w=J.bR(a.b)
 v=x.b.c
-u=this.go
+u=window.innerWidth
 if(typeof u!=="number")return H.e(u)
 w=w/v*u
 v=J.bR(a.c)
 x=x.b.d
-u=this.id
+u=window.innerHeight
 if(typeof u!=="number")return H.e(u)
 x=v/x*u
 x="rotate("+H.c(C.q.aY(w*2+x,360))+"deg)"
@@ -3652,17 +3652,33 @@ x=y.style
 z=C.a.l(z-a.c/2)
 w=this.a
 v=w.b.c
-u=this.go
+u=window.innerWidth
 if(typeof u!=="number")return H.e(u)
 z=z/v*u
 z=H.c(z)+"px"
 x.left=z
 if(w.b.f.x===2){z=y.style
 C.b.C(z,(z&&C.b).B(z,"transform"),"scaleX(-1)","")}else{z=y.style
-C.b.C(z,(z&&C.b).B(z,"transform"),"scaleX(1)","")}},
+C.b.C(z,(z&&C.b).B(z,"transform"),"scaleX(1)","")}if(w.b.f.x!==0){z=this.fy
+switch(z){case 10:x=y.style
+x.backgroundImage="url('resources/frank_mid.png')"
+break
+case 20:x=y.style
+x.backgroundImage="url('resources/frank_late.png')"
+break
+case 30:x=y.style
+x.backgroundImage="url('resources/frank_mid.png')"
+break
+case 40:z=y.style
+z.backgroundImage="url('resources/frank.png')"
+this.fy=-1
+z=-1
+break}this.fy=z+1}else{z=y.style
+z.backgroundImage="url('resources/frank.png')"}z=y.style
+z.backgroundImage="url('resources/frank.png')"},
 dV:[function(a){var z,y,x,w,v,u,t
-z=this.go
-y=this.id
+z=window.innerWidth
+y=window.innerHeight
 x=H.c(Math.min(H.de(z),H.de(y)))+"px"
 w=document.createElement("div")
 w.id="ufo"+C.e.i($.O)
@@ -3672,7 +3688,7 @@ if(typeof z!=="number")return H.e(z)
 z=C.a.l(4*z)
 v=this.a
 u=v.b.c
-t=this.go
+t=window.innerWidth
 if(typeof t!=="number")return H.e(t)
 z=z/u*t
 z=H.c(z)+"px"
@@ -3682,7 +3698,7 @@ y=a.x
 if(typeof y!=="number")return H.e(y)
 y=C.a.l(4*y)
 v=v.b.d
-u=this.id
+u=window.innerHeight
 if(typeof u!=="number")return H.e(u)
 y=y/v*u
 y=H.c(y)+"px"
@@ -4241,10 +4257,7 @@ j=x.querySelector("#endscore")
 i=x.querySelector("#highscore")
 h=x.querySelector("#resetButton")
 x=x.querySelector("#field")
-x=new N.e9(y,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,x,new H.Q(0,null,null,null,null,null,0,[null,null]),0,null,null)
-x.go=window.innerWidth
-x.id=window.innerHeight
-y.a=x
+y.a=new N.e9(y,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,x,new H.Q(0,null,null,null,null,null,0,[null,null]),0)
 y.ca()
 y.a.dm()},"$0","dk",0,0,1]},1]]
 setupProgram(dart,0)

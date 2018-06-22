@@ -34,31 +34,27 @@ class Field {
 
   Map<AbstractUFO, DivElement> ufos = new Map();
 
-//  /**
-//   * Breite der gesamt View
-//   */
-//  int get widthPerf => window.innerWidth;
-//
-//  /**
-//   * Höhe der gesamt View
-//   */
-//  int get heightPerf => window.innerHeight;
+  /**
+   * Breite der gesamt View
+   */
+  int get width => window.innerWidth;
+
+  /**
+   * Höhe der gesamt View
+   */
+  int get height => window.innerHeight;
 
   int get size => min(this.width, this.height);
 
-//  double get center_x => this.width / 2;
-//
-//  double get center_y => this.height / 2;
-
   int state = 0;
 
-  int width;
-  int height;
+//  int width;
+//  int height;
 
 
   Field(this.controller){
-    width = window.innerWidth;
-    height = window.innerHeight;
+//    width = window.innerWidth;
+//    height = window.innerHeight;
   }
 
   void updateUFOs(AbstractUFO ufo) {
@@ -75,7 +71,6 @@ class Field {
     ufoStyle.style.top="${getViewPos(false, ufo.heaven)}px";
     ufoStyle.style.left="${getViewPos(true, ufo.left)}px";
 //    ufoStyle.style.backgroundSize="${getViewPos(true, ufo.width)}px";
-
     ufoStyle.style.transform = "rotate(${(getViewPos(true, ufo.x.floor())*2 + getViewPos(false, ufo.y.floor()))%360}deg)";
 //    ufoStyle.style.filter = 'drop-shadow(3px 3px 3px #222)';
   }
@@ -93,27 +88,27 @@ class Field {
     else {
       this.figure.style.transform="scaleX(1)";
     }
-//    if (controller.game.figure.moving != 0) {
-//      switch (state) {
-//        case 10:
-//          this.figure.style.backgroundImage="url('resources/frank_mid.png')";
-//          break;
-//        case 20:
-//          this.figure.style.backgroundImage="url('resources/frank_late.png')";
-//          break;
-//        case 30:
-//          this.figure.style.backgroundImage="url('resources/frank_mid.png')";
-//          break;
-//        case 40:
-//          this.figure.style.backgroundImage="url('resources/frank.png')";
-//          state = -1;
-//          break;
-//      }
-//      state++;
-//    } else {
-//      this.figure.style.backgroundImage="url('resources/frank.png')";
-//    }
-//    this.figure.style.backgroundImage="url('resources/frank.png')";
+    if (controller.game.figure.moving != 0) {
+      switch (state) {
+        case 10:
+          this.figure.style.backgroundImage="url('resources/frank_mid.png')";
+          break;
+        case 20:
+          this.figure.style.backgroundImage="url('resources/frank_late.png')";
+          break;
+        case 30:
+          this.figure.style.backgroundImage="url('resources/frank_mid.png')";
+          break;
+        case 40:
+          this.figure.style.backgroundImage="url('resources/frank.png')";
+          state = -1;
+          break;
+      }
+      state++;
+    } else {
+      this.figure.style.backgroundImage="url('resources/frank.png')";
+    }
+    this.figure.style.backgroundImage="url('resources/frank.png')";
   }
 
   void createNewUFO(AbstractUFO ufo) {
