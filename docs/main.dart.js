@@ -3359,7 +3359,14 @@ gbK:function(a){return new W.ao(a,"click",!1,[W.aD])},
 gbL:function(a){return new W.ao(a,"touchend",!1,[W.a3])},
 gbM:function(a){return new W.ao(a,"touchstart",!1,[W.a3])},
 $isf:1,
-"%":"SVGComponentTransferFunctionElement|SVGDescElement|SVGDiscardElement|SVGFEDistantLightElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEMergeNodeElement|SVGFEPointLightElement|SVGFESpotLightElement|SVGMetadataElement|SVGStopElement|SVGStyleElement|SVGTitleElement;SVGElement"},j6:{"^":"ax;",$isf:1,"%":"SVGSVGElement"},j7:{"^":"m;",$isf:1,"%":"SVGSymbolElement"},f9:{"^":"ax;","%":"SVGTSpanElement|SVGTextElement|SVGTextPositioningElement;SVGTextContentElement"},j8:{"^":"f9;",$isf:1,"%":"SVGTextPathElement"},j9:{"^":"ax;",$isf:1,"%":"SVGUseElement"},ja:{"^":"m;",$isf:1,"%":"SVGViewElement"},jh:{"^":"m;",$isf:1,"%":"SVGGradientElement|SVGLinearGradientElement|SVGRadialGradientElement"},jj:{"^":"m;",$isf:1,"%":"SVGCursorElement"},jk:{"^":"m;",$isf:1,"%":"SVGFEDropShadowElement"},jl:{"^":"m;",$isf:1,"%":"SVGMPathElement"}}],["","",,P,{"^":""}],["","",,P,{"^":""}],["","",,P,{"^":""}],["","",,Y,{"^":"",a_:{"^":"a;",m:{"^":"O<"}}}],["","",,L,{"^":"",dC:{"^":"a_;a,b,c,d,e,f,r,x,y,z,Q,ch,cx,cy,db,dx,dy",
+"%":"SVGComponentTransferFunctionElement|SVGDescElement|SVGDiscardElement|SVGFEDistantLightElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEMergeNodeElement|SVGFEPointLightElement|SVGFESpotLightElement|SVGMetadataElement|SVGStopElement|SVGStyleElement|SVGTitleElement;SVGElement"},j6:{"^":"ax;",$isf:1,"%":"SVGSVGElement"},j7:{"^":"m;",$isf:1,"%":"SVGSymbolElement"},f9:{"^":"ax;","%":"SVGTSpanElement|SVGTextElement|SVGTextPositioningElement;SVGTextContentElement"},j8:{"^":"f9;",$isf:1,"%":"SVGTextPathElement"},j9:{"^":"ax;",$isf:1,"%":"SVGUseElement"},ja:{"^":"m;",$isf:1,"%":"SVGViewElement"},jh:{"^":"m;",$isf:1,"%":"SVGGradientElement|SVGLinearGradientElement|SVGRadialGradientElement"},jj:{"^":"m;",$isf:1,"%":"SVGCursorElement"},jk:{"^":"m;",$isf:1,"%":"SVGFEDropShadowElement"},jl:{"^":"m;",$isf:1,"%":"SVGMPathElement"}}],["","",,P,{"^":""}],["","",,P,{"^":""}],["","",,P,{"^":""}],["","",,Y,{"^":"",a_:{"^":"a;",
+U:function(){if(this.dx==null){this.E()
+this.f=this.cx}else{this.E()
+var z=this.dx.a8(this.cx)
+this.y=z
+this.f=z.a
+this.r=this.r+z.b}},
+m:{"^":"O<"}}}],["","",,L,{"^":"",dC:{"^":"a_;a,b,c,d,e,f,r,x,y,z,Q,ch,cx,cy,db,dx,dy",
 U:function(){if(this.dx==null){this.E()
 this.f=this.cx}else{this.E()
 var z=this.dx.a8(this.cx)
@@ -3592,13 +3599,13 @@ y.zIndex="-2"
 if(!z.x)z.Z()}},dY:{"^":"d:5;a",
 $1:function(a){var z=this.a
 J.bj(z.a.y)
-z.Z()}}}],["","",,N,{"^":"",e9:{"^":"a;a,b,c,d,e,f,r,x,y,z,Q,ch,cx,cy,db,dx,dy,fr,fx,fy",
+z.Z()}}}],["","",,N,{"^":"",e9:{"^":"a;a,b,c,d,e,f,r,x,y,z,Q,ch,cx,cy,db,dx,dy,fr,fx,fy,go,id",
 dX:[function(a){var z,y,x,w,v,u,t
 a.ar()
 z=C.f.k("#",J.dy(this.fx.h(0,a)))
 y=document.querySelector(z)
-z=window.innerWidth
-x=window.innerHeight
+z=this.go
+x=this.id
 w=H.b(Math.min(H.de(z),H.de(x)))+"px"
 x=y.style
 z=a.x
@@ -3606,7 +3613,7 @@ if(typeof z!=="number")return H.e(z)
 z=C.a.l(4*z)
 v=this.a
 u=v.b.c
-t=window.innerWidth
+t=this.go
 if(typeof t!=="number")return H.e(t)
 z=z/u*t
 z=H.b(z)+"px"
@@ -3616,7 +3623,7 @@ x=a.x
 if(typeof x!=="number")return H.e(x)
 x=C.a.l(4*x)
 u=v.b.d
-t=window.innerHeight
+t=this.id
 if(typeof t!=="number")return H.e(t)
 x=x/u*t
 x=H.b(x)+"px"
@@ -3630,7 +3637,7 @@ if(typeof x!=="number")return x.q()
 if(typeof u!=="number")return H.e(u)
 u=C.a.l(x-u)
 x=v.b.d
-t=window.innerHeight
+t=this.id
 if(typeof t!=="number")return H.e(t)
 x=u/x*t
 x=H.b(x)+"px"
@@ -3642,7 +3649,7 @@ if(typeof x!=="number")return x.q()
 if(typeof u!=="number")return H.e(u)
 u=C.a.l(x-u)
 x=v.b.c
-t=window.innerWidth
+t=this.go
 if(typeof t!=="number")return H.e(t)
 x=u/x*t
 x=H.b(x)+"px"
@@ -3650,12 +3657,12 @@ z.left=x
 z=y.style
 x=J.bR(a.b)
 u=v.b.c
-t=window.innerWidth
+t=this.go
 if(typeof t!=="number")return H.e(t)
 x=x/u*t
 u=J.bR(a.c)
 v=v.b.d
-t=window.innerHeight
+t=this.id
 if(typeof t!=="number")return H.e(t)
 v=u/v*t
 v="rotate("+H.b(C.q.aY(x*2+v,360))+"deg)"
@@ -3670,16 +3677,16 @@ x=y.style
 z=C.a.l(z-a.c/2)
 w=this.a
 v=w.b.c
-u=window.innerWidth
+u=this.go
 if(typeof u!=="number")return H.e(u)
 z=z/v*u
 z=H.b(z)+"px"
 x.left=z
 z=y.style
-x=window.innerHeight
+x=this.id
 v=C.d.l(a.d)
 u=w.b.d
-t=window.innerHeight
+t=this.id
 if(typeof t!=="number")return H.e(t)
 v=v/u*t
 if(typeof x!=="number")return x.q()
@@ -3791,12 +3798,6 @@ x=C.a.l(z-y)<C.a.l(this.a+x)
 z=x}else z=!1}else z=!1
 if(z)return!0
 return!1}}}],["","",,N,{"^":"",ce:{"^":"a_;a,b,c,d,e,f,r,x,y,z,Q,ch,cx,cy,db,dx,dy",
-U:function(){if(this.dx==null){this.E()
-this.f=this.cx}else{this.E()
-var z=this.dx.a8(this.cx)
-this.y=z
-this.f=z.a
-this.r=this.r+z.b}},
 E:function(){var z,y,x
 z=this.c
 if(typeof z!=="number")return z.K()
@@ -4252,7 +4253,10 @@ j=x.querySelector("#endscore")
 i=x.querySelector("#highscore")
 h=x.querySelector("#resetButton")
 x=x.querySelector("#field")
-y.a=new N.e9(y,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,x,new H.Q(0,null,null,null,null,null,0,[null,null]),0)
+x=new N.e9(y,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,x,new H.Q(0,null,null,null,null,null,0,[null,null]),0,null,null)
+x.go=window.innerWidth
+x.id=window.innerHeight
+y.a=x
 y.ca()
 y.a.dm()},"$0","dk",0,0,1]},1]]
 setupProgram(dart,0)

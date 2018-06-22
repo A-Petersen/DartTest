@@ -34,15 +34,15 @@ class Field {
 
   Map<AbstractUFO, DivElement> ufos = new Map();
 
-  /**
-   * Breite der gesamt View
-   */
-  int get width => window.innerWidth;
-
-  /**
-   * Höhe der gesamt View
-   */
-  int get height => window.innerHeight;
+//  /**
+//   * Breite der gesamt View
+//   */
+//  int get widthPerf => window.innerWidth;
+//
+//  /**
+//   * Höhe der gesamt View
+//   */
+//  int get heightPerf => window.innerHeight;
 
   int get size => min(this.width, this.height);
 
@@ -52,7 +52,13 @@ class Field {
 
   int state = 0;
 
+  int width;
+  int height;
+
+
   Field(this.controller){
+    width = window.innerWidth;
+    height = window.innerHeight;
   }
 
   void updateUFOs(AbstractUFO ufo) {

@@ -94,7 +94,17 @@ abstract class AbstractUFO {
   /**
    * Methode zum setzen des Ziels der kommenden Bewegung
    */
-  void move();
+  void move() {
+    if (movementType == null) {
+      moveGravity();
+      this.destX = speed;
+    } else {
+      moveGravity();
+      vector = movementType.move(this.speed);
+      this.destX = vector.x;
+      this.destY += vector.y;
+    }
+  }
 
   void moveGravity();
 
