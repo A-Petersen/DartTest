@@ -30,8 +30,18 @@ html, body {
     font-size: 150%;
     width: 100%;
     height: 100%;
-    background: white;
     position: absolute;
+    background: url("resources/back.png");
+    background-size: 100% 130%;
+}
+
+#gameName {
+    width: 70%;
+    height: 30%;
+    font-size: 5vmax;
+    position: absolute;
+    top: 50%;
+    left: 30%;
 }
 
 #resetButton{
@@ -53,40 +63,78 @@ html, body {
 }
 
 #startButtonStartScreen {
-    width: 20%;
-    height: 20%;
-    position: relative;
-    font-size: 100%;
-    z-index: 2;
+    width: 70%;
+    height: 30%;
+    position: absolute;
     background: url("resources/button1.png");
     background-size: 100% 100%;
     border: none;
+    font-size: 5vmax;
     font-family: myFirstFont;
+    top: 60%;
+    left: 30%;
+    padding-right: 5%;
+    padding-bottom: 1%;
+    filter: drop-shadow(3px 3px 3px #222);
+    z-index: 1;
+}
 
-
+#sunStart {
+    width: 40%;
+    height: 30%;
+    background: url("resources/sun.png");
+    background-size: 100% 100%;
+    bottom: 75%;
+    left: 63%;
+    position: absolute;
+    /*z-index: -11;*/
     filter: drop-shadow(3px 3px 3px #222);
 }
 
-#startButton {
-    width: 50%;
-    height: 20%;
-    position: relative;
-    font-size: 100%;
-    background: url("resources/button1.png");
+#treeStart {
+    width: 70%;
+    height: 105%;
+    background: url("resources/baum.png");
     background-size: 100% 100%;
-    border: none;
-    font-family: myFirstFont;
-    padding-right: 1%;
-    padding-bottom: 1%;
-
+    bottom: -5%;
+    left: -5%;
+    position: absolute;
+    /*z-index: -10;*/
     filter: drop-shadow(3px 3px 3px #222);
 }
 
 #highscoreStartScreen {
-    padding: 5%;
-    text-align: center;
-    font-size: 150%;
-    position: center;
+    width: 70%;
+    height: 30%;
+    font-size: 5vmax;
+    position: absolute;
+    top: 85%;
+    left: 30%;
+}
+
+#startButton {
+    width: 70%;
+    height: 30%;
+    position: absolute;
+    background: url("resources/button1.png");
+    background-size: 100% 100%;
+    border: none;
+    font-size: 5vmax;
+    font-family: myFirstFont;
+    top: 65%;
+    left: 30%;
+    padding-right: 5%;
+    padding-bottom: 1%;
+    filter: drop-shadow(3px 3px 3px #222);
+}
+
+#textOrientation {
+    width: 70%;
+    height: 30%;
+    font-size: 5vmax;
+    position: absolute;
+    top: 55%;
+    left: 30%;
 }
 
 #orientationInfo {
@@ -95,11 +143,34 @@ html, body {
     text-align: center;
     font-size: 150%;
     position: absolute;
-    background-color: white;
+    background: url("resources/back.png");
+    background-size: 100% 130%;
     visibility: hidden;
 }
 
+#treeOrientation {
+    width: 70%;
+    height: 105%;
+    background: url("resources/baum.png");
+    background-size: 100% 100%;
+    bottom: -5%;
+    left: -5%;
+    position: absolute;
+    z-index: -10;
+    filter: drop-shadow(3px 3px 3px #222);
+}
 
+#sunOrientation {
+    width: 40%;
+    height: 30%;
+    background: url("resources/sun.png");
+    background-size: 100% 100%;
+    bottom: 75%;
+    left: 63%;
+    position: absolute;
+    z-index: -11;
+    filter: drop-shadow(3px 3px 3px #222);
+}
 
 #basket {
     width: 16.5%;
@@ -217,7 +288,6 @@ html, body {
 #frank {
     width: 15.6%;
     height: 27.8%;
-    /*background-size: 100% 100%;*/
     position: absolute;
     background: url("resources/frank.png");
     z-index: 0;
