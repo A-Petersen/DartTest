@@ -3653,9 +3653,7 @@ t=window.innerHeight
 if(typeof t!=="number")return H.e(t)
 v=u/v*t
 v="rotate("+H.c(C.q.aY(x*2+v,360))+"deg)"
-C.b.C(z,(z&&C.b).B(z,"transform"),v,"")
-v=y.style
-C.b.C(v,(v&&C.b).B(v,"filter"),"drop-shadow(3px 3px 3px #222)","")},"$1","gdN",2,0,6],
+C.b.C(z,(z&&C.b).B(z,"transform"),v,"")},"$1","gdN",2,0,6],
 bU:function(a){var z,y,x,w,v,u,t
 z=a.e
 if(z<0&&a.a<=0){a.e=0
