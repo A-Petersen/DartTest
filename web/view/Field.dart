@@ -69,9 +69,9 @@ class Field {
 
 //    width > height ? getViewPos(true,
 
-    ufoStyle.style.width="${getViewPos(true, ufo.width)}px";
-    ufoStyle.style.height="${getViewPos(false, ufo.height)}px";
-    ufoStyle.style.borderRadius=round;
+//    ufoStyle.style.width="${getViewPos(true, ufo.width)}px";
+//    ufoStyle.style.height="${getViewPos(false, ufo.height)}px";
+//    ufoStyle.style.borderRadius=round;
     ufoStyle.style.top="${getViewPos(false, ufo.heaven)}px";
     ufoStyle.style.left="${getViewPos(true, ufo.left)}px";
 //    ufoStyle.style.backgroundSize="${getViewPos(true, ufo.width)}px";
@@ -117,8 +117,15 @@ class Field {
   }
 
   void createNewUFO(AbstractUFO ufo) {
+    final round = "${this.size}px";
+
     var ufoDiv = new DivElement();
     ufoDiv.id = 'ufo' + AbstractUFO.getID().toString();
+
+    ufoDiv.style.width="${getViewPos(true, ufo.width)}px";
+    ufoDiv.style.height="${getViewPos(false, ufo.height)}px";
+    ufoDiv.style.borderRadius=round;
+
     switch (ufo.getClassName()) {
       case 'Fruit' :
         {
