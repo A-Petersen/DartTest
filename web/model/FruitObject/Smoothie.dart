@@ -5,8 +5,6 @@ class Smoothie extends AbstractUFO {
 
   static bool dope = false;
 
-//  //TODO id sollte in abstract class stehen !?
-//  static int id;
   int timeEnd = 0;
 
   Smoothie(double x, double y, double radius, int type, int fieldWidth, int fieldHeight, [int movementtype = null, double gravity = 10.0, double speed = 1.0]) {
@@ -18,42 +16,8 @@ class Smoothie extends AbstractUFO {
     this.fieldWidth = fieldWidth;
     this.gravity = gravity;
     this.speed = speed;
-    this.movementType = movementFactory.newMovement(movementtype, this);
+    this.movementType = movementFactory.newMovement(movementtype);
     incrementID();
-  }
-
-  @override
-  void move() {
-    if (movementType == null) {
-      moveGravity();
-      this.destX = speed;
-    } else {
-      moveGravity();
-      vector = movementType.move(this.speed);
-      this.destX = vector.x;
-      this.destY += vector.y;
-    }
-  }
-
-  @override
-  void moveGravity() {
-    double gravityFactor = (y <= 1 ? 0.95 : (y / 320)); // 0.x
-    double newY = gravityFactor * (goingUp ? (-1) * gravity : gravity);
-    this.destY = newY;
-  }
-
-  @override
-  void update() {
-    this.x += destX;
-    this.y += destY;
-
-    if (this.goingUp && (this.y - this.radius <= 11) ) this.goingUp = false;
-
-    if (this.heaven < 0) this.y = this.radius;
-    if (this.ground > this.fieldHeight - 1) this.y = this.fieldHeight - 1 - this.radius;
-
-    if (this.left < 0) this.x = this.radius;
-    if (this.right > this.fieldWidth - 1) this.x = this.fieldWidth - 1 - this.radius;
   }
 
   @override
@@ -69,12 +33,8 @@ class Smoothie extends AbstractUFO {
     if (gametime >= timeEnd) {
       f.speed = f.speed/2;
       dope = false;
-//      print("true");
       return true;
     }
-//    print("doped");
-//    print(gametime);
-//    print(timeEnd);
     return false;
   }
 

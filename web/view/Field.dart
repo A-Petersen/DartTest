@@ -13,10 +13,10 @@ class Field {
   final score = querySelector("#score");
   final level = querySelector("#level");
   final korb = querySelector("#korb");
-  final attemps = querySelector("#attemps");
+  final attempts = querySelector("#attemps");
 
-  final leftSite = querySelector("#leftSite");
-  final rightSite = querySelector("#rightSite");
+  final leftSide = querySelector("#leftSite");
+  final rightSide = querySelector("#rightSite");
 
   final startScreen = querySelector("#startScreen");
   final startButtonStartScreen = querySelector("#startButtonStartScreen");
@@ -28,11 +28,13 @@ class Field {
   final gameoverScreen = querySelector("#gameoverScreen");
   final endscore = querySelector("#endscore");
   final highscore = querySelector("#highscore");
-  var resetButton = querySelector("#resetButton");
+  final resetButton = querySelector("#resetButton");
 
   final fieldQuery = querySelector('#field');
 
   Map<AbstractUFO, DivElement> ufos = new Map();
+
+  int state = 0;
 
   /**
    * Breite der gesamt View
@@ -46,15 +48,7 @@ class Field {
 
   int get size => min(this.width, this.height);
 
-  int state = 0;
-
-//  int width;
-//  int height;
-
-
   Field(this.controller){
-//    width = window.innerWidth;
-//    height = window.innerHeight;
   }
 
   void updateUFOs(AbstractUFO ufo) {
@@ -200,13 +194,13 @@ class Field {
   }
 
   void setAttempts(int a) {
-    attemps.style.width = "${5 * a}%";
-    attemps.style.backgroundSize = "${100 / a}% 100%";
+    attempts.style.width = "${5 * a}%";
+    attempts.style.backgroundSize = "${100 / a}% 100%";
 //    attemps.text = "Versuche: " + a.toString();
   }
 
   void gameover() {
-    attemps.style.visibility = "hidden";
+    attempts.style.visibility = "hidden";
     gameoverScreen.style.visibility = "visible";
     gameoverScreen.style.zIndex = "2";
     ufos.forEach((u, d) => d.remove());
@@ -220,7 +214,7 @@ class Field {
     gameoverScreen.style.zIndex = "-2";
     gameoverScreen.style.visibility = "hidden";
     score.text = "0";
-    attemps.style.visibility = "visible";
+    attempts.style.visibility = "visible";
   }
 
   void showOrientationInfo() {
