@@ -25,17 +25,17 @@ class Fruit extends AbstractUFO{
   /**
    * Methode zum setzen des Ziels der kommenden Bewegung
    */
-  void move() {
-    if (movementType == null) {
-      moveGravity();
-      this.destX = speed;
-    } else {
-      moveGravity();
-      vector = movementType.move(this.speed);
-      this.destX = vector.x;
-      this.destY += vector.y;
-    }
-  }
+//  void move() {
+//    if (movementType == null) {
+//      moveGravity();
+//      this.destX = speed;
+//    } else {
+//      moveGravity();
+//      vector = movementType.move(this.speed);
+//      this.destX = vector.x;
+//      this.destY += vector.y;
+//    }
+//  }
 
   void moveGravity() {
     double gravityFactor = (y <= 1 ? 0.95 : (y / 320)); // 0.x
@@ -55,8 +55,8 @@ class Fruit extends AbstractUFO{
    * Update
    */
   void update() {
-    this.x += destX / 640 * fieldWidth;
-    this.y += destY / 360 * fieldHeight;
+    this.x += destX;
+    this.y += destY;
 
     if (this.goingUp && (this.y - this.radius <= 11) ) this.goingUp = false;
 

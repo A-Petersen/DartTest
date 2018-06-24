@@ -10,8 +10,8 @@ import 'dart:math';
 class Game {
   List<AbstractUFO> ufoList = new List<AbstractUFO>();
   List<Level> allLevels = new List<Level>();
-  int fieldWidth;
-  int fieldHeight;
+  int fixedFieldWidth = 640;
+  int fixedFieldHeight = 360;
   UFOFactory ufoFactory;
   Figure figure;
   int score = 0;
@@ -33,9 +33,9 @@ class Game {
   Function removeUFOView;
   Function newUFOView;
 
-  Game(this.fieldWidth, this.fieldHeight, this.highscore, this.updateUFOs, this.removeUFOView, this.newUFOView) {
-    this.figure = new Figure(0.0, fieldHeight.toDouble(), fieldWidth * 0.156, fieldHeight * 0.278, fieldWidth, fieldHeight, 15.0);
-    ufoFactory = new UFOFactory(fieldWidth, fieldHeight);
+  Game(this.highscore, this.updateUFOs, this.removeUFOView, this.newUFOView) {
+    this.figure = new Figure(0.0, 360.0, 100.0, 100.0, fixedFieldWidth, fixedFieldHeight, 15.0);
+    ufoFactory = new UFOFactory(fixedFieldWidth, fixedFieldHeight);
   }
 
   void checkUFOState(int time) {

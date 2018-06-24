@@ -94,7 +94,17 @@ abstract class AbstractUFO {
   /**
    * Methode zum setzen des Ziels der kommenden Bewegung
    */
-  void move();
+  void move() {
+    if (movementType == null) {
+      moveGravity();
+      this.destX = speed;
+    } else {
+      moveGravity();
+      vector = movementType.move(this.speed);
+      this.destX = vector.x;
+      this.destY += vector.y;
+    }
+  }
 
   void moveGravity();
 
@@ -120,7 +130,7 @@ abstract class AbstractUFO {
   }
 
   bool landedInBasket() {
-    return x >= (fieldWidth-(fieldWidth*0.13)) && y >= (fieldHeight-(fieldHeight*0.13));
+    return x >= (fieldWidth*0.87) && y >= (fieldHeight*0.9);
   }
 
 }
