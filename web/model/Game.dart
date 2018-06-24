@@ -151,7 +151,10 @@ class Game {
       int movement = actualLevel.possibleMovments == 0 ?  0 : new Random().nextInt(actualLevel.possibleFruits);
       newUFO(ufoFactory.newFruit(type, movement));
       fruits++; //ACHTUNG
-      if (fruits == 1)  gameTutorial("Banane", tutorial.getBananeText());
+      if (fruits == 1 && !tutorial.fruit) {
+        gameTutorial("Banane", tutorial.getBananeText());
+        tutorial.fruit = true;
+      }
     }
 
     if (chance(actualLevel.bombChance)) {

@@ -1,6 +1,7 @@
 class Tutorial {
 
   bool movement = false;
+  bool fruit = false;
 
   String getBananeText() {
     return "Das ist eine Frucht. In diesem Spiel gibt es verschiedne Früchte und\n" +
