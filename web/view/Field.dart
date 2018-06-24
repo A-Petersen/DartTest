@@ -52,8 +52,7 @@ class Field {
 
   int state = 0;
 
-  Field(this.controller){
-  }
+  Field(this.controller) {}
 
   void updateUFOs(AbstractUFO ufo) {
     ufo.update();
@@ -61,49 +60,48 @@ class Field {
     var ufoStyle = querySelector("#" + ufos[ufo].id);
     final round = "${this.size}px";
 
-    ufoStyle.style.width="${ufo.width}px";
-    ufoStyle.style.height="${ufo.width}px";
-    ufoStyle.style.borderRadius=round;
-    ufoStyle.style.top="${ufo.heaven}px";
-    ufoStyle.style.left="${ufo.left}px";
-    ufoStyle.style.backgroundSize="${ufo.width}px";
+    ufoStyle.style.width = "${ufo.width}px";
+    ufoStyle.style.height = "${ufo.width}px";
+    ufoStyle.style.borderRadius = round;
+    ufoStyle.style.top = "${ufo.heaven}px";
+    ufoStyle.style.left = "${ufo.left}px";
+    ufoStyle.style.backgroundSize = "${ufo.width}px";
 
-    ufoStyle.style.transform = "rotate(${(ufo.x*2 + ufo.y)%360}deg)";
+    ufoStyle.style.transform = "rotate(${(ufo.x * 2 + ufo.y) % 360}deg)";
 
-    //if(ufo.getClassName() == 'Heart') spin(ufoStyle);
+    if (ufo.getClassName() == 'Heart') spin(ufoStyle);
   }
 
   void updateFigure(Figure f) {
     f.update();
-    this.figure.style.left="${f.left}px";
-    this.figure.style.top="${height - f.b}px";
-    this.figure.style.backgroundSize="${f.a}px ${f.b}px";
+    this.figure.style.left = "${f.left}px";
+    this.figure.style.top = "${height - f.b}px";
+    this.figure.style.backgroundSize = "${f.a}px ${f.b}px";
 
     if (controller.game.figure.moving == 2) {
-      this.figure.style.transform="scaleX(-1)";
-    }
-    else {
-      this.figure.style.transform="scaleX(1)";
+      this.figure.style.transform = "scaleX(-1)";
+    } else {
+      this.figure.style.transform = "scaleX(1)";
     }
     if (controller.game.figure.moving != 0) {
       switch (state) {
         case 10:
-          this.figure.style.backgroundImage="url('resources/frank_mid.png')";
+          this.figure.style.backgroundImage = "url('resources/frank_mid.png')";
           break;
         case 20:
-          this.figure.style.backgroundImage="url('resources/frank_late.png')";
+          this.figure.style.backgroundImage = "url('resources/frank_late.png')";
           break;
         case 30:
-          this.figure.style.backgroundImage="url('resources/frank_mid.png')";
+          this.figure.style.backgroundImage = "url('resources/frank_mid.png')";
           break;
         case 40:
-          this.figure.style.backgroundImage="url('resources/frank.png')";
+          this.figure.style.backgroundImage = "url('resources/frank.png')";
           state = -1;
           break;
       }
       state++;
     } else {
-      this.figure.style.backgroundImage="url('resources/frank.png')";
+      this.figure.style.backgroundImage = "url('resources/frank.png')";
     }
   }
 
@@ -111,7 +109,7 @@ class Field {
     var ufoDiv = new DivElement();
     ufoDiv.id = 'ufo' + AbstractUFO.getID().toString();
     switch (ufo.getClassName()) {
-      case 'Fruit' :
+      case 'Fruit':
         {
           switch (ufo.type) {
             case 1:
@@ -121,7 +119,7 @@ class Field {
                 ufoDiv.style.zIndex = '1';
                 break;
               }
-            case 2 :
+            case 2:
               {
                 ufoDiv.style.position = 'absolute';
                 ufoDiv.style.backgroundImage = 'url("resources/birne.png")';
@@ -129,41 +127,46 @@ class Field {
                 ;
                 break;
               }
-            case 3 :
+            case 3:
               {
                 ufoDiv.style.position = 'absolute';
                 ufoDiv.style.backgroundImage = 'url("resources/apfel.png")';
                 ufoDiv.style.zIndex = '1';
                 break;
               }
-            case 4 :
+            case 4:
               {
                 ufoDiv.style.position = 'absolute';
                 ufoDiv.style.backgroundImage = 'url("resources/blatt.png")';
                 ufoDiv.style.zIndex = '1';
+                ufoDiv.style.backgroundRepeat = 'no-repeat';
                 break;
               }
           }
           break;
         }
-      case 'Bomb' :  {
-        ufoDiv.style.position = 'absolute';
-        ufoDiv.style.backgroundImage = 'url("resources/bomb.png")';
-        ufoDiv.style.zIndex = '1';
-        break;
-      }
-      case 'Smoothie' : {
-        ufoDiv.style.position = 'absolute';
-        ufoDiv.style.backgroundImage = 'url("resources/smoothie.png")';
-        ufoDiv.style.zIndex = '1';
-        break;
-      }
-      case 'Heart' : {
-        ufoDiv.style.position = 'absolute';
-        ufoDiv.style.backgroundImage = 'url("resources/herts.png")';
-        ufoDiv.style.zIndex = '1';
-        break;
-      }
+      case 'Bomb':
+        {
+          ufoDiv.style.position = 'absolute';
+          ufoDiv.style.backgroundImage = 'url("resources/bomb.png")';
+          ufoDiv.style.zIndex = '1';
+          break;
+        }
+      case 'Smoothie':
+        {
+          ufoDiv.style.position = 'absolute';
+          ufoDiv.style.backgroundImage = 'url("resources/smoothie.png")';
+          ufoDiv.style.zIndex = '1';
+          break;
+        }
+      case 'Heart':
+        {
+          ufoDiv.style.position = 'absolute';
+          ufoDiv.style.backgroundImage = 'url("resources/herts.png")';
+          ufoDiv.style.zIndex = '1';
+          spin(ufoDiv);
+          break;
+        }
     }
     fieldQuery.children.add(ufoDiv);
     ufos[ufo] = ufoDiv;
@@ -227,13 +230,25 @@ class Field {
   }
 
   void spin(DivElement div) {
-    int spinV = 0;
-    print(div.style.getPropertyValue("transform-rotateY"));
-    print(div.style.getPropertyValue("transform").replaceAll("deg)", "").substring(7));
-    //int spinV = double.parse(div.getAttribute("rotateY").replaceAll("deg)", "").substring(7)).toInt();
-    //spinV = spinV == 360 ? 0 : spinV+5;
-    //div.style.transform = "rotateY("+ spinV.toString() + "deg)";
+    print(div.getAttribute("style"));
+    if (getRotateY(div) == null) div.style.transform = "rotateY(0deg)";
+      int spinV = getRotateY(div).toInt();
+      spinV = spinV == 360 ? 0 : spinV + 5;
+      div.style.transform = "rotateY(" + spinV.toString() + "deg)";
   }
 
-
+  double getRotateY(DivElement element) {
+    String style = element.getAttribute("style");
+    List strings = style.split(";").toList();
+    for (int i = 0; i < strings.length; i++) {
+      if (strings[i].toString().contains("transform: rotateY")) {
+        return double.parse(strings[i]
+            .toString()
+            .replaceAll("transform: rotateY(", "")
+            .replaceAll("deg)", ""));
+      }
+    }
+    return null;
+  }
 }
+

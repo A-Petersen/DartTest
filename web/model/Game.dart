@@ -152,7 +152,7 @@ class Game {
     if (chance(actualLevel.smoothieChance)) {
       newUFO(ufoFactory.newSmoothie(1, 0));
     }
-    if (chance(actualLevel.heartChance)) {
+    if (true) {
       newUFO(ufoFactory.newHearth(1, 0));
     }
   }
