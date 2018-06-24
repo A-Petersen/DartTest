@@ -56,7 +56,6 @@ class Smoothie extends AbstractUFO {
     if (this.right > this.fieldWidth - 1) this.x = this.fieldWidth - 1 - this.radius;
   }
 
-  @override
   void drinkSmoothie(int duration, int gametime, Figure f) {
     if (!dope) {
       timeEnd+= (duration+gametime);

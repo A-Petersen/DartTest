@@ -46,37 +46,41 @@ class Field {
 
   int get size => min(this.width, this.height);
 
-  double get center_x => this.width / 2;
-
-  double get center_y => this.height / 2;
-
   int state = 0;
 
-  Field(this.controller) {}
+//  int width;
+//  int height;
+
+  Field(this.controller) {
+//    width = window.innerWidth;
+//    height = window.innerHeight;
+  }
 
   void updateUFOs(AbstractUFO ufo) {
     ufo.update();
 
     var ufoStyle = querySelector("#" + ufos[ufo].id);
-    final round = "${this.size}px";
+//    final round = "${this.size}px";
 
-    ufoStyle.style.width = "${ufo.width}px";
-    ufoStyle.style.height = "${ufo.width}px";
-    ufoStyle.style.borderRadius = round;
-    ufoStyle.style.top = "${ufo.heaven}px";
-    ufoStyle.style.left = "${ufo.left}px";
-    ufoStyle.style.backgroundSize = "${ufo.width}px";
+//    width > height ? getViewPos(true,
 
-    ufoStyle.style.transform = "rotate(${(ufo.x * 2 + ufo.y) % 360}deg)";
-
-    if (ufo.getClassName() == 'Heart') spin(ufoStyle);
+//    ufoStyle.style.width="${getViewPos(true, ufo.width)}px";
+//    ufoStyle.style.height="${getViewPos(false, ufo.height)}px";
+//    ufoStyle.style.borderRadius=round;
+    ufoStyle.style.top = "${getViewPos(false, ufo.heaven)}px";
+    ufoStyle.style.left = "${getViewPos(true, ufo.left)}px";
+//    ufoStyle.style.backgroundSize="${getViewPos(true, ufo.width)}px";
+    ufoStyle.style.transform = "rotate(${(getViewPos(true, ufo.x.floor()) * 2 +
+        getViewPos(false, ufo.y.floor())) % 360}deg)";
+//    ufoStyle.style.filter = 'drop-shadow(3px 3px 3px #222)';
   }
 
   void updateFigure(Figure f) {
     f.update();
-    this.figure.style.left = "${f.left}px";
-    this.figure.style.top = "${height - f.b}px";
-    this.figure.style.backgroundSize = "${f.a}px ${f.b}px";
+    this.figure.style.left = "${getViewPos(true, f.left)}px";
+//    this.figure.style.top="${height - getViewPos(false,f.b.floor())}px";
+//    this.figure.style.backgroundSize="${getViewPos(true, f.a.floor())}px ${getViewPos(false, f.b.floor())}px";
+//    this.figure.style.backgroundSize = '100% 100%';
 
     if (controller.game.figure.moving == 2) {
       this.figure.style.transform = "scaleX(-1)";
@@ -103,11 +107,19 @@ class Field {
     } else {
       this.figure.style.backgroundImage = "url('resources/frank.png')";
     }
+    this.figure.style.backgroundImage = "url('resources/frank.png')";
   }
 
   void createNewUFO(AbstractUFO ufo) {
+    final round = "${this.size}px";
+
     var ufoDiv = new DivElement();
     ufoDiv.id = 'ufo' + AbstractUFO.getID().toString();
+
+    ufoDiv.style.width = "${getViewPos(true, ufo.width)}px";
+    ufoDiv.style.height = "${getViewPos(false, ufo.height)}px";
+    ufoDiv.style.borderRadius = round;
+
     switch (ufo.getClassName()) {
       case 'Fruit':
         {
@@ -116,6 +128,7 @@ class Field {
               {
                 ufoDiv.style.position = 'absolute';
                 ufoDiv.style.backgroundImage = 'url("resources/bananen.png")';
+                ufoDiv.style.backgroundSize = '100% 100%';
                 ufoDiv.style.zIndex = '1';
                 break;
               }
@@ -124,7 +137,7 @@ class Field {
                 ufoDiv.style.position = 'absolute';
                 ufoDiv.style.backgroundImage = 'url("resources/birne.png")';
                 ufoDiv.style.zIndex = '1';
-                ;
+                ufoDiv.style.backgroundSize = '100% 100%';
                 break;
               }
             case 3:
@@ -132,6 +145,7 @@ class Field {
                 ufoDiv.style.position = 'absolute';
                 ufoDiv.style.backgroundImage = 'url("resources/apfel.png")';
                 ufoDiv.style.zIndex = '1';
+                ufoDiv.style.backgroundSize = '100% 100%';
                 break;
               }
             case 4:
@@ -139,7 +153,7 @@ class Field {
                 ufoDiv.style.position = 'absolute';
                 ufoDiv.style.backgroundImage = 'url("resources/blatt.png")';
                 ufoDiv.style.zIndex = '1';
-                ufoDiv.style.backgroundRepeat = 'no-repeat';
+                ufoDiv.style.backgroundSize = '100% 100%';
                 break;
               }
           }
@@ -150,6 +164,7 @@ class Field {
           ufoDiv.style.position = 'absolute';
           ufoDiv.style.backgroundImage = 'url("resources/bomb.png")';
           ufoDiv.style.zIndex = '1';
+          ufoDiv.style.backgroundSize = '100% 100%';
           break;
         }
       case 'Smoothie':
@@ -157,6 +172,7 @@ class Field {
           ufoDiv.style.position = 'absolute';
           ufoDiv.style.backgroundImage = 'url("resources/smoothie.png")';
           ufoDiv.style.zIndex = '1';
+          ufoDiv.style.backgroundSize = '100% 100%';
           break;
         }
       case 'Heart':
@@ -164,7 +180,7 @@ class Field {
           ufoDiv.style.position = 'absolute';
           ufoDiv.style.backgroundImage = 'url("resources/herts.png")';
           ufoDiv.style.zIndex = '1';
-          spin(ufoDiv);
+          ufoDiv.style.backgroundSize = '100% 100%';
           break;
         }
     }
@@ -186,7 +202,9 @@ class Field {
   }
 
   void setAttempts(int a) {
-    attemps.text = "Versuche: " + a.toString();
+    attemps.style.width = "${5 * a}%";
+    attemps.style.backgroundSize = "${100 / a}% 100%";
+//    attemps.text = "Versuche: " + a.toString();
   }
 
   void gameover() {
@@ -229,26 +247,9 @@ class Field {
     startScreen.remove();
   }
 
-  void spin(DivElement div) {
-    print(div.getAttribute("style"));
-    if (getRotateY(div) == null) div.style.transform = "rotateY(0deg)";
-      int spinV = getRotateY(div).toInt();
-      spinV = spinV == 360 ? 0 : spinV + 5;
-      div.style.transform = "rotateY(" + spinV.toString() + "deg)";
-  }
-
-  double getRotateY(DivElement element) {
-    String style = element.getAttribute("style");
-    List strings = style.split(";").toList();
-    for (int i = 0; i < strings.length; i++) {
-      if (strings[i].toString().contains("transform: rotateY")) {
-        return double.parse(strings[i]
-            .toString()
-            .replaceAll("transform: rotateY(", "")
-            .replaceAll("deg)", ""));
-      }
-    }
-    return null;
+  double getViewPos(bool needXPos, int gamePos) {
+    return needXPos
+        ? (gamePos / controller.getGameSizeX()) * width
+        : (gamePos / controller.getGameSizeY()) * height;
   }
 }
-
