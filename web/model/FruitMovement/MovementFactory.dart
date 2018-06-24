@@ -4,7 +4,7 @@ import 'MovementType.dart';
 import 'MovementZigZag.dart';
 
 class MovementFactory {
-  MovementType newMovement(int type, AbstractUFO fruit) {
+  MovementType newMovement(int type) {
     switch (type) {
       case 0 : return null;
       case 1 : return new MovementZigZag(15, 3.0);
