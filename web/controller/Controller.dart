@@ -106,19 +106,19 @@ class Controller {
       }
     });
 
-    field.leftSide.onTouchStart.listen((TouchEvent ev) {
+    field.leftSite.onTouchStart.listen((TouchEvent ev) {
         game.figure.moving = 2;
     });
 
-    field.leftSide.onTouchEnd.listen((TouchEvent ev) {
+    field.leftSite.onTouchEnd.listen((TouchEvent ev) {
         if (game.figure.moving != 1) game.figure.moving = 0;
     });
 
-    field.rightSide.onTouchStart.listen((TouchEvent ev) {
+    field.rightSite.onTouchStart.listen((TouchEvent ev) {
       game.figure.moving = 1;
     });
 
-    field.rightSide.onTouchEnd.listen((TouchEvent ev) {
+    field.rightSite.onTouchEnd.listen((TouchEvent ev) {
       if (game.figure.moving != 2) game.figure.moving = 0;
     });
 
