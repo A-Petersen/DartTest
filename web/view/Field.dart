@@ -20,10 +20,16 @@ class Field {
 
   final startScreen = querySelector("#startScreen");
   final startButtonStartScreen = querySelector("#startButtonStartScreen");
+  final tutorialButtonStartScreen = querySelector("#tutorialButtonStartScreen");
   final highscoreStartScreen = querySelector("#highscoreStartScreen");
 
   final orientationInfo = querySelector("#orientationInfo");
   final startButton = querySelector("#startButton");
+  
+  final tutorialWindow = querySelector("#tutorialWindow");
+  final tutorialMessage = querySelector("#tutorialMessage");
+  final tutorialButton = querySelector("#tutorialButton");
+  final tutorialPicture = querySelector("#tutorialPicture");
 
   final gameoverScreen = querySelector("#gameoverScreen");
   final endscore = querySelector("#endscore");
@@ -251,5 +257,54 @@ class Field {
     return needXPos
         ? (gamePos / controller.getGameSizeX()) * width
         : (gamePos / controller.getGameSizeY()) * height;
+  }
+
+  void showTutorialView(String tutorial, String message) {
+    tutorialWindow.style.zIndex = "3";
+    switch (tutorial) {
+      case "Banane": {
+        tutorialPicture.style.background = 'url("resources/bananen.png")';
+        tutorialPicture.style.backgroundSize = "contain";
+        tutorialPicture.style.backgroundRepeat = "no-repeat";
+        tutorialMessage.text = message;
+        break;
+      }
+      case "Movement": {
+        tutorialPicture.style.background = 'url("resources/frank.png")';
+        tutorialPicture.style.backgroundSize = "contain";
+        tutorialPicture.style.backgroundRepeat = "no-repeat";
+        tutorialMessage.text = message;
+        break;
+      }
+      case "Smoothie": {
+        tutorialPicture.style.background = 'url("resources/smoothie.png")';
+        tutorialPicture.style.backgroundSize = "contain";
+        tutorialPicture.style.backgroundRepeat = "no-repeat";
+        tutorialMessage.text = message;
+        break;
+      }
+      case "Bomb": {
+        tutorialPicture.style.background = 'url("resources/bomb.png")';
+        tutorialPicture.style.backgroundSize = "contain";
+        tutorialPicture.style.backgroundRepeat = "no-repeat";
+        tutorialMessage.text = message;
+        break;
+      }
+      case "Heart": {
+        tutorialPicture.style.background = 'url("resources/herts.png")';
+        tutorialPicture.style.backgroundSize = "contain";
+        tutorialPicture.style.backgroundRepeat = "no-repeat";
+        tutorialMessage.text = message;
+        break;
+      }
+    }
+    tutorialWindow.style.visibility = "visible";
+    controller.running = false;
+  }
+
+  void removeTutorialView() {
+    tutorialWindow.style.zIndex = "-1";
+    tutorialWindow.style.visibility = "hidden";
+    controller.running = true;
   }
 }

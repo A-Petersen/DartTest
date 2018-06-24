@@ -59,5 +59,25 @@
     "HeartChance": 5,
     "FruitRange": 4,
     "FruitMovement": 0
+  },
+  "Level7": {
+    "Number": 7,
+    "RequiredScore": 30,
+    "FruitsAmount": 5,
+    "BombChance": 25,
+    "SmoothieChance": 5,
+    "HeartChance": 5,
+    "FruitRange": 4,
+    "FruitMovement": 0
+  },
+  "Level8": {
+    "Number": 8,
+    "RequiredScore": 35,
+    "FruitsAmount": 5,
+    "BombChance": 15,
+    "SmoothieChance": 10,
+    "HeartChance": 10,
+    "FruitRange": 4,
+    "FruitMovement": 0
   }
 }

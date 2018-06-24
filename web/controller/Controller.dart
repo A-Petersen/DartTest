@@ -1,5 +1,3 @@
-import '../model/FruitObject/AbstractUFO.dart';
-import '../model/FruitObject/Fruit.dart';
 import '../model/Game.dart';
 import '../model/Level.dart';
 import '../view/Field.dart';
@@ -28,19 +26,21 @@ class Controller {
 
   bool loading = false;
 
+  bool tutorialOn = true;
+
   Controller(this.highscore) {
     field = new Field(this);
     startScreenButton();
+    tutorialButton();
     field.initStartScreen();
   }
 
   Future init() async {
-    startButton();
+    startscreenListener();
     if (checkForOrientation()) {
-      print(init);
       initSucces = true;
       field.initField();
-      game = new Game(highscore, field.updateUFOs, field.removeUFO, field.createNewUFO);
+      game = new Game(highscore, field.updateUFOs, field.removeUFO, field.createNewUFO, tutorial);
       figureControll();
       resetButton();
       if (!loading) await setLevel();
@@ -188,13 +188,23 @@ class Controller {
 
   }
 
-  void startButton() {
+  void startscreenListener() {
     field.startButton.onClick.listen((MouseEvent ev) {
       running  = true;
       field.hideOrientationInfo();
       if (!initSucces) {
         init();
       }
+    });
+    field.tutorialButtonStartScreen.onClick.listen((MouseEvent ev) {
+      if (tutorialOn) {
+        tutorialOn = false;
+        field.tutorialButtonStartScreen.text = "Tutorial: Off";
+      } else {
+        tutorialOn = true;
+        field.tutorialButtonStartScreen.text = "Tutorial: On";
+      }
+      print("ehm...");
     });
   }
 
@@ -211,6 +221,18 @@ class Controller {
 
   int getGameSizeY() {
     return game.fixedFieldHeight;
+  }
+
+  void tutorialButton() {
+    field.tutorialButton.onClick.listen((MouseEvent ev) {
+      field.removeTutorialView();
+    });
+  }
+
+  void tutorial(String expl, message) {
+    if (tutorialOn) {
+      field.showTutorialView(expl, message);
+    }
   }
 
 }
