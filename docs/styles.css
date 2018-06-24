@@ -23,6 +23,55 @@ html, body {
     position: absolute;
 }
 
+#tutorialWindow {
+    width: 50%;
+    height: 60%;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    background-image:url("resources/tutorial.png");
+    z-index: -1;
+    visibility: hidden;
+    border-radius: 25px;
+}
+
+#tutorialButton {
+    width: 70%;
+    height: 30%;
+    position: absolute;
+    background: url("resources/button1.png");
+    background-size: 100% 100%;
+    border: none;
+    font-size: 4vmax;
+    font-family: myFirstFont;
+    top: 70%;
+    left: 15%;
+    padding-right: 5%;
+    padding-bottom: 1%;
+}
+
+#tutorialMessage {
+    position: absolute;
+    left: 30%;
+    top: 5%;
+    right: 5%;
+    font-size: 1.5vmax ;
+    font-family: myFirstFont;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+#tutorialPicture {
+    position: absolute;
+    background: url("resources/bomb.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    left: 10%;
+    top: 30%;
+    width: 20%;
+    height: 20%;
+}
+
 #startScreen {
     text-align: center;
     width: 100%;
@@ -34,12 +83,12 @@ html, body {
 }
 
 #gameName {
-    width: 70%;
-    height: 30%;
-    font-size: 5vmax;
+    width: 60%;
+    height: 20%;
+    font-size: 4.5vmax;
     position: absolute;
-    top: 50%;
-    left: 30%;
+    top: 47%;
+    left: 40%;
 }
 
 #resetButton{
@@ -59,20 +108,37 @@ html, body {
 }
 
 #startButtonStartScreen {
-    width: 70%;
-    height: 30%;
+    width: 60%;
+    height: 20%;
     position: absolute;
     background: url("resources/button1.png");
     background-size: 100% 100%;
     border: none;
-    font-size: 5vmax;
+    font-size: 4.5vmax;
     font-family: myFirstFont;
-    top: 60%;
-    left: 30%;
+    top: 53%;
+    left: 40%;
     padding-right: 5%;
     padding-bottom: 1%;
     /*filter: drop-shadow(3px 3px 3px #222);*/
     z-index: 1;
+}
+
+#tutorialButtonStartScreen {
+    width: 60%;
+    height: 20%;
+    position: absolute;
+    background: url("resources/button1.png");
+    background-size: 100% 100%;
+    border: none;
+    font-size: 4.5vmax;
+    font-family: myFirstFont;
+    top: 70%;
+    left: 40%;
+    padding-right: 5%;
+    padding-bottom: 1%;
+    /*filter: drop-shadow(3px 3px 3px #222);*/
+    z-index: 30000000;
 }
 
 #sunStart {
@@ -100,12 +166,12 @@ html, body {
 }
 
 #highscoreStartScreen {
-    width: 70%;
-    height: 30%;
-    font-size: 5vmax;
+    width: 60%;
+    height: 20%;
+    font-size: 4.5vmax;
     position: absolute;
     top: 85%;
-    left: 30%;
+    left: 40%;
 }
 
 #startButton {

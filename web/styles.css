@@ -32,6 +32,7 @@ html, body {
     background-image:url("resources/tutorial.png");
     z-index: -1;
     visibility: hidden;
+    border-radius: 25px;
 }
 
 #tutorialButton {
