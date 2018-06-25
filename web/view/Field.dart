@@ -76,7 +76,7 @@ class Field {
     ufoStyle.style.top = "${getViewPos(false, ufo.heaven)}px";
     ufoStyle.style.left = "${getViewPos(true, ufo.left)}px";
 //    ufoStyle.style.backgroundSize="${getViewPos(true, ufo.width)}px";
-    ufoStyle.style.transform = "rotate(${(getViewPos(true, ufo.x.floor()) * 2 +
+    if (ufo.rotate) ufoStyle.style.transform = "rotate(${(getViewPos(true, ufo.x.floor()) * 2 +
         getViewPos(false, ufo.y.floor())) % 360}deg)";
 //    ufoStyle.style.filter = 'drop-shadow(3px 3px 3px #222)';
   }

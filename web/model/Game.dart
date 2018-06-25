@@ -20,7 +20,7 @@ class Game {
   int highscore;
   int attempts = 5;
 
-  Tutorial tutorial = new Tutorial();
+  Tutorial tutorial;
 
   int fruits = 0;
   int bombs = 0;
@@ -226,6 +226,10 @@ class Game {
 
   bool chance(int percent) {
     return new Random().nextInt(101) < percent;
+  }
+
+  void createTutorial(String banane, movement, bomb, heart, smoothie) {
+    tutorial = new Tutorial(banane, movement, bomb, heart, smoothie);
   }
 
 }

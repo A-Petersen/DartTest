@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'dart:html';
 import 'dart:async';
 
-const levelconcept = 'Levelkonzept.json';
+const levelconceptAndTutorial = 'Levelkonzept&Tutorial.json';
 var test;
 
 class Controller {
@@ -44,7 +44,6 @@ class Controller {
       figureControll();
       resetButton();
       if (!loading) await setLevel();
-      print(game.allLevels[0]);
       newGame();
     }
   }
@@ -162,7 +161,7 @@ class Controller {
       List<Level> levels = new List();
       var request;
       try {
-          request = HttpRequest.getString(levelconcept).then((json) {
+          request = HttpRequest.getString(levelconceptAndTutorial).then((json) {
           final parameter = JSON.decode(json);
           int levelAmount = parameter["LevelAmount"];
           for (int i = 1; i <= levelAmount; i++) {
@@ -175,9 +174,17 @@ class Controller {
                 parameter[level]['SmoothieChance'],
                 parameter[level]['HeartChance'],
                 parameter[level]['FruitRange'],
-                parameter[level]['FruitMovement']));
+                parameter[level]['FruitMovement'])
+            );
           }
           game.setLevel(levels);
+          game.createTutorial(
+              parameter['Tutorial']['Banane'],
+              parameter['Tutorial']['Movement'],
+              parameter['Tutorial']['Bomb'],
+              parameter['Tutorial']['Heart'],
+              parameter['Tutorial']['Smoothie']
+          );
           loading = true;
         });
       } catch (error, stacktrace) {
