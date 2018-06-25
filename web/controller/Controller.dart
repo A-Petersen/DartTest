@@ -218,7 +218,6 @@ class Controller {
         tutorialOn = true;
         field.tutorialButtonStartScreen.text = "Tutorial: On";
       }
-      print("ehm...");
     });
   }
 

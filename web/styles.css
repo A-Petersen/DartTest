@@ -62,9 +62,8 @@ html, body {
 
 #tutorialPicture {
     position: absolute;
-    background: url("resources/bomb.png");
     background-size: contain;
-    background-repeat: no-repeat;
+    background: url("resources/bomb.png") no-repeat;
     left: 10%;
     top: 30%;
     width: 20%;

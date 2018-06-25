@@ -50,8 +50,6 @@ abstract class AbstractUFO {
    */
   double destY = 0.0;
 
-  bool rotate;
-
   double radius;
   Vector vector;
   bool moving = true;
