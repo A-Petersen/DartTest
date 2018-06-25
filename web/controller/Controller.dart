@@ -36,7 +36,7 @@ class Controller {
   }
 
   Future init() async {
-    startscreenListener();
+    startScreenListener();
     if (checkForOrientation()) {
       initSucces = true;
       field.initField();
@@ -195,13 +195,20 @@ class Controller {
 
   }
 
-  void startscreenListener() {
+  void startScreenListener() {
     field.startButton.onClick.listen((MouseEvent ev) {
       running  = true;
       field.hideOrientationInfo();
       if (!initSucces) {
         init();
       }
+    });
+  }
+
+  void startScreenButton() {
+    field.startButtonStartScreen.onClick.listen((MouseEvent ev) {
+      field.removeStartScreen();
+      init();
     });
     field.tutorialButtonStartScreen.onClick.listen((MouseEvent ev) {
       if (tutorialOn) {
@@ -212,13 +219,6 @@ class Controller {
         field.tutorialButtonStartScreen.text = "Tutorial: On";
       }
       print("ehm...");
-    });
-  }
-
-  void startScreenButton() {
-    field.startButtonStartScreen.onClick.listen((MouseEvent ev) {
-      field.removeStartScreen();
-      init();
     });
   }
 

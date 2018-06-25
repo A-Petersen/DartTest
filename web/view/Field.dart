@@ -25,7 +25,7 @@ class Field {
 
   final orientationInfo = querySelector("#orientationInfo");
   final startButton = querySelector("#startButton");
-  
+
   final tutorialWindow = querySelector("#tutorialWindow");
   final tutorialMessage = querySelector("#tutorialMessage");
   final tutorialButton = querySelector("#tutorialButton");
@@ -54,39 +54,23 @@ class Field {
 
   int state = 0;
 
-//  int width;
-//  int height;
-
   Field(this.controller) {
-//    width = window.innerWidth;
-//    height = window.innerHeight;
   }
 
   void updateUFOs(AbstractUFO ufo) {
     ufo.update();
 
     var ufoStyle = querySelector("#" + ufos[ufo].id);
-//    final round = "${this.size}px";
 
-//    width > height ? getViewPos(true,
-
-//    ufoStyle.style.width="${getViewPos(true, ufo.width)}px";
-//    ufoStyle.style.height="${getViewPos(false, ufo.height)}px";
-//    ufoStyle.style.borderRadius=round;
     ufoStyle.style.top = "${getViewPos(false, ufo.heaven)}px";
     ufoStyle.style.left = "${getViewPos(true, ufo.left)}px";
-//    ufoStyle.style.backgroundSize="${getViewPos(true, ufo.width)}px";
-    if (ufo.rotate) ufoStyle.style.transform = "rotate(${(getViewPos(true, ufo.x.floor()) * 2 +
-        getViewPos(false, ufo.y.floor())) % 360}deg)";
-//    ufoStyle.style.filter = 'drop-shadow(3px 3px 3px #222)';
+    ufoStyle.style.transform = "rotate(${(getViewPos(true, ufo.x.floor()) * 2 + getViewPos(false, ufo.y.floor())) % 360}deg)";
   }
 
   void updateFigure(Figure f) {
     f.update();
+
     this.figure.style.left = "${getViewPos(true, f.left)}px";
-//    this.figure.style.top="${height - getViewPos(false,f.b.floor())}px";
-//    this.figure.style.backgroundSize="${getViewPos(true, f.a.floor())}px ${getViewPos(false, f.b.floor())}px";
-//    this.figure.style.backgroundSize = '100% 100%';
 
     if (controller.game.figure.moving == 2) {
       this.figure.style.transform = "scaleX(-1)";
@@ -210,7 +194,6 @@ class Field {
   void setAttempts(int a) {
     attemps.style.width = "${5 * a}%";
     attemps.style.backgroundSize = "${100 / a}% 100%";
-//    attemps.text = "Versuche: " + a.toString();
   }
 
   void gameover() {
