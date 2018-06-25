@@ -150,7 +150,7 @@ class Game {
       int type = actualLevel.possibleFruits == 1 ? 1 :  new Random().nextInt(actualLevel.possibleFruits)+1;
       int movement = actualLevel.possibleMovments == 0 ?  0 : new Random().nextInt(actualLevel.possibleFruits);
       newUFO(ufoFactory.newFruit(type, movement));
-      fruits++; //ACHTUNG
+      fruits++;
       if (fruits == 1 && !tutorial.fruit) {
         gameTutorial("Banane", tutorial.getBananeText());
         tutorial.fruit = true;
@@ -159,7 +159,7 @@ class Game {
 
     if (chance(actualLevel.bombChance)) {
       newUFO(ufoFactory.newBomb(1, 0, figure.x));
-      bombs++; //ACHTUNG
+      bombs++;
       if (bombs == 1)  gameTutorial("Bomb", tutorial.getBombText());
     }
     if (chance(actualLevel.smoothieChance)) {
@@ -169,7 +169,7 @@ class Game {
     }
     if (chance(actualLevel.heartChance)) {
       newUFO(ufoFactory.newHearth(1, 0));
-      hearts++; //ACHTUNG
+      hearts++;
       if (hearts == 1)  gameTutorial("Heart", tutorial.getHeartText());
     }
   }

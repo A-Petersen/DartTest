@@ -64,7 +64,7 @@ class Field {
 
     ufoStyle.style.top = "${getViewPos(false, ufo.heaven)}px";
     ufoStyle.style.left = "${getViewPos(true, ufo.left)}px";
-    ufoStyle.style.transform = "rotate(${(getViewPos(true, ufo.x.floor()) * 2 + getViewPos(false, ufo.y.floor())) % 360}deg)";
+    if(ufo.rotate) ufoStyle.style.transform = "rotate(${(getViewPos(true, ufo.x.floor()) * 2 + getViewPos(false, ufo.y.floor())) % 360}deg)";
   }
 
   void updateFigure(Figure f) {

@@ -19,7 +19,7 @@ class UFOFactory {
       case 1 : return new Fruit(0.0, 0.0, radius, 1, fieldWidth, fieldHeight, movement, 10.0, 1.0);
       case 2 : return new Fruit(0.0, 0.0, radius, 2, fieldWidth, fieldHeight, movement, 5.0, 1.5);
       case 3 : return new Fruit(0.0, 0.0, radius, 3, fieldWidth, fieldHeight, movement, 15.0, 2.0);
-      case 4 : return new Fruit(0.0, 0.0, radius, 4, fieldWidth, fieldHeight, 1, 1.0, 1.0, false);
+      case 4 : return new Fruit(0.0, 0.0, radius, 4, fieldWidth, fieldHeight, 1, 5.0, 1.0, false);
     }
   }
 
