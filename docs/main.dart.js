@@ -3469,11 +3469,11 @@ w=H.D(v)
 P.at("SnakeGameController() caused following error: '"+H.c(x)+"'")
 P.at(H.c(w))}return y},
 c8:function(){var z=J.av(this.a.cy)
-W.C(z.a,z.b,new B.dY(this),!1,H.u(z,0))
-z=J.av(this.a.Q)
 W.C(z.a,z.b,new B.dZ(this),!1,H.u(z,0))},
 c7:function(){var z=J.av(this.a.z)
-W.C(z.a,z.b,new B.dX(this),!1,H.u(z,0))},
+W.C(z.a,z.b,new B.dX(this),!1,H.u(z,0))
+z=J.av(this.a.Q)
+W.C(z.a,z.b,new B.dY(this),!1,H.u(z,0))},
 dL:function(){var z=J.av(this.a.dy)
 W.C(z.a,z.b,new B.e0(this),!1,H.u(z,0))},
 dX:[function(a,b){var z,y,x,w
@@ -3591,7 +3591,7 @@ v.push(new Q.cm(J.m(J.m(z,w),"Number"),J.m(J.m(z,w),"RequiredScore"),J.m(J.m(z,w
 t=u.b
 t.b=v
 t.Q=new R.fi(!1,!1,J.m(J.m(z,"Tutorial"),"Banane"),J.m(J.m(z,"Tutorial"),"Movement"),J.m(J.m(z,"Tutorial"),"Bomb"),J.m(J.m(z,"Tutorial"),"Heart"),J.m(J.m(z,"Tutorial"),"Smoothie"))
-u.z=!0}},dY:{"^":"d:3;a",
+u.z=!0}},dZ:{"^":"d:3;a",
 $1:function(a){var z,y,x
 z=this.a
 z.r=!0
@@ -3600,14 +3600,14 @@ x=y.style
 x.visibility="hidden"
 y=y.style
 y.zIndex="-2"
-if(!z.x)z.W()}},dZ:{"^":"d:3;a",
+if(!z.x)z.W()}},dX:{"^":"d:3;a",
+$1:function(a){var z=this.a
+J.bj(z.a.y)
+z.W()}},dY:{"^":"d:3;a",
 $1:function(a){var z=this.a
 if(z.Q){z.Q=!1
 z.a.Q.textContent="Tutorial: Off"}else{z.Q=!0
-z.a.Q.textContent="Tutorial: On"}P.at("ehm...")}},dX:{"^":"d:3;a",
-$1:function(a){var z=this.a
-J.bj(z.a.y)
-z.W()}},e0:{"^":"d:3;a",
+z.a.Q.textContent="Tutorial: On"}P.at("ehm...")}},e0:{"^":"d:3;a",
 $1:function(a){var z,y,x
 z=this.a.a
 y=z.db
@@ -3684,7 +3684,7 @@ if(typeof u!=="number")return H.j(u)
 w=v/w*u
 w=H.c(w)+"px"
 z.left=w
-if(a.x===!0){z=x.style
+z=x.style
 w=J.bR(a.b)
 v=y.b.c
 u=window.innerWidth
@@ -3696,7 +3696,7 @@ u=window.innerHeight
 if(typeof u!=="number")return H.j(u)
 y=v/y*u
 y="rotate("+H.c(C.q.aU(w*2+y,360))+"deg)"
-C.a.A(z,(z&&C.a).w(z,"transform"),y,"")}},"$1","gdM",2,0,6],
+C.a.A(z,(z&&C.a).w(z,"transform"),y,"")},"$1","gdM",2,0,6],
 bS:function(a){var z,y,x,w,v,u
 z=a.e
 if(z<0&&a.a<=0){a.e=0
