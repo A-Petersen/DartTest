@@ -241,10 +241,11 @@ class Field {
         }
       case 'Smoothie':
         {
+          ufoDiv.style.height = "${getViewPos(false, ufo.height) * 1.8}px";
           ufoDiv.style.position = 'absolute';
           ufoDiv.style.backgroundImage = 'url("resources/smoothie.png")';
           ufoDiv.style.zIndex = '1';
-          ufoDiv.style.backgroundSize = '100% 100%';
+          ufoDiv.style.backgroundSize = "100% 96%";
           break;
         }
       case 'Heart':
