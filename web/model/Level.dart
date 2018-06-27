@@ -64,7 +64,7 @@ class Level {
     possibleFruits = 1;
     possibleMovments = 0;
   }
-  
+
   String toString() {
     return '{Lvl: ' + level.toString() + ' | mF: ' + maxFruits.toString() + ' | rS: ' + requiredScore.toString() + '}';
   }
