@@ -1,3 +1,7 @@
+/**
+ * Die Klasse Tutorial hält die Information, ob ein Tutorial bereits gezeigt wurde in Form von Boolean-Werte und
+ * die Erklärungen in Form von Strings für das Tutorial.
+ */
 class Tutorial {
 
   /**
