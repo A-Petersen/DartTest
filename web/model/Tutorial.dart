@@ -1,10 +1,17 @@
 class Tutorial {
 
+  /**
+   * Boolean-Werte, um zu prüfen, ob das Tuorial bereits gezeigt wurde.
+   */
   bool movement = false;
   bool fruit = false;
   bool bomb = false;
   bool smoothie = false;
   bool heart = false;
+
+  /**
+   * Strings, die die Erklärung für das Tutorial beinhalten
+   */
   String bananeText;
   String movementText;
   String bombText;
