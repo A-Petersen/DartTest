@@ -1,11 +1,12 @@
 import 'AbstractUFO.dart';
 
-
+/**
+ * Erbt von AbstractUFO und ist das UFO, dass in das Ziel gebracht werden soll.
+ * Fällt es auf den Boden, gibt es ein Leben abzug.
+ * Fällt es in den Korb, gibt es +1 Score.
+ */
 class Fruit extends AbstractUFO{
 
-  /**
-   * Konstruktor
-   */
   Fruit(double x, double y, double radius, int type, int fieldWidth, int fieldHeight, [int movementtype = null, double gravity = 10.0, double speed = 1.0]) {
     this.x = x;
     this.y = y;

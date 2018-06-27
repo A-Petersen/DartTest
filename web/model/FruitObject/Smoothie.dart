@@ -1,10 +1,19 @@
 import '../Figure.dart';
 import 'AbstractUFO.dart';
 
+/**
+ * Smoothie erbt von AbstractUFO soll die Figur beschleunigen, wenn es eingesammelt wird
+ */
 class Smoothie extends AbstractUFO {
 
+  /**
+   * Mit dope kann geprüft werden, ob der Effekt aktiv ist
+   */
   static bool dope = false;
 
+  /**
+   * Zeitpunkt, wann der Effekt enden soll
+   */
   int timeEnd = 0;
 
   Smoothie(double x, double y, double radius, int type, int fieldWidth, int fieldHeight, [int movementtype = null, double gravity = 10.0, double speed = 1.0]) {
@@ -20,15 +29,23 @@ class Smoothie extends AbstractUFO {
     incrementID();
   }
 
+  /**
+   * Funktion zum aktivieren des Effektes.
+   * Erwartet eine Wert für die Dauer, eine aktuelle Spielzeit und die Figur.
+   */
   @override
   void drinkSmoothie(int duration, int gametime, Figure f) {
-    if (!dope) {
+    if (!dope) { //Prüfen, ob der Effekt bereits aktiv ist
       timeEnd+= (duration+gametime);
-      f.speed = f.speed*2;
+      f.speed = f.speed*2; //Die Figur-Geschwindigkeit verdoppeln
       dope = true;
     }
   }
 
+  /**
+   * Funktion zum prüfen, ob der Effekt noch aktiv sein soll und ggf. wieder zu deaktivieren.
+   * Erwartet die aktuelle Spielzeit und die Figur.
+   */
   bool checkCounter(int gametime, Figure f) {
     if (gametime >= timeEnd) {
       f.speed = f.speed/2;

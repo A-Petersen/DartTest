@@ -1,5 +1,8 @@
 import 'AbstractUFO.dart';
 
+/**
+ * Heart erbt von AbstractUFO und soll, wenn es eingesammlt wird, dem Spieler ein Leben geben.
+ */
 class Heart extends AbstractUFO {
 
   Heart(double x, double y, double radius, int type, int fieldWidth, int fieldHeight, [int movementtype = null, double gravity = 10.0, double speed = 1.0]) {

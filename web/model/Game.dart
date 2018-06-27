@@ -8,6 +8,10 @@ import 'Level.dart';
 import 'Tutorial.dart';
 import 'dart:math';
 
+/**
+ * Die Game-Klasse sorgt für den Spielablauf und ist die Schnittstelle für den Controller auf das Model.
+ * Game erstellt alle notwendigen Model-Instanzen und/oder bekommt diese von dem Controller, ausgelesen aus einer JSON-Datei (allLevels und tutorial).
+ */
 class Game {
 
   List<AbstractUFO> ufoList = new List<AbstractUFO>(); //Liste für alle UFOs, die aktiv im Spiel sind

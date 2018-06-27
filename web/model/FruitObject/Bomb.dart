@@ -1,5 +1,8 @@
 import 'AbstractUFO.dart';
 
+/**
+ * Erbt von AbstractUFO und soll, wenn es eingesammelt werden, den Spieler ein Leben abziehen.
+ */
 class Bomb extends AbstractUFO {
 
   Bomb(double x, double y, double radius, int type, int fieldWidth, int fieldHeight, [int movementtype = null, double gravity = 10.0, double speed = 1.0]) {

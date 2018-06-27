@@ -3,21 +3,20 @@ import '../FruitMovement/MovementFactory.dart';
 import '../FruitMovement/MovementType.dart';
 import '../Vector.dart';
 
-
+/**
+ * Ein AbstractUFO ist die Eltern-Klasse für alle Flugobjekte in dem Spiel.
+ * Jedes Flugobjekt erbt von dieser Klasse.
+ */
 abstract class AbstractUFO {
 
+  /**
+   * Die Klasse hat eine fortlaufende ID, die jedes UFO abrufen kann
+   */
   static int id = 0;
 
-  static int getID() {
-    return id;
-  }
-
-  void incrementID() {
-    id++;
-  }
-
-  String getClassName ();
-
+  /**
+   * Ein UFO kann verschiedene Arten haben. Bei Früchten z.B. Bananen, Äpfel, Blätter...
+   */
   int type;
 
   /**
@@ -31,12 +30,12 @@ abstract class AbstractUFO {
   double y;
 
   /**
-   * Breite des Objekt-Feldes
+   * Breite des UFOs.
    */
   double a;
 
   /**
-   * Höhe des Objekt-Feldes
+   * Höhe des UFOs.
    */
   double b;
 
@@ -50,34 +49,76 @@ abstract class AbstractUFO {
    */
   double destY = 0.0;
 
+  /**
+   * Radius des UFOs.
+   */
   double radius;
+
+  /**
+   * Vector für die Berechnung der Flugbahn
+   */
   Vector vector;
+
+  /**
+   * Fliegt das Objekt noch oder ist es schon auf den Boden gefallen
+   */
   bool moving = true;
+
+  /**
+   * Ist das Objekt auf den Weg nach oben oder nach unten
+   */
   bool goingUp = false;
+
+  /**
+   * Gravity des UFOs
+   */
   double gravity;
+
+  /**
+   * Geschwindigkeit des UFOs
+   */
   double speed;
+
+  /**
+   * Spielfeldbreite
+   */
   int fieldWidth;
+
+  /**
+   * Spielfeldhöhe
+   */
   int fieldHeight;
+
+  /**
+   * Die Art der Flugbahn des UFOs.
+   * 0 -> normale Bewegung
+   * 1 -> Zick-Zack
+   * 2 -> kreisende Bewegung
+   */
   MovementType movementType = null;
+
+  /**
+   * Eine Factory zum erstellen von verschiedenen Bewegungen.
+   */
   MovementFactory movementFactory = new MovementFactory();
 
   /**
-   * Mitte des Objekts auf Y-Achse vom Himmel
+   * Mitte des UFOs auf Y-Achse vom Himmel
    */
   int get heaven => (this.y - this.radius).floor();
 
   /**
-   * Mittes des Objekts auf Y-Achse vom Boden
+   * Mittes des UFOs auf Y-Achse vom Boden
    */
   int get ground => (this.y + this.radius).floor();
 
   /**
-   * Mitte des Objekts auf X-Achse von Rechts
+   * Mitte des UFOs auf X-Achse von Rechts
    */
   int get left   => (this.x - this.radius).floor();
 
   /**
-   * Mitte des Objekts auf X-Achse von Links
+   * Mitte des UFOs auf X-Achse von Links
    */
   int get right  => (this.x + this.radius).floor();
 
@@ -95,7 +136,7 @@ abstract class AbstractUFO {
    * Methode zum setzen des Ziels der kommenden Bewegung
    */
   void move() {
-    if (movementType == null) {
+    if (movementType == null) { //movementType = null == Standard-Bewegung
       moveGravity();
       this.destX = speed;
     } else {
@@ -106,8 +147,11 @@ abstract class AbstractUFO {
     }
   }
 
+  /**
+   * Berechnung der Gravitation
+   */
   void moveGravity() {
-    double gravityFactor = (y <= 1 ? 0.95 : (y / 320)); // 0.x
+    double gravityFactor = (y <= 1 ? 0.95 : (y / 320));
     double newY = gravityFactor * (goingUp ? (-1) * gravity : gravity);
     this.destY = newY;
   }
@@ -128,16 +172,35 @@ abstract class AbstractUFO {
     if (this.right > this.fieldWidth - 1) this.x = this.fieldWidth - 1 - this.radius;
   }
 
+  /**
+   * Funktion zur Überprüfung, ob die Frucht auf den Boden gefallen ist
+   */
   bool hitGround() {
     return ground >= fieldHeight-5; //-5 weil der Ground der Frucht nicht == der Grund des Feldes.
   }
 
+  /**
+   * Funktion zur Überprüfung, ob die Frucht auf die Trommel der Figur gefallen ist
+   */
   bool onDrum(Figure f) {
     return y > fieldHeight - (f.b * 0.75) && f.onDrum(this);
   }
 
+  /**
+   * Funktion zur Überprüfung, ob die Frucht in dem Korb gelandet ist
+   */
   bool landedInBasket() {
     return x >= (fieldWidth*0.87) && y >= (fieldHeight*0.9);
   }
+
+  static int getID() {
+    return id;
+  }
+
+  void incrementID() {
+    id++;
+  }
+
+  String getClassName();
 
 }
