@@ -23,7 +23,7 @@ class Game {
   int score = 0; //Aktueller Score, ist am Anfang immer 0
   Level actualLevel; //Aktuelles Level
   int highscore; //Der Highscore des Spieles
-  int attempts = 1; //Anzahl an Leben, sind am Anfang immer 5
+  int attempts = 5; //Anzahl an Leben, sind am Anfang immer 5
 
   Tutorial tutorial; //Tutorial ausgelagert auf seperate Klasse.
 
