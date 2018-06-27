@@ -6,32 +6,87 @@ import 'dart:convert';
 import 'dart:html';
 import 'dart:async';
 
-const levelconceptAndTutorial = 'Levelkonzept&Tutorial.json';
+/**
+ * Beschreibt den Namen für die JSON, in dem das Levelkonzept und das Tutorial liegt.
+ */
+const levelconceptAndTutorial = 'Levelkonzept.json';
 
+/**
+ * Der Controller reagiert auf seine Listener und auf Benachrichtigungen von dem Model.
+ * Dafür erstellt er für verschiede Buttons und DivElemente Listener und übergibt dem Model Funktionen,
+ * die das Model aufrufen kann. Außerdem reagiert er auf seine Timer.
+ */
 class Controller {
 
+  /**
+   * Das Spielfeld, bzw. die Schnittstelle zur View
+   */
   Field field;
+
+  /**
+   * Die Schnittstelle zum Model
+   */
   Game game;
+
+  /**
+   * Der Timer für die Funktion run
+   */
   Timer timerRun;
+
+  /**
+   * Der Timer für die Funktion CheckUFO
+   */
   Timer timerCheckUFO;
+
+  /**
+   * Wert für den Haupt-Intervall
+   */
   Duration runIntervall = new Duration(milliseconds: 30);
+
+  /**
+   * Wert für den Intervall, in dem die UFOs geprüft und geworfen werden sollen
+   */
   Duration checkUFOIntervall = new Duration(milliseconds: 4000);
 
-  bool running = true; //Könnte man auch pause nennen
+  /**
+   * Boolean-Wert, der angibt ob das Spiel läuft.
+   */
+  bool running = true;
+
+  /**
+   * Boolean-Wert, der angibt, ob das Spiel erfolgreich initialisiert wurde
+   */
   bool initSucces = false; //Ob das Spiel bereits initalsiert wurde (erfolgreich)
+
+  /**
+   * Highscore des Spieles
+   */
   int highscore;
 
+  /**
+   * Boolean-Wert, der angibt, ob die Level und das Tutorial geladen wurde
+   */
   bool loading = false;
 
+  /**
+   * Boolean-Wert, der angibt, ob das Tutorial angezeigt werden soll
+   */
   bool tutorialOn = true;
 
+  /**
+   * Der Konstruktor.
+   * Erwartet einen Wert für den Highscore.
+   */
   Controller(this.highscore) {
-    field = new Field(this);
+    field = new Field(this); //Initalisierung des Feldes
     startScreenButtonsListener();
     tutorialButtonListener();
     field.initStartScreen();
   }
 
+  /**
+   * Funktion, die das Spiel initalisieren soll.
+   */
   Future init() async {
     orientationInfoStartButtonListener();
     if (checkForOrientation()) {
@@ -41,17 +96,24 @@ class Controller {
       touchListener();
       resetButtonListener();
       if (!loading) await setLevel();
-      newGame();
+      startNewGame();
     }
   }
 
-  void newGame() {
+  /**
+   * Startet ein neues Spiel
+   */
+  void startNewGame() {
     timerRun = new Timer.periodic(runIntervall, (Timer t) => run());
     timerCheckUFO = new Timer.periodic(checkUFOIntervall, (Timer t) => checkUFOs());
     checkUFOs();
     run();
   }
 
+  /**
+   * Lässt das Model prüfen, ob neue UFOs geworfen werden müssen/können und
+   * lässt das Level ggf. auf dem Field aktualisieren
+   */
   void checkUFOs() {
     if (running) {
       game.checkUFOs();
@@ -60,7 +122,11 @@ class Controller {
   }
 
   /**
-   * Die Fruit wird gestartet, bzw. geworfen.
+   * Diese Funktion wird von dem Timer timerRun aktiviert.
+   * Prüft die Orientation.
+   * Lässt das Model den nächsten Zustand der Objekte berechnen.
+   * Lässt die Field die Darstellung anpassen.
+   * Prüft, ob das Spiel vorbei (Gameover) ist.
    */
   void run() {
     if (checkForOrientation() && running) {
@@ -77,7 +143,7 @@ class Controller {
   }
 
   /**
-   * Bewegungen für die Spielfigur Frank einstellen
+   * Steuerung für die Spielfigur
    */
   void touchListener() {
     window.onKeyDown.listen((KeyboardEvent ev) {
@@ -119,7 +185,10 @@ class Controller {
     });
 
   }
-  
+
+  /**
+   * Listener für den Reset Button
+   */
   void resetButtonListener(){
     field.resetButton.onClick.listen((MouseEvent ev) {
       initSucces = false;

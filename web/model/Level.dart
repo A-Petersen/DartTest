@@ -55,6 +55,7 @@ class Level {
    * Setzt das Level zurück auf das Anfangs-Level
    */
   void reset() {
+    print(this);
     level = 1;
     requiredScore = 0;
     maxFruits = 3;
