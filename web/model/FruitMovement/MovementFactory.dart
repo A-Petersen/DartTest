@@ -3,6 +3,9 @@ import 'MovementCircle.dart';
 import 'MovementType.dart';
 import 'MovementZigZag.dart';
 
+/**
+ * Die MovementFactor erstellt verschiedene Movements anhand des Typs.
+ */
 class MovementFactory {
   MovementType newMovement(int type) {
     switch (type) {
