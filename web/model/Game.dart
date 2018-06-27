@@ -19,7 +19,7 @@ class Game {
   int score = 0; //Aktueller Score, ist am Anfang immer 0
   Level actualLevel; //Aktuelles Level
   int highscore; //Der Highscore des Spieles
-  int attempts = 5; //Anzahl an Leben, sind am Anfang immer 5
+  int attempts = 1; //Anzahl an Leben, sind am Anfang immer 5
 
   Tutorial tutorial; //Tutorial ausgelagert auf seperate Klasse.
 
@@ -251,8 +251,11 @@ class Game {
     removeUFOView(ufo); //Controller benachrichtigen
   }
 
+  /**
+   * Funktion um das Spiel zurückzusetzen.
+   */
   void reset() {
-    actualLevel = allLevels[0];
+    actualLevel.reset();
     gameover = false;
     fruits = 0;
     bombs = 0;
@@ -263,9 +266,6 @@ class Game {
     ufoList = new List<Fruit>();
   }
 
-  void setLevel(List<Level> levels) {
-    this.allLevels = levels;
-  }
 
   void checkHighscore() {
     if (score > highscore) {
@@ -273,12 +273,20 @@ class Game {
     }
   }
 
+  /**
+   * Hilfsfunktion, um ein Ereignis zu via Wahrscheinlichkeit zu triggern.
+   * Erwartet einen Wert zwischen 0 und 100 (0-100%)
+   */
   bool chance(int percent) {
     return new Random().nextInt(101) < percent;
   }
 
-  void createTutorial(String banane, movement, bomb, heart, smoothie) {
-    tutorial = new Tutorial(banane, movement, bomb, heart, smoothie);
+  void setTutorial(Tutorial t) {
+    tutorial = t;
+  }
+
+  void setLevels(List<Level> levels) {
+    this.allLevels = levels;
   }
 
 }

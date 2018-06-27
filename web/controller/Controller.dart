@@ -1,5 +1,6 @@
 import '../model/Game.dart';
 import '../model/Level.dart';
+import '../model/Tutorial.dart';
 import '../view/Field.dart';
 import 'dart:convert';
 import 'dart:html';
@@ -173,13 +174,13 @@ class Controller {
                 parameter[level]['FruitMovement'])
             );
           }
-          game.setLevel(levels);
-          game.createTutorial(
+          game.setLevels(levels);
+          game.setTutorial(new Tutorial(
               parameter['Tutorial']['Banane'],
               parameter['Tutorial']['Movement'],
               parameter['Tutorial']['Bomb'],
               parameter['Tutorial']['Heart'],
-              parameter['Tutorial']['Smoothie']
+              parameter['Tutorial']['Smoothie'])
           );
           loading = true;
         });
