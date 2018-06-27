@@ -24,7 +24,7 @@ class Field {
   final highscoreStartScreen = querySelector("#highscoreStartScreen");
 
   final orientationInfo = querySelector("#orientationInfo");
-  final startButton = querySelector("#startButton");
+  final orientationInfoStartButton = querySelector("#startButton");
 
   final tutorialWindow = querySelector("#tutorialWindow");
   final tutorialMessage = querySelector("#tutorialMessage");
@@ -206,7 +206,7 @@ class Field {
   }
 
   void reset() {
-    startButton.text = "Start";
+    orientationInfoStartButton.text = "Start";
     ufos = new Map();
     gameoverScreen.style.zIndex = "-2";
     gameoverScreen.style.visibility = "hidden";
@@ -225,7 +225,7 @@ class Field {
   }
 
   void initField() {
-    startButton.text = "Fortfahren";
+    orientationInfoStartButton.text = "Fortfahren";
   }
 
   void initStartScreen() {
@@ -242,7 +242,7 @@ class Field {
         : (gamePos / controller.getGameSizeY()) * height;
   }
 
-  void showTutorialView(String tutorial, String message) {
+  void showTutorialView(String tutorial, message) {
     tutorialWindow.style.zIndex = "3";
     switch (tutorial) {
       case "Banane": {

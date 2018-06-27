@@ -6,19 +6,15 @@ import 'dart:html';
 import 'dart:async';
 
 const levelconceptAndTutorial = 'Levelkonzept&Tutorial.json';
-var test;
 
 class Controller {
 
-  static int timeMillis = 30;
-  static int throwMillis = 4000;
-  
   Field field;
   Game game;
-  Timer timerStart;
-  Timer timerNewUFO;
-  Duration timeIntevall = new Duration(milliseconds: timeMillis);
-  Duration throwIntevall = new Duration(milliseconds: throwMillis);
+  Timer timerRun;
+  Timer timerCheckUFO;
+  Duration runIntervall = new Duration(milliseconds: 30);
+  Duration checkUFOIntervall = new Duration(milliseconds: 4000);
 
   bool running = true; //Könnte man auch pause nennen
   bool initSucces = false; //Ob das Spiel bereits initalsiert wurde (erfolgreich)
@@ -30,34 +26,34 @@ class Controller {
 
   Controller(this.highscore) {
     field = new Field(this);
-    startScreenButton();
-    tutorialButton();
+    startScreenButtonsListener();
+    tutorialButtonListener();
     field.initStartScreen();
   }
 
   Future init() async {
-    startScreenListener();
+    orientationInfoStartButtonListener();
     if (checkForOrientation()) {
       initSucces = true;
       field.initField();
       game = new Game(highscore, field.updateUFOs, field.removeUFO, field.createNewUFO, tutorial);
-      figureControll();
-      resetButton();
+      touchListener();
+      resetButtonListener();
       if (!loading) await setLevel();
       newGame();
     }
   }
 
   void newGame() {
-    timerStart = new Timer.periodic(timeIntevall, (Timer t) => start());
-    timerNewUFO = new Timer.periodic(throwIntevall, (Timer t) => checkUFOs());
+    timerRun = new Timer.periodic(runIntervall, (Timer t) => run());
+    timerCheckUFO = new Timer.periodic(checkUFOIntervall, (Timer t) => checkUFOs());
     checkUFOs();
-    start();
+    run();
   }
 
   void checkUFOs() {
     if (running) {
-      game.checkUFOs(timeMillis);
+      game.checkUFOs();
       field.setLevel(game.checkLevel());
     }
   }
@@ -65,9 +61,9 @@ class Controller {
   /**
    * Die Fruit wird gestartet, bzw. geworfen.
    */
-  void start() {
+  void run() {
     if (checkForOrientation() && running) {
-    game.checkUFOState(timeMillis);
+    game.checkUFOState(runIntervall.inMilliseconds);
     game.figure.move();
     field.updateFigure(game.figure);
     field.setAttempts(game.attempts);
@@ -82,7 +78,7 @@ class Controller {
   /**
    * Bewegungen für die Spielfigur Frank einstellen
    */
-  void figureControll() {
+  void touchListener() {
     window.onKeyDown.listen((KeyboardEvent ev) {
       switch (ev.keyCode) {
         case KeyCode.LEFT :
@@ -123,7 +119,7 @@ class Controller {
 
   }
   
-  void resetButton(){
+  void resetButtonListener(){
     field.resetButton.onClick.listen((MouseEvent ev) {
       initSucces = false;
       running = true;
@@ -136,8 +132,8 @@ class Controller {
   }
 
   void gameover() {
-    timerStart.cancel();
-    timerNewUFO.cancel();
+    timerRun.cancel();
+    timerCheckUFO.cancel();
     field.gameover();
   }
 
@@ -195,8 +191,8 @@ class Controller {
 
   }
 
-  void startScreenListener() {
-    field.startButton.onClick.listen((MouseEvent ev) {
+  void orientationInfoStartButtonListener() {
+    field.orientationInfoStartButton.onClick.listen((MouseEvent ev) {
       running  = true;
       field.hideOrientationInfo();
       if (!initSucces) {
@@ -205,7 +201,7 @@ class Controller {
     });
   }
 
-  void startScreenButton() {
+  void startScreenButtonsListener() {
     field.startButtonStartScreen.onClick.listen((MouseEvent ev) {
       field.removeStartScreen();
       init();
@@ -229,7 +225,7 @@ class Controller {
     return game.fixedFieldHeight;
   }
 
-  void tutorialButton() {
+  void tutorialButtonListener() {
     field.tutorialButton.onClick.listen((MouseEvent ev) {
       field.removeTutorialView();
     });

@@ -143,8 +143,7 @@ class Game {
     }
   }
 
-  void checkUFOs(int time) {
-    gametime+= time;
+  void checkUFOs() {
     if (actualLevel == null) return;
     if (fruits < actualLevel.maxFruits) {
       int type = actualLevel.possibleFruits == 1 ? 1 :  new Random().nextInt(actualLevel.possibleFruits)+1;
@@ -203,7 +202,7 @@ class Game {
   }
 
   void reset() {
-    actualLevel.reset();
+    actualLevel = allLevels[0];
     gameover = false;
     fruits = 0;
     bombs = 0;

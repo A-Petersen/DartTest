@@ -11,16 +11,6 @@ class Level {
 
   Level(this.level, this.requiredScore, this.maxFruits, this.bombChance, this.smoothieChance, this.heartChance, this.possibleFruits, this.possibleMovments);
 
-  void reset() {
-    level = 1;
-    requiredScore = 0;
-    maxFruits = 3;
-    bombChance = 0;
-    smoothieChance = 0;
-    heartChance = 0;
-    possibleFruits = 1;
-    possibleMovments = 0;
-  }
 
   String toString() {
     return '{Lvl: ' + level.toString() + ' | mF: ' + maxFruits.toString() + ' | rS: ' + requiredScore.toString() + '}';
