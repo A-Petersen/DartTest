@@ -159,17 +159,26 @@ class Game {
     if (chance(actualLevel.bombChance)) {
       newUFO(ufoFactory.newBomb(1, 0, figure.x));
       bombs++;
-      if (bombs == 1)  gameTutorial("Bomb", tutorial.getBombText());
+      if (bombs == 1 && !tutorial.bomb) {
+        gameTutorial("Bomb", tutorial.getBombText());
+        tutorial.bomb = true;
+      }
     }
     if (chance(actualLevel.smoothieChance)) {
       newUFO(ufoFactory.newSmoothie(1, 0));
       smoothies++;
-      if (smoothies == 1)  gameTutorial("Smoothie", tutorial.getSmootheText());
+      if (smoothies == 1 && !tutorial.smoothie) {
+        gameTutorial("Smoothie", tutorial.getSmootheText());
+        tutorial.smoothie = true;
+      }
     }
     if (chance(actualLevel.heartChance)) {
       newUFO(ufoFactory.newHearth(1, 0));
       hearts++;
-      if (hearts == 1)  gameTutorial("Heart", tutorial.getHeartText());
+      if (hearts == 1 && !tutorial.heart) {
+        gameTutorial("Heart", tutorial.getHeartText());
+        tutorial.heart = true;
+      }
     }
   }
 
@@ -197,7 +206,17 @@ class Game {
       case ("Fruit") :
         fruits--;
         break;
+      case ("Bomb") :
+        bombs--;
+        break;
+      case ("Smoothie") :
+        smoothies--;
+        break;
+      case("Heart") :
+        hearts--;
+        break;
     }
+    //if(fruits+smoothies+hearts+bombs != ufos) print("LOLFEHLER");
     removeUFOView(ufo);
   }
 

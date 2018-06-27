@@ -2,6 +2,9 @@ class Tutorial {
 
   bool movement = false;
   bool fruit = false;
+  bool bomb = false;
+  bool smoothie = false;
+  bool heart = false;
   String bananeText;
   String movementText;
   String bombText;
