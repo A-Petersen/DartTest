@@ -368,7 +368,7 @@ class Field {
     tutorialWindow.style.zIndex = "3";
     switch (tutorial) {
       case "Banane": {
-        tutorialPicture.style.background = 'url("resources/bananen.png")';
+        tutorialPicture.style.background = 'url("resources/fruitsTutorial.png")';
         tutorialPicture.style.backgroundSize = "contain";
         tutorialPicture.style.backgroundRepeat = "no-repeat";
         tutorialMessage.text = message;
