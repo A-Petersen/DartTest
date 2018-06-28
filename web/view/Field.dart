@@ -280,7 +280,7 @@ class Field {
    * Setter des Level Textes
    */
   void setLevel(int l) {
-    level.text = "Level " + l.toString();
+    if (l >= 10) level.text = "Level ∞"; else level.text = "Level " + l.toString();
   }
 
   /**
