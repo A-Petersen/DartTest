@@ -3591,14 +3591,18 @@ x=y.f.style
 x.visibility="visible"
 y.bS(z.b.f)
 z.Y()}},dO:{"^":"d:2;a,b",
-$1:function(a){var z,y,x,w,v,u,t
+$1:function(a){var z,y,x,w,v,u,t,s,r,q
 z=C.z.cZ(a)
 y=J.m(z,"LevelAmount")
 for(x=1,v=this.b;J.dq(x,y);x=J.ac(x,1)){w="Level"+J.z(x)
 v.push(new Q.cl(J.m(J.m(z,w),"Number"),J.m(J.m(z,w),"RequiredScore"),J.m(J.m(z,w),"FruitsAmount"),J.m(J.m(z,w),"BombChance"),J.m(J.m(z,w),"SmoothieChance"),J.m(J.m(z,w),"HeartChance"),J.m(J.m(z,w),"FruitRange"),1,J.m(J.m(z,w),"FruitMovement")))}u=this.a
 t=u.b
 t.b=v
-t.Q=new R.fg(!1,!1,!1,!1,!1,J.m(J.m(z,"Tutorial"),"Banane"),J.m(J.m(z,"Tutorial"),"Movement"),J.m(J.m(z,"Tutorial"),"Bomb"),J.m(J.m(z,"Tutorial"),"Heart"),J.m(J.m(z,"Tutorial"),"Smoothie"))
+v=J.m(J.m(z,"Tutorial"),"Banane")
+s=J.m(J.m(z,"Tutorial"),"Movement")
+r=J.m(J.m(z,"Tutorial"),"Bomb")
+q=J.m(J.m(z,"Tutorial"),"Heart")
+t.Q=new R.fg(!1,!1,!1,!1,!1,v,s,r,J.m(J.m(z,"Tutorial"),"Smoothie"),q)
 u.z=!0}},dM:{"^":"d:3;a",
 $1:function(a){var z,y,x
 z=this.a
@@ -4044,7 +4048,7 @@ this.id.$2("Bomb",z)
 this.Q.c=!0}}z=this.x.e
 y=C.h.U(101)
 if(typeof z!=="number")return H.j(z)
-if(y<z){z=this.e
+if(y<z&&this.cy===0){z=this.e
 u=C.h.U(z.a)
 switch(1){case 1:y=z.c
 x=z.a
@@ -4068,7 +4072,7 @@ this.id.$2("Smoothie",z)
 this.Q.d=!0}}z=this.x.f
 y=C.h.U(101)
 if(typeof z!=="number")return H.j(z)
-if(y<z){z=this.e
+if(y<z&&this.z<10){z=this.e
 u=C.h.U(z.a)
 switch(1){case 1:y=z.c
 x=z.a
