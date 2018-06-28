@@ -187,7 +187,7 @@ class Game {
       }
     }
     //Mit Hilfe von chance, kann berechnet werden, ob ein Smoothie kommen muss.
-    if (chance(actualLevel.smoothieChance)) {
+    if (chance(actualLevel.smoothieChance) && smoothies == 0) {
       newUFO(ufoFactory.newSmoothie(1, 0));
       smoothies++;
       if (smoothies == 1 && !tutorial.smoothie) {
@@ -196,7 +196,7 @@ class Game {
       }
     }
     //Mit Hilfe von chance, kann berechnet werden, ob ein Herz kommen muss.
-    if (chance(actualLevel.heartChance)) {
+    if (chance(actualLevel.heartChance) && attempts < 10) {
       newUFO(ufoFactory.newHearth(1, 0));
       hearts++;
       if (hearts == 1 && !tutorial.heart) {
