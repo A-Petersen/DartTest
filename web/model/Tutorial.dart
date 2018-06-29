@@ -22,7 +22,7 @@ class Tutorial {
   String smootieText;
   String heartText;
 
-  Tutorial(this.bananeText, this.movementText, this.bombText, this.smootieText, this.heartText);
+  Tutorial(this.bananeText, this.movementText, this.bombText, this.heartText, this.smootieText,);
 
   String getBananeText() {
     return bananeText;
