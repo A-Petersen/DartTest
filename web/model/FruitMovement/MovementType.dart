@@ -25,4 +25,9 @@ abstract class MovementType {
    * toString() sollte die Art des Movements als String implementieren.
    */
   String toString();
+
+  /**
+   *
+   */
+  double getSpecial();
 }

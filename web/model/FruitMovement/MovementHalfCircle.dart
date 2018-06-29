@@ -5,12 +5,22 @@ import 'dart:math';
 /**
  * Erbt von MovementType und beschreibt eine Kreisbewegung
  */
-class MovementCircle extends MovementType {
+class MovementHalfCircle extends MovementType {
 
   /**
    * Hilfsvariable für das Zwischenspeichern des Winkels
    */
-  double angle = 0.0;
+  double angle = 130.0;
+
+  /**
+   * max. Winkel
+   */
+  double angleMax = 220.0;
+
+  /**
+   * min. Winkel
+   */
+  double angleMin = 130.0;
 
   /**
    * Beschreibt mit welcher Geschwindigkeit (pro TimerTick) sich der Winkel
@@ -23,22 +33,33 @@ class MovementCircle extends MovementType {
   double radius;
 
   /**
+   * Befindet sich in Linksbewegung
+   */
+  bool goLeft = false;
+
+  /**
    * Konstruktor – MovementCircle
    * Beschreibt die Art des Kreises mittels [angleWidth] und [radius].
    */
-  MovementCircle(this.angleWidth, this.radius);
+  MovementHalfCircle(this.angleWidth, this.radius);
 
   /**
    * Beschreibt die Logik des Movements und benötigt [speed] um die grundsätzliche Bewegung zu berücksichtigen.
    */
   Vector move(double speed) {
 
-    vector.x = (radius * sin(angle));
-    vector.y = (radius * cos(angle));
+    if (angle <= angleMax && !goLeft) {
+      angle += angleWidth;
+      if (angle >= angleMax) goLeft = true;
+    }
 
-    angle = (angle + angleWidth) % 360;
+    if (angle >= angleMin && goLeft) {
+      angle -= angleWidth;
+      if (angle <= angleMin) goLeft = false;
+    }
 
-    vector.x += speed;
+    vector.x = (-1)*(radius * sin(angle/180*PI));
+    vector.y = (-1)*(radius * cos(angle/180*PI));
 
     return vector;
   }
@@ -49,8 +70,8 @@ class MovementCircle extends MovementType {
   String toString() {
     return 'Circle';
   }
-
+  @override
   double getSpecial() {
-    return angleWidth * 1.0;
+    return angle * (-1.0) - 180;
   }
 }

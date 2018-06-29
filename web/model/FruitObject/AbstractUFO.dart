@@ -57,7 +57,7 @@ abstract class AbstractUFO {
   /**
    * Vector für die Berechnung der Flugbahn
    */
-  Vector vector;
+  Vector vector = new Vector();
 
   /**
    * Fliegt das Objekt noch oder ist es schon auf den Boden gefallen
@@ -94,6 +94,7 @@ abstract class AbstractUFO {
    * 0 -> normale Bewegung
    * 1 -> Zick-Zack
    * 2 -> kreisende Bewegung
+   * 3 -> halb kreisende Bewegung
    */
   MovementType movementType = null;
 
@@ -136,13 +137,20 @@ abstract class AbstractUFO {
    * Methode zum setzen des Ziels der kommenden Bewegung
    */
   void move() {
-    if (movementType == null) { //movementType = null == Standard-Bewegung
+    // Findet Movementmanipulation statt
+    if (movementType == null) { //movementType == null == Standard-Bewegung
       moveGravity();
       this.destX = speed;
     } else {
       moveGravity();
+      // destX und Y dienen dem Simulieren des Normalverlaufs bei Movementmanipulation
+      this.destX += speed;
+      // Ziehe die alte Manipulation des Punktes ab
+      this.destX -= vector.x;
+      this.destY -= vector.y;
       vector = movementType.move(this.speed);
-      this.destX = vector.x;
+      // Addiere die Manipulation des Punktes
+      this.destX += vector.x;
       this.destY += vector.y;
     }
   }
@@ -153,15 +161,30 @@ abstract class AbstractUFO {
   void moveGravity() {
     double gravityFactor = (y <= 1 ? 0.95 : (y / 320));
     double newY = gravityFactor * (goingUp ? (-1) * gravity : gravity);
-    this.destY = newY;
+    this.destY += newY;
+    // Findet Movementmanipulation statt
+    if (movementType == null) {
+      this.destY = newY;
+    } else {
+      // destX und Y dienen dem Simulieren des Normalverlaufs
+      this.destY += newY;
+    }
   }
 
   /**
    * Update
    */
   void update() {
-    this.x += destX;
-    this.y += destY;
+    // Findet Movementmanipulation statt
+    if (movementType == null) {
+      this.x += destX;
+      this.y += destY;
+    } else {
+      // destX und Y dienen dem Simulieren des Normalverlaufs
+      this.x = destX;
+      this.y = destY;
+    }
+
 
     if (this.goingUp && (this.y - this.radius <= 11) ) this.goingUp = false;
 

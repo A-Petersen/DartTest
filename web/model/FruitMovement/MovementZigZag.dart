@@ -56,4 +56,8 @@ class MovementZigZag extends MovementType {
   String toString() {
     return 'ZigZag';
   }
+
+  double getSpecial() {
+    return 1.0 * zigzagWidth;
+  }
 }

@@ -17,6 +17,10 @@ class Fruit extends AbstractUFO{
     this.gravity = gravity;
     this.speed = speed;
     this.movementType = movementFactory.newMovement(movementtype);
+    if (movementtype != null) {
+      destY = y;
+      destX = x;
+    }
     incrementID();
   }
 
