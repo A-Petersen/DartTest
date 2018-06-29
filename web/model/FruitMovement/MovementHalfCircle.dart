@@ -7,10 +7,7 @@ import 'dart:math';
  */
 class MovementHalfCircle extends MovementType {
 
-  /**
-   * Hilfsvariable für das Zwischenspeichern des Winkels
-   */
-  double angle = 130.0;
+
 
   /**
    * max. Winkel
@@ -21,6 +18,11 @@ class MovementHalfCircle extends MovementType {
    * min. Winkel
    */
   double angleMin = 130.0;
+
+  /**
+   * Hilfsvariable für das Zwischenspeichern des Winkels
+   */
+  double angle = 130.0;
 
   /**
    * Beschreibt mit welcher Geschwindigkeit (pro TimerTick) sich der Winkel
@@ -41,7 +43,9 @@ class MovementHalfCircle extends MovementType {
    * Konstruktor – MovementCircle
    * Beschreibt die Art des Kreises mittels [angleWidth] und [radius].
    */
-  MovementHalfCircle(this.angleWidth, this.radius);
+  MovementHalfCircle(this.angleWidth, this.radius, this.angleMin, this.angleMax) {
+    angle = angleMin;
+  }
 
   /**
    * Beschreibt die Logik des Movements und benötigt [speed] um die grundsätzliche Bewegung zu berücksichtigen.
