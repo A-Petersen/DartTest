@@ -22,6 +22,14 @@ class Tutorial {
   String smootieText;
   String heartText;
 
+  /**
+   * Konstruktor
+   * [bananeText] Text für die Erklärung der Früchte
+   * [movementText] Text für die Erklärung der Bewegung der Spielfigur
+   * [bombText] Text für die Erklärung der Bombe
+   * [heartText] Text für die Erklärung des Herts
+   * [smootieText] Text für die Erklärung des Smoothie
+   */
   Tutorial(this.bananeText, this.movementText, this.bombText, this.heartText, this.smootieText,);
 
   String getBananeText() {
