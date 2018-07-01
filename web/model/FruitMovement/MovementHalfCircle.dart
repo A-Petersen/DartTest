@@ -38,10 +38,9 @@ class MovementHalfCircle extends MovementType {
    * Befindet sich in Linksbewegung
    */
   bool goLeft = false;
-
   /**
-   * Konstruktor – MovementCircle
-   * Beschreibt die Art des Kreises mittels [angleWidth] und [radius].
+   * Konstruktor – MovementHalfCircle
+   * Beschreibt die Art des Kreises mittels [angleWidth], [radius], [angleMin] und [angleMax].
    */
   MovementHalfCircle(this.angleWidth, this.radius, this.angleMin, this.angleMax) {
     angle = angleMin;
