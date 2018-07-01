@@ -27,6 +27,7 @@ class UFOFactory {
   /**
    * Funktion für eine neue Frucht.
    * Erwartet einen Wert für die Art der Frucht und einen Wert für die Bewegungsart.
+   * z.B. [type] = 1, [movement] = null ergibt eine Banane mit der default Bewegung
    */
   AbstractUFO newFruit(int type, int movement) {
     switch (type) {
