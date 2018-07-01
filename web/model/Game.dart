@@ -1,6 +1,5 @@
 import 'Figure.dart';
 import 'FruitObject/AbstractUFO.dart';
-import 'FruitObject/Bomb.dart';
 import 'FruitObject/Fruit.dart';
 import 'FruitObject/Smoothie.dart';
 import 'FruitObject/UFOFactory.dart';
@@ -13,40 +12,104 @@ import 'dart:math';
  * Game erstellt alle notwendigen Model-Instanzen und/oder bekommt diese von dem Controller, ausgelesen aus einer JSON-Datei (allLevels und tutorial).
  */
 class Game {
+  /**
+   * Liste für alle UFOs, die aktiv im Spiel sind
+   */
+  List<AbstractUFO> ufoList = new List<AbstractUFO>();
 
-  List<AbstractUFO> ufoList = new List<AbstractUFO>(); //Liste für alle UFOs, die aktiv im Spiel sind
-  List<Level> allLevels = new List<Level>(); //Alle Level des Spieles
-  int fixedFieldWidth = 640; //Spielfeldbreite, festgelegt auf 640
-  int fixedFieldHeight = 360; //Spielfeldhöhe, festgelegt auf 360
-  UFOFactory ufoFactory;  //Factory zum erstellen von UFOs
-  Figure figure; //Spielfigur
-  int score = 0; //Aktueller Score, ist am Anfang immer 0
-  Level actualLevel; //Aktuelles Level
-  int highscore; //Der Highscore des Spieles
-  int attempts = 5; //Anzahl an Leben, sind am Anfang immer 5
+  /**
+   * Alle Level des Spieles
+   */
+  List<Level> allLevels = new List<Level>();
 
-  Tutorial tutorial; //Tutorial ausgelagert auf seperate Klasse.
+  /**
+   * Spielfeldbreite, festgelegt auf 640
+   */
+  int fixedFieldWidth = 640;
 
-  //Anzahl an Objekten
+  /**
+   * Spielfeldhöhe, festgelegt auf 360
+   */
+  int fixedFieldHeight = 360;
+
+  /**
+   * Factory zum erstellen von UFOs
+   */
+  UFOFactory ufoFactory;
+
+  /**
+   * Spielfigur
+   */
+  Figure figure;
+
+  /**
+   * Aktueller Score, ist am Anfang immer 0
+   */
+  int score = 0;
+
+  /**
+   * Aktuelles Level
+   */
+  Level actualLevel;
+
+  /**
+   * Der Highscore des Spieles
+   */
+  int highscore;
+
+  /**
+   * Anzahl an Leben, sind am Anfang immer 5
+   */
+  int attempts = 5;
+
+  /**
+   * Tutorial ausgelagert auf seperate Klasse.
+   */
+  Tutorial tutorial;
+
+  /**
+   * Anzahl an Objekten
+   */
   int fruits = 0;
   int bombs = 0;
   int smoothies = 0;
   int hearts = 0;
   int ufos = 0;
 
-  int gametime = 0; //Die Spielzeit in Millisekunden
-
-  bool gameover = false;
-
-  //Funktionen, die von dem Ersteller übergeben werden müssen. Dienen als notifies.
-  Function updateUFOs; //Folgezustände der UFOs wurden berechnet und können aktualisiert werden
-  Function removeUFOView; //UFO existiert nicht mehr im Model und kann entfernt werden.
-  Function newUFOView; //UFO wurde erstellt im Model und kann hinzugefügt werden.
-  Function gameTutorial; //Ein Tutorial wurde getriggert im Model.
+  /**
+   * Die Spielzeit in Millisekunden
+   */
+  int gametime = 0;
 
   /**
-   * Der Konstruktor. Erwartet einen Highscore und die vier notify-Funktionen.
-   * Spielfigur unf UFOFactory wird erstellt.
+   * Boolean für GameOver
+   */
+  bool gameover = false;
+
+  /**
+   * Funktionen, die von dem Ersteller übergeben werden müssen. Dienen als notifies.
+   * Folgezustände der UFOs wurden berechnet und können aktualisiert werden.
+   */
+  Function updateUFOs;
+  /**
+   * Funktionen, die von dem Ersteller übergeben werden müssen. Dienen als notifies.
+   * UFO existiert nicht mehr im Model und kann entfernt werden.
+   */
+  Function removeUFOView;
+  /**
+   * Funktionen, die von dem Ersteller übergeben werden müssen. Dienen als notifies.
+   * UFO wurde erstellt im Model und kann hinzugefügt werden.
+   */
+  Function newUFOView;
+  /**
+   * Funktionen, die von dem Ersteller übergeben werden müssen. Dienen als notifies.
+   * Ein Tutorial wurde getriggert im Model.
+   */
+  Function gameTutorial;
+
+  /**
+   * Der Konstruktor. Erwartet einen [highscore] und die vier notify-Funktionen ([updateUFOs], [removeUFOView], [newUFOView] und [gameTutorial]).
+   * [figure] und [ufoFactory] wird erstellt.
    */
   Game(this.highscore, this.updateUFOs, this.removeUFOView, this.newUFOView, this.gameTutorial) {
     this.figure = new Figure(0.0, 360.0, 100.0, 100.0, fixedFieldWidth, fixedFieldHeight, 15.0);
@@ -251,7 +314,6 @@ class Game {
         hearts--;
         break;
     }
-    //if(fruits+smoothies+hearts+bombs != ufos) print("LOLFEHLER");
     removeUFOView(ufo); //Controller benachrichtigen
   }
 
@@ -270,7 +332,9 @@ class Game {
     ufoList = new List<Fruit>();
   }
 
-
+  /**
+   * Prüft den aktuellen Score und setzt gegebenenfalls den Highscore
+   */
   void checkHighscore() {
     if (score > highscore) {
       highscore = score;
@@ -285,10 +349,16 @@ class Game {
     return new Random().nextInt(101) < percent;
   }
 
+  /**
+   * Setter des Tutorials
+   */
   void setTutorial(Tutorial t) {
     tutorial = t;
   }
 
+  /**
+   * Setter der Level
+   */
   void setLevels(List<Level> levels) {
     this.allLevels = levels;
   }
