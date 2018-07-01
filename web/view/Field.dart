@@ -1,10 +1,8 @@
 import '../controller/Controller.dart';
 import '../model/FruitObject/AbstractUFO.dart';
-import '../model/FruitObject/Bomb.dart';
+import '../model/Figure.dart';
 import 'dart:html';
 import 'dart:math';
-import '../model/FruitObject/Fruit.dart';
-import '../model/Figure.dart';
 
 class Field {
   /**

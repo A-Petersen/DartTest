@@ -201,17 +201,26 @@ class Controller {
     });
   }
 
+  /**
+   * Behandelt das Gameover des Spiels
+   */
   void gameover() {
     timerRun.cancel();
     timerCheckUFO.cancel();
     field.gameover();
   }
 
+  /**
+   * Setzt den Highscore des aktuellen Spiels und in der [localStorage] für session übergreifendes Speichern
+   */
   void setHighscore(int score) {
     highscore = score;
     window.localStorage["score"] = score.toString();
   }
 
+  /**
+   * Getter der Highscore
+   */
   int getHighscore() { return game.highscore; }
 
   bool checkForOrientation() {
@@ -223,6 +232,9 @@ class Controller {
     return true;
   }
 
+  /**
+   * Durchläuft die Levelkonzept.json Resource und setzt die Parameter
+   */
   Future setLevel() {
       List<Level> levels = new List();
       var request;
@@ -261,6 +273,9 @@ class Controller {
 
   }
 
+  /**
+   * Listener für die OrientationInfo [orientationInfoStartButton]
+   */
   void orientationInfoStartButtonListener() {
     field.orientationInfoStartButton.onClick.listen((MouseEvent ev) {
       running  = true;
@@ -271,6 +286,9 @@ class Controller {
     });
   }
 
+  /**
+   * Listener für den StartScreen [startButtonStartScreen]
+   */
   void startScreenButtonsListener() {
     field.startButtonStartScreen.onClick.listen((MouseEvent ev) {
       field.removeStartScreen();
@@ -287,20 +305,32 @@ class Controller {
     });
   }
 
+  /**
+   * Getter für die Breite des Spielfeldes im Model
+   */
   int getGameSizeX() {
     return game.fixedFieldWidth;
-  }
 
+  }
+  /**
+   * Getter für die Höhe des Spielfeldes im Model
+   */
   int getGameSizeY() {
     return game.fixedFieldHeight;
   }
 
+  /**
+   * Listener für das Tutorial [tutorialButton]
+   */
   void tutorialButtonListener() {
     field.tutorialButton.onClick.listen((MouseEvent ev) {
       field.removeTutorialView();
     });
   }
 
+  /**
+   * Setter für den Text im Tutorial
+   */
   void tutorial(String expl, message) {
     if (tutorialOn) {
       field.showTutorialView(expl, message);

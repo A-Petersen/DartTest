@@ -16,6 +16,17 @@ class Smoothie extends AbstractUFO {
    */
   int timeEnd = 0;
 
+  /**
+   * Konstruktor
+   * [x] StartPosition in x
+   * [y] StartPosition in y
+   * [type] Type des UFOs
+   * [fieldWidth] Breite des Spielfeldes im Model
+   * [fieldHeight] Höhe des Spielfeldes im Model
+   * [movementtype] Art der Bewegung des UFOs (Default = null)
+   * [gravity] Anziehnungskraft des UFOs in Richtung Boden ("Geschwindigkeit" in y Richtung)
+   * [speed] Geschwindigkeit in x Richtung
+   */
   Smoothie(double x, double y, double radius, int type, int fieldWidth, int fieldHeight, [int movementtype = null, double gravity = 10.0, double speed = 1.0]) {
     this.x = x;
     this.y = y;
@@ -33,7 +44,6 @@ class Smoothie extends AbstractUFO {
    * Funktion zum aktivieren des Effektes.
    * Erwartet eine Wert für die Dauer, eine aktuelle Spielzeit und die Figur.
    */
-  @override
   void drinkSmoothie(int duration, int gametime, Figure f) {
     if (!dope) { //Prüfen, ob der Effekt bereits aktiv ist
       timeEnd+= (duration+gametime);

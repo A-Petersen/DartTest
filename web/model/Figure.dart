@@ -1,6 +1,4 @@
-import '../view/Field.dart';
 import 'FruitObject/AbstractUFO.dart';
-import 'FruitObject/Fruit.dart';
 
 class Figure {
   /**
@@ -33,15 +31,39 @@ class Figure {
    */
   double destY;
 
+  /**
+   * Geschwindigkeit in x Richtung
+   */
   double speed;
 
+  /**
+   * Hilfvariable für die Bewegungsrichtung.
+   * Kann Folgende Werte annehmen:
+   * 0 - Für stehend
+   * 1 - Für Rechtsbewegung
+   * 2 - Für Linksbewegung
+   */
   int moving = 0;
 
+  /**
+   * Breite des Spielfeldes im Model
+   */
   int fieldWidth;
+
+  /**
+   * Höhe des Spielfeldes im Model
+   */
   int fieldHeight;
 
   /**
-   * Konstruktor - unfertig...
+   * Konstruktor
+   * [x] StartPosition in x
+   * [y] StartPosition in y
+   * [a] Breite der Spielfigur
+   * [b] Höhe der Spielfigur
+   * [fieldWidth] Breite des Spielfeldes im Model
+   * [fieldHeight] Höhe des Spielfeldes im Model
+   * [speed] Geschwindigkeit in x Richtung
    */
   Figure(this.x, this.y, this.a, this.b, this.fieldWidth, this.fieldHeight, [this.speed = 20.0]);
 
@@ -75,6 +97,9 @@ class Figure {
    */
   int get hight => this.b.floor();
 
+  /**
+   * Testet ob sich ein [AbstractUFO] auf der Hit Box der Trommel befindet
+   */
   bool onDrum(AbstractUFO f) {
     if (f.ground >= this.heaven && f.right > this.left + 20 && f.left < this.right) return true;
     return false;
@@ -98,7 +123,7 @@ class Figure {
   }
 
   /**
-   * TODO Update - Kontrolle für bewegungen außerhalb des Spiuelbereich fehlen noch !!!
+   * Updated die Bewegung der Spielfigur
    */
   void update() {
     if (destX < 0 && x <= 0) destX = 0.0;

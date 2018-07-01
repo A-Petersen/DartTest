@@ -1,4 +1,3 @@
-import '../FruitObject/AbstractUFO.dart';
 import 'MovementCircle.dart';
 import 'MovementType.dart';
 import 'MovementZigZag.dart';

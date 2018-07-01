@@ -49,6 +49,17 @@ class Level {
    */
   int possibleMovments = 0;
 
+  /**
+   * Konstruktor
+   * [level] LevelNummer
+   * [requiredScore] Benötigter Score
+   * [maxFruits] Maximale Anzahl an gleichzeitig vorkommenden Früchten
+   * [bombChance] Chance auf eine Bombe bei FruitTimer
+   * [smoothieChance] Chance auf einen Smoothie bei FruitTimer
+   * [heartChance] Chance auf ein Herts bei FruitTimer
+   * [possibleFruits] Mögliche Früchte die Auftauchen können
+   * [possibleMovments] Mögliche Bewegungen, die ein UFO haben kann
+   */
   Level(this.level, this.requiredScore, this.maxFruits, this.bombChance, this.smoothieChance, this.heartChance, this.possibleFruits, this.possibleMovments);
 
   /**
