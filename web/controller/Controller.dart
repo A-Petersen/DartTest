@@ -239,7 +239,7 @@ class Controller {
       List<Level> levels = new List();
       var request;
       try {
-          request = HttpRequest.getString(levelconceptAndTutorial).then((json) {
+          request = HttpRequest.getString(levelconceptAndTutorial).then((json) { //Aus der JSON-Datei auslesen
           final parameter = JSON.decode(json);
           int levelAmount = parameter["LevelAmount"];
           for (int i = 1; i <= levelAmount; i++) {
