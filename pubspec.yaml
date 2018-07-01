@@ -1,15 +1,13 @@
 name: DartTest
 description: An absolute bare-bones web app.
 version: 0.0.1
-#homepage: https://www.example.com
-#author: n0ld <email@example.com>
+#homepage: https://a-petersen.github.io/DartTest/
+#author: Arne Petersen und Daniel Figia
 
 environment:
   sdk: '>=1.20.1 <2.0.0'
 
 dependencies:
-  xml: "^3.0.0"
-  pwa: ">=0.1.0 <0.2.0"
 
 dev_dependencies:
   browser: ^0.10.0
