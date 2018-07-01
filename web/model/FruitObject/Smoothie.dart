@@ -44,7 +44,6 @@ class Smoothie extends AbstractUFO {
    * Funktion zum aktivieren des Effektes.
    * Erwartet eine Wert für die Dauer, eine aktuelle Spielzeit und die Figur.
    */
-  @override
   void drinkSmoothie(int duration, int gametime, Figure f) {
     if (!dope) { //Prüfen, ob der Effekt bereits aktiv ist
       timeEnd+= (duration+gametime);

@@ -35,6 +35,7 @@ class UFOFactory {
       case 2 : return new Fruit(0.0, 0.0, radius, 2, fieldWidth, fieldHeight, movement, 5.0, 1.5);
       case 3 : return new Fruit(0.0, 0.0, radius, 3, fieldWidth, fieldHeight, movement, 15.0, 2.0);
       case 4 : return new Fruit(50.0, 0.0, radius, 4, fieldWidth, fieldHeight, 3, 2.0, 0.5);
+      default : return null;
     }
   }
 
@@ -45,6 +46,7 @@ class UFOFactory {
   AbstractUFO newBomb(int type, int movement, double x) {
     switch (type) {
       case 1 : return new Bomb(x, -radius, radius, 0, fieldWidth, fieldHeight, movement, 25.0, 0.0);
+      default : return null;
     }
   }
 
@@ -56,6 +58,7 @@ class UFOFactory {
     double x = new Random().nextInt(fieldWidth).toDouble();
     switch (type) {
       case 1 : return new Smoothie(x, -radius, radius, 0, fieldWidth, fieldHeight, movement, 10.0, 0.0);
+      default : return null;
     }
   }
 
@@ -67,6 +70,7 @@ class UFOFactory {
     double x = new Random().nextInt(fieldWidth).toDouble();
     switch (type) {
       case 1 : return new Heart(x, 0.0, radius, 0, fieldWidth, fieldHeight, movement, 10.0, 0.0);
+      default : return null;
     }
   }
 
