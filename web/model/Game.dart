@@ -148,7 +148,7 @@ class Game {
             }
             if (ufo.landedInBasket()) { //UFO im Korb?
               ufo.moving = false;
-              score++;
+              score+= 3;//score++;
               checkLevel();
             }
           } else {
